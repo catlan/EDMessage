@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  utilities.h created by erik on Mon 20-Jan-1997
-//  @(#)$Id: utilities.h,v 2.0 2002-08-16 18:24:09 erik Exp $
+//  @(#)$Id: utilities.h,v 2.1 2002-08-18 19:17:54 erik Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //
@@ -46,12 +46,6 @@
 static __inline__ unsigned int umin(unsigned int a, unsigned int b)
 {
     return (a < b) ? a : b;
-}
-
-
-static __inline__ unsigned int udivroundup(unsigned int a, unsigned int b)
-{
-    return (a / b) + ((a % b > 0) ? 1 : 0);
 }
 
 

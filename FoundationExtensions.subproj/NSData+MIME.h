@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+MIME.h created by erik on Sun 12-Jan-1997
-//  @(#)$Id: NSData+MIME.h,v 2.0 2002-08-16 18:24:13 erik Exp $
+//  @(#)$Id: NSData+MIME.h,v 2.1 2002-08-18 19:17:54 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -31,16 +31,14 @@
 - (NSData *)decodeContentWithTransferEncoding:(NSString *)encodingName;
 - (NSData *)encodeContentWithTransferEncoding:(NSString *)encodingName;
 
-- (NSData *)decodeBase64;
-- (NSData *)encodeBase64;
-- (NSData *)encodeBase64WithLineLength:(unsigned int)lineLength andNewlineAtEnd:(BOOL)endWithNL;
-
 - (NSData *)decodeQuotedPrintable;
 - (NSData *)encodeQuotedPrintable;
 
 - (NSData *)decodeHeaderQuotedPrintable;
 - (NSData *)encodeHeaderQuotedPrintable;
 - (NSData *)encodeHeaderQuotedPrintableMustEscapeCharactersInString:(NSString *)escChars;
+
+// base64 encoding is handled in a category in EDCommon
 
 @end
 
