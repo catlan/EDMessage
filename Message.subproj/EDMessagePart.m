@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMessagePart.m created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDMessagePart.m,v 2.2 2003-09-08 21:01:51 erik Exp $
+//  @(#)$Id: EDMessagePart.m,v 2.3 2003-10-05 21:11:28 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -444,7 +444,7 @@
 
     p = skipnewline(p, pmax);
     if(p > pmax)
-        NSMakeRange(-1, 0);
+        return NSMakeRange(-1, 0);
     return NSMakeRange(p - (char *)[data bytes], pmax - p);
 }
 
