@@ -30,6 +30,42 @@
 //002
 //003
 //004
+//030
+//031
+//032
+//033
+//034
+		03B0006103C7629100A8C007 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			name = EDHTMLTextContentCoder.h;
+			path = ContentCoder.subproj/EDHTMLTextContentCoder.h;
+			refType = 4;
+		};
+		03B0006203C7629100A8C007 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			name = EDHTMLTextContentCoder.m;
+			path = ContentCoder.subproj/EDHTMLTextContentCoder.m;
+			refType = 4;
+		};
+		03B0006303C7629100A8C007 = {
+			fileRef = 03B0006103C7629100A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		03B0006403C7629100A8C007 = {
+			fileRef = 03B0006203C7629100A8C007;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+//030
+//031
+//032
+//033
+//034
 //1A0
 //1A1
 //1A2
@@ -42,6 +78,7 @@
 				EE4EDA6D027CBD7A00A80107,
 				EE4EDA6E027CBD7A00A80107,
 			);
+			hasScannedForEncodings = 1;
 			isa = PBXProject;
 			mainGroup = 1AA34DA6009087397F000001;
 			productRefGroup = 1AA34E27009087397F000001;
@@ -78,16 +115,19 @@
 			refType = 4;
 		};
 		1AA34DA8009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMessage.h;
 			refType = 4;
 		};
 		1AA34DA9009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMessageDefines.h;
 			refType = 4;
 		};
 		1AA34DAB009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = utilities.h;
 			refType = 4;
@@ -101,6 +141,7 @@
 			refType = 4;
 		};
 		1AA34DAD009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = framework.m;
 			refType = 4;
@@ -129,21 +170,25 @@
 			refType = 4;
 		};
 		1AA34DB7009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSCharacterSet+MIME.m";
 			refType = 4;
 		};
 		1AA34DB8009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSData+MIME.m";
 			refType = 4;
 		};
 		1AA34DBB009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSImage+XFace.m";
 			refType = 4;
 		};
 		1AA34DBC009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSString+MessageUtils.m";
 			refType = 4;
@@ -162,21 +207,25 @@
 			refType = 4;
 		};
 		1AA34DC0009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSCharacterSet+MIME.h";
 			refType = 4;
 		};
 		1AA34DC1009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSData+MIME.h";
 			refType = 4;
 		};
 		1AA34DC4009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSImage+XFace.h";
 			refType = 4;
 		};
 		1AA34DC5009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSString+MessageUtils.h";
 			refType = 4;
@@ -203,16 +252,19 @@
 			refType = 4;
 		};
 		1AA34DE2009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDHeaderBearingObject.m;
 			refType = 4;
 		};
 		1AA34DE3009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMessagePart.m;
 			refType = 4;
 		};
 		1AA34DE4009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDInternetMessage.m;
 			refType = 4;
@@ -229,21 +281,25 @@
 			refType = 4;
 		};
 		1AA34DE6009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMConstants.h;
 			refType = 4;
 		};
 		1AA34DE7009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDHeaderBearingObject.h;
 			refType = 4;
 		};
 		1AA34DE8009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMessagePart.h;
 			refType = 4;
 		};
 		1AA34DE9009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDInternetMessage.h;
 			refType = 4;
@@ -257,6 +313,7 @@
 			refType = 4;
 		};
 		1AA34DEB009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMConstants.m;
 			refType = 4;
@@ -281,11 +338,13 @@
 			refType = 4;
 		};
 		1AA34E19009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDSMTPStream.m;
 			refType = 4;
 		};
 		1AA34E1A009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMailAgent.m;
 			refType = 4;
@@ -300,11 +359,13 @@
 			refType = 4;
 		};
 		1AA34E1C009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDSMTPStream.h;
 			refType = 4;
 		};
 		1AA34E1D009087397F000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMailAgent.h;
 			refType = 4;
@@ -415,7 +476,6 @@
 </dict>
 </plist>
 ";
-			shouldUseHeadermap = 1;
 		};
 		1AA34E2A009087397F000001 = {
 			buildActionMask = 2147483647;
@@ -446,6 +506,7 @@
 				671F698002E4974F00A8C007,
 				671F698102E4974F00A8C007,
 				671F698202E4975000A8C007,
+				03B0006303C7629100A8C007,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -611,6 +672,7 @@
 				671F697B02E4974B00A8C007,
 				671F697C02E4974B00A8C007,
 				671F697D02E4974B00A8C007,
+				03B0006403C7629100A8C007,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -805,72 +867,84 @@
 			refType = 4;
 		};
 		671F695202E496ED00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDDateFieldCoder.h;
 			path = HeaderFieldCoder.subproj/EDDateFieldCoder.h;
 			refType = 4;
 		};
 		671F695302E496ED00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDEntityFieldCoder.h;
 			path = HeaderFieldCoder.subproj/EDEntityFieldCoder.h;
 			refType = 4;
 		};
 		671F695402E496ED00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDFaceFieldCoder.h;
 			path = HeaderFieldCoder.subproj/EDFaceFieldCoder.h;
 			refType = 4;
 		};
 		671F695502E496ED00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDHeaderFieldCoder.h;
 			path = HeaderFieldCoder.subproj/EDHeaderFieldCoder.h;
 			refType = 4;
 		};
 		671F695602E496ED00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDIdListFieldCoder.h;
 			path = HeaderFieldCoder.subproj/EDIdListFieldCoder.h;
 			refType = 4;
 		};
 		671F695702E496ED00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDTextFieldCoder.h;
 			path = HeaderFieldCoder.subproj/EDTextFieldCoder.h;
 			refType = 4;
 		};
 		671F695802E496FB00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDDateFieldCoder.m;
 			path = HeaderFieldCoder.subproj/EDDateFieldCoder.m;
 			refType = 4;
 		};
 		671F695902E496FB00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDEntityFieldCoder.m;
 			path = HeaderFieldCoder.subproj/EDEntityFieldCoder.m;
 			refType = 4;
 		};
 		671F695A02E496FB00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDFaceFieldCoder.m;
 			path = HeaderFieldCoder.subproj/EDFaceFieldCoder.m;
 			refType = 4;
 		};
 		671F695B02E496FB00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDHeaderFieldCoder.m;
 			path = HeaderFieldCoder.subproj/EDHeaderFieldCoder.m;
 			refType = 4;
 		};
 		671F695C02E496FB00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDIdListFieldCoder.m;
 			path = HeaderFieldCoder.subproj/EDIdListFieldCoder.m;
 			refType = 4;
 		};
 		671F695D02E496FB00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDTextFieldCoder.m;
 			path = HeaderFieldCoder.subproj/EDTextFieldCoder.m;
@@ -967,6 +1041,7 @@
 			};
 		};
 		671F696A02E4971000A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = parsedate.y;
 			path = HeaderFieldCoder.subproj/parsedate.y;
@@ -982,6 +1057,7 @@
 			children = (
 				671F696F02E4974100A8C007,
 				671F697002E4974100A8C007,
+				03B0006103C7629100A8C007,
 				671F697102E4974100A8C007,
 				671F697202E4974100A8C007,
 				671F697302E4974100A8C007,
@@ -994,6 +1070,7 @@
 			children = (
 				671F697402E4974B00A8C007,
 				671F697502E4974B00A8C007,
+				03B0006203C7629100A8C007,
 				671F697602E4974B00A8C007,
 				671F697702E4974B00A8C007,
 				671F697802E4974B00A8C007,
@@ -1004,60 +1081,70 @@
 			refType = 4;
 		};
 		671F696F02E4974100A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDCompositeContentCoder.h;
 			path = ContentCoder.subproj/EDCompositeContentCoder.h;
 			refType = 4;
 		};
 		671F697002E4974100A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDContentCoder.h;
 			path = ContentCoder.subproj/EDContentCoder.h;
 			refType = 4;
 		};
 		671F697102E4974100A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDMultimediaContentCoder.h;
 			path = ContentCoder.subproj/EDMultimediaContentCoder.h;
 			refType = 4;
 		};
 		671F697202E4974100A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDPlainTextContentCoder.h;
 			path = ContentCoder.subproj/EDPlainTextContentCoder.h;
 			refType = 4;
 		};
 		671F697302E4974100A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDTextContentCoder.h;
 			path = ContentCoder.subproj/EDTextContentCoder.h;
 			refType = 4;
 		};
 		671F697402E4974B00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDCompositeContentCoder.m;
 			path = ContentCoder.subproj/EDCompositeContentCoder.m;
 			refType = 4;
 		};
 		671F697502E4974B00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDContentCoder.m;
 			path = ContentCoder.subproj/EDContentCoder.m;
 			refType = 4;
 		};
 		671F697602E4974B00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDMultimediaContentCoder.m;
 			path = ContentCoder.subproj/EDMultimediaContentCoder.m;
 			refType = 4;
 		};
 		671F697702E4974B00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDPlainTextContentCoder.m;
 			path = ContentCoder.subproj/EDPlainTextContentCoder.m;
 			refType = 4;
 		};
 		671F697802E4974B00A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			name = EDTextContentCoder.m;
 			path = ContentCoder.subproj/EDTextContentCoder.m;
@@ -1148,11 +1235,13 @@
 			refType = 4;
 		};
 		6724423D02EB4F7100A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMessageIntro.html;
 			refType = 4;
 		};
 		6724423E02EB4F7100A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = EDMessageTOC.html;
 			refType = 4;
@@ -1171,11 +1260,13 @@
 			shellScript = "AUTODOC=`which autodoc`\nDOC_DIR=$INSTALL_DIR/EDMessage.framework/Resources/English.lproj/Documentation/Reference/ObjC_classic\nif [ \"x$AUTODOC\" != \"x\" ]; then\n    SUBPROJECTS=`'ls' -f -d *.subproj .`\n    for projdir in $SUBPROJECTS; do\n        echo $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \\\"Erik Doernenburg\\\"\n        $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \"Erik Doernenburg\"\n    done    \nfi\necho cp ./EDMessageIntro.html $DOC_DIR/EDMessageIntro.html\ncp ./EDMessageIntro.html $DOC_DIR/EDMessageIntro.html\necho cp ./EDMessageTOC.html $DOC_DIR/EDMessageTOC.html\ncp ./EDMessageTOC.html $DOC_DIR/EDMessageTOC.html";
 		};
 		6798924502BF5D1500A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSCalendarDate+NetExt.m";
 			refType = 4;
 		};
 		6798924602BF5D1500A8C007 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSCalendarDate+NetExt.h";
 			refType = 4;
@@ -1196,11 +1287,13 @@
 			};
 		};
 		67EE06D5011CDF6400000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSString+PlainTextFlowedExtensions.m";
 			refType = 4;
 		};
 		67EE06D6011CDF6400000001 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			path = "NSString+PlainTextFlowedExtensions.h";
 			refType = 4;

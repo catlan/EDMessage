@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDPlainTextContentCoder.m created by erik on Sun 18-Apr-1999
-//  @(#)$Id: EDPlainTextContentCoder.m,v 2.0 2002-08-16 18:24:10 erik Exp $
+//  @(#)$Id: EDPlainTextContentCoder.m,v 2.1 2003-01-12 23:24:31 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -48,7 +48,7 @@
     if(([[[mpart contentType] firstObject] isEqualToString:@"text"] == NO) ||
        ([[[mpart contentType] secondObject] isEqualToString:@"plain"] == NO))
         return NO;
-#warning * maybe we should allow text/enriched or even text/html and dump the formatting...    
+#warning * maybe we should allow text/enriched and dump the formatting...    
 
     charset = [[mpart contentTypeParameters] objectForKey:@"charset"];
     if((charset != nil) && ([NSString stringEncodingForMIMEEncoding:charset] == 0))
