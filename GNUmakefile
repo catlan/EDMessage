@@ -1,5 +1,5 @@
 # EDMessage.framework
-# $Id: GNUmakefile,v 2.0 2002-08-16 18:24:09 erik Exp $
+# $Id: GNUmakefile,v 2.1 2003-09-04 14:36:46 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -26,6 +26,9 @@ utilities.h
 
 
 EDMessage_OBJC_FILES = framework.m
+
+
+EDMessage_LIBRARIES_DEPEND_UPON += -lEDCommon
 
 
 EDMessage_SUBPROJECTS = \
