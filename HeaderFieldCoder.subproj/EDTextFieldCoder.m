@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTextFieldCoder.m created by erik
-//  @(#)$Id: EDTextFieldCoder.m,v 2.0 2002-08-16 18:24:15 erik Exp $
+//  @(#)$Id: EDTextFieldCoder.m,v 2.1 2002-09-14 14:59:04 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -190,7 +190,7 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
     NSString		*currentEncoding, *nextEncoding, *word, *spaces;
 
     spaceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    buffer = [[[NSMutableString allocWithZone:[self zone]] init] autorelease];
+    buffer = [[[NSMutableString allocWithZone:[(NSObject *)self zone]] init] autorelease];
     scanner = [NSScanner scannerWithString:string];
     [scanner setCharactersToBeSkipped:nil];
 
@@ -252,7 +252,7 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
     if((length = [transferRep length] + 7 + [encoding length]) > 75)
         [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Encoding of this header field body results in a MIME word which exceeds the maximum length of 75 characters. Try to split it into components that are separated by whitespaces.", NSStringFromClass(self), NSStringFromSelector(_cmd)];
 
-    result = [[[NSString allocWithZone:[self zone]] initWithFormat:@"=?%@?%@?%@?=", encoding, (transferRep == qpRep) ? @"Q" : @"B", [NSString stringWithData:transferRep encoding:NSASCIIStringEncoding]] autorelease];
+    result = [[[NSString allocWithZone:[(NSObject *)self zone]] initWithFormat:@"=?%@?%@?%@?=", encoding, (transferRep == qpRep) ? @"Q" : @"B", [NSString stringWithData:transferRep encoding:NSASCIIStringEncoding]] autorelease];
 
     return result;
 }
