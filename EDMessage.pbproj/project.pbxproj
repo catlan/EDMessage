@@ -357,6 +357,7 @@
 				1AA34E50009087397F000001,
 				1AA34E72009087397F000001,
 				1AA34E76009087397F000001,
+				675000C60311516600A8C007,
 			);
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 15;
@@ -1150,6 +1151,18 @@
 			isa = PBXFileReference;
 			path = EDMessageTOC.html;
 			refType = 4;
+		};
+		675000C60311516600A8C007 = {
+			buildActionMask = 8;
+			files = (
+			);
+			generatedFileNames = (
+			);
+			isa = PBXShellScriptBuildPhase;
+			neededFileNames = (
+			);
+			shellPath = /bin/sh;
+			shellScript = "AUTODOC=`which autodoc`\nDOC_DIR=$INSTALL_DIR/EDMessage.framework/Resources/English.lproj/Documentation/Reference/ObjC_classic\nif [ \"x$AUTODOC\" != \"x\" ]; then\n    SUBPROJECTS=`'ls' -f -d *.subproj .`\n    for projdir in $SUBPROJECTS; do\n        echo $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \\\"Erik Doernenburg\\\"\n        $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \"Erik Doernenburg\"\n    done    \nfi\necho cp ./EDMessageIntro.html $DOC_DIR/EDMessageIntro.html\ncp ./EDMessageIntro.html $DOC_DIR/EDMessageIntro.html\necho cp ./EDMessageTOC.html $DOC_DIR/EDMessageTOC.html\ncp ./EDMessageTOC.html $DOC_DIR/EDMessageTOC.html";
 		};
 		6798924502BF5D1500A8C007 = {
 			isa = PBXFileReference;
