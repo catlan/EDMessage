@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDDateFieldCoder.m created by erik
-//  @(#)$Id: EDDateFieldCoder.m,v 2.1 2003-04-08 17:06:04 znek Exp $
+//  @(#)$Id: EDDateFieldCoder.m,v 2.2 2003-04-21 03:04:15 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -40,7 +40,7 @@
 
 + (NSString *)dateFormat
 {
-    return @"%a, %d %b %Y %H:%M:%S %z (%Z)";
+    return @"%a, %d %b %Y %H:%M:%S %z";
 }
 
 
