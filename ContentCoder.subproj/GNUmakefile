@@ -1,5 +1,5 @@
 # ContentCoder.subproj
-# $Id: GNUmakefile,v 2.0 2002-08-16 18:24:10 erik Exp $
+# $Id: GNUmakefile,v 2.1 2003-05-03 17:17:38 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -30,12 +30,12 @@ SUBPROJECT_NAME = ContentCoder.subproj
 ContentCoder.subproj_HEADER_FILES = \
 EDCompositeContentCoder.h       EDPlainTextContentCoder.h \
 EDContentCoder.h                EDTextContentCoder.h \
-EDMultimediaContentCoder.h
+EDMultimediaContentCoder.h      EDHTMLTextContentCoder.h
 
 ContentCoder.subproj_OBJC_FILES = \
 EDCompositeContentCoder.m       EDPlainTextContentCoder.m \
 EDContentCoder.m                EDTextContentCoder.m \
-EDMultimediaContentCoder.m
+EDMultimediaContentCoder.m      EDHTMLTextContentCoder.m
 
 
 -include Makefile.preamble
