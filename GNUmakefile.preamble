@@ -1,0 +1,5 @@
+NAME = EDMessage
+PATCH_HEADERS = EDMessage.h
+VERS_FILE = $(NAME)_vers.c
+
+EDMessage_C_FILES += $(VERS_FILE)

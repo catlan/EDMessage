@@ -1,0 +1,43 @@
+{
+    CURRENTLY_ACTIVE_VERSION = YES; 
+    DEPLOY_WITH_VERSION_NAME = A; 
+    DYNAMIC_CODE_GEN = YES; 
+    FILESTABLE = {
+        CLASSES = (); 
+        FRAMEWORKS = (AppKit.framework, EDCommon.framework, Foundation.framework); 
+        FRAMEWORKSEARCH = ("$(NEXT_ROOT)$(LOCAL_LIBRARY_DIR)/Frameworks"); 
+        H_FILES = (EDMessage.h, EDMessageDefines.h, utilities.h); 
+        OTHER_LINKED = (framework.m); 
+        OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble, m.template, h.template); 
+        PRECOMPILED_HEADERS = (); 
+        PROJECT_HEADERS = (EDMessageDefines.h, utilities.h); 
+        PUBLIC_HEADERS = (EDMessage.h, EDMessageDefines.h); 
+        SUBPROJECTS = (
+            FoundationExtensions.subproj, 
+            Message.subproj, 
+            ContentCoder.subproj, 
+            HeaderFieldCoder.subproj, 
+            Mail.subproj
+        ); 
+    }; 
+    LANGUAGE = English; 
+    MAKEFILEDIR = "$(MAKEFILEPATH)/pb_makefiles"; 
+    NEXTSTEP_BUILDTOOL = /usr/bin/gnumake; 
+    NEXTSTEP_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
+    NEXTSTEP_JAVA_COMPILER = /usr/bin/javac; 
+    NEXTSTEP_LINKEROPTIONS = "-seg1addr 0x5080000"; 
+    NEXTSTEP_OBJCPLUS_COMPILER = /usr/bin/cc; 
+    PDO_UNIX_BUILDTOOL = $NEXT_ROOT/Developer/bin/make; 
+    PDO_UNIX_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
+    PDO_UNIX_JAVA_COMPILER = "$(JDKBINDIR)/javac"; 
+    PDO_UNIX_OBJCPLUS_COMPILER = "$(NEXTDEV_BIN)/gcc"; 
+    PROJECTNAME = EDMessage; 
+    PROJECTTYPE = Framework; 
+    PROJECTVERSION = 2.8; 
+    TARGETS = (install_debug); 
+    WINDOWS_BUILDTOOL = $NEXT_ROOT/Developer/Executables/make; 
+    WINDOWS_COMPILEROPTIONS = "-D_BUILDING_EDMESSAGE_DLL"; 
+    WINDOWS_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
+    WINDOWS_JAVA_COMPILER = "$(JDKBINDIR)/javac.exe"; 
+    WINDOWS_OBJCPLUS_COMPILER = "$(DEVDIR)/gcc"; 
+}

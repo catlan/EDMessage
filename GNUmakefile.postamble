@@ -1,0 +1,39 @@
+
+clean::
+	rm -f $(VERS_FILE)
+
+
+distclean:: clean
+
+
+before-EDMessage-all::
+	@ rm -f $(VERS_FILE)
+
+
+generate-version-file: $(VERS_FILE)
+
+$(VERS_FILE):
+	@ echo "Building version file"
+ifeq "" "$(CURRENT_PROJECT_VERSION)"
+	@ echo "*** WARNING: The CURRENT_PROJECT_VERSION variable is not set!"
+endif
+	@ echo " const unsigned char $(NAME)VersionString[] = \"@(#)PROGRAM:$(NAME) PROJECT:$(NAME)-$(CURRENT_PROJECT_VERSION) DEVELOPER:$(USER) BUILT:\" __DATE__ \" \" __TIME__ \"\n\";"  > $(VERS_FILE)
+	@ echo " const double $(NAME)VersionNumber = (double)$(CURRENT_PROJECT_VERSION);" >> $(VERS_FILE)
+
+
+after-EDMessage-install:: fix-headers-non-gui
+
+
+# if there's no GUI, strip all references off the header
+fix-headers-non-gui::
+ifeq "$(GUI_LIB)" "nil"
+	@ ( \
+		for ph in $(PATCH_HEADERS); \
+		do \
+			h_path=$(FRAMEWORK_INSTALL_DIR)/$(FRAMEWORK_VERSION_DIR_NAME)/Headers/$$ph; \
+			awk '/#ifndef.*EDMESSAGE_WOBUILD/, /#endif.*EDMESSAGE_WOBUILD/ { next; } { print $0; }' $$h_path >> $$h_path.fixed; \
+			mv $$h_path.fixed $$h_path; \
+		done ; \
+		echo "Fixed for non-GUI build: $(PATCH_HEADERS)"; \
+		)
+endif

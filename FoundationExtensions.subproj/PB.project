@@ -1,0 +1,55 @@
+{
+    DYNAMIC_CODE_GEN = YES; 
+    English_RESOURCES = {}; 
+    FILESTABLE = {
+        CLASSES = (
+            "NSCharacterSet+MIME.m", 
+            "NSCalendarDate+NetExt.m", 
+            "NSData+MIME.m", 
+            "NSImage+XFace.m", 
+            "NSString+MessageUtils.m", 
+            "NSString+PlainTextFlowedExtensions.m"
+        ); 
+        H_FILES = (
+            "NSCalendarDate+NetExt.h", 
+            "NSCharacterSet+MIME.h", 
+            "NSData+MIME.h", 
+            "NSImage+XFace.h", 
+            "NSString+MessageUtils.h", 
+            "NSString+PlainTextFlowedExtensions.h"
+        ); 
+        OTHER_LINKED = (); 
+        OTHER_RESOURCES = (); 
+        OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble); 
+        PROJECT_HEADERS = (
+            "NSCharacterSet+MIME.h", 
+            "NSData+MIME.h", 
+            "NSImage+XFace.h", 
+            "NSString+MessageUtils.h"
+        ); 
+        PUBLIC_HEADERS = (
+            "NSCharacterSet+MIME.h", 
+            "NSData+MIME.h", 
+            "NSImage+XFace.h", 
+            "NSString+MessageUtils.h", 
+            "NSString+PlainTextFlowedExtensions.h", 
+            "NSCalendarDate+NetExt.h"
+        ); 
+        SUBPROJECTS = (); 
+    }; 
+    LANGUAGE = English; 
+    MAKEFILEDIR = "$(MAKEFILEPATH)/pb_makefiles"; 
+    NEXTSTEP_BUILDTOOL = /usr/bin/gnumake; 
+    NEXTSTEP_INSTALLDIR = "$(LOCAL_LIBRARY_DIR)/Frameworks"; 
+    NEXTSTEP_JAVA_COMPILER = /usr/bin/javac; 
+    NEXTSTEP_OBJCPLUS_COMPILER = /usr/bin/cc; 
+    PDO_UNIX_BUILDTOOL = $NEXT_ROOT/Developer/bin/make; 
+    PDO_UNIX_JAVA_COMPILER = "$(JDKBINDIR)/javac"; 
+    PDO_UNIX_OBJCPLUS_COMPILER = "$(NEXTDEV_BIN)/gcc"; 
+    PROJECTNAME = FoundationExtensions; 
+    PROJECTTYPE = Component; 
+    PROJECTVERSION = 2.8; 
+    WINDOWS_BUILDTOOL = $NEXT_ROOT/Developer/Executables/make; 
+    WINDOWS_JAVA_COMPILER = "$(JDKBINDIR)/javac.exe"; 
+    WINDOWS_OBJCPLUS_COMPILER = "$(DEVDIR)/gcc"; 
+}
