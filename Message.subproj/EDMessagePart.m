@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMessagePart.m created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDMessagePart.m,v 2.3 2003-10-05 21:11:28 erik Exp $
+//  @(#)$Id: EDMessagePart.m,v 2.4 2003-10-21 16:50:12 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -122,7 +122,7 @@
         return originalTransferData;
 
     // Make sure we have an encoding that we can use (we fall back to MIME 8Bit)
-    if([contentData isValidTransferEncoding:[self contentTransferEncoding]] == false)
+    if([contentData isValidTransferEncoding:[self contentTransferEncoding]] == NO)
         [self setContentTransferEncoding:MIME8BitContentTransferEncoding];
 
     transferData = [NSMutableData data];
