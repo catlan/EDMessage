@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCompositeContentCoder.m created by erik on Sun 18-Apr-1999
-//  @(#)$Id: EDCompositeContentCoder.m,v 2.0 2002-08-16 18:24:09 erik Exp $
+//  @(#)$Id: EDCompositeContentCoder.m,v 2.1 2003-01-12 23:30:33 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -31,7 +31,7 @@
 @interface EDCompositeContentCoder(PrivateAPI)
 - (void)_takeSubpartsFromMultipartContent:(EDMessagePart *)mpart;
 - (void)_takeSubpartsFromMessageContent:(EDMessagePart *)mpart;
-- (id)_encodeSubpartsWithClass:(Class)targetClass;
+- (id)_encodeSubpartsWithClass:(Class)targetClass subtype:(NSString *)subtype;
 @end
 
 
@@ -110,13 +110,23 @@ static short boundaryId = 0;
 
 - (EDMessagePart *)messagePart
 {
-    return [self _encodeSubpartsWithClass:[EDMessagePart class]];
+    return [self _encodeSubpartsWithClass:[EDMessagePart class] subtype:@"mixed"];
+}
+
+- (EDMessagePart *)messagePartWithSubtype:(NSString *)subtype
+{
+    return [self _encodeSubpartsWithClass:[EDMessagePart class] subtype:subtype];
 }
 
 
 - (EDInternetMessage *)message
 {
-    return [self _encodeSubpartsWithClass:[EDInternetMessage class]];
+    return [self _encodeSubpartsWithClass:[EDInternetMessage class] subtype:@"mixed"];
+}
+
+- (EDInternetMessage *)messageWithSubtype:(NSString *)subtype
+{
+    return [self _encodeSubpartsWithClass:[EDInternetMessage class] subtype:subtype];
 }
 
 
@@ -207,7 +217,7 @@ static short boundaryId = 0;
 }
 
 
-- (id)_encodeSubpartsWithClass:(Class)targetClass
+- (id)_encodeSubpartsWithClass:(Class)targetClass subtype:(NSString *)subtype
 {
     EDMessagePart		*result, *subpart;
     NSString			*boundary, *cte;
@@ -220,7 +230,7 @@ static short boundaryId = 0;
     /* Is it okay to use a time stamp? (Conveys information which might not be known otherwise...) */
     boundary = [NSString stringWithFormat:@"EDMessagePart-%ld%d", (long)[NSDate timeIntervalSinceReferenceDate] + 978307200, boundaryId];  /* 978307200 is the difference between unix and foundation reference dates */
     boundaryId = (boundaryId + 1) % 10000;
-    [result setContentType:[EDObjectPair pairWithObjects:@"multipart":@"mixed"] withParameters:[NSDictionary dictionaryWithObject:boundary forKey:@"boundary"]];
+    [result setContentType:[EDObjectPair pairWithObjects:@"multipart":subtype] withParameters:[NSDictionary dictionaryWithObject:boundary forKey:@"boundary"]];
     boundaryData = [[@"--" stringByAppendingString:boundary] dataUsingEncoding:NSASCIIStringEncoding];
     linebreakData = [@"\r\n" dataUsingEncoding:NSASCIIStringEncoding];
 

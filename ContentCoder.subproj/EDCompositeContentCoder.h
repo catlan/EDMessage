@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCompositeContentCoder.h created by erik on Sun 18-Apr-1999
-//  @(#)$Id: EDCompositeContentCoder.h,v 2.0 2002-08-16 18:24:09 erik Exp $
+//  @(#)$Id: EDCompositeContentCoder.h,v 2.1 2003-01-12 23:30:33 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -33,6 +33,9 @@
 
 - (id)initWithSubparts:(NSArray *)someParts;
 - (NSArray *)subparts;
+
+- (EDMessagePart *)messagePartWithSubtype:(NSString *)subtype;
+- (EDInternetMessage *)messageWithSubtype:(NSString *)subtype;
 
 @end
 
