@@ -1,5 +1,5 @@
 # HeaderCoder.subproj
-# $Id: GNUmakefile,v 2.0 2002-08-16 18:24:15 erik Exp $
+# $Id: GNUmakefile,v 2.1 2003-04-18 13:39:13 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -7,6 +7,11 @@ ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
 else
 
 include $(GNUSTEP_MAKEFILES)/common.make
+
+# we need an extra rule for compiling grammars as of rules.make v1.148
+%.c: %.y
+	$(BISON) -o $*.c $<
+
 
 ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
 ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
@@ -34,6 +39,7 @@ EDEntityFieldCoder.h    EDHeaderFieldCoder.h    EDTextFieldCoder.h
 HeaderCoder.subproj_OBJC_FILES = \
 EDDateFieldCoder.m      EDFaceFieldCoder.m      EDIdListFieldCoder.m \
 EDEntityFieldCoder.m    EDHeaderFieldCoder.m    EDTextFieldCoder.m
+
 
 
 HeaderCoder.subproj_C_FILES = parsedate.c
