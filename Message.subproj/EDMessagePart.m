@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMessagePart.m created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDMessagePart.m,v 2.1 2003-04-08 17:06:07 znek Exp $
+//  @(#)$Id: EDMessagePart.m,v 2.2 2003-09-08 21:01:51 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -29,7 +29,9 @@
 
 @interface EDMessagePart(PrivateAPI)
 + (NSDictionary *)_defaultFallbackHeaders;
-- (NSData *)_takeHeadersFromData:(NSData *)data;
+- (NSRange)_takeHeadersFromData:(NSData *)data;
+- (void)_takeContentDataFromOriginalTransferData;
+- (void)_forgetOriginalTransferData;
 @end
 
 
@@ -63,9 +65,6 @@
 
 - (id)initWithTransferData:(NSData *)data fallbackHeaderFields:(NSDictionary *)fields
 {
-    NSString	*cte;
-    NSData	  	*rawData;
-
     [super init];
     
     if(fields != nil)
@@ -80,12 +79,9 @@
 
     if((data == nil) || ([data length] == 0))
         return self;
-        
-    if((rawData = [self _takeHeadersFromData:data]) == nil)
-        return self;
-    
-    cte = [[[EDTextFieldCoder decoderWithFieldBody:[self bodyForHeaderField:@"content-transfer-encoding"]] text] stringByRemovingSurroundingWhitespace];
-    [self setContentData:[rawData decodeContentWithTransferEncoding:cte]];
+
+    bodyRange = [self _takeHeadersFromData:data];
+    originalTransferData = [data retain];
 
     return self;
 }
@@ -105,6 +101,7 @@
     [contentType release];
     [contentTypeParameters release];
     [contentData release];
+    [originalTransferData release];
     [super dealloc];
 }
 
@@ -115,12 +112,18 @@
 
 - (NSData *)transferData
 {
-    NSMutableData	 		*transferData;
-    NSData					*headerData;
-    NSMutableString			*stringBuffer;
-    NSEnumerator			*fieldEnum;
-    EDObjectPair			*field;
-    NSString				*cte;
+    NSMutableData	*transferData;
+    NSData			*headerData;
+    NSMutableString	*stringBuffer, *headerLine;
+    NSEnumerator	*fieldEnum;
+    EDObjectPair	*field;
+
+    if(originalTransferData != nil)
+        return originalTransferData;
+
+    // Make sure we have an encoding that we can use (we fall back to MIME 8Bit)
+    if([contentData isValidTransferEncoding:[self contentTransferEncoding]] == false)
+        [self setContentTransferEncoding:MIME8BitContentTransferEncoding];
 
     transferData = [NSMutableData data];
 
@@ -128,22 +131,25 @@
     fieldEnum = [[self headerFields] objectEnumerator];
     while((field = [fieldEnum nextObject]) != nil)
         {
-        [stringBuffer appendString:[field firstObject]];
-        [stringBuffer appendString:@": "];
-#warning * should fold long headers...
-        [stringBuffer appendString:[field secondObject]];
-        [stringBuffer appendString:@"\r\n"];
+        headerLine = [[NSMutableString alloc] initWithString:[field firstObject]];
+        [headerLine appendString:@": "];
+        [headerLine appendString:[field secondObject]];
+        [headerLine appendString:@"\r\n"];
+        [stringBuffer appendString:[headerLine stringByFoldingToLimit:998]];
+        [headerLine release];
         }
+
     [stringBuffer appendString:@"\r\n"];
     if((headerData = [stringBuffer dataUsingEncoding:NSASCIIStringEncoding]) == nil)
         [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Transfer representation of header fields contains non ASCII characters.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
     [transferData appendData:headerData];
 
-    cte = [[[EDTextFieldCoder decoderWithFieldBody:[self bodyForHeaderField:@"content-transfer-encoding"]] text] stringByRemovingSurroundingWhitespace];
-    [transferData appendData:[contentData encodeContentWithTransferEncoding:cte]];
+    [transferData appendData:[contentData encodeContentWithTransferEncoding: [self contentTransferEncoding]]];
 
     return transferData;
 }
+
+
 
 
 //---------------------------------------------------------------------------------------
@@ -158,6 +164,20 @@
         fieldBody = [fallbackFields objectForKey:[name lowercaseString]];
 
     return fieldBody;
+}
+
+
+- (void)setBody:(NSString *)fieldBody forHeaderField:(NSString *)fieldName
+{
+    [self _forgetOriginalTransferData];
+    [super setBody: fieldBody forHeaderField: fieldName];
+}
+
+
+- (void)addToHeaderFields:(EDObjectPair *)headerField
+{
+    [self _forgetOriginalTransferData];
+    [super addToHeaderFields: headerField];
 }
 
 
@@ -281,6 +301,7 @@
 
 - (void)setContentData:(NSData *)data
 {
+    [self _forgetOriginalTransferData];
     [contentData autorelease];
     contentData = [data copyWithZone:[self zone]];
 }
@@ -288,6 +309,8 @@
 
 - (NSData *)contentData
 {
+    if((contentData == nil) && (originalTransferData != nil))
+       [self _takeContentDataFromOriginalTransferData];
     return contentData;
 }
     
@@ -327,7 +350,7 @@
 
 
 //---------------------------------------------------------------------------------------
-//	PARSING STUFF
+//	INTERNAL STUFF
 //---------------------------------------------------------------------------------------
 
 + (NSDictionary *)_defaultFallbackHeaders
@@ -357,13 +380,12 @@
 }
 
 
-- (NSData *)_takeHeadersFromData:(NSData *)data
+- (NSRange)_takeHeadersFromData:(NSData *)data
 {
     const char		 *p, *pmax, *fnamePtr, *fbodyPtr, *eolPtr;
     NSMutableData	 *fbodyData;
     NSString 		 *name, *fbodyContents;
     EDObjectPair	 *field;
-    NSRange			 bodyRange;
     NSStringEncoding encoding;
     
 #warning * default encoding for headers?!    
@@ -396,6 +418,10 @@
                 }
             else
                 {
+                // Ignore header fields without body; which shouldn't exist...
+                if(fbodyPtr == NULL)
+                    continue;
+                
                 if(fbodyData == nil)
                     fbodyData = (id)[NSData dataWithBytes:fbodyPtr length:(eolPtr - fbodyPtr)];
                 else
@@ -418,9 +444,39 @@
 
     p = skipnewline(p, pmax);
     if(p > pmax)
-        return nil;
-    bodyRange = NSMakeRange(p - (char *)[data bytes], pmax - p);
-    return [data subdataWithRange:bodyRange];
+        NSMakeRange(-1, 0);
+    return NSMakeRange(p - (char *)[data bytes], pmax - p);
+}
+
+
+- (void)_takeContentDataFromOriginalTransferData
+{
+    NSString 	*cte;
+    NSData		*rawData;
+
+    if(originalTransferData == nil)
+        [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Original transfer data not available anymore.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
+
+    // If we have a contentData already, it must have been created from the original before
+    if(contentData != nil)
+        return;
+
+    cte = [self contentTransferEncoding];
+    rawData = [originalTransferData subdataWithRange:bodyRange];
+    contentData = [[rawData decodeContentWithTransferEncoding:cte] retain];
+}
+
+
+- (void)_forgetOriginalTransferData
+{
+    if(originalTransferData == nil)
+        return;
+
+    if(bodyRange.length > 0)
+        [self _takeContentDataFromOriginalTransferData];
+
+    [originalTransferData release];
+    originalTransferData = nil;
 }
 
 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+MIME.m created by erik on Sun 12-Jan-1997
-//  @(#)$Id: NSData+MIME.m,v 2.2 2003-04-08 17:06:03 znek Exp $
+//  @(#)$Id: NSData+MIME.m,v 2.3 2003-09-08 21:01:49 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -80,6 +80,26 @@ static __inline__ BOOL isqpliteral(byte b)
     @implementation NSData(EDMIMEExtensions)
 //---------------------------------------------------------------------------------------
 
+/* Returns YES if encoding name describes an encoding scheme that is known to the framework. NO otherwise. */
+
+- (BOOL)isValidTransferEncoding:(NSString *)encodingName
+{
+    encodingName = [encodingName lowercaseString];
+    if([encodingName isEqualToString:MIME7BitContentTransferEncoding])
+        return YES;
+    if([encodingName isEqualToString:MIME8BitContentTransferEncoding])
+        return YES;
+    if([encodingName isEqualToString:MIMEBinaryContentTransferEncoding])
+        return YES;
+    if([encodingName isEqualToString:MIMEQuotedPrintableContentTransferEncoding])
+        return YES;
+    if([encodingName isEqualToString:MIMEBase64ContentTransferEncoding])
+        return YES;
+    
+    return NO;
+}
+
+
 - (NSData *)decodeContentWithTransferEncoding:(NSString *)encodingName
 {
     encodingName = [encodingName lowercaseString];
@@ -93,8 +113,8 @@ static __inline__ BOOL isqpliteral(byte b)
         return [self decodeQuotedPrintable];
     if([encodingName isEqualToString:MIMEBase64ContentTransferEncoding])
         return [self decodeBase64];
-    [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Unknown content transfer encoding; found '%@'", NSStringFromClass(isa), NSStringFromSelector(_cmd), encodingName];
-    return nil; // keep compiler happy
+    // If we don't know it, fall back to 7-bit
+    return self; 
 }
 
 

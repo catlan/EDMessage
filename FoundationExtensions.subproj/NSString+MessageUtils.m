@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+MessageUtils.m created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSString+MessageUtils.m,v 2.3 2003-05-20 22:39:14 erik Exp $
+//  @(#)$Id: NSString+MessageUtils.m,v 2.4 2003-09-08 21:01:50 erik Exp $
 //
 //  Copyright (c) 1995-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -490,6 +490,90 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
     return buffer;
 }
 
+
+/*" Returns a folded version of the receiver according to RFC 2822 to the hard limit  length. "*/
+
+- (NSString *)stringByFoldingToLimit:(unsigned int)limit
+{
+    NSMutableString *result;
+    NSCharacterSet *whitespaces;
+    int lineStart;
+
+    // short cut a very common case
+    if ([self length] <= limit)
+        return self;
+
+    result = [NSMutableString string];
+    whitespaces = [NSCharacterSet whitespaceCharacterSet];
+    lineStart = 0;
+
+    while (lineStart < [self length])
+        {
+        if (([self length] - lineStart) > limit)
+            // something to fold left over?
+            {
+            NSRange lineEnd;
+
+            // find place to fold
+            lineEnd = [self rangeOfCharacterFromSet:whitespaces options:NSBackwardsSearch range:NSMakeRange(lineStart, limit)];
+
+            if (lineEnd.location == NSNotFound) // no whitespace found -> use hard break
+                {
+                lineEnd.location = lineStart + limit;
+                }
+
+            [result appendString:[self substringWithRange:NSMakeRange(lineStart, lineEnd.location - lineStart)]];
+            [result appendString:@"\r\n "];
+
+            lineStart = NSMaxRange(lineEnd);
+            }
+        else
+            {
+            [result appendString:[self substringWithRange:NSMakeRange(lineStart, [self length] - lineStart)]];
+
+            break; // nothing to do in loop
+            }
+        }
+
+    return [result copy];
+}
+
+
+/*" Returns an unfolded version of the receiver according to RFC 2822 "*/
+
+- (NSString *)stringByUnfoldingString
+{
+    NSMutableString *result;
+    NSString *CRLFSequence = @"\r\n";
+    NSCharacterSet *whitespaces;
+    int position;
+
+    whitespaces = [NSCharacterSet whitespaceCharacterSet];
+    result = [NSMutableString string];
+
+    position = 0;
+    while (position < [self length])
+        {
+        NSRange range;
+
+        range = [self rangeOfString:CRLFSequence options:NULL range:NSMakeRange(position, [self length] - position)];
+
+        if (range.location == NSNotFound)
+            {
+            [result appendString:[self substringWithRange:NSMakeRange(position, [self length] - position)]];
+            break;
+            }
+
+        [result appendString:[self substringWithRange:NSMakeRange(position, range.location - position)]];
+
+        if ((range.location + 2 >= [self length]) || (! [whitespaces characterIsMember:[self characterAtIndex:range.location + 2]]))
+            {
+            [result appendString:CRLFSequence];
+            }
+        position = range.location + 2;
+        }
+    return [result copy];
+}
 
 
 //---------------------------------------------------------------------------------------

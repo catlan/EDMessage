@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMessagePart.h created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDMessagePart.h,v 2.1 2003-04-08 17:06:07 znek Exp $
+//  @(#)$Id: EDMessagePart.h,v 2.2 2003-09-08 21:01:51 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -34,6 +34,8 @@
     NSString		*contentDisposition;
     NSDictionary	*contentDispositionParameters;
     NSData			*contentData;
+    NSData			*originalTransferData;
+    NSRange		 	bodyRange;
 }
 
 - (id)initWithTransferData:(NSData *)data;

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDInternetMessage.m created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDInternetMessage.m,v 2.1 2003-04-08 17:06:07 znek Exp $
+//  @(#)$Id: EDInternetMessage.m,v 2.2 2003-09-08 21:01:51 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -40,7 +40,7 @@
     [super initWithTransferData:data fallbackHeaderFields:fields];
 
     // a bit late maybe...
-    if((version = [self bodyForHeaderField:@"mime-version"]) != nil)
+    if(((version = [self bodyForHeaderField:@"mime-version"]) != nil) && ([version length] > 0))
         if([[version stringByRemovingBracketComments] floatValue] > 1.0)
             EDLog1(EDLogCoder, @"MIME Decoder: decoded version %@ as 1.0.", version);
 
@@ -54,7 +54,9 @@
 
 - (NSData *)transferData
 {
-    if([self bodyForHeaderField:@"mime-version"] == nil)
+    // If we don't have a cached version we'll be constructing the transfer data. In this
+    // case tag with our version.
+    if((originalTransferData != nil) && ([self bodyForHeaderField:@"mime-version"] == nil))
         {
         extern double EDMessageVersionNumber;
         NSString *desig = [NSString stringWithFormat:@"EDMessage Framework v%g", EDMessageVersionNumber];

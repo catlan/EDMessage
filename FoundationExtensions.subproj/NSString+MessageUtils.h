@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+MessageUtils.h created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSString+MessageUtils.h,v 2.0 2002-08-16 18:24:13 erik Exp $
+//  @(#)$Id: NSString+MessageUtils.h,v 2.1 2003-09-08 21:01:50 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -43,6 +43,8 @@
 - (NSString *)stringByWrappingToLineLength:(unsigned int)length;
 - (NSString *)stringByPrefixingLinesWithString:(NSString *)prefix;
 
+- (NSString *)stringByFoldingToLimit:(unsigned int)limit;
+- (NSString *)stringByUnfoldingString;
 @end
 
 

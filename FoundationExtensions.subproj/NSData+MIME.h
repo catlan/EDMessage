@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+MIME.h created by erik on Sun 12-Jan-1997
-//  @(#)$Id: NSData+MIME.h,v 2.2 2003-04-08 17:06:03 znek Exp $
+//  @(#)$Id: NSData+MIME.h,v 2.3 2003-09-08 21:01:49 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -27,6 +27,8 @@
 
 
 @interface NSData(EDMIMEExtensions)
+
+- (BOOL)isValidTransferEncoding:(NSString *)encodingName;
 
 - (NSData *)decodeContentWithTransferEncoding:(NSString *)encodingName;
 - (NSData *)encodeContentWithTransferEncoding:(NSString *)encodingName;
