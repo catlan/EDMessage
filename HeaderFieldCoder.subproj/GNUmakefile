@@ -1,5 +1,5 @@
 # HeaderCoder.subproj
-# $Id: GNUmakefile,v 2.1 2003-04-18 13:39:13 znek Exp $
+# $Id: GNUmakefile,v 2.2 2003-04-22 17:29:58 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -7,10 +7,6 @@ ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
 else
 
 include $(GNUSTEP_MAKEFILES)/common.make
-
-# we need an extra rule for compiling grammars as of rules.make v1.148
-%.c: %.y
-	$(BISON) -o $*.c $<
 
 
 ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
