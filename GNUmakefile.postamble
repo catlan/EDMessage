@@ -1,3 +1,11 @@
+# EDMessage.framework
+# GNUmakefile.postamble
+#
+# $Id: GNUmakefile.postamble,v 2.1 2003-11-10 00:06:32 znek Exp $
+
+
+-include GNUmakefile.postamble.local
+
 
 clean::
 	rm -f $(VERS_FILE)

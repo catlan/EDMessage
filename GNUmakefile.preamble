@@ -1,3 +1,12 @@
+# EDMessage.framework
+# GNUmakefile.preamble
+#
+# $Id: GNUmakefile.preamble,v 2.1 2003-11-10 00:06:32 znek Exp $
+
+
+-include GNUmakefile.preamble.local
+
+
 NAME = EDMessage
 PATCH_HEADERS = EDMessage.h
 VERS_FILE = $(NAME)_vers.c

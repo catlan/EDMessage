@@ -1,5 +1,5 @@
 # EDMessage.framework
-# $Id: GNUmakefile,v 2.2 2003-10-21 16:27:15 znek Exp $
+# $Id: GNUmakefile,v 2.3 2003-11-10 00:06:32 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -38,6 +38,14 @@ Mail.subproj
 include GNUstepBuild
 
 
+# Additional target specific settings
+
+# Mac OS X
+ifneq ($(findstring darwin, $(GNUSTEP_HOST_OS)),)
+  EDMessage_LDFLAGS += -seg1addr 0x5080000
+endif
+
+
 include Version
 
 # This seems odd, but on Mach the dyld supports
@@ -48,6 +56,7 @@ include Version
 MAJOR_VERSION = $(CURRENT_PROJECT_VERSION)
 #MINOR_VERSION = 0
 #SUBMINOR_VERSION = 0
+
 
 -include GNUmakefile.preamble
 
