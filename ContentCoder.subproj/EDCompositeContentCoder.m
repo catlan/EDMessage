@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCompositeContentCoder.m created by erik on Sun 18-Apr-1999
-//  @(#)$Id: EDCompositeContentCoder.m,v 2.2 2003-04-08 17:06:02 znek Exp $
+//  @(#)$Id: EDCompositeContentCoder.m,v 2.3 2003-04-21 03:05:16 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -107,6 +107,7 @@ static short boundaryId = 0;
 {
     return subparts;
 }
+
 
 - (EDMessagePart *)messagePart
 {
@@ -220,7 +221,8 @@ static short boundaryId = 0;
 - (id)_encodeSubpartsWithClass:(Class)targetClass subtype:(NSString *)subtype
 {
     EDMessagePart		*result, *subpart;
-    NSString			*boundary, *cte;
+    NSString			*boundary, *cte, *rootPartType;
+    NSMutableDictionary	*ctpDictionary;
     NSEnumerator		*subpartEnum;
     NSData				*boundaryData, *linebreakData;
     NSMutableData		*contentData;
@@ -230,7 +232,14 @@ static short boundaryId = 0;
     /* Is it okay to use a time stamp? (Conveys information which might not be known otherwise...) */
     boundary = [NSString stringWithFormat:@"EDMessagePart-%ld%d", (long)[NSDate timeIntervalSinceReferenceDate] + 978307200, boundaryId];  /* 978307200 is the difference between unix and foundation reference dates */
     boundaryId = (boundaryId + 1) % 10000;
-    [result setContentType:[EDObjectPair pairWithObjects:@"multipart":subtype] withParameters:[NSDictionary dictionaryWithObject:boundary forKey:@"boundary"]];
+    ctpDictionary = [NSMutableDictionary dictionary];
+    [ctpDictionary setObject:boundary forKey:@"boundary"];
+    if([[subtype lowercaseString] isEqualToString:@"related"])
+        {
+        rootPartType = [[[[subparts objectAtIndex:0] contentType] allObjects] componentsJoinedByString:@"/"];
+        [ctpDictionary setObject:rootPartType forKey:@"type"];
+        }
+    [result setContentType:[EDObjectPair pairWithObjects:@"multipart":subtype] withParameters:ctpDictionary];
     boundaryData = [[@"--" stringByAppendingString:boundary] dataUsingEncoding:NSASCIIStringEncoding];
     linebreakData = [@"\r\n" dataUsingEncoding:NSASCIIStringEncoding];
 
