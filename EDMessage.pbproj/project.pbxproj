@@ -53,6 +53,9 @@
 			fileRef = 03B0006103C7629100A8C007;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		03B0006403C7629100A8C007 = {

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMessage.h created by erik on Wed 12-Apr-2000
-//  $Id: EDMessage.h,v 2.0 2002-08-16 18:24:09 erik Exp $
+//  $Id: EDMessage.h,v 2.1 2003-03-10 21:29:29 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -56,6 +56,7 @@
 #import "EDContentCoder.h"
 #import "EDCompositeContentCoder.h"
 #import "EDPlainTextContentCoder.h"
+#import "EDHTMLTextContentCoder.h"
 #import "EDMultimediaContentCoder.h"
 #ifndef EDMESSAGE_WOBUILD
 #import "EDTextContentCoder.h"
