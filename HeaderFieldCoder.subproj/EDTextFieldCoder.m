@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTextFieldCoder.m created by erik
-//  @(#)$Id: EDTextFieldCoder.m,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  @(#)$Id: EDTextFieldCoder.m,v 2.0 2002-08-16 18:24:15 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //

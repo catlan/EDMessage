@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIdListFieldCoder.h created by erik
-//  @(#)$Id: EDIdListFieldCoder.h,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  @(#)$Id: EDIdListFieldCoder.h,v 2.0 2002-08-16 18:24:15 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDDateFieldCoder.h created by erik
-//  @(#)$Id: EDDateFieldCoder.h,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  @(#)$Id: EDDateFieldCoder.h,v 2.0 2002-08-16 18:24:13 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

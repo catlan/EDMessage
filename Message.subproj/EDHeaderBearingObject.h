@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDHeaderBearingObject.h created by erik on Wed 31-Mar-1999
-//  @(#)$Id: EDHeaderBearingObject.h,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  @(#)$Id: EDHeaderBearingObject.h,v 2.0 2002-08-16 18:24:16 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  utilities.h created by erik on Mon 20-Jan-1997
-//  @(#)$Id: utilities.h,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  @(#)$Id: utilities.h,v 2.0 2002-08-16 18:24:09 erik Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //

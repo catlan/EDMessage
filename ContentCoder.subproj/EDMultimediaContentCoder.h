@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMultimediaContentCoder.h created by erik on Mon 08-May-2000
-//  $Id: EDMultimediaContentCoder.h,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  $Id: EDMultimediaContentCoder.h,v 2.0 2002-08-16 18:24:10 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //

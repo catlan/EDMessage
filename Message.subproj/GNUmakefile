@@ -1,5 +1,5 @@
 # Message.subproj
-# $Id: GNUmakefile,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+# $Id: GNUmakefile,v 2.0 2002-08-16 18:24:18 erik Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""

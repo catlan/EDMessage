@@ -1,5 +1,5 @@
 %{
-/* $Revision: 1.1.1.1 $
+/* $Revision: 2.0 $
 **
 **  Originally written by Steven M. Bellovin <smb@research.att.com> while
 **  at the University of North Carolina at Chapel Hill.  Later tweaked by

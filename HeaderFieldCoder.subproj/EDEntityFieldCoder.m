@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDEntityFieldCoder.m created by
-//  @(#)$Id: EDEntityFieldCoder.m,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  @(#)$Id: EDEntityFieldCoder.m,v 2.0 2002-08-16 18:24:14 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //

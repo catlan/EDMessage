@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMConstants.h created by erik on Sat 22-Apr-2000
-//  $Id: EDMConstants.h,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  $Id: EDMConstants.h,v 2.0 2002-08-16 18:24:18 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //

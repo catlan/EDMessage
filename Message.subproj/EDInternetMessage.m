@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDInternetMessage.m created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDInternetMessage.m,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  @(#)$Id: EDInternetMessage.m,v 2.0 2002-08-16 18:24:17 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //

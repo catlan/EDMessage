@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCompositeContentCoder.m created by erik on Sun 18-Apr-1999
-//  @(#)$Id: EDCompositeContentCoder.m,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  @(#)$Id: EDCompositeContentCoder.m,v 2.0 2002-08-16 18:24:09 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //

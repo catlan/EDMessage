@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMessageDefines.h created by erik on Wed 12-Apr-2000
-//  $Id: EDMessageDefines.h,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  $Id: EDMessageDefines.h,v 2.0 2002-08-16 18:24:09 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //

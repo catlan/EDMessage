@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSCalendarDate+NetExt.m created by erik
-//  @(#)$Id: NSCalendarDate+NetExt.m,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  @(#)$Id: NSCalendarDate+NetExt.m,v 2.0 2002-08-16 18:24:12 erik Exp $
 //
 //  Copyright (c) 2002 by Axel Katerbau. All rights reserved.
 //

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSMTPStream.h created by erik on Sun 12-Mar-2000
-//  $Id: EDSMTPStream.h,v 1.1.1.1 2002-08-16 18:21:51 erik Exp $
+//  $Id: EDSMTPStream.h,v 2.0 2002-08-16 18:24:16 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
