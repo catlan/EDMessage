@@ -10,9 +10,9 @@
 			);
 			buildSettings = {
 				DEBUGGING_SYMBOLS = YES;
-				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_LOCATION = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
-				DSTROOT = /;
+				DST_ROOT = /;
 				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				OPTIMIZATION_CFLAGS = "-O0";
 			};
@@ -432,9 +432,9 @@
 				675000C60311516600A8C007,
 			);
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DYLIB_COMPATIBILITY_VERSION = 15;
-				DYLIB_CURRENT_VERSION = 16;
+				DYLIB_CURRENT_VERSION = 17;
 				FRAMEWORK_SEARCH_PATHS = "\"$(NEXT_ROOT)$(LOCAL_LIBRARY_DIR)/Frameworks\"";
 				FRAMEWORK_VERSION = A;
 				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
@@ -484,7 +484,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>16</string>
+	<string>17</string>
 </dict>
 </plist>
 ";
