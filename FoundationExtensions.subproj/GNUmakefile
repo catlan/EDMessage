@@ -1,5 +1,5 @@
 # FoundationExtensions.subproj
-# $Id: GNUmakefile,v 2.0 2002-08-16 18:24:11 erik Exp $
+# $Id: GNUmakefile,v 2.1 2003-10-21 16:27:16 znek Exp $
 
 
 ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
@@ -7,15 +7,6 @@ ifeq "$(GNUSTEP_SYSTEM_ROOT)" ""
 else
 
 include $(GNUSTEP_MAKEFILES)/common.make
-
-ifeq "$(OBJC_RUNTIME_LIB)" "gnu"
-ADDITIONAL_OBJCFLAGS += -DGNU_RUNTIME
-endif
-
-# leave certain stuff out if we're building without UI
-ifeq "$(GUI_LIB)" "nil"
-ADDITIONAL_OBJCFLAGS += -DEDMESSAGE_WOBUILD
-endif
 
 ADDITIONAL_INCLUDE_DIRS = -I..
 
@@ -35,14 +26,13 @@ NSCharacterSet+MIME.m                   NSString+MessageUtils.m \
 NSData+MIME.m                           NSString+PlainTextFlowedExtensions.m
 
 
--include Makefile.preamble
+include ../GNUstepBuild
+
 
 -include GNUmakefile.preamble
 
 include $(GNUSTEP_MAKEFILES)/subproject.make
 
 -include GNUmakefile.postamble
-
--include Makefile.postamble
 
 endif
