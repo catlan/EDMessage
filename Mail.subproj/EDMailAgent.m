@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMailAgent.m created by erik on Fri 21-Apr-2000
-//  $Id: EDMailAgent.m,v 2.0 2002-08-16 18:24:15 erik Exp $
+//  $Id: EDMailAgent.m,v 2.1 2002-08-19 00:56:33 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -41,14 +41,74 @@
     @implementation EDMailAgent
 //---------------------------------------------------------------------------------------
 
+/*" The mail agent class allows to deliver mail messages to an SMTP server. It also provides convenience methods to construct EDInternetMessages so that for simple applications the message API is not required. The mail agent can (and will by default) use 8-BIT delivery and pipelining if the SMTP server allows it.
+
+Example to send a simple mail: !{
+
+    NSString	*text; // assume this exists
+    
+    headerFields = [NSMutableDictionary dictionary];
+    [headerFields setObject:@"Joe User <joe@example.com>" forKey:@"To"];
+    [headerFields setObject:@"Hi there" forKey:@"Subject"];
+
+    text = [text stringWithCanonicalLinebreaks];
+
+    mailAgent = [EDMailAgent mailAgentForRelayHostWithName:@"mail.example.com"];
+    [mailAgent sendMailWithHeaders:headerFields andBody:text];
+
+}
+
+
+Example to send a mail with two attachments: !{
+
+    NSData *documentData, *logoData; // assume these exist
+    
+    headerFields = [NSMutableDictionary dictionary];
+    [headerFields setObject:@"Joe User <joe@example.com>" forKey:@"To"];
+    [headerFields setObject:@"Your weekly report" forKey:@"Subject"];
+
+    text = @"Here they are:\r\n";
+
+    attachmentList = [NSMutableArray array];
+    [attachmentList addObject:[EDObjectPair pairWithObjects:documentData:@"report.pdf"]];
+    [attachmentList addObject:[EDObjectPair pairWithObjects:logoData:@"logo.jpg"]];
+
+    mailAgent = [EDMailAgent mailAgentForRelayHostWithName:@"mail.example.com"];
+    [mailAgent sendMailWithHeaders:headerFields body:text andAttachments:attachmentList];
+
+}
+
+
+If you do not know at compile time which SMTP server your application will use you should be prepared for broken SMTP servers that cannot even do the extensions check. In this case you must either disable the extensions or, if you want to use them when available, catch the error and retry as follows: !{
+
+    NS_DURING
+    mailAgent = [EDMailAgent mailAgentForRelayHostWithName:@"mail.example.com"];
+    [mailAgent sendMailWithHeaders:headerFields andBody:@"Some text"];
+    NS_HANDLER
+        if([[[localException userInfo] objectForKey:EDBrokenSMPTServerHint] boolValue] == NO)
+            [localException raise];
+        mailAgent = [EDMailAgent mailAgentForRelayHostWithName:@"mail.example.com"];
+        [mailAgent setSkipsExtensionTest:YES];
+        [mailAgent sendMailWithHeaders:headerFields andBody:@"Some text"];
+    NS_ENDHANDLER
+    
+}
+
+For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMPTServerHint}.
+
+"*/
+
+
 //---------------------------------------------------------------------------------------
 //	FACTORY METHODS
 //---------------------------------------------------------------------------------------
 
-+ (id)mailAgentForRelayHostWithName:(NSString *)name
+/*" Creates and returns a mail agent which will use the SMTP server on host %name to deliver messages. "*/
+
++ (id)mailAgentForRelayHostWithName:(NSString *)aName
 {
     EDMailAgent *new = [[[self alloc] init] autorelease];
-    [new setRelayHostByName:name];
+    [new setRelayHostByName:aName];
     return new;
 }
 
@@ -57,10 +117,12 @@
 //	INIT & DEALLOC
 //---------------------------------------------------------------------------------------
 
-- (id)initWithRelayHost:(NSHost *)host
+/*" Initialises a newly allocated mail agent and sets the relay host to %aHost. "*/
+
+- (id)initWithRelayHost:(NSHost *)aHost
 {
     [super init];
-    relayHost = [host retain];
+    relayHost = [aHost retain];
     return self;
 }
 
@@ -76,6 +138,8 @@
 //	ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
 
+/*" Sets the host on which the SMTP server is running that the mail agent uses to deliver messages to the host with the name %hostname. "*/
+
 - (void)setRelayHostByName:(NSString  *)hostname
 {
     NSHost	*host;
@@ -86,13 +150,17 @@
 }
 
 
-- (void)setRelayHost:(NSHost *)host
+/*" Sets the host on which the SMTP server is running that the mail agent uses to deliver messages to aHost. "*/
+
+- (void)setRelayHost:(NSHost *)aHost
 {
-    [host retain];
+    [aHost retain];
     [relayHost release];
-    relayHost = host;
+    relayHost = aHost;
 }
 
+
+/*" Returns the host on which the SMTP server is running that the mail agent uses to deliver messages. "*/
 
 - (NSHost *)relayHost
 {
@@ -100,11 +168,15 @@
 }
 
 
+/*" If set to YES the mail agent will not try to negotiate SMTP extensions with the server on the relay host. "*/
+
 - (void)setSkipsExtensionTest:(BOOL)flag
 {
     flags.skipExtensionTest = flag;
 }
 
+
+/*" Returns whether the mail agent tries to negotiate SMTP extensions. "*/
 
 - (BOOL)skipsExtensionTest
 {
@@ -183,17 +255,23 @@
 //	SENDING EMAILS (CONVENIENCE METHODS, PART 1)
 //---------------------------------------------------------------------------------------
 
+/*" Calls #{sendMailWithHeaders:body:andAttachments:} with an empty attachment list. "*/
+
 - (void)sendMailWithHeaders:(NSDictionary *)userHeaders andBody:(NSString *)body
 {
     [self sendMailWithHeaders:userHeaders body:body andAttachments:nil];
 }
 
 
+/*" Calls #{sendMailWithHeaders:body:andAttachments:} with an attachment list containing the attachment %attData with the name %attName. "*/
+
 - (void)sendMailWithHeaders:(NSDictionary *)userHeaders body:(NSString *)body andAttachment:(NSData *)attData withName:(NSString *)attName
 {
     [self sendMailWithHeaders:userHeaders body:body andAttachments:[NSArray arrayWithObject:[EDObjectPair pairWithObjects:attData:attName]]];
 }
 
+
+/*" Composes and attempts to deliver a mail message. The message is built from the %body and the attachments in %attachmentList. The latter is an array of #EDObjectPairs containing the attachment data and name respectively. The %userHeaders must include at a minimum some recipient specification, e.g. the key "To" with a string value containing the recipient addresses; comma-separated. "*/
 
 - (void)sendMailWithHeaders:(NSDictionary *)userHeaders body:(NSString *)body andAttachments:(NSArray *)attachmentList
 {
@@ -286,6 +364,8 @@
 //---------------------------------------------------------------------------------------
 //	SENDING EMAILS (CONVENIENCE METHODS, PART 2)
 //---------------------------------------------------------------------------------------
+
+/*" Attempts to deliver %message. "*/
 
 - (void)sendMessage:(EDInternetMessage *)message
 {
