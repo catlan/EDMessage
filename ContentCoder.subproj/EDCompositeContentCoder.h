@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCompositeContentCoder.h created by erik on Sun 18-Apr-1999
-//  @(#)$Id: EDCompositeContentCoder.h,v 2.1 2003-01-12 23:30:33 erik Exp $
+//  @(#)$Id: EDCompositeContentCoder.h,v 2.2 2003-04-08 17:06:02 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDCompositeContentCoder_h_INCLUDE
 
 
-#import "EDContentCoder.h"
+#include "EDContentCoder.h"
 
 
 @interface EDCompositeContentCoder : EDContentCoder

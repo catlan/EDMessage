@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMessagePart.h created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDMessagePart.h,v 2.0 2002-08-16 18:24:18 erik Exp $
+//  @(#)$Id: EDMessagePart.h,v 2.1 2003-04-08 17:06:07 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDMessagePart_h_INCLUDE
 
 
-#import "EDHeaderBearingObject.h"
+#include "EDHeaderBearingObject.h"
 
 
 @interface EDMessagePart : EDHeaderBearingObject

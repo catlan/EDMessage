@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDContentCoder.m created by erik on Fri 12-Nov-1999
-//  @(#)$Id: EDContentCoder.m,v 2.0 2002-08-16 18:24:10 erik Exp $
+//  @(#)$Id: EDContentCoder.m,v 2.1 2003-04-08 17:06:02 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "EDContentCoder.h"
+#include <EDCommon/EDCommon.h>
+#include "EDContentCoder.h"
 
 
 //---------------------------------------------------------------------------------------

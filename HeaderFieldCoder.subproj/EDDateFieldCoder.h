@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDDateFieldCoder.h created by erik
-//  @(#)$Id: EDDateFieldCoder.h,v 2.0 2002-08-16 18:24:13 erik Exp $
+//  @(#)$Id: EDDateFieldCoder.h,v 2.1 2003-04-08 17:06:04 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDDateFieldCoder_h_INCLUDE
 
 
-#import "EDHeaderFieldCoder.h"
+#include "EDHeaderFieldCoder.h"
 
 
 @interface EDDateFieldCoder : EDHeaderFieldCoder

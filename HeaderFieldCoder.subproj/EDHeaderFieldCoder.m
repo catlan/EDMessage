@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDHeaderFieldCoder.m created by erik on Sun 24-Oct-1999
-//  @(#)$Id: EDHeaderFieldCoder.m,v 2.0 2002-08-16 18:24:15 erik Exp $
+//  @(#)$Id: EDHeaderFieldCoder.m,v 2.1 2003-04-08 17:06:05 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "EDHeaderFieldCoder.h"
+#include <EDCommon/EDCommon.h>
+#include "EDHeaderFieldCoder.h"
 
 
 //---------------------------------------------------------------------------------------

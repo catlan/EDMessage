@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSMTPStream.h created by erik on Sun 12-Mar-2000
-//  $Id: EDSMTPStream.h,v 2.0 2002-08-16 18:24:16 erik Exp $
+//  $Id: EDSMTPStream.h,v 2.1 2003-04-08 17:06:05 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -23,8 +23,8 @@
 #define	__EDSMTPStream_h_INCLUDE
 
 
-#import "EDMessageDefines.h"
-#import <EDCommon/EDStream.h>
+#include "EDMessageDefines.h"
+#include <EDCommon/EDStream.h>
 
 
 @interface EDSMTPStream : EDStream

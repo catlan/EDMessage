@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTextContentCoder.m created by erik on Fri 12-Nov-1999
-//  @(#)$Id: EDTextContentCoder.m,v 2.0 2002-08-16 18:24:10 erik Exp $
+//  @(#)$Id: EDTextContentCoder.m,v 2.1 2003-04-08 17:06:03 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -21,11 +21,11 @@
 #ifndef EDMESSAGE_WOBUILD
 
 #import <AppKit/AppKit.h>
-#import <EDCommon/EDCommon.h>
-#import "NSString+MessageUtils.h"
-#import "EDMessagePart.h"
-#import "EDMConstants.h"
-#import "EDTextContentCoder.h"
+#include <EDCommon/EDCommon.h>
+#include "NSString+MessageUtils.h"
+#include "EDMessagePart.h"
+#include "EDMConstants.h"
+#include "EDTextContentCoder.h"
 
 @interface EDTextContentCoder(PrivateAPI)
 - (NSString *)_stringFromMessagePart:(EDMessagePart *)mpart;

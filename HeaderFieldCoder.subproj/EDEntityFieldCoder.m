@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDEntityFieldCoder.m created by
-//  @(#)$Id: EDEntityFieldCoder.m,v 2.0 2002-08-16 18:24:14 erik Exp $
+//  @(#)$Id: EDEntityFieldCoder.m,v 2.1 2003-04-08 17:06:04 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,12 +19,12 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "utilities.h"
-#import "NSCharacterSet+MIME.h"
-#import "NSString+MessageUtils.h"
-#import "EDMConstants.h"
-#import "EDEntityFieldCoder.h"
+#include <EDCommon/EDCommon.h>
+#include "utilities.h"
+#include "NSCharacterSet+MIME.h"
+#include "NSString+MessageUtils.h"
+#include "EDMConstants.h"
+#include "EDEntityFieldCoder.h"
 
 @interface EDEntityFieldCoder(PrivateAPI)
 - (void)_setValues:(NSArray *)someValues;

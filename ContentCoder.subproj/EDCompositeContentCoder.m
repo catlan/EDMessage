@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDCompositeContentCoder.m created by erik on Sun 18-Apr-1999
-//  @(#)$Id: EDCompositeContentCoder.m,v 2.1 2003-01-12 23:30:33 erik Exp $
+//  @(#)$Id: EDCompositeContentCoder.m,v 2.2 2003-04-08 17:06:02 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,14 +19,14 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "utilities.h"
-#import "NSString+MessageUtils.h"
-#import "NSData+MIME.h"
-#import "EDInternetMessage.h"
-#import "EDMConstants.h"
-#import "EDEntityFieldCoder.h"
-#import "EDCompositeContentCoder.h"
+#include <EDCommon/EDCommon.h>
+#include "utilities.h"
+#include "NSString+MessageUtils.h"
+#include "NSData+MIME.h"
+#include "EDInternetMessage.h"
+#include "EDMConstants.h"
+#include "EDEntityFieldCoder.h"
+#include "EDCompositeContentCoder.h"
 
 @interface EDCompositeContentCoder(PrivateAPI)
 - (void)_takeSubpartsFromMultipartContent:(EDMessagePart *)mpart;

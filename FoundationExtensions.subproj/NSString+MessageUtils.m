@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+MessageUtils.m created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSString+MessageUtils.m,v 2.1 2003-01-04 18:15:33 erik Exp $
+//  @(#)$Id: NSString+MessageUtils.m,v 2.2 2003-04-08 17:06:04 znek Exp $
 //
 //  Copyright (c) 1995-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,10 +19,10 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "utilities.h"
-#import "NSCharacterSet+MIME.h"
-#import "NSString+MessageUtils.h"
+#include <EDCommon/EDCommon.h>
+#include "utilities.h"
+#include "NSCharacterSet+MIME.h"
+#include "NSString+MessageUtils.h"
 
 
 #if defined(__APPLE__) && !defined(UINT16_MAX)

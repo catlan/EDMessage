@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMailAgent.m created by erik on Fri 21-Apr-2000
-//  $Id: EDMailAgent.m,v 2.1 2002-08-19 00:56:33 erik Exp $
+//  $Id: EDMailAgent.m,v 2.2 2003-04-08 17:06:05 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,17 +19,17 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "NSString+MessageUtils.h"
-#import "NSData+MIME.h"
-#import "EDTextFieldCoder.h"
-#import "EDDateFieldCoder.h"
-#import "EDPlainTextContentCoder.h"
-#import "EDCompositeContentCoder.h"
-#import "EDMultimediaContentCoder.h"
-#import "EDInternetMessage.h"
-#import "EDSMTPStream.h"
-#import "EDMailAgent.h"
+#include <EDCommon/EDCommon.h>
+#include "NSString+MessageUtils.h"
+#include "NSData+MIME.h"
+#include "EDTextFieldCoder.h"
+#include "EDDateFieldCoder.h"
+#include "EDPlainTextContentCoder.h"
+#include "EDCompositeContentCoder.h"
+#include "EDMultimediaContentCoder.h"
+#include "EDInternetMessage.h"
+#include "EDSMTPStream.h"
+#include "EDMailAgent.h"
 
 @interface EDMailAgent(PrivateAPI)
 - (EDSMTPStream *)_getStream;

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMultimediaContentCoder.m created by erik on Mon 08-May-2000
-//  $Id: EDMultimediaContentCoder.m,v 2.0 2002-08-16 18:24:10 erik Exp $
+//  $Id: EDMultimediaContentCoder.m,v 2.1 2003-04-08 17:06:03 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "NSData+MIME.h"
-#import "EDInternetMessage.h"
-#import "EDMultimediaContentCoder.h"
+#include "NSData+MIME.h"
+#include "EDInternetMessage.h"
+#include "EDMultimediaContentCoder.h"
 
 @interface EDMultimediaContentCoder(PrivateAPI)
 - (id)_encodeDataWithClass:(Class)targetClass;

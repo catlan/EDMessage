@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDHeaderBearingObject.m created by erik on Wed 31-Mar-1999
-//  @(#)$Id: EDHeaderBearingObject.m,v 2.0 2002-08-16 18:24:17 erik Exp $
+//  @(#)$Id: EDHeaderBearingObject.m,v 2.1 2003-04-08 17:06:06 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,15 +19,15 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "NSString+MessageUtils.h"
-#import "EDHeaderFieldCoder.h"
-#import "EDTextFieldCoder.h"
-#import "EDEntityFieldCoder.h"
-#import "EDDateFieldCoder.h"
-#import "EDIdListFieldCoder.h"
-#import "EDFaceFieldCoder.h"
-#import "EDHeaderBearingObject.h"
+#include <EDCommon/EDCommon.h>
+#include "NSString+MessageUtils.h"
+#include "EDHeaderFieldCoder.h"
+#include "EDTextFieldCoder.h"
+#include "EDEntityFieldCoder.h"
+#include "EDDateFieldCoder.h"
+#include "EDIdListFieldCoder.h"
+#include "EDFaceFieldCoder.h"
+#include "EDHeaderBearingObject.h"
 
 
 //---------------------------------------------------------------------------------------

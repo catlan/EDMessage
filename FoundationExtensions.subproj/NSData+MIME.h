@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+MIME.h created by erik on Sun 12-Jan-1997
-//  @(#)$Id: NSData+MIME.h,v 2.1 2002-08-18 19:17:54 erik Exp $
+//  @(#)$Id: NSData+MIME.h,v 2.2 2003-04-08 17:06:03 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__NSData_MIME_h_INCLUDE
 
 
-#import "EDMessageDefines.h"
+#include "EDMessageDefines.h"
 
 
 @interface NSData(EDMIMEExtensions)

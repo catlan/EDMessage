@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+MIME.m created by erik on Sun 12-Jan-1997
-//  @(#)$Id: NSData+MIME.m,v 2.1 2002-08-18 19:17:54 erik Exp $
+//  @(#)$Id: NSData+MIME.m,v 2.2 2003-04-08 17:06:03 znek Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,11 +19,11 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "EDMessageDefines.h"
-#import "utilities.h"
-#import "NSCharacterSet+MIME.h"
-#import "NSData+MIME.h"
+#include <EDCommon/EDCommon.h>
+#include "EDMessageDefines.h"
+#include "utilities.h"
+#include "NSCharacterSet+MIME.h"
+#include "NSData+MIME.h"
 
 @interface NSData(EDMIMEExtensionsPrivateAPI)
 - (NSData *)_encodeQuotedPrintableStep1;

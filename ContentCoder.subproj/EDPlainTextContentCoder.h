@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDPlainTextContentCoder.h created by erik on Sun 18-Apr-1999
-//  @(#)$Id: EDPlainTextContentCoder.h,v 2.0 2002-08-16 18:24:10 erik Exp $
+//  @(#)$Id: EDPlainTextContentCoder.h,v 2.1 2003-04-08 17:06:03 znek Exp $
 //
 //  This file is part of the Alexandra Newsreader Project. ED3000 and the supporting
 //  ED frameworks are free software; you can redistribute and/or modify them under
@@ -13,7 +13,7 @@
 #define	__EDPlainTextContentCoder_h_INCLUDE
 
 
-#import "EDContentCoder.h"
+#include "EDContentCoder.h"
 
 
 @interface EDPlainTextContentCoder : EDContentCoder 

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMessage.h created by erik on Wed 12-Apr-2000
-//  $Id: EDMessage.h,v 2.1 2003-03-10 21:29:29 erik Exp $
+//  $Id: EDMessage.h,v 2.2 2003-04-08 17:06:02 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -28,42 +28,42 @@
 #import <AppKit/AppKit.h>
 #endif // EDMESSAGE_WOBUILD
 
-#import "EDMessageDefines.h"
+#include "EDMessageDefines.h"
 
-#import "NSCalendarDate+NetExt.h"
-#import "NSCharacterSet+MIME.h"
-#import "NSData+MIME.h"
+#include "NSCalendarDate+NetExt.h"
+#include "NSCharacterSet+MIME.h"
+#include "NSData+MIME.h"
 #ifndef EDMESSAGE_WOBUILD
-#import "NSImage+XFace.h"
+#include "NSImage+XFace.h"
 #endif // EDMESSAGE_WOBUILD
-#import "NSString+MessageUtils.h"
-#import "NSString+PlainTextFlowedExtensions.h"
+#include "NSString+MessageUtils.h"
+#include "NSString+PlainTextFlowedExtensions.h"
 
-#import "EDMConstants.h"
-#import "EDHeaderBearingObject.h"
-#import "EDMessagePart.h"
-#import "EDInternetMessage.h"
+#include "EDMConstants.h"
+#include "EDHeaderBearingObject.h"
+#include "EDMessagePart.h"
+#include "EDInternetMessage.h"
 
-#import "EDHeaderFieldCoder.h"
-#import "EDTextFieldCoder.h"
-#import "EDDateFieldCoder.h"
-#import "EDIdListFieldCoder.h"
-#import "EDEntityFieldCoder.h"
+#include "EDHeaderFieldCoder.h"
+#include "EDTextFieldCoder.h"
+#include "EDDateFieldCoder.h"
+#include "EDIdListFieldCoder.h"
+#include "EDEntityFieldCoder.h"
 #ifndef EDMESSAGE_WOBUILD
-#import "EDFaceFieldCoder.h"
-#endif // EDMESSAGE_WOBUILD
-
-#import "EDContentCoder.h"
-#import "EDCompositeContentCoder.h"
-#import "EDPlainTextContentCoder.h"
-#import "EDHTMLTextContentCoder.h"
-#import "EDMultimediaContentCoder.h"
-#ifndef EDMESSAGE_WOBUILD
-#import "EDTextContentCoder.h"
+#include "EDFaceFieldCoder.h"
 #endif // EDMESSAGE_WOBUILD
 
-#import "EDSMTPStream.h"
-#import "EDMailAgent.h"
+#include "EDContentCoder.h"
+#include "EDCompositeContentCoder.h"
+#include "EDPlainTextContentCoder.h"
+#include "EDHTMLTextContentCoder.h"
+#include "EDMultimediaContentCoder.h"
+#ifndef EDMESSAGE_WOBUILD
+#include "EDTextContentCoder.h"
+#endif // EDMESSAGE_WOBUILD
+
+#include "EDSMTPStream.h"
+#include "EDMailAgent.h"
 
 #endif	/* __EDMessage_h_INCLUDE */
 

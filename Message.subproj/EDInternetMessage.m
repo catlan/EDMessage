@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDInternetMessage.m created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDInternetMessage.m,v 2.0 2002-08-16 18:24:17 erik Exp $
+//  @(#)$Id: EDInternetMessage.m,v 2.1 2003-04-08 17:06:07 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,10 +19,10 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "NSString+MessageUtils.h"
-#import "EDMConstants.h"
-#import "EDInternetMessage.h"
+#include <EDCommon/EDCommon.h>
+#include "NSString+MessageUtils.h"
+#include "EDMConstants.h"
+#include "EDInternetMessage.h"
 
 
 //---------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDDateFieldCoder.m created by erik
-//  @(#)$Id: EDDateFieldCoder.m,v 2.0 2002-08-16 18:24:13 erik Exp $
+//  @(#)$Id: EDDateFieldCoder.m,v 2.1 2003-04-08 17:06:04 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,10 +19,10 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "NSCalendarDate+NetExt.h"
-#import "EDMConstants.h"
-#import "EDDateFieldCoder.h"
+#include <EDCommon/EDCommon.h>
+#include "NSCalendarDate+NetExt.h"
+#include "EDMConstants.h"
+#include "EDDateFieldCoder.h"
 
 @interface EDDateFieldCoder(PrivateAPI)
 - (void)_takeDateFromString:(NSString *)string;

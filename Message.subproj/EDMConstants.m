@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMConstants.m created by erik on Sat 22-Apr-2000
-//  $Id: EDMConstants.m,v 2.0 2002-08-16 18:24:18 erik Exp $
+//  $Id: EDMConstants.m,v 2.1 2003-04-08 17:06:07 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDMessageDefines.h"
+#include "EDMessageDefines.h"
 
 NSString *EDMessageTypeException = @"EDMessageTypeException";
 NSString *EDMessageFormatException = @"EDMessageFormatException";

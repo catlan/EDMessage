@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSCalendarDate+NetExt.m created by erik
-//  @(#)$Id: NSCalendarDate+NetExt.m,v 2.0 2002-08-16 18:24:12 erik Exp $
+//  @(#)$Id: NSCalendarDate+NetExt.m,v 2.1 2003-04-08 17:06:03 znek Exp $
 //
 //  Copyright (c) 2002 by Axel Katerbau. All rights reserved.
 //
@@ -19,18 +19,18 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "utilities.h"
-//#import "osdep.h"
-#import "NSCalendarDate+NetExt.h"
+#include "utilities.h"
+//#include "osdep.h"
+#include "NSCalendarDate+NetExt.h"
 
 
 //---------------------------------------------------------------------------------------
     @implementation NSCalendarDate(EDNetExt)
 //---------------------------------------------------------------------------------------
 
-#import <sys/types.h>
-#import <stdio.h>
-#import <sys/stat.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <sys/stat.h>
 
 + (id)dateWithMessageTimeSpecification:(NSString *)timespec
     /*"

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMultimediaContentCoder.h created by erik on Mon 08-May-2000
-//  $Id: EDMultimediaContentCoder.h,v 2.0 2002-08-16 18:24:10 erik Exp $
+//  $Id: EDMultimediaContentCoder.h,v 2.1 2003-04-08 17:06:03 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDMultimediaContentCoder_h_INCLUDE
 
 
-#import "EDContentCoder.h"
+#include "EDContentCoder.h"
 
 
 @interface EDMultimediaContentCoder : EDContentCoder

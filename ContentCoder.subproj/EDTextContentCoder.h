@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTextContentCoder.h created by erik on Fri 12-Nov-1999
-//  @(#)$Id: EDTextContentCoder.h,v 2.0 2002-08-16 18:24:10 erik Exp $
+//  @(#)$Id: EDTextContentCoder.h,v 2.1 2003-04-08 17:06:03 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -26,7 +26,7 @@
 #ifndef EDMESSAGE_WOBUILD
 
 
-#import "EDContentCoder.h"
+#include "EDContentCoder.h"
 
 
 @interface EDTextContentCoder : EDContentCoder

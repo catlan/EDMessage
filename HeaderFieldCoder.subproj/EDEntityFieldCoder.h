@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDEntityFieldCoder.h created by erik
-//  @(#)$Id: EDEntityFieldCoder.h,v 2.0 2002-08-16 18:24:14 erik Exp $
+//  @(#)$Id: EDEntityFieldCoder.h,v 2.1 2003-04-08 17:06:04 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDEntityFieldCoder_h_INCLUDE
 
 
-#import "EDHeaderFieldCoder.h"
+#include "EDHeaderFieldCoder.h"
 
 
 @interface EDEntityFieldCoder : EDHeaderFieldCoder

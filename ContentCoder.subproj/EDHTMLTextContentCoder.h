@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDHTMLTextContentCoder.h created by erik on Sat Jan 04 2003
-//  @(#)$Id: EDHTMLTextContentCoder.h,v 2.1 2003-01-12 23:24:31 erik Exp $
+//  @(#)$Id: EDHTMLTextContentCoder.h,v 2.2 2003-04-08 17:06:02 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDHTMLTextContentCoder_h_INCLUDE
 
 
-#import "EDPlainTextContentCoder.h"
+#include "EDPlainTextContentCoder.h"
 
 
 @interface EDHTMLTextContentCoder : EDPlainTextContentCoder

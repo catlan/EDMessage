@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDPlainTextContentCoder.m created by erik on Sun 18-Apr-1999
-//  @(#)$Id: EDPlainTextContentCoder.m,v 2.1 2003-01-12 23:24:31 erik Exp $
+//  @(#)$Id: EDPlainTextContentCoder.m,v 2.2 2003-04-08 17:06:03 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,13 +19,13 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "EDMConstants.h"
-#import "NSString+PlainTextFlowedExtensions.h"
-#import "NSData+MIME.h"
-#import "EDMessagePart.h"
-#import "EDInternetMessage.h"
-#import "EDPlainTextContentCoder.h"
+#include <EDCommon/EDCommon.h>
+#include "EDMConstants.h"
+#include "NSString+PlainTextFlowedExtensions.h"
+#include "NSData+MIME.h"
+#include "EDMessagePart.h"
+#include "EDInternetMessage.h"
+#include "EDPlainTextContentCoder.h"
 
 @interface EDPlainTextContentCoder(PrivateAPI)
 - (void)_takeTextFromMessagePart:(EDMessagePart *)mpart;

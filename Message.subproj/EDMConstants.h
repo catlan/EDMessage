@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMConstants.h created by erik on Sat 22-Apr-2000
-//  $Id: EDMConstants.h,v 2.0 2002-08-16 18:24:18 erik Exp $
+//  $Id: EDMConstants.h,v 2.1 2003-04-08 17:06:07 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -23,7 +23,7 @@
 #define	__EDMConstants_h_INCLUDE
 
 
-#import "EDMessageDefines.h"
+#include "EDMessageDefines.h"
 
 
 EDMESSAGE_EXTERN NSString *EDMessageTypeException;

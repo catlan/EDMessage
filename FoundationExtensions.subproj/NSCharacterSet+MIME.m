@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSCharacterSet+MIME.m created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSCharacterSet+MIME.m,v 2.0 2002-08-16 18:24:13 erik Exp $
+//  @(#)$Id: NSCharacterSet+MIME.m,v 2.1 2003-04-08 17:06:03 znek Exp $
 //
 //  Copyright (c) 1997,98 by Erik Doernenburg. All rights reserved.
 //
@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "utilities.h"
-#import "NSCharacterSet+MIME.h"
+#include <EDCommon/EDCommon.h>
+#include "utilities.h"
+#include "NSCharacterSet+MIME.h"
 
 
 //---------------------------------------------------------------------------------------

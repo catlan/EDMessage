@@ -1,5 +1,5 @@
 /* 
-     $Id: NSString+PlainTextFlowedExtensions.m,v 2.0 2002-08-16 18:24:13 erik Exp $
+     $Id: NSString+PlainTextFlowedExtensions.m,v 2.1 2003-04-08 17:06:04 znek Exp $
 
      Copyright (c) 2001 by Axel Katerbau. All rights reserved.
 
@@ -17,10 +17,10 @@
      OR OF ANY DERIVATIVE WORK.
 */
 
-#import "NSString+PlainTextFlowedExtensions.h"
-#import "NSString+MessageUtils.h"
-//#import <EDMessage/EDMessage.h>
-//#import "MPWDebug.h"
+#include "NSString+PlainTextFlowedExtensions.h"
+#include "NSString+MessageUtils.h"
+//#include <EDMessage/EDMessage.h>
+//#include "MPWDebug.h"
 
 @implementation NSString (PlainTextFlowedExtensions)
 

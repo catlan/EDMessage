@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDHeaderBearingObject.h created by erik on Wed 31-Mar-1999
-//  @(#)$Id: EDHeaderBearingObject.h,v 2.0 2002-08-16 18:24:16 erik Exp $
+//  @(#)$Id: EDHeaderBearingObject.h,v 2.1 2003-04-08 17:06:06 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -25,7 +25,7 @@
 
 /* This class would be a real candidate for multiple inheritance. Fortunately, the classes that want to adopt its behaviour so far do not need to inherit from some other base class... */
 
-#import <EDCommon/EDCommon.h>
+#include <EDCommon/EDCommon.h>
 
 
 @class EDHeaderFieldCoder;

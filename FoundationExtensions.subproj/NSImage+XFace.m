@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSImage+XFace.m created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSImage+XFace.m,v 2.1 2002-08-17 17:39:30 znek Exp $
+//  @(#)$Id: NSImage+XFace.m,v 2.2 2003-04-08 17:06:04 znek Exp $
 //
 //  Copyright (c) 1997,2002 by Erik Doernenburg. All rights reserved.
 //  Copyright (c) 1990 by James Ashton
@@ -24,7 +24,7 @@
 #ifndef EDMESSAGE_WOBUILD
 
 #import <AppKit/AppKit.h>
-#import "NSImage+XFace.h"
+#include "NSImage+XFace.h"
 
 
 /* define the face size - 48x48x1 */

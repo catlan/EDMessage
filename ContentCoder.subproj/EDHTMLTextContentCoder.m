@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDHTMLTextContentCoder.m created by erik on Sat Jan 04 2003
-//  @(#)$Id: EDHTMLTextContentCoder.m,v 2.1 2003-01-12 23:24:31 erik Exp $
+//  @(#)$Id: EDHTMLTextContentCoder.m,v 2.2 2003-04-08 17:06:03 znek Exp $
 //
 //  Copyright (c) 2002 by Erik Doernenburg. All rights reserved.
 //
@@ -19,12 +19,12 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "EDMConstants.h"
-#import "NSData+MIME.h"
-#import "EDMessagePart.h"
-#import "EDInternetMessage.h"
-#import "EDHTMLTextContentCoder.h"
+#include <EDCommon/EDCommon.h>
+#include "EDMConstants.h"
+#include "NSData+MIME.h"
+#include "EDMessagePart.h"
+#include "EDInternetMessage.h"
+#include "EDHTMLTextContentCoder.h"
 
 
 //---------------------------------------------------------------------------------------

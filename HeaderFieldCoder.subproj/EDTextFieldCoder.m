@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTextFieldCoder.m created by erik
-//  @(#)$Id: EDTextFieldCoder.m,v 2.1 2002-09-14 14:59:04 znek Exp $
+//  @(#)$Id: EDTextFieldCoder.m,v 2.2 2003-04-08 17:06:05 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,11 +19,11 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "NSString+MessageUtils.h"
-#import "NSData+MIME.h"
-#import "EDMConstants.h"
-#import "EDTextFieldCoder.h"
+#include <EDCommon/EDCommon.h>
+#include "NSString+MessageUtils.h"
+#include "NSData+MIME.h"
+#include "EDMConstants.h"
+#include "EDTextFieldCoder.h"
 
 @interface EDTextFieldCoder(PrivateAPI)
 + (NSString *)_wrappedWord:(NSString *)aString encoding:(NSString *)encoding;

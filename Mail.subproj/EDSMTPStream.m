@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSMTPStream.m created by erik on Sun 12-Mar-2000
-//  $Id: EDSMTPStream.m,v 2.0 2002-08-16 18:24:16 erik Exp $
+//  $Id: EDSMTPStream.m,v 2.1 2003-04-08 17:06:05 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
-#import "EDSMTPStream.h"
+#include <EDCommon/EDCommon.h>
+#include "EDSMTPStream.h"
 
 @interface EDSMTPStream(PrivateAPI)
 - (void)_assertServerIsReady;
