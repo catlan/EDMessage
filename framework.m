@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  framework.m created by erik on Sun 28-May-2000
-//  $Id: framework.m,v 2.0 2002-08-16 18:24:09 erik Exp $
+//  $Id: framework.m,v 2.1 2002-08-18 20:40:02 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -28,24 +28,6 @@
     @implementation EDMessageFramework
 //---------------------------------------------------------------------------------------
 
-#if !defined(OPTIMIZED) && !defined(WIN32) && !defined(GNUSTEP)
-
-+ (void)load
-{
-    extern const char EDMessageVersionString[];
-    static BOOL didLog = NO;
-
-    if(didLog == YES)
-        return;
-    didLog = YES;
-#if defined(EDMESSAGE_WOBUILD)
-    NSLog(@"Loaded: %s (WOBUILD)", EDMessageVersionString);
-#else
-    NSLog(@"Loaded: %s", EDMessageVersionString);
-#endif
-}
-
-#endif
 
 
 //---------------------------------------------------------------------------------------
