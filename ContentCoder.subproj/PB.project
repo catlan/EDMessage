@@ -6,14 +6,16 @@
             EDCompositeContentCoder.m, 
             EDPlainTextContentCoder.m, 
             EDMultimediaContentCoder.m, 
-            EDTextContentCoder.m
+            EDTextContentCoder.m, 
+            EDHTMLTextContentCoder.m
         ); 
         H_FILES = (
             EDContentCoder.h, 
             EDCompositeContentCoder.h, 
             EDPlainTextContentCoder.h, 
             EDMultimediaContentCoder.h, 
-            EDTextContentCoder.h
+            EDTextContentCoder.h, 
+            EDHTMLTextContentCoder.h
         ); 
         OTHER_SOURCES = (Makefile.preamble, Makefile, Makefile.postamble); 
         PRECOMPILED_HEADERS = (); 
@@ -28,7 +30,8 @@
             EDCompositeContentCoder.h, 
             EDPlainTextContentCoder.h, 
             EDTextContentCoder.h, 
-            EDMultimediaContentCoder.h
+            EDMultimediaContentCoder.h, 
+            EDHTMLTextContentCoder.h
         ); 
         SUBPROJECTS = (); 
     }; 
