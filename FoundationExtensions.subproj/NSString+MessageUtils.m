@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+MessageUtils.m created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSString+MessageUtils.m,v 2.2 2003-04-08 17:06:04 znek Exp $
+//  @(#)$Id: NSString+MessageUtils.m,v 2.3 2003-05-20 22:39:14 erik Exp $
 //
 //  Copyright (c) 1995-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -406,6 +406,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 		lineStart = textStart.location;		
 				
 		if(spillOver != nil)
+            {
 			if(([lastPrefix isEqualToString:prefix] == NO) || (textStart.length == 0))
 				{
                 [buffer appendString:lastPrefix];
@@ -418,7 +419,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 				[mcopy insertString:@" " atIndex:lineStart];
 				[mcopy insertString:spillOver atIndex:lineStart];
 				}
-	
+            }
 		// note that this doesn't work properly if length(prefix) > length!, so...
 		NSAssert(prefixLength <= length, @"line prefix too long.");
 	

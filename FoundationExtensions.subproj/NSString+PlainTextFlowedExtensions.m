@@ -1,5 +1,5 @@
 /* 
-     $Id: NSString+PlainTextFlowedExtensions.m,v 2.1 2003-04-08 17:06:04 znek Exp $
+     $Id: NSString+PlainTextFlowedExtensions.m,v 2.2 2003-05-20 22:39:14 erik Exp $
 
      Copyright (c) 2001 by Axel Katerbau. All rights reserved.
 
@@ -41,7 +41,7 @@
 
     paragraphEnumerator = [paragraphs objectEnumerator];
 
-    while (paragraph = [paragraphEnumerator nextObject])
+    while ((paragraph = [paragraphEnumerator nextObject]) != nil)
     {
         NSAutoreleasePool *pool;
 
@@ -152,7 +152,7 @@
         
     lineEnumerator = [lines objectEnumerator];
     
-    while (line = [lineEnumerator nextObject])
+    while ((line = [lineEnumerator nextObject]) != nil)
     {
         NSAutoreleasePool *pool;
         int quoteDepth = 0;
