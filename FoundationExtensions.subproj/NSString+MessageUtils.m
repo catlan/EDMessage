@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+MessageUtils.m created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSString+MessageUtils.m,v 2.0 2002-08-16 18:24:13 erik Exp $
+//  @(#)$Id: NSString+MessageUtils.m,v 2.1 2003-01-04 18:15:33 erik Exp $
 //
 //  Copyright (c) 1995-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -210,45 +210,72 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 
 
 - (NSString *)stringByRemovingReplyPrefix
+/*" Removes prefixes like 'Re:', 'Re^3:', 'Re: Re: ' or 'Re[4]:' from the receiver. "*/
 {
     static BOOL		didInitTable = NO;
-    static short	delta[7][129];
+    static short	delta[11][129];
     short	 		state;
-    unsigned int	n, i, c;
+    unsigned int	n, i, c, lastMatch;
 
     if(didInitTable == NO)
         {
         didInitTable = YES;
-        memset(delta, 0, 6 * 129 * sizeof(short));
+        memset(delta, 0, 10 * 129 * sizeof(short));
         for(i = 0; i < 129; i++)
             delta[6][i] = 1;
         delta[2]['r'] = 3; delta[2]['R'] = 3; delta[2][128] = 0;
         delta[3]['e'] = 4; delta[3]['E'] = 4; delta[3][128] = 0;
         delta[4]['^'] = 5; delta[4][':'] = 6; delta[4][128] = 0;
-        delta[5]['0'] = 5; delta[5]['1'] = 5; delta[5]['2'] = 5; delta[5]['3'] = 5;
-        delta[5]['4'] = 5; delta[5]['5'] = 5; delta[5]['6'] = 5; delta[5]['7'] = 5;
-        delta[5]['8'] = 5; delta[5]['9'] = 5; delta[5][':'] = 6; delta[5][128] = 0;
+        delta[5]['0'] = 5; delta[5]['1'] = 5; delta[5]['2'] = 5;         delta[5]['3'] = 5;
+        delta[5]['4'] = 5; delta[5]['5'] = 5; delta[5]['6'] = 5;         delta[5]['7'] = 5;
+        delta[5]['8'] = 5; delta[5]['9'] = 5; delta[5][':'] = 6;         delta[5][128] = 0;
         delta[6][' '] = 6;
+
+        // Re[4] case:
+        delta[4]['['] = 7;
+        delta[7]['0'] = 7; delta[7]['1'] = 7; delta[7]['2'] = 7;         delta[7]['3'] = 7;
+        delta[7]['4'] = 7; delta[7]['5'] = 7; delta[7]['6'] = 7;         delta[7]['7'] = 7;
+        delta[7]['8'] = 7; delta[7]['9'] = 7; delta[7][':'] = 6;         delta[7][128] = 0;
+        delta[7][']'] = 8;
+        delta[8][':'] = 6; delta[8][128] = 0;
+
+        // German Outlook (not in diagram below)
+        delta[2]['A'] = 9;
+        delta[9]['W'] = 4; delta[9][128] = 0;
+        delta[2]['W'] = 10;
+        delta[10]['G'] = 4; delta[10][128] = 0;
         }
 
-    for(i = 0, n = [self length], state = 2; (i < n) && (state > 1); i++)
-        {
-        c = (unsigned int)[self characterAtIndex:i];
-        state = delta[state][MIN(c, 128)];
-        }
-    if((state == 1) && (i < n))
-        return [self substringFromIndex:i - 1];
-    return self;
+    n = [self length];
+    i = 1;
+    do {
+        i--;
+        lastMatch = i;
+        // state == 0:  failure, state == 1 : success
+        for (state = 2; (i < n) && (state > 1); i++)
+            {
+            c = (unsigned int)[self characterAtIndex:i];
+            state = delta[state][MIN(c, 128)];
+            }
+    } while ((state == 1) && (i < n)); // match multiple times
+
+    return lastMatch ? [self substringFromIndex: lastMatch] : self;
 }
+
 
 /*
                                     digit      space
-                                    /	\	   /   \ 	
+                                    /	\      /   \ 	
          R,r        E,e         ^   \   /   :  \   /
     (2) -----> (3) -----> (4) -----> (5) -----> (6) -----> ((1))
-                            \___________________/
-                                        :
-*/
+                           |\___________________/
+                           |          :        /
+                           \                  / :
+                            \----> (7) ---> (8)
+                               [   / \  ]
+                                   \ /
+                                  digit
+ */
 
 
 //---------------------------------------------------------------------------------------
