@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSImage+XFace.m created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSImage+XFace.m,v 2.0 2002-08-16 18:24:13 erik Exp $
+//  @(#)$Id: NSImage+XFace.m,v 2.1 2002-08-17 17:39:30 znek Exp $
 //
 //  Copyright (c) 1997,2002 by Erik Doernenburg. All rights reserved.
 //  Copyright (c) 1990 by James Ashton
@@ -21,7 +21,7 @@
 //  See below for copyright and distribution terms of included code.
 //---------------------------------------------------------------------------------------
 
-#ifndef EDCOMMON_WOBUILD
+#ifndef EDMESSAGE_WOBUILD
 
 #import <AppKit/AppKit.h>
 #import "NSImage+XFace.h"
@@ -1357,4 +1357,4 @@ static void UnGenFace(void)
    }
 
 
-#endif  // EDCOMMON_WOBUILD
+#endif  // EDMESSAGE_WOBUILD
