@@ -387,8 +387,8 @@
 			productName = "EDMessage (Framework)";
 			productReference = 1AA34E28009087397F000001;
 			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-<!DOCTYPE plist SYSTEM \"file://localhost/System/Library/DTDs/PropertyList.dtd\">
-<plist version=\"0.9\">
+<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
@@ -448,6 +448,7 @@
 				671F698202E4975000A8C007,
 			);
 			isa = PBXHeadersBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1AA34E2B009087397F000001 = {
 			fileRef = 1AA34DA8009087397F000001;
@@ -580,6 +581,7 @@
 			files = (
 			);
 			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1AA34E50009087397F000001 = {
 			buildActionMask = 2147483647;
@@ -611,6 +613,7 @@
 				671F697D02E4974B00A8C007,
 			);
 			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1AA34E51009087397F000001 = {
 			fileRef = 1AA34DAD009087397F000001;
@@ -708,6 +711,7 @@
 				1AA34E75009087397F000001,
 			);
 			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1AA34E73009087397F000001 = {
 			fileRef = 1AA34E23009087397F000001;
@@ -732,6 +736,7 @@
 			files = (
 			);
 			isa = PBXRezBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 //1A0
 //1A1
@@ -1161,6 +1166,7 @@
 			isa = PBXShellScriptBuildPhase;
 			neededFileNames = (
 			);
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "AUTODOC=`which autodoc`\nDOC_DIR=$INSTALL_DIR/EDMessage.framework/Resources/English.lproj/Documentation/Reference/ObjC_classic\nif [ \"x$AUTODOC\" != \"x\" ]; then\n    SUBPROJECTS=`'ls' -f -d *.subproj .`\n    for projdir in $SUBPROJECTS; do\n        echo $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \\\"Erik Doernenburg\\\"\n        $AUTODOC -allclasses -typedirs -format html -destination $DOC_DIR -project $projdir -copyright \"Erik Doernenburg\"\n    done    \nfi\necho cp ./EDMessageIntro.html $DOC_DIR/EDMessageIntro.html\ncp ./EDMessageIntro.html $DOC_DIR/EDMessageIntro.html\necho cp ./EDMessageTOC.html $DOC_DIR/EDMessageTOC.html\ncp ./EDMessageTOC.html $DOC_DIR/EDMessageTOC.html";
 		};

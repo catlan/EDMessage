@@ -9,14 +9,14 @@
 			673BB04E0170BF6D00A8C007,
 		);
 		perUserDictionary = {
-			PBXPerProjectTemplateStateSaveDate = 51466574;
+			PBXPerProjectTemplateStateSaveDate = 52255752;
 			PBXWorkspaceContents = (
 				{
 					LeftSlideOut = {
 						Split0 = {
 							Split0 = {
 								NavContent0 = {
-									bookmark = 675000B003113D9E00A8C007;
+									bookmark = 67EB2F64031D5A1700A8C007;
 									history = (
 										671F698C02E49A1D00A8C007,
 										671F698D02E49A1D00A8C007,
@@ -58,9 +58,8 @@
 										6750FC7103106E4A00A8C007,
 										6750FC7203106E4A00A8C007,
 										6750FC7303106E4A00A8C007,
-										675000AB03113D9E00A8C007,
-										675000AC03113D9E00A8C007,
-										675000AD03113D9E00A8C007,
+										67500526031156D800A8C007,
+										67500529031156D800A8C007,
 									);
 									prevStack = (
 										671F694702E495CB00A8C007,
@@ -137,8 +136,7 @@
 										6750FC8403106E4A00A8C007,
 										6750FC8503106E4A00A8C007,
 										6750FC8603106E4A00A8C007,
-										675000AE03113D9E00A8C007,
-										675000AF03113D9E00A8C007,
+										67500528031156D800A8C007,
 									);
 								};
 								NavCount = 1;
@@ -169,10 +167,7 @@
 						Tab1 = {
 							OptionsSetName = "Hierarchy, all classes";
 						};
-						Tab3 = {
-							SplitCount = 2;
-						};
-						TabCount = 6;
+						TabCount = 5;
 					};
 				},
 			);
@@ -278,36 +273,14 @@
 						};
 						Tab3 = {
 							Frame = "{{0, 0}, {239, 929}}";
-							Split0 = {
-								Frame = "{{0, 0}, {239, 452}}";
-								TargetTreeTableConfiguration = (
-									ActiveTarget,
-									16,
-									TargetName,
-									207,
-								);
-							};
-							Split1 = {
-								BuildStyleTreeTableConfiguration = (
-									IsActive,
-									16,
-									Name,
-									208,
-								);
-								Frame = "{{0, 461}, {239, 468}}";
-							};
-							SplitCount = 2;
+							TargetTableConfiguration = (
+								ActiveObject,
+								16,
+								ObjectNames,
+								206.296,
+							);
 						};
 						Tab4 = {
-							ExecutableTreeTableConfiguration = (
-								ActiveExecutable,
-								16,
-								ExecutableName,
-								217,
-							);
-							Frame = "{{0, 0}, {250, 554}}";
-						};
-						Tab5 = {
 							BreakpointsTreeTableConfiguration = (
 								breakpointColumn,
 								197,
@@ -316,16 +289,16 @@
 							);
 							Frame = "{{0, 0}, {250, 554}}";
 						};
-						TabCount = 6;
+						TabCount = 5;
 						TabsVisible = YES;
 					};
 					StatusViewVisible = YES;
 					Template = 64ABBB4501FA494900185B06;
 					ToolbarVisible = YES;
-					WindowLocation = "{67, 108}";
+					WindowLocation = "{209, 88}";
 				},
 			);
-			PBXWorkspaceStateSaveDate = 51466574;
+			PBXWorkspaceStateSaveDate = 52255752;
 		};
 		perUserProjectItems = {
 			671F694702E495CB00A8C007 = 671F694702E495CB00A8C007;
@@ -352,12 +325,9 @@
 			6724424402EB4F8A00A8C007 = 6724424402EB4F8A00A8C007;
 			6724424502EB4F8A00A8C007 = 6724424502EB4F8A00A8C007;
 			6724424602EB4F8A00A8C007 = 6724424602EB4F8A00A8C007;
-			675000AB03113D9E00A8C007 = 675000AB03113D9E00A8C007;
-			675000AC03113D9E00A8C007 = 675000AC03113D9E00A8C007;
-			675000AD03113D9E00A8C007 = 675000AD03113D9E00A8C007;
-			675000AE03113D9E00A8C007 = 675000AE03113D9E00A8C007;
-			675000AF03113D9E00A8C007 = 675000AF03113D9E00A8C007;
-			675000B003113D9E00A8C007 = 675000B003113D9E00A8C007;
+			67500526031156D800A8C007 = 67500526031156D800A8C007;
+			67500528031156D800A8C007 = 67500528031156D800A8C007;
+			67500529031156D800A8C007 = 67500529031156D800A8C007;
 			6750FC6203106E4A00A8C007 = 6750FC6203106E4A00A8C007;
 			6750FC6303106E4A00A8C007 = 6750FC6303106E4A00A8C007;
 			6750FC6403106E4A00A8C007 = 6750FC6403106E4A00A8C007;
@@ -445,6 +415,7 @@
 			67E602CB02F2FD8700A8C007 = 67E602CB02F2FD8700A8C007;
 			67E602CC02F2FD8700A8C007 = 67E602CC02F2FD8700A8C007;
 			67E602CD02F2FD8700A8C007 = 67E602CD02F2FD8700A8C007;
+			67EB2F64031D5A1700A8C007 = 67EB2F64031D5A1700A8C007;
 			67F8D6B602F87F7E00A8C007 = 67F8D6B602F87F7E00A8C007;
 			67F8D6BE02F87F7E00A8C007 = 67F8D6BE02F87F7E00A8C007;
 			67F8D6BF02F87F7E00A8C007 = 67F8D6BF02F87F7E00A8C007;
@@ -733,75 +704,29 @@
 		lineNumber = 419;
 		state = 2;
 	};
-	675000AB03113D9E00A8C007 = {
-		isa = PBXTargetBookmark;
-		trg = 6750FC410310611800A8C007;
-	};
-	675000AC03113D9E00A8C007 = {
+	67500526031156D800A8C007 = {
 		fRef = 6724423D02EB4F7100A8C007;
 		isa = PBXTextBookmark;
 		name = "EDMessageIntro.html: 3";
 		rLen = 37;
 		rLoc = 60;
 		rType = 0;
-		vrLen = 3088;
-		vrLoc = 2189;
+		vrLen = 3387;
+		vrLoc = 1957;
 	};
-	675000AD03113D9E00A8C007 = {
-		isa = PBXTargetBookmark;
-		trg = 1AA34E29009087397F000001;
-	};
-	675000AE03113D9E00A8C007 = {
-		isa = PBXTargetBookmark;
-		trg = 6750FC410310611800A8C007;
-	};
-	675000AF03113D9E00A8C007 = {
+	67500528031156D800A8C007 = {
 		fRef = 6724423D02EB4F7100A8C007;
 		isa = PBXTextBookmark;
 		name = "EDMessageIntro.html: 3";
 		rLen = 37;
 		rLoc = 60;
 		rType = 0;
-		vrLen = 3088;
-		vrLoc = 2189;
+		vrLen = 3387;
+		vrLoc = 1957;
 	};
-	675000B003113D9E00A8C007 = {
+	67500529031156D800A8C007 = {
 		isa = PBXTargetBookmark;
 		trg = 1AA34E29009087397F000001;
-	};
-	6750FC410310611800A8C007 = {
-		activeExec = 0;
-		buildPhases = (
-			6750FC440310612B00A8C007,
-		);
-		buildSettings = {
-			OTHER_CFLAGS = "";
-			OTHER_LDFLAGS = "";
-			OTHER_REZFLAGS = "";
-			PRODUCT_NAME = Documentation;
-			REZ_EXECUTABLE = YES;
-			SECTORDER_FLAGS = "";
-			WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
-		};
-		dependencies = (
-		);
-		isa = PBXToolTarget;
-		name = Documentation;
-		productInstallPath = /usr/local/bin;
-		productName = Documentation;
-		shouldUseHeadermap = 0;
-	};
-	6750FC440310612B00A8C007 = {
-		buildActionMask = 2147483647;
-		files = (
-		);
-		generatedFileNames = (
-		);
-		isa = PBXShellScriptBuildPhase;
-		neededFileNames = (
-		);
-		shellPath = /bin/sh;
-		shellScript = "SUBPROJECTS=`'ls' -f -d *.subproj .`\nfor projdir in $SUBPROJECTS; do\n autodoc -allclasses -typedirs -format html -destination Documentation -project $projdir -copyright \"Erik Doernenburg\"\ndone\ncp EDMessageIntro.html Documentation/EDMessageIntro.html\ncp EDMessageTOC.html Documentation/EDMessageTOC.html\n";
 	};
 	6750FC6203106E4A00A8C007 = {
 		fRef = 1AA34DC1009087397F000001;
@@ -1702,6 +1627,10 @@
 		rType = 0;
 		vrLen = 2031;
 		vrLoc = 0;
+	};
+	67EB2F64031D5A1700A8C007 = {
+		isa = PBXTargetBookmark;
+		trg = 1AA34E29009087397F000001;
 	};
 	67F8D6B602F87F7E00A8C007 = {
 		fRef = 1AA34DE4009087397F000001;
