@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMailAgent.h created by erik on Fri 21-Apr-2000
-//  $Id: EDMailAgent.h,v 2.0 2002-08-16 18:24:15 erik Exp $
+//  $Id: EDMailAgent.h,v 2.1 2002-08-19 00:05:41 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -28,24 +28,35 @@
 @class EDInternetMessage;
 
 
+struct EDMAFlags
+{
+    unsigned 	skipExtensionTest : 1;
+};
+
+
 @interface EDMailAgent : NSObject
 {
-    NSHost 			*relayHost;
-	struct {
-        unsigned 	skipExtensionTest : 1;
-    } flags;
+    NSHost 				*relayHost;		/*" All instance variables are private. "*/
+	struct EDMAFlags 	flags;			/*" "*/		
 }
 
-+ (id)mailAgentForRelayHostWithName:(NSString *)name;
 
-- (id)initWithRelayHost:(NSHost *)host;
+/*" Creating mail agent instances "*/
+
++ (id)mailAgentForRelayHostWithName:(NSString *)aName;
+
+- (id)initWithRelayHost:(NSHost *)aHost;
+
+/*" Configuring the mail agent "*/
 
 - (void)setRelayHostByName:(NSString  *)hostname;
-- (void)setRelayHost:(NSHost *)host;
+- (void)setRelayHost:(NSHost *)aHost;
 - (NSHost *)relayHost;
 
 - (void)setSkipsExtensionTest:(BOOL)flag;
 - (BOOL)skipsExtensionTest;
+
+/*" Sending messages "*/
 
 - (void)sendMailWithHeaders:(NSDictionary *)userHeaders andBody:(NSString *)body;
 - (void)sendMailWithHeaders:(NSDictionary *)userHeaders body:(NSString *)body andAttachment:(NSData *)attData withName:(NSString *)attName;
