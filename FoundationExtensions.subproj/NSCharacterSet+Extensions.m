@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSCharacterSet+MIME.m created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSCharacterSet+Extensions.m,v 2.0 2002-08-16 18:24:13 erik Exp $
+//  @(#)$Id: NSCharacterSet+Extensions.m,v 2.0 2002/08/16 18:24:13 erik Exp $
 //
 //  Copyright (c) 1997,98 by Erik Doernenburg. All rights reserved.
 //
@@ -22,7 +22,6 @@
 #import <EDCommon/EDCommon.h>
 #import "utilities.h"
 #import "NSCharacterSet+MIME.h"
-
 
 //---------------------------------------------------------------------------------------
     @implementation NSCharacterSet(EDMessageExtensions)
@@ -177,7 +176,6 @@
 
     return set;
 }
-
 
 
 //---------------------------------------------------------------------------------------

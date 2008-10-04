@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDFaceFieldCoder.m created by erik
-//  @(#)$Id: EDFaceFieldCoder.m,v 2.1 2003-04-08 17:06:05 znek Exp $
+//  @(#)$Id: EDFaceFieldCoder.m,v 2.1 2003/04/08 17:06:05 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,12 +18,10 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#ifndef EDMESSAGE_WOBUILD
-
 #import <AppKit/AppKit.h>
-#include <EDCommon/EDCommon.h>
-#include "NSImage+XFace.h"
-#include "EDFaceFieldCoder.h"
+#import <EDCommon/EDCommon.h>
+#import "NSImage+XFace.h"
+#import "EDFaceFieldCoder.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -88,5 +86,3 @@
 //---------------------------------------------------------------------------------------
     @end
 //---------------------------------------------------------------------------------------
-
-#endif

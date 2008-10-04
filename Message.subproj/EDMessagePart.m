@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMessagePart.m created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDMessagePart.m,v 2.4 2003-10-21 16:50:12 znek Exp $
+//  @(#)$Id: EDMessagePart.m,v 2.4 2003/10/21 16:50:12 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,13 +19,13 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "utilities.h"
-#include "NSString+MessageUtils.h"
-#include "NSData+MIME.h"
-#include "EDTextFieldCoder.h"
-#include "EDEntityFieldCoder.h"
-#include "EDMessagePart.h"
+#import <EDCommon/EDCommon.h>
+#import "utilities.h"
+#import "NSString+MessageUtils.h"
+#import "NSData+MIME.h"
+#import "EDTextFieldCoder.h"
+#import "EDEntityFieldCoder.h"
+#import "EDMessagePart.h"
 
 @interface EDMessagePart(PrivateAPI)
 + (NSDictionary *)_defaultFallbackHeaders;

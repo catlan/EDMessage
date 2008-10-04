@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDInternetMessage.m created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDInternetMessage.m,v 2.3 2003-12-03 20:42:17 erik Exp $
+//  @(#)$Id: EDInternetMessage.m,v 2.3 2003/12/03 20:42:17 erik Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,11 +19,10 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "NSString+MessageUtils.h"
-#include "EDMConstants.h"
-#include "EDInternetMessage.h"
-
+#import <EDCommon/EDCommon.h>
+#import "NSString+MessageUtils.h"
+#import "EDMConstants.h"
+#import "EDInternetMessage.h"
 
 //---------------------------------------------------------------------------------------
     @implementation EDInternetMessage
@@ -58,8 +57,7 @@
     // case tag with our version.
     if((originalTransferData == nil) && ([self bodyForHeaderField:@"mime-version"] == nil))
         {
-        extern double EDMessageVersionNumber;
-        NSString *desig = [NSString stringWithFormat:@"EDMessage Framework v%g", EDMessageVersionNumber];
+        NSString *desig = [NSString stringWithFormat:@"EDMessage Framework v%@", EDMessageVersion];
         [self setBody:[NSString stringWithFormat:@"1.0 (%@)", desig] forHeaderField:@"MIME-Version"];
         }
     return [super transferData];

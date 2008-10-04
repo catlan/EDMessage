@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  utilities.h created by erik on Mon 20-Jan-1997
-//  @(#)$Id: utilities.h,v 2.1 2002-08-18 19:17:54 erik Exp $
+//  @(#)$Id: utilities.h,v 2.1 2002/08/18 19:17:54 erik Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved.
 //
@@ -17,10 +17,6 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
-
-
-#ifndef	__utilities_h_INCLUDE
-#define	__utilities_h_INCLUDE
 
 
 //---------------------------------------------------------------------------------------
@@ -92,6 +88,3 @@ static __inline__ const char *skipspace(const char *ptr, const char *limit)
         }
     return ptr;
 }
-
-#endif	/* __utilities_h_INCLUDE */
-

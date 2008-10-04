@@ -19,8 +19,8 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "EDContentCoder.h"
+#import <EDCommon/EDCommon.h>
+#import "EDContentCoder.h"
 
 
 //---------------------------------------------------------------------------------------

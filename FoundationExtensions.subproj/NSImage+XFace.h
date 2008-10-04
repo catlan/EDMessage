@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSImage+XFace.h created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSImage+XFace.h,v 2.1 2002-08-17 17:39:29 znek Exp $
+//  @(#)$Id: NSImage+XFace.h,v 2.1 2002/08/17 17:39:29 znek Exp $
 //
 //  Copyright (c) 1997 by Erik Doernenburg. All rights reserved. 
 //
@@ -18,14 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSImage_Extensions_h_INCLUDE
-#define	__NSImage_Extensions_h_INCLUDE
-
-
-#ifndef EDMESSAGE_WOBUILD
-
-
 #import <AppKit/NSImage.h>
 
 /*" Various common extensions to #NSImage. "*/
@@ -37,7 +29,3 @@
 - (NSData *)xFaceData;
 
 @end
-
-#endif // EDMESSAGE_WOBUILD
-
-#endif	/* __NSImage_Extensions_h_INCLUDE */

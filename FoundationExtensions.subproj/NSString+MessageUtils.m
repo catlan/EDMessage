@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+MessageUtils.m created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSString+MessageUtils.m,v 2.4 2003-09-08 21:01:50 erik Exp $
+//  @(#)$Id: NSString+MessageUtils.m,v 2.4 2003/09/08 21:01:50 erik Exp $
 //
 //  Copyright (c) 1995-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,16 +19,10 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "utilities.h"
-#include "NSCharacterSet+MIME.h"
-#include "NSString+MessageUtils.h"
-
-
-#if defined(__APPLE__) && !defined(UINT16_MAX)
-#define UINT16_MAX USHRT_MAX
-#endif
-
+#import <EDCommon/EDCommon.h>
+#import "utilities.h"
+#import "NSCharacterSet+MIME.h"
+#import "NSString+MessageUtils.h"
 
 //---------------------------------------------------------------------------------------
 	@implementation NSString(EDMessageUtilities)
@@ -215,7 +209,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
     static BOOL		didInitTable = NO;
     static short	delta[11][129];
     short	 		state;
-    unsigned int	n, i, c, lastMatch;
+    NSUInteger		n, i, c, lastMatch;
 
     if(didInitTable == NO)
         {
@@ -285,7 +279,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 - (NSString *)stringByApplyingROT13
 {
 	NSString	 	*result;
-	unsigned int 	length, i;
+	NSUInteger		length, i;
 	unichar			*buffer, *cp;
 
 	length = [self length];
@@ -353,7 +347,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
         lineBreakSeq = @"\n";
     
     separatorSet = [NSCharacterSet characterSetWithCharactersInString:@" -\t"];
-    forceBreakSet = [NSCharacterSet characterSetWithCharactersInString:@" \t.?!:-·1234567890>}#%|"];
+    forceBreakSet = [NSCharacterSet characterSetWithCharactersInString:@" \t.?!:-1234567890>}#%|"]; // âˆ‘ removed
     buffer = [[[NSMutableString allocWithZone:[self zone]] init] autorelease];
     lineEnum = [[self componentsSeparatedByString:lineBreakSeq] objectEnumerator];
     currentLine = [lineEnum nextObject];
@@ -386,7 +380,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
     NSString		*lineBreakSeq, *originalLine, *prefix, *spillOver, *lastPrefix;
 	NSMutableString	*mcopy;
     NSRange			textStart, endOfLine;
-    unsigned int	lineStart, nextLineStart, prefixLength;
+    NSUInteger		lineStart, nextLineStart, prefixLength;
 
     lineBreakSeq = @"\r\n";
     if([self rangeOfString:lineBreakSeq].length == 0)
@@ -495,9 +489,9 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 
 - (NSString *)stringByFoldingToLimit:(unsigned int)limit
 {
-    NSMutableString *result;
-    NSCharacterSet *whitespaces;
-    int lineStart;
+    NSMutableString	*result;
+    NSCharacterSet	*whitespaces;
+    NSUInteger		lineStart;
 
     // short cut a very common case
     if ([self length] <= limit)
@@ -543,10 +537,10 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 
 - (NSString *)stringByUnfoldingString
 {
-    NSMutableString *result;
-    NSString *CRLFSequence = @"\r\n";
-    NSCharacterSet *whitespaces;
-    int position;
+    NSMutableString	*result;
+    NSString		*CRLFSequence = @"\r\n";
+    NSCharacterSet	*whitespaces;
+    NSUInteger		position;
 
     whitespaces = [NSCharacterSet whitespaceCharacterSet];
     result = [NSMutableString string];
@@ -556,7 +550,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
         {
         NSRange range;
 
-        range = [self rangeOfString:CRLFSequence options:NULL range:NSMakeRange(position, [self length] - position)];
+        range = [self rangeOfString:CRLFSequence options:0 range:NSMakeRange(position, [self length] - position)];
 
         if (range.location == NSNotFound)
             {

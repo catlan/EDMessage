@@ -13,7 +13,7 @@
 #define	__EDPlainTextContentCoder_h_INCLUDE
 
 
-#include "EDContentCoder.h"
+#import "EDContentCoder.h"
 
 
 @interface EDPlainTextContentCoder : EDContentCoder 

@@ -18,12 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
 #ifndef	__EDHTMLTextContentCoder_h_INCLUDE
 #define	__EDHTMLTextContentCoder_h_INCLUDE
 
 
-#include "EDPlainTextContentCoder.h"
+#import "EDPlainTextContentCoder.h"
 
 
 @interface EDHTMLTextContentCoder : EDPlainTextContentCoder

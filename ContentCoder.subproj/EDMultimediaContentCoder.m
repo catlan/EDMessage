@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "NSData+MIME.h"
-#include "EDInternetMessage.h"
-#include "EDMultimediaContentCoder.h"
+#import "NSData+MIME.h"
+#import "EDInternetMessage.h"
+#import "EDMultimediaContentCoder.h"
 
 @interface EDMultimediaContentCoder(PrivateAPI)
 - (id)_encodeDataWithClass:(Class)targetClass;

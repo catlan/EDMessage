@@ -19,13 +19,13 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "EDMConstants.h"
-#include "NSString+PlainTextFlowedExtensions.h"
-#include "NSData+MIME.h"
-#include "EDMessagePart.h"
-#include "EDInternetMessage.h"
-#include "EDPlainTextContentCoder.h"
+#import <EDCommon/EDCommon.h>
+#import "EDMConstants.h"
+#import "NSString+PlainTextFlowedExtensions.h"
+#import "NSData+MIME.h"
+#import "EDMessagePart.h"
+#import "EDInternetMessage.h"
+#import "EDPlainTextContentCoder.h"
 
 @interface EDPlainTextContentCoder(PrivateAPI)
 - (void)_takeTextFromMessagePart:(EDMessagePart *)mpart;

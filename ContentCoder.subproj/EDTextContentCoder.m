@@ -21,11 +21,11 @@
 #ifndef EDMESSAGE_WOBUILD
 
 #import <AppKit/AppKit.h>
-#include <EDCommon/EDCommon.h>
-#include "NSString+MessageUtils.h"
-#include "EDMessagePart.h"
-#include "EDMConstants.h"
-#include "EDTextContentCoder.h"
+#import <EDCommon/EDCommon.h>
+#import "NSString+MessageUtils.h"
+#import "EDMessagePart.h"
+#import "EDMConstants.h"
+#import "EDTextContentCoder.h"
 
 @interface EDTextContentCoder(PrivateAPI)
 - (NSString *)_stringFromMessagePart:(EDMessagePart *)mpart;
@@ -133,7 +133,8 @@
     EDStack					  *markerStack;
     EDObjectPair			  *marker;
     NSString			  	  *string, *tag;
-    int					  	  nofillct, paramct, pos1, nlSeqLength;
+    int					  	  nofillct, paramct, pos1;
+	unsigned int			  nlSeqLength;
 
     if(etSpecialSet == nil)
         {
@@ -186,7 +187,7 @@
                     }
                 else if([tag isEqualToString:@"bold"])
                     {
-                    marker = [EDObjectPair pairWithObjects:string:[NSNumber numberWithInt:[text length]]];
+                    marker = [EDObjectPair pairWithObjects:string:[NSNumber numberWithUnsignedInteger:[text length]]];
                     [markerStack pushObject:marker];
                     }
                 else if([tag isEqualToString:@"/bold"])
@@ -198,7 +199,7 @@
                     }
                 else if([tag isEqualToString:@"italic"])
                     {
-                    marker = [EDObjectPair pairWithObjects:string:[NSNumber numberWithInt:[text length]]];
+                    marker = [EDObjectPair pairWithObjects:string:[NSNumber numberWithUnsignedInteger:[text length]]];
                     [markerStack pushObject:marker];
                     }
                 else if([tag isEqualToString:@"/italic"])

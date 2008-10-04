@@ -19,14 +19,13 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "utilities.h"
-#include "NSString+MessageUtils.h"
-#include "NSData+MIME.h"
-#include "EDInternetMessage.h"
-#include "EDMConstants.h"
-#include "EDEntityFieldCoder.h"
-#include "EDCompositeContentCoder.h"
+#import "utilities.h"
+#import "NSString+MessageUtils.h"
+#import "NSData+MIME.h"
+#import "EDInternetMessage.h"
+#import "EDMConstants.h"
+#import "EDEntityFieldCoder.h"
+#import "EDCompositeContentCoder.h"
 
 @interface EDCompositeContentCoder(PrivateAPI)
 - (void)_takeSubpartsFromMultipartContent:(EDMessagePart *)mpart;
@@ -148,8 +147,8 @@ static short boundaryId = 0;
 
     if((boundary = [[mpart contentTypeParameters] objectForKey:@"boundary"]) == nil)
         [NSException raise:EDMessageFormatException format:@"no boundary for multipart"];
-    btext = [boundary cString];
-    blen = strlen(btext);
+    btext = [boundary cStringUsingEncoding:NSASCIIStringEncoding];
+    blen = (unsigned int)strlen(btext);
     if([[[mpart contentType] secondObject] isEqualToString:@"digest"])
         {
         fcoder = [[[EDEntityFieldCoder alloc] initWithValues:[NSArray arrayWithObjects:@"message", @"rfc822", nil] andParameters:[NSDictionary dictionary]] autorelease];
@@ -229,8 +228,9 @@ static short boundaryId = 0;
 
     result = [[[targetClass alloc] init] autorelease];
 
-    /* Is it okay to use a time stamp? (Conveys information which might not be known otherwise...) */
-    boundary = [NSString stringWithFormat:@"EDMessagePart-%ld%d", (long)[NSDate timeIntervalSinceReferenceDate] + 978307200, boundaryId];  /* 978307200 is the difference between unix and foundation reference dates */
+    // Is it okay to use a time stamp? (Conveys information which might not be known otherwise...)
+	// 978307200 is the difference between unix and foundation reference dates
+    boundary = [NSString stringWithFormat:@"EDMessagePart-%ld%d", lrint([NSDate timeIntervalSinceReferenceDate]) + 978307200l, boundaryId]; 
     boundaryId = (boundaryId + 1) % 10000;
     ctpDictionary = [NSMutableDictionary dictionary];
     [ctpDictionary setObject:boundary forKey:@"boundary"];

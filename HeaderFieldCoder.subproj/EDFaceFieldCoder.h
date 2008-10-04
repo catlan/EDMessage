@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDFaceFieldCoder.h created by erik
-//  @(#)$Id: EDFaceFieldCoder.h,v 2.1 2003-04-08 17:06:05 znek Exp $
+//  @(#)$Id: EDFaceFieldCoder.h,v 2.1 2003/04/08 17:06:05 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,17 +18,8 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDFaceFieldCoder_h_INCLUDE
-#define	__EDFaceFieldCoder_h_INCLUDE
-
-
-#ifndef EDMESSAGE_WOBUILD
-
-
-#include "EDHeaderFieldCoder.h"
+#import "EDHeaderFieldCoder.h"
 #import <AppKit/NSImage.h>
-
 
 @interface EDFaceFieldCoder : EDHeaderFieldCoder
 {
@@ -40,7 +31,3 @@
 - (NSImage *)image;
 
 @end
-
-#endif // EDMESSAGE_WOBUILD
-
-#endif	/* __EDFaceFieldCoder_h_INCLUDE */

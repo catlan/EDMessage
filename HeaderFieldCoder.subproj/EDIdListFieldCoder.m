@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIdListFieldCoder.m created by erik
-//  @(#)$Id: EDIdListFieldCoder.m,v 2.1 2003-04-08 17:06:05 znek Exp $
+//  @(#)$Id: EDIdListFieldCoder.m,v 2.1 2003/04/08 17:06:05 znek Exp $
 //
 //  Copyright (c) 1998-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,9 +19,9 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "NSString+MessageUtils.h"
-#include "EDIdListFieldCoder.h"
+#import <EDCommon/EDCommon.h>
+#import "NSString+MessageUtils.h"
+#import "EDIdListFieldCoder.h"
 
 @interface EDIdListFieldCoder(PrivateAPI)
 - (void)_takeListFromString:(NSString *)string;
@@ -101,7 +101,7 @@
     static NSCharacterSet *bracketSet = nil, *nonWhitespaceSet;
 
     NSRange		msgIdRange, searchRange, bracketPos;
-    int			start;
+    NSInteger	start;
 
     if(bracketSet == nil)
         {
@@ -140,49 +140,12 @@
 
 }
 
-
-#if 0    
-- (void)_takeListFromString:(NSString *)body
-{
-    NSRange			gluedIDRange;
-    NSMutableString	*temp;
-    int				i;
-    NSString		*refs, *articleID;
-
-    // 	This is not really efficient, but it works fairly well, even if headers are
-    //	bady mangled. (Decodes ~3000 header fields per second on a 350MHz G3.)
-
-    //	first pass: some agents don't put blanks between the references.
-    if((gluedIDRange = [body rangeOfString:@"><"]).length > 0)
-        {
-        temp = [[body mutableCopy] autorelease];
-        while((gluedIDRange = [temp rangeOfString:@"><"]).length > 0)
-            [temp insertString:@" " atIndex:gluedIDRange.location + 1];
-        refs = temp;
-        }
-    else
-        {
-        refs = body;
-        }
-
-    //	second pass: we remove all invalid ids and all "empty" ids (resulting from
-    //  more than one space inbetween.)
-    list = [[NSMutableArray allocWithZone:[self zone]] initWithArray:[refs componentsSeparatedByString:@" "]];
-    for(i = [list count] - 1; i >= 0; i--)
-        {
-        articleID = [list objectAtIndex:i];
-        if([articleID isValidMessageID] == NO)
-            [(NSMutableArray *)list removeObjectAtIndex:i];
-        }
-}
-#endif
-
-
 - (NSString *)_getStringForList
 {
     NSMutableArray	*newList;
-    unsigned int	newLength;
-    int				i, n;
+    NSUInteger		newLength;
+    NSUInteger		i;
+	NSInteger		n;
     
     if((n = [list count]) == 0)
         return @"";

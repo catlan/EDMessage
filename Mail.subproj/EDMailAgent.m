@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMailAgent.m created by erik on Fri 21-Apr-2000
-//  $Id: EDMailAgent.m,v 2.2 2003-04-08 17:06:05 znek Exp $
+//  $Id: EDMailAgent.m,v 2.2 2003/04/08 17:06:05 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,17 +19,18 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "NSString+MessageUtils.h"
-#include "NSData+MIME.h"
-#include "EDTextFieldCoder.h"
-#include "EDDateFieldCoder.h"
-#include "EDPlainTextContentCoder.h"
-#include "EDCompositeContentCoder.h"
-#include "EDMultimediaContentCoder.h"
-#include "EDInternetMessage.h"
-#include "EDSMTPStream.h"
-#include "EDMailAgent.h"
+#import <EDCommon/EDCommon.h>
+
+#import "NSString+MessageUtils.h"
+#import "NSData+MIME.h"
+#import "EDTextFieldCoder.h"
+#import "EDDateFieldCoder.h"
+#import "EDPlainTextContentCoder.h"
+#import "EDCompositeContentCoder.h"
+#import "EDMultimediaContentCoder.h"
+#import "EDInternetMessage.h"
+#import "EDSMTPStream.h"
+#import "EDMailAgent.h"
 
 @interface EDMailAgent(PrivateAPI)
 - (EDSMTPStream *)_getStream;
@@ -112,17 +113,27 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
     return new;
 }
 
+/*" Creates and returns a mail agent which will use the SMTP server on host %name to deliver messages. The agent will contact the server on port %port. "*/
+
++ (id)mailAgentForRelayHostWithName:(NSString *)aName port:(int)aPort
+{
+    EDMailAgent *new = [self mailAgentForRelayHostWithName:aName];
+	[new setPort:aPort];
+	return new;
+}
+
 
 //---------------------------------------------------------------------------------------
 //	INIT & DEALLOC
 //---------------------------------------------------------------------------------------
 
-/*" Initialises a newly allocated mail agent and sets the relay host to %aHost. "*/
+/*" Initialises a newly allocated mail agent. "*/
 
-- (id)initWithRelayHost:(NSHost *)aHost
+- (id)init
 {
     [super init];
-    relayHost = [aHost retain];
+    relayHost = [[NSHost currentHost] retain];
+	port = 25;
     return self;
 }
 
@@ -140,7 +151,7 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
 
 /*" Sets the host on which the SMTP server is running that the mail agent uses to deliver messages to the host with the name %hostname. "*/
 
-- (void)setRelayHostByName:(NSString  *)hostname
+- (void)setRelayHostByName:(NSString *)hostname
 {
     NSHost	*host;
 
@@ -168,6 +179,21 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
 }
 
 
+/*" Sets the port to which a connection should be made for contacting the remote SMTP server. "*/
+
+- (void)setPort:(int)aPort
+{
+	port = aPort;
+}
+
+/*" Returns the port to which a connection will be made. "*/
+
+- (int)port
+{
+	return port;
+}
+
+
 /*" If set to YES the mail agent will not try to negotiate SMTP extensions with the server on the relay host. "*/
 
 - (void)setSkipsExtensionTest:(BOOL)flag
@@ -184,6 +210,22 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
 }
 
 
+/*" Sets or replaces the delegate. This is only used for secure connections. "*/
+ 
+- (void)setDelegate:(id)aDelegate
+{
+	delegate = aDelegate;
+}
+
+
+/*" Returns the delegate. "*/
+
+- (id)delegate
+{
+	return delegate;
+}
+
+
 //---------------------------------------------------------------------------------------
 //	SENDING EMAILS (PRIVATE PRIMITIVES)
 //---------------------------------------------------------------------------------------
@@ -193,9 +235,17 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
     EDSMTPStream	*stream;
     NSFileHandle	*logfile;
 
-    stream = [EDSMTPStream streamForRelayHost:relayHost];
-    //	"If no file exists at path the method returns nil"
-#warning * maybe check for root if not debug build   
+#warning *** doesn't create secure streams yet	
+	if(flags.usesSecureConnection)
+		{
+		}
+	else
+		{
+		stream = [EDSMTPStream streamForRelayHost:relayHost];
+		}
+	// The documentation states that "if no file exists at path the method returns nil".
+	// This means that the mail agent will log if it find the file but will remain silent 
+	// when the file does not exist.
     logfile = [NSFileHandle fileHandleForWritingAtPath:@"/tmp/EDMailAgent.log"];
     [logfile seekToEndOfFile];
     [stream setDumpFileHandle:logfile];
@@ -216,8 +266,8 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
 
 - (void)_sendMail:(NSData *)data from:(NSString *)sender to:(NSArray *)recipients usingStream:(EDSMTPStream *)stream
 {
-    unsigned int 	i, n;
-    
+    NSUInteger 	i, n;
+
     if([stream allowsPipelining])
          {
          [stream writeSender:sender];
@@ -406,7 +456,6 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
 
     [self _sendMail:transferData from:sender to:recipients usingStream:stream];
 }
-
 
 
 //---------------------------------------------------------------------------------------

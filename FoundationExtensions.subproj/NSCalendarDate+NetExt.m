@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSCalendarDate+NetExt.m created by erik
-//  @(#)$Id: NSCalendarDate+NetExt.m,v 2.1 2003-04-08 17:06:03 znek Exp $
+//  @(#)$Id: NSCalendarDate+NetExt.m,v 2.1 2003/04/08 17:06:03 znek Exp $
 //
 //  Copyright (c) 2002 by Axel Katerbau. All rights reserved.
 //
@@ -19,18 +19,17 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include "utilities.h"
-//#include "osdep.h"
-#include "NSCalendarDate+NetExt.h"
+#import "utilities.h"
+#import "NSCalendarDate+NetExt.h"
 
 
 //---------------------------------------------------------------------------------------
     @implementation NSCalendarDate(EDNetExt)
 //---------------------------------------------------------------------------------------
 
-#include <sys/types.h>
-#include <stdio.h>
-#include <sys/stat.h>
+#import <sys/types.h>
+#import <stdio.h>
+#import <sys/stat.h>
 
 + (id)dateWithMessageTimeSpecification:(NSString *)timespec
     /*"
@@ -47,11 +46,11 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
     char *dateStringToken;
     char *lowerPtr;
     char *help;
-    int length;
+    size_t length, month;
     char lastChar;
     const char **monthnamesPtr;
-    int month, day, year, thh, tmm, tss;
-    NSTimeZone *timezone = nil;
+    int day, year, thh, tmm, tss;
+    NSTimeZone *timeZone = nil;
 
     static const char *monthnames[] = {
         "jan", "feb", "mar", "apr", "may", "jun", "jul",
@@ -64,7 +63,7 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
         NULL};
 
     // get the string to work on
-    if ( (lossyCString = [timespec lossyCString]) == NULL)
+    if ( (lossyCString = [timespec cStringUsingEncoding:NSASCIIStringEncoding]) == NULL) // DFH = was lossyCString
         return nil;
     if ( (dateString = malloc(strlen(lossyCString) + 1)) == NULL)
         return nil;
@@ -192,7 +191,7 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
         }
 
     // month name not found?
-    if (monthnamesPtr == NULL)
+    if (*monthnamesPtr == NULL)
         {
         // swap day and month
         help = dayString;
@@ -215,7 +214,7 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
             }
 
         // still not found?
-        if (monthnamesPtr == NULL)
+        if (*monthnamesPtr == NULL)
             {
             free(dateString);
             return nil;
@@ -300,12 +299,12 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
         NSString *tz;
 
         tz = [[NSString alloc] initWithCString:timezoneString];
-        timezone = [NSTimeZone timeZoneWithAbbreviation:tz];
+        timeZone = [NSTimeZone timeZoneWithAbbreviation:tz];
 
         [tz release];
         }
 
-    if (timezone == nil)
+    if (timeZone == nil)
         {
         int timezoneOffset;
         int timezoneSign;
@@ -330,9 +329,9 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
             timezoneOffset = timezoneSign * ( (timezoneOffset/100)*3600 + (timezoneOffset % 100) * 60);
             }
 
-        timezone = [NSTimeZone timeZoneForSecondsFromGMT:timezoneOffset];
+        timeZone = [NSTimeZone timeZoneForSecondsFromGMT:timezoneOffset];
 
-        if (timezone == nil)
+        if (timeZone == nil)
             {
             free(dateString);
             return nil;
@@ -342,7 +341,7 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
     free(dateString);
 
     // calculate date
-    return [NSCalendarDate dateWithYear:year month:month day:day hour:thh minute:tmm second:tss timeZone:timezone];
+    return [NSCalendarDate dateWithYear:year month:month day:day hour:thh minute:tmm second:tss timeZone:timeZone];
 }
 
 

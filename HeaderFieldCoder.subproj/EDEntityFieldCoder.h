@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDEntityFieldCoder.h created by erik
-//  @(#)$Id: EDEntityFieldCoder.h,v 2.1 2003-04-08 17:06:04 znek Exp $
+//  @(#)$Id: EDEntityFieldCoder.h,v 2.1 2003/04/08 17:06:04 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDEntityFieldCoder_h_INCLUDE
-#define	__EDEntityFieldCoder_h_INCLUDE
-
-
-#include "EDHeaderFieldCoder.h"
-
+#import "EDHeaderFieldCoder.h"
 
 @interface EDEntityFieldCoder : EDHeaderFieldCoder
 {
@@ -38,5 +32,3 @@
 - (NSDictionary *)parameters;
 
 @end
-
-#endif	/* __EDEntityFieldCoder_h_INCLUDE */

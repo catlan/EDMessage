@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDInternetMessage.h created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDInternetMessage.h,v 2.1 2003-04-08 17:06:07 znek Exp $
+//  @(#)$Id: EDInternetMessage.h,v 2.1 2003/04/08 17:06:07 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDInternetMessage_h_INCLUDE
-#define	__EDInternetMessage_h_INCLUDE
-
-
-#include "EDMessagePart.h"
-
+#import "EDMessagePart.h"
 
 @interface EDInternetMessage : EDMessagePart
 {
@@ -33,5 +27,3 @@
 - (BOOL)isEqualToMessage:(EDInternetMessage *)other;
 
 @end
-
-#endif	/* __EDInternetMessage_h_INCLUDE */

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSImage+XFace.m created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSImage+XFace.m,v 2.2 2003-04-08 17:06:04 znek Exp $
+//  @(#)$Id: NSImage+XFace.m,v 2.2 2003/04/08 17:06:04 znek Exp $
 //
 //  Copyright (c) 1997,2002 by Erik Doernenburg. All rights reserved.
 //  Copyright (c) 1990 by James Ashton
@@ -21,11 +21,8 @@
 //  See below for copyright and distribution terms of included code.
 //---------------------------------------------------------------------------------------
 
-#ifndef EDMESSAGE_WOBUILD
-
 #import <AppKit/AppKit.h>
-#include "NSImage+XFace.h"
-
+#import "NSImage+XFace.h"
 
 /* define the face size - 48x48x1 */
 #define WIDTH 48
@@ -66,11 +63,11 @@ All X-Face related methods are based on code written by James Ashton, Sydney Uni
 
 - (id)initWithXFaceData:(NSData *)someData
 {
-    static NSLock		*compfaceLock = nil;
     NSSize				size;
    	NSBitmapImageRep 	*imagerep;
     unsigned char 		*data, *xfaceBuffer;
-   	int 				basex, basey, x, y, avg;
+   	NSInteger			basex, basey, x, y, avg;
+    static NSLock		*compfaceLock2 = nil;
     
     if(someData == nil)
         return [self initWithSize:NSZeroSize];
@@ -83,14 +80,14 @@ All X-Face related methods are based on code written by James Ashton, Sydney Uni
     // this should really be in initialize to avoid a potential race condition with the decode
     // method but we are in a category and cannot override initialize. then again, this is so
     // unlikely...
-    if(compfaceLock == nil)
-        compfaceLock = [[NSLock alloc] init];
-    [compfaceLock lock];
+    if(compfaceLock2 == nil)
+        compfaceLock2 = [[NSLock alloc] init];
+    [compfaceLock2 lock];
 
     xfaceBuffer = NSZoneMalloc([self zone], [someData length] + 1);
     [someData getBytes:xfaceBuffer];
     xfaceBuffer[[someData length]] = 0;
-    UnCompAll(xfaceBuffer);
+    UnCompAll((const char *)xfaceBuffer);
     UnGenFace();
     NSZoneFree([self zone], xfaceBuffer);
 
@@ -107,7 +104,7 @@ All X-Face related methods are based on code written by James Ashton, Sydney Uni
     for(y = 0; y < size.height; y++)
         for(x = 0; x < size.width; x++)
             {
-            int color, pos = y * size.width + x;
+            NSInteger color, pos = y * size.width + x;
 
             if((x >= basex) && (x < basex+WIDTH) && (y >= basey) && (y < basey+HEIGHT))
                 color = F[(y - basey) * WIDTH + (x - basex)];
@@ -119,7 +116,7 @@ All X-Face related methods are based on code written by James Ashton, Sydney Uni
                 data[pos/8] &= ~(1<<(7-pos%8));
             }
 
-    [compfaceLock unlock];
+    [compfaceLock2 unlock];
             
     [self addRepresentation:imagerep];
     return self;
@@ -133,7 +130,7 @@ All X-Face related methods are based on code written by James Ashton, Sydney Uni
     NSEnumerator		*repEnum;
     NSBitmapImageRep	*imagerep;
     NSString			*csname;
-    int 				bpp, x, y;
+    NSInteger			bpp, x, y;
     unsigned char 		*data=0;
     NSMutableData		*xfaceData;
     BOOL				foundMatchingRep;
@@ -163,7 +160,7 @@ All X-Face related methods are based on code written by James Ashton, Sydney Uni
     for(y = 0; y < HEIGHT; y++)
         for(x = 0; x < WIDTH; x++)
             {
-            int pos = (x + y *WIDTH) * bpp;
+            NSInteger pos = (x + y *WIDTH) * bpp;
 
             F[x+y*WIDTH] = (data[pos/8]>>(7-pos%8))&1;
             if(csname == NSDeviceWhiteColorSpace)
@@ -1355,6 +1352,3 @@ static void UnGenFace(void)
    {
    Gen(F);
    }
-
-
-#endif  // EDMESSAGE_WOBUILD

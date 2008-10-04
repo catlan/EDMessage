@@ -21,6 +21,7 @@
 #include <sys/types.h>
 #include <ctype.h>
 #include <time.h>
+#include <string.h>
 
 #define yyparse		date_parse
 #define yylex		date_lex

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDIdListFieldCoder.h created by erik
-//  @(#)$Id: EDIdListFieldCoder.h,v 2.1 2003-04-08 17:06:05 znek Exp $
+//  @(#)$Id: EDIdListFieldCoder.h,v 2.1 2003/04/08 17:06:05 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDIdListFieldCoder_h_INCLUDE
-#define	__EDIdListFieldCoder_h_INCLUDE
-
-
-#include "EDHeaderFieldCoder.h"
-
+#import "EDHeaderFieldCoder.h"
 
 @interface EDIdListFieldCoder : EDHeaderFieldCoder
 {
@@ -36,5 +30,3 @@
 - (NSArray *)list;
 
 @end
-
-#endif	/* __EDIdListFieldCoder_h_INCLUDE */

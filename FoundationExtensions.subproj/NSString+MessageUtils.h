@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSString+MessageUtils.h created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSString+MessageUtils.h,v 2.1 2003-09-08 21:01:50 erik Exp $
+//  @(#)$Id: NSString+MessageUtils.h,v 2.1 2003/09/08 21:01:50 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -17,11 +17,6 @@
 //  DAMAGES WHATSOEVER RESULTING DIRECTLY OR INDIRECTLY FROM THE USE OF THIS SOFTWARE
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
-
-
-#ifndef	__NSString_MessageUtils_h_INCLUDE
-#define	__NSString_MessageUtils_h_INCLUDE
-
 
 @interface NSString(EDMessageUtilities) 
 
@@ -53,5 +48,3 @@
 - (void)appendAsLine:(NSString *)line withPrefix:(NSString *)prefix;
 
 @end
-
-#endif	/* __NSString_MessageUtils_h_INCLUDE */

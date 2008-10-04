@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTextFieldCoder.m created by erik
-//  @(#)$Id: EDTextFieldCoder.m,v 2.2 2003-04-08 17:06:05 znek Exp $
+//  @(#)$Id: EDTextFieldCoder.m,v 2.2 2003/04/08 17:06:05 znek Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -19,23 +19,21 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "NSString+MessageUtils.h"
-#include "NSData+MIME.h"
-#include "EDMConstants.h"
-#include "EDTextFieldCoder.h"
+#import <EDCommon/EDCommon.h>
+#import "NSString+MessageUtils.h"
+#import "NSData+MIME.h"
+#import "EDMConstants.h"
+#import "EDTextFieldCoder.h"
 
 @interface EDTextFieldCoder(PrivateAPI)
 + (NSString *)_wrappedWord:(NSString *)aString encoding:(NSString *)encoding;
 @end
-
 
 #define EDLS_MALFORMED_MIME_HEADER_WORD \
 NSLocalizedString(@"Syntax error in MIME header word \"%@\"", "Reason for exception which is raised when a MIME header word is encountered that is syntactically malformed.")
 
 #define EDLS_UNKNOWN_ENCODING_SPEC \
 NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "Reason for exception which is raised when an unknown encoding specifier is found.")
-
 
 
 //---------------------------------------------------------------------------------------
@@ -98,23 +96,6 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
 - (NSString *)fieldBody
 {
     return [[self class] stringByEncodingString:text];
-}
-
-
-//---------------------------------------------------------------------------------------
-//	OBSOLETE INTERFACE
-//---------------------------------------------------------------------------------------
-
-- (NSString *)_stringByDecodingMIMEWordsInString:(NSString *)fieldBody
-{
-    [self methodIsObsolete:_cmd hint:@"Use class method stringByDecodingMIMEWordsInString instead."];
-    return [[self class] _stringByDecodingMIMEWordsInString:fieldBody];
-}
-    
-- (NSString *)_stringByEncodingString:(NSString *)string
-{
-    [self methodIsObsolete:_cmd hint:@"Use class method stringByEncodingString instead."];
-    return [[self class] _stringByEncodingString:string];
 }
 
 
@@ -237,7 +218,7 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
 {
     NSData			*stringData, *b64Rep, *qpRep, *transferRep;
     NSString		*result;
-    unsigned int	b64Length, qpLength, length;
+    NSUInteger		b64Length, qpLength, length;
 
     stringData = [aString dataUsingMIMEEncoding:encoding];
     b64Rep = [stringData encodeBase64WithLineLength:(UINT_MAX - 3) andNewlineAtEnd:NO];

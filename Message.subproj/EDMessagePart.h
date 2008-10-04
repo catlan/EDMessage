@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMessagePart.h created by erik on Mon 20-Jan-1997
-//  @(#)$Id: EDMessagePart.h,v 2.2 2003-09-08 21:01:51 erik Exp $
+//  @(#)$Id: EDMessagePart.h,v 2.2 2003/09/08 21:01:51 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDMessagePart_h_INCLUDE
-#define	__EDMessagePart_h_INCLUDE
-
-
-#include "EDHeaderBearingObject.h"
-
+#import "EDHeaderBearingObject.h"
 
 @interface EDMessagePart : EDHeaderBearingObject
 {
@@ -63,5 +57,3 @@
 - (NSString *)pathExtensionForContentType;
 
 @end
-
-#endif	/* __EDMessagePart_h_INCLUDE */

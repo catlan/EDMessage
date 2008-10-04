@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDTextFieldCoder.h created by erik
-//  @(#)$Id: EDTextFieldCoder.h,v 2.1 2003-04-08 17:06:05 znek Exp $
+//  @(#)$Id: EDTextFieldCoder.h,v 2.1 2003/04/08 17:06:05 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDTextFieldCoder_h_INCLUDE
-#define	__EDTextFieldCoder_h_INCLUDE
-
-
-#include "EDHeaderFieldCoder.h"
-
+#import "EDHeaderFieldCoder.h"
 
 @interface EDTextFieldCoder : EDHeaderFieldCoder
 {
@@ -42,5 +36,3 @@
 + (NSString *)stringByEncodingString:(NSString *)string;
 
 @end
-
-#endif	/* __EDTextFieldCoder_h_INCLUDE */

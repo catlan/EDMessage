@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDHeaderFieldCoder.h created by erik on Sun 24-Oct-1999
-//  @(#)$Id: EDHeaderFieldCoder.h,v 2.0 2002-08-16 18:24:15 erik Exp $
+//  @(#)$Id: EDHeaderFieldCoder.h,v 2.0 2002/08/16 18:24:15 erik Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,14 +18,8 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDHeaderFieldCoder_h_INCLUDE
-#define	__EDHeaderFieldCoder_h_INCLUDE
-
-
 @interface EDHeaderFieldCoder : NSObject
 {
-
 }
 
 + (id)decoderWithFieldBody:(NSString *)fieldBody;
@@ -37,5 +31,3 @@
 - (NSString *)stringValue;
 
 @end
-
-#endif	/* __EDHeaderFieldCoder_h_INCLUDE */

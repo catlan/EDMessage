@@ -23,7 +23,7 @@
 #define	__EDCompositeContentCoder_h_INCLUDE
 
 
-#include "EDContentCoder.h"
+#import "EDContentCoder.h"
 
 
 @interface EDCompositeContentCoder : EDContentCoder

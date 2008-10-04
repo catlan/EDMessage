@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+MIME.h created by erik on Sun 12-Jan-1997
-//  @(#)$Id: NSData+MIME.h,v 2.3 2003-09-08 21:01:49 erik Exp $
+//  @(#)$Id: NSData+MIME.h,v 2.3 2003/09/08 21:01:49 erik Exp $
 //
 //  Copyright (c) 1997-1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,13 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSData_MIME_h_INCLUDE
-#define	__NSData_MIME_h_INCLUDE
-
-
-#include "EDMessageDefines.h"
-
+#import "EDMessageDefines.h"
 
 @interface NSData(EDMIMEExtensions)
 
@@ -50,5 +44,3 @@ EDMESSAGE_EXTERN NSString *MIME8BitContentTransferEncoding;
 EDMESSAGE_EXTERN NSString *MIMEBinaryContentTransferEncoding;
 EDMESSAGE_EXTERN NSString *MIMEQuotedPrintableContentTransferEncoding;
 EDMESSAGE_EXTERN NSString *MIMEBase64ContentTransferEncoding;
-
-#endif	/* __NSData_MIME_h_INCLUDE */

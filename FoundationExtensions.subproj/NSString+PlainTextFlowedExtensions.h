@@ -1,5 +1,5 @@
 /* 
-     $Id: NSString+PlainTextFlowedExtensions.h,v 2.0 2002-08-16 18:24:13 erik Exp $
+     $Id: NSString+PlainTextFlowedExtensions.h,v 2.0 2002/08/16 18:24:13 erik Exp $
 
      Copyright (c) 2001 by Axel Katerbau. All rights reserved.
 
@@ -17,20 +17,10 @@
      OR OF ANY DERIVATIVE WORK.
 */
 
-
-#ifndef	__NSString_PlainTextFlowedExtensions_h_INCLUDE
-#define	__NSString_PlainTextFlowedExtensions_h_INCLUDE
-
-
-#import <Foundation/Foundation.h>
-
-
-@interface NSString (PlainTextFlowedExtensions)
+@interface NSString(PlainTextFlowedExtensions)
 
 - (NSString *)stringByEncodingFlowedFormat;
 - (NSString *)stringByDecodingFlowedFormat;
 - (NSString *)stringBySpaceStuffing;
 
 @end
-
-#endif	/* __NSString_PlainTextFlowedExtensions_h_INCLUDE */

@@ -1,5 +1,5 @@
 /* 
-     $Id: NSString+PlainTextFlowedExtensions.m,v 2.2 2003-05-20 22:39:14 erik Exp $
+     $Id: NSString+PlainTextFlowedExtensions.m,v 2.2 2003/05/20 22:39:14 erik Exp $
 
      Copyright (c) 2001 by Axel Katerbau. All rights reserved.
 
@@ -17,10 +17,8 @@
      OR OF ANY DERIVATIVE WORK.
 */
 
-#include "NSString+PlainTextFlowedExtensions.h"
-#include "NSString+MessageUtils.h"
-//#include <EDMessage/EDMessage.h>
-//#include "MPWDebug.h"
+#import "NSString+PlainTextFlowedExtensions.h"
+#import "NSString+MessageUtils.h"
 
 @implementation NSString (PlainTextFlowedExtensions)
 
@@ -64,7 +62,7 @@
         {
             NSString *wrappedParagraph;
             NSArray *paragraphLines;
-            int i, count;
+            NSInteger i, count;
             /*
             When creating flowed text, the generating agent wraps, that is,
             inserts 'soft' line breaks as needed.  Soft line breaks are added
@@ -259,50 +257,3 @@
 }
 
 @end
-/*
-@interface NSStringFlowedTest : NSObject 
-{
-}
-@end
-
-@implementation NSStringFlowedTest
-
-- (void)testFlowedEncodingDecoding
-{
-    NSString *originalString, *encodedString, *decodedString;
-    
-    MPWDebugLog(@"testFlowed");
-    
-    originalString = @"> a really really really long long long long line with mooooore than seventynine characters to make the wrapping process neccessary, doh.\n> ..\nThis is a test\n a blank\n  two blanks\n";
-    
-    encodedString = [originalString stringByEncodingFlowedFormat];
-        
-    decodedString = [encodedString stringByDecodingFlowedFormat];
-    
-    MPWDebugLog(@"original:\n (%@)", originalString);
-    MPWDebugLog(@"encoded:\n (%@)", encodedString);
-    MPWDebugLog(@"decoded:\n (%@)", decodedString);
-    
-    MPWAssertIsEqual(originalString, decodedString);
-}
-
-+ (id)testFixture
-{
-    return [[[self alloc] init] autorelease];
-}
-
-+ (id)testSelectors
-{
-    return [NSArray arrayWithObjects: @"testFlowedEncodingDecoding", nil];
-}
-
-- (void)testTeardown
-{
-}
-
-- (void)testSetup
-{
-}
-
-@end
-*/

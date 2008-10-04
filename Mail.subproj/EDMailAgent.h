@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDMailAgent.h created by erik on Fri 21-Apr-2000
-//  $Id: EDMailAgent.h,v 2.1 2002-08-19 00:05:41 erik Exp $
+//  $Id: EDMailAgent.h,v 2.1 2002/08/19 00:05:41 erik Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,34 +18,30 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDMailAgent_h_INCLUDE
-#define	__EDMailAgent_h_INCLUDE
-
-
 #import <Foundation/Foundation.h>
 
 @class EDInternetMessage;
 
-
-struct EDMAFlags
+struct _EDMAFlags
 {
     unsigned 	skipExtensionTest : 1;
+	unsigned	usesSecureConnection : 1;
 };
 
 
 @interface EDMailAgent : NSObject
 {
     NSHost 				*relayHost;		/*" All instance variables are private. "*/
-	struct EDMAFlags 	flags;			/*" "*/		
+	int					port;			/*" "*/
+	struct _EDMAFlags 	flags;			/*" "*/		
+	id					delegate;		/*" "*/
 }
 
 
 /*" Creating mail agent instances "*/
 
 + (id)mailAgentForRelayHostWithName:(NSString *)aName;
-
-- (id)initWithRelayHost:(NSHost *)aHost;
++ (id)mailAgentForRelayHostWithName:(NSString *)aName port:(int)aPort;
 
 /*" Configuring the mail agent "*/
 
@@ -53,8 +49,17 @@ struct EDMAFlags
 - (void)setRelayHost:(NSHost *)aHost;
 - (NSHost *)relayHost;
 
+- (void)setPort:(int)aPort;
+- (int)port;
+
 - (void)setSkipsExtensionTest:(BOOL)flag;
 - (BOOL)skipsExtensionTest;
+
+- (void)setUsesSecureConnection:(BOOL)flag;
+- (BOOL)usesSecureConnection;
+
+- (void)setDelegate:(id)aDelegate;
+- (id)delegate;
 
 /*" Sending messages "*/
 
@@ -65,5 +70,3 @@ struct EDMAFlags
 - (void)sendMessage:(EDInternetMessage *)message;
 
 @end
-
-#endif	/* __EDMailAgent_h_INCLUDE */

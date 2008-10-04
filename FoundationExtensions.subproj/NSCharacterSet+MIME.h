@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSCharacterSet+MIME.h created by erik on Sun 23-Mar-1997
-//  @(#)$Id: NSCharacterSet+MIME.h,v 2.0 2002-08-16 18:24:13 erik Exp $
+//  @(#)$Id: NSCharacterSet+MIME.h,v 2.0 2002/08/16 18:24:13 erik Exp $
 //
 //  Copyright (c) 1997,98 by Erik Doernenburg. All rights reserved.
 //
@@ -18,11 +18,6 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__NSCharacterSet_MIME_h_INCLUDE
-#define	__NSCharacterSet_MIME_h_INCLUDE
-
-
 @interface NSCharacterSet(EDMessageExtensions)
 
 /* This category caches all returned character sets. This will in effect leak some
@@ -39,6 +34,3 @@ framework this wouldn't make much sense... */
 + (NSCharacterSet *)MIMEHeaderDefaultLiteralCharacterSet;
 
 @end
-
-#endif	/* __NSCharacterSet_MIME_h_INCLUDE */
-

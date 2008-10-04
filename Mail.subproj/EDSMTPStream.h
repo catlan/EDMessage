@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSMTPStream.h created by erik on Sun 12-Mar-2000
-//  $Id: EDSMTPStream.h,v 2.1 2003-04-08 17:06:05 znek Exp $
+//  $Id: EDSMTPStream.h,v 2.1 2003/04/08 17:06:05 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -18,26 +18,34 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
+#import "EDMessageDefines.h"
+#import <EDCommon/EDStream.h>
 
-#ifndef	__EDSMTPStream_h_INCLUDE
-#define	__EDSMTPStream_h_INCLUDE
+struct _EDSMTPFlags
+{
+	unsigned 	needExtensionCheck : 1;
+    unsigned	triedExtensionsCheck : 1;
+};
 
-
-#include "EDMessageDefines.h"
-#include <EDCommon/EDStream.h>
+enum _EDSMTPState
+{
+	MustReadServerGreeting = 0,
+    ShouldSayEHLO = 1,
+	ShouldSayHELO = 2,
+	ShouldTryAuth = 3,
+	ServerReadyForCommand = 4,
+	InitFailed = 5,
+	ConnectionClosed = 6,
+	ServerReadingBody = 9
+};
 
 
 @interface EDSMTPStream : EDStream
 {
-    struct {
-    unsigned 			needExtensionCheck : 1;
-    unsigned			triedExtensionsCheck : 1;
-    unsigned 			handles8BitBodies : 1;
-    unsigned			allowsPipelining : 1;
-    unsigned 			padding : 12;
-    }				flags2;
-    short			state;
-    NSMutableArray	*pendingResponses;
+	NSMutableDictionary	*capabilities;
+	struct _EDSMTPFlags	flags2;
+    enum _EDSMTPState	state;
+    NSMutableArray		*pendingResponses;
 }
 
 + (EDSMTPStream *)streamForRelayHost:(NSHost *)relayHost;
@@ -46,6 +54,7 @@
 - (void)checkProtocolExtensions;
 - (BOOL)handles8BitBodies;
 - (BOOL)allowsPipelining;
+- (BOOL)supportsTLS;
 
 - (void)writeSender:(NSString *)sender;
 - (void)writeRecipient:(NSString *)recipient;
@@ -63,5 +72,3 @@ EDMESSAGE_EXTERN NSString *EDBrokenSMPTServerHint;
 
 
 /*  You can only send 8bit bodies if #handles8BitBodies returns %YES. Note that if you do not call #checkProtocolExtensions directly after creating the stream, #handles8BitBodies will always return %NO. Some improperly-implemented servers close the connection as a response to the check or will not accept further greeting commands (see RFC1651, paragraph 4.7 for details.) In this case an NSFileHandleOperationException or an EDSMTPException is raised and the user info dictionary contains the key EDBrokenSMPTServerHint. You should then get a new stream and assume that only 7bit is acceptable. */
-
-#endif	/* __EDSMTPStream_h_INCLUDE */

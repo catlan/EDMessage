@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDHeaderBearingObject.m created by erik on Wed 31-Mar-1999
-//  @(#)$Id: EDHeaderBearingObject.m,v 2.1 2003-04-08 17:06:06 znek Exp $
+//  @(#)$Id: EDHeaderBearingObject.m,v 2.1 2003/04/08 17:06:06 znek Exp $
 //
 //  Copyright (c) 1999-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,15 +19,15 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "NSString+MessageUtils.h"
-#include "EDHeaderFieldCoder.h"
-#include "EDTextFieldCoder.h"
-#include "EDEntityFieldCoder.h"
-#include "EDDateFieldCoder.h"
-#include "EDIdListFieldCoder.h"
-#include "EDFaceFieldCoder.h"
-#include "EDHeaderBearingObject.h"
+
+#import "NSString+MessageUtils.h"
+#import "EDHeaderFieldCoder.h"
+#import "EDTextFieldCoder.h"
+#import "EDEntityFieldCoder.h"
+#import "EDDateFieldCoder.h"
+#import "EDIdListFieldCoder.h"
+#import "EDFaceFieldCoder.h"
+#import "EDHeaderBearingObject.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -88,14 +88,13 @@
 {
     EDObjectPair	*headerField;
     NSString 		*canonicalName;
-    unsigned int	i, n;
+    NSUInteger		i, n;
     
     fieldName = [fieldName sharedInstance];
     canonicalName = [[fieldName lowercaseString] sharedInstance];
     headerField = [[EDObjectPair allocWithZone:[self zone]] initWithObjects:fieldName:fieldBody];
     if([headerDictionary objectForKey:canonicalName] != nil)
         {
-        NSLog(@"will replace body for header field %@", fieldName);
         for(i = 0, n = [headerFields count]; i < n; i++)
             if([[[headerFields objectAtIndex:i] firstObject] caseInsensitiveCompare:fieldName] == NSOrderedSame)
                 break;

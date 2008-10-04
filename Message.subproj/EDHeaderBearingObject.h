@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDHeaderBearingObject.h created by erik on Wed 31-Mar-1999
-//  @(#)$Id: EDHeaderBearingObject.h,v 2.1 2003-04-08 17:06:06 znek Exp $
+//  @(#)$Id: EDHeaderBearingObject.h,v 2.1 2003/04/08 17:06:06 znek Exp $
 //
 //  Copyright (c) 1999 by Erik Doernenburg. All rights reserved.
 //
@@ -18,18 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDHeaderBearingObject_h_INCLUDE
-#define	__EDHeaderBearingObject_h_INCLUDE
-
-
 /* This class would be a real candidate for multiple inheritance. Fortunately, the classes that want to adopt its behaviour so far do not need to inherit from some other base class... */
 
-#include <EDCommon/EDCommon.h>
-
+#import <EDCommon/EDCommon.h>
 
 @class EDHeaderFieldCoder;
-
 
 @interface EDHeaderBearingObject : EDIRCObject
 {
@@ -65,5 +58,3 @@
 - (NSString *)author;
 
 @end
-
-#endif	/* __EDHeaderBearingObject_h_INCLUDE */

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  EDSMTPStream.m created by erik on Sun 12-Mar-2000
-//  $Id: EDSMTPStream.m,v 2.1 2003-04-08 17:06:05 znek Exp $
+//  $Id: EDSMTPStream.m,v 2.1 2003/04/08 17:06:05 znek Exp $
 //
 //  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,10 +19,11 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "EDSMTPStream.h"
+#import <EDCommon/EDCommon.h>
+#import "EDSMTPStream.h"
 
 @interface EDSMTPStream(PrivateAPI)
+- (void)_resetCapabilities;
 - (void)_assertServerIsReady;
 - (void)_shutdown;
 - (NSString *)_pathFromAddress:(NSString *)address;
@@ -36,7 +37,6 @@
 
 NSString *EDSMTPException = @"EDSMTPException";
 NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
-
 
 //---------------------------------------------------------------------------------------
 //	FACTORY METHODS
@@ -65,14 +65,14 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
     [self setLinebreakStyle:EDCanonicalLinebreakStyle];
     [self setEnforcesCanonicalLinebreaks:YES];
     pendingResponses = [[NSMutableArray allocWithZone:[self zone]] init];
-    state = 0;
+	[self _resetCapabilities];
+    state = MustReadServerGreeting;
     return self;
 }
 
-
 - (void)dealloc
 {
-    if(state != 5)
+    if(state != ConnectionClosed)
         {
         NS_DURING
         [self close];
@@ -82,6 +82,11 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
     [super dealloc];
 }
 
+- (void)_resetCapabilities
+{
+	[capabilities release];
+    capabilities = [[NSMutableDictionary allocWithZone:[self zone]] init];
+}
 
 //---------------------------------------------------------------------------------------
 //	STARTUP/SHUTDOWN
@@ -91,17 +96,17 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
 {
     NSHost		 		*localhost;
     NSString	 		*name, *domain, *line, *responseCode;
-    NSArray		 		*response;
+    NSArray		 		*response, *words, *methods;
     NSEnumerator 		*lineEnum;
     NSMutableDictionary	*amendedUserInfo;
     
-    if(state < 3)  // not ready yet
+    if(state < ServerReadyForCommand)  // not ready yet
         {
-        if(state < 1)  // must read initial greeting
+        if(state == MustReadServerGreeting)
             {
             [pendingResponses addObject:@"220"];
             [self assertServerAcceptedCommand];
-            state = flags2.needExtensionCheck ? 1 : 2;
+            state = flags2.needExtensionCheck ? ShouldSayEHLO : ShouldSayHELO;
             }
 
         localhost = [NSHost currentHost];
@@ -114,7 +119,7 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
 
         NS_DURING
 
-        if(state == 1)  // try EHLO
+        while(state == ShouldSayEHLO)
             {
             [self writeFormat:@"EHLO %@\r\n", name];
             flags2.triedExtensionsCheck = YES;
@@ -125,71 +130,117 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
                 lineEnum = [response objectEnumerator];
                 while((line = [lineEnum nextObject]) != nil)
                     {
-                    if([[line substringFromIndex:4] caseInsensitiveCompare:@"8BITMIME"] == NSOrderedSame)
-                        flags2.handles8BitBodies = YES;
-                    if([[line substringFromIndex:4] caseInsensitiveCompare:@"PIPELINING"] == NSOrderedSame)
-                        flags2.allowsPipelining = YES;
+					words = [[line substringFromIndex:4] componentsSeparatedByString:@" "];
+					[capabilities setObject:[words subarrayFromIndex:1] forKey:[[words objectAtIndex:0] uppercaseString]];
                     }
-                state = 3;
-                }
+				if(true) // don't want TLS or have encrypted socket already
+				    {
+					state = ShouldTryAuth;
+				    }
+				else
+				    {
+					if(![self supportsTLS])
+						{
+						state = InitFailed;
+						[NSException raise:EDSMTPException format:@"Failed to initialize STMP connection; requested TLS but server does not support it."];
+						}
+					[self writeFormat:@"STARTTLS\r\n"];
+					response = [self _readResponse];
+					responseCode = [[response objectAtIndex:0] substringToIndex:3];
+					if([responseCode isEqualToString:@"220"])  
+						{
+						[self negotiateEncryption];
+						[self _resetCapabilities]; 
+						// reset required by RFC2487; state remains ShouldSayEHLO
+						}
+					else
+					    {
+						state = InitFailed;
+						[NSException raise:EDSMTPException format:@"Failed to initialize STMP connection; read \"%@\"", [response componentsJoinedByString:@" "]];
+						}
+					}	
+				}
             else if(([responseCode hasPrefix:@"5"])) // didn't like EHLO, now try HELO
                 {
-                state = 2;
+                state = ShouldSayHELO;
                 }
             else // other error; most likely 421 - Service not available
                 {
-                state = 4;
+                state = InitFailed;
                 [NSException raise:EDSMTPException format:@"Failed to initialize STMP connection; read \"%@\"", [response componentsJoinedByString:@" "]];
                 }
             }
-        if(state == 2)  // EHLO doesn't work, say HELO
+			
+        if(state == ShouldSayHELO)  
             {
+			if(true) // want TLS and do not have encrypted socket already
+				{
+				state = InitFailed;
+				[NSException raise:EDSMTPException format:@"Failed to initialize STMP connection; requested TLS but server does not support it."];
+				}
             [self writeFormat:@"HELO %@\r\n", name];
             response = [self _readResponse];
             responseCode = [[response objectAtIndex:0] substringToIndex:3];
             if([responseCode isEqualToString:@"250"]) // okay!
                 {
-                state = 3;
+                state = ServerReadyForCommand;
                 }
             else if([responseCode hasPrefix:@"5"]) // didn't like HELO?!
                 {
+				// Not setting InitFailed yet, this can still be a follow on problem from a failed EHLO
                 [NSException raise:EDSMTPException format:@"Failed to initialize STMP connection; read \"%@\"", [response componentsJoinedByString:@" "]];
                 }
             else
                 {
-                state = 4;
+                state = InitFailed;
                 [NSException raise:EDSMTPException format:@"Failed to initialize STMP connection; read \"%@\"", [response componentsJoinedByString:@" "]];
                 }
             }
 
         NS_HANDLER
 
-            if((flags2.triedExtensionsCheck == NO) || (state == 4))
-                [localException raise];
-            
-            // We can also get here if the extensions "parsing" fails; if for example
-            // a line in the response contains less than 4 characters. This is also
-            // counted as a broken server that doesn't really understand EHLO...
-            state = 4;
             amendedUserInfo = [NSMutableDictionary dictionaryWithDictionary:[localException userInfo]];
-            [amendedUserInfo setObject:@"YES" forKey:EDBrokenSMPTServerHint];
+            if((flags2.triedExtensionsCheck == YES) && (state != InitFailed))
+			    { 
+				// We can also get here if the extensions "parsing" fails; if for example
+                // a line in the response contains less than 4 characters. This is also
+                // counted as a broken server that doesn't really understand EHLO...
+				[amendedUserInfo setObject:@"YES" forKey:EDBrokenSMPTServerHint];
+				}
+            state = InitFailed;
             [[NSException exceptionWithName:[localException name] reason:[localException reason] userInfo:amendedUserInfo] raise];
             
         NS_ENDHANDLER
         }
+	
+	if(state == ShouldTryAuth)
+		{
+		if((methods = [capabilities objectForKey:@"AUTH"])) 
+			{
+			if(false)  // succeeded with auth 
+			    {  
+				state = ServerReadyForCommand;
+			    }
+			else
+			    {
+				state = InitFailed;
+				[NSException raise:EDSMTPException format:@"Failed to initialize STMP connection; authentication failed."];
+				}
+			}
+		}
 
-    if((state == 3) && (flags2.allowsPipelining == NO) && ([self hasPendingResponses]))
+    if((state == ServerReadyForCommand) && ([self allowsPipelining] == NO) && ([self hasPendingResponses]))
         {
         [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Attempt to issue an SMTP command when a response is pending and server is not known to allow pipelining.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
         }
 
-    if(state > 3) // not in command state
+    if(state > ServerReadyForCommand) // not in command state
         {
-        if(state == 9)
+        if(state == ServerReadingBody)
             {
             [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Attempt to issue an SMTP command within message body.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
             }
-        else if(state == 5)
+        else if(state == ConnectionClosed)
             {
             [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Attempt to issue an SMTP command on a closed stream.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
             }
@@ -204,16 +255,17 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
 
 - (void)_shutdown
 {
-    if(state < 1)
+    if(state < MustReadServerGreeting)
         [pendingResponses addObject:@"220"];
-    else if(state == 9)
+    else if(state == ServerReadingBody)
         [self finishBody];
     while([self hasPendingResponses])
         [self assertServerAcceptedCommand];
     [self writeString:@"QUIT\r\n"];
     [pendingResponses addObject:@"221"];
     [self assertServerAcceptedCommand];
-    state = 5;
+#warning don't forget to shutdown encryption if necessary
+    state = ConnectionClosed;
 }
 
 
@@ -241,13 +293,18 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
 
 - (BOOL)handles8BitBodies
 {
-    return flags2.handles8BitBodies;
+    return [capabilities objectForKey:@"8BITMIME"] != nil;
 }
 
 
 - (BOOL)allowsPipelining
 {
-    return flags2.allowsPipelining;
+    return [capabilities objectForKey:@"PIPELINING"] != nil;
+}
+				   
+- (BOOL)supportsTLS
+{
+	return [capabilities objectForKey:@"STARTTLS"] != nil;
 }
 
 
@@ -258,7 +315,7 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
 - (void)writeSender:(NSString *)sender
 {
     [self _assertServerIsReady];
-    if(flags2.handles8BitBodies == YES)
+    if([self handles8BitBodies])
         [self writeFormat:@"MAIL FROM:%@ BODY=8BITMIME\r\n", [self _pathFromAddress:sender]];
     else
         [self writeFormat:@"MAIL FROM:%@\r\n", [self _pathFromAddress:sender]];
@@ -279,19 +336,18 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
     [self _assertServerIsReady];
     [self writeString:@"DATA\r\n"];
     [pendingResponses addObject:@"354"];
-    state = 9;
+    state = ServerReadingBody;
 }
 
 
 - (void)finishBody
 {
-    if(state != 9)
+    if(state != ServerReadingBody)
         [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Attempt to finish a message body that was not begun.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
     [self writeString:@"\r\n.\r\n"];
     [pendingResponses addObject:@"250"];
-    state = 3;
+    state = ServerReadyForCommand;
 }
-
 
 - (BOOL)hasPendingResponses
 {
@@ -303,7 +359,7 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
 {
     NSString	*expectedCode;
     NSArray		*response;
-    
+
     if([pendingResponses count] == 0)
         [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: No pending responses.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
 

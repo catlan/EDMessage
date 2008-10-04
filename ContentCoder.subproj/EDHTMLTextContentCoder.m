@@ -19,12 +19,12 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "EDMConstants.h"
-#include "NSData+MIME.h"
-#include "EDMessagePart.h"
-#include "EDInternetMessage.h"
-#include "EDHTMLTextContentCoder.h"
+#import <EDCommon/EDCommon.h>
+#import "EDMConstants.h"
+#import "NSData+MIME.h"
+#import "EDMessagePart.h"
+#import "EDInternetMessage.h"
+#import "EDHTMLTextContentCoder.h"
 
 
 //---------------------------------------------------------------------------------------

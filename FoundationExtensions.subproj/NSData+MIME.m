@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------
 //  NSData+MIME.m created by erik on Sun 12-Jan-1997
-//  @(#)$Id: NSData+MIME.m,v 2.3 2003-09-08 21:01:49 erik Exp $
+//  @(#)$Id: NSData+MIME.m,v 2.3 2003/09/08 21:01:49 erik Exp $
 //
 //  Copyright (c) 1997-2000 by Erik Doernenburg. All rights reserved.
 //
@@ -19,11 +19,11 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#include <EDCommon/EDCommon.h>
-#include "EDMessageDefines.h"
-#include "utilities.h"
-#include "NSCharacterSet+MIME.h"
-#include "NSData+MIME.h"
+#import <EDCommon/EDCommon.h>
+#import "EDMessageDefines.h"
+#import "utilities.h"
+#import "NSCharacterSet+MIME.h"
+#import "NSData+MIME.h"
 
 @interface NSData(EDMIMEExtensionsPrivateAPI)
 - (NSData *)_encodeQuotedPrintableStep1;
@@ -179,7 +179,7 @@ static __inline__ BOOL isqpliteral(byte b)
             *dest ++ = *source++;
             }
         }
-    [decodedData setLength:(unsigned int)((void *)dest - [decodedData mutableBytes])];
+    [decodedData setLength:(unsigned int)((char *)dest - (char *)[decodedData mutableBytes])];
 
     return decodedData;
 }
@@ -208,7 +208,7 @@ static __inline__ BOOL isqpliteral(byte b)
         c = *source;
         if(iscrlf(c))
             {
-            source = skipnewline(source, endOfSource);
+            source = (byte *)skipnewline((char *)source, (char *)endOfSource);
             [dest appendBytes:&"\r\n" length:2];
             }
         else if(iswhitespace(c))
@@ -259,7 +259,7 @@ static __inline__ BOOL isqpliteral(byte b)
     NSMutableData	*dest;
     NSData			*chunk;
     const byte		*source, *chunkStart, *startOfSource, *endOfSource, *softbreakPos;
-    int				lineLength;
+    ptrdiff_t		lineLength;
 
     dest = [[[NSMutableData allocWithZone:[self zone]] init] autorelease];
     startOfSource = source = [self bytes];
@@ -335,7 +335,7 @@ static __inline__ BOOL isqpliteral(byte b)
         byte c = *source++;
         if((c == EQUALS) && (source < endOfSource - 1) && isxdigit(*(source)) && isxdigit(*(source+1)))
             {
-            c = decode2bytehex(source);
+            c = decode2bytehex((const char *)source);
             source += 2;
             }
         else if(c == UNDERSCORE)
@@ -344,7 +344,7 @@ static __inline__ BOOL isqpliteral(byte b)
             }
         *dest++ = c;
         }
-    [decodedData setLength:(unsigned int)((void *)dest - [decodedData mutableBytes])];
+    [decodedData setLength:(unsigned int)((char *)dest - (char *)[decodedData mutableBytes])];
 
     return decodedData;
 }
@@ -361,7 +361,7 @@ static __inline__ BOOL isqpliteral(byte b)
     NSMutableCharacterSet *tempCharacterSet;
     NSCharacterSet		  *literalChars;
     NSMutableData		  *buffer;
-    unsigned int		  length;
+    ptrdiff_t			  length;
     const byte		   	  *source, *chunkStart, *endOfSource;
     char				  escValue[3] = "=00", underscore = '_';
 
@@ -410,13 +410,3 @@ static __inline__ BOOL isqpliteral(byte b)
 //---------------------------------------------------------------------------------------
     @end
 //---------------------------------------------------------------------------------------
-
-
-#if 0
-static void appendchars(NSMutableString *buffer, const char *p, unsigned int l)
-{
-    NSString *s = [[NSString alloc] initWithData:[NSData dataWithBytes:p length:l] encoding:NSISOLatin1StringEncoding];
-    [buffer appendString:s];
-    [s release];
-}
-#endif

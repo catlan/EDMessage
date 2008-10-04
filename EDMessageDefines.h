@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------
 //  EDMessageDefines.h created by erik on Wed 12-Apr-2000
-//  $Id: EDMessageDefines.h,v 2.0 2002-08-16 18:24:09 erik Exp $
+//  $Id: EDMessageDefines.h,v 2.0 2002/08/16 18:24:09 erik Exp $
 //
-//  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 2000,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -18,53 +18,8 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-
-#ifndef	__EDMessageDefines_h_INCLUDE
-#define	__EDMessageDefines_h_INCLUDE
-
-// Defines to handle extern declarations on different platforms
-
-#if defined(__MACH__)
-
-#ifdef __cplusplus
-   // This isnt extern "C" because the compiler will not allow this if it has
-   // seen an extern "Objective-C"
-#  define EDMESSAGE_EXTERN		extern
-#else
-#  define EDMESSAGE_EXTERN		extern
-#endif
-
-
-#elif defined(WIN32)
-
-#ifdef _BUILDING_EDMESSAGE_DLL
-#  define EDMESSAGE_DLL_GOOP		__declspec(dllexport)
-#else
-#  define EDMESSAGE_DLL_GOOP		__declspec(dllimport)
-#endif
-
-#ifdef __cplusplus
-#  define EDMESSAGE_EXTERN		extern "C" EDMESSAGE_DLL_GOOP
-#else
-#  define EDMESSAGE_EXTERN		EDMESSAGE_DLL_GOOP extern
-#endif
-
-
-#else
-
-#ifdef __cplusplus
-#  define EDMESSAGE_EXTERN		extern "C"
-#else
-#  define EDMESSAGE_EXTERN		extern
-#endif
-
-
-#endif
-
+# define EDMESSAGE_EXTERN extern
 
 // Constants for EDLogMask. Note that codes should remain unique across all frameworks
 
 #define EDLogCoder 0x010
-
-
-#endif	/* __EDMessageDefines_h_INCLUDE */
