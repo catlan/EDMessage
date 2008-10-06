@@ -45,7 +45,7 @@ struct _EDMAFlags
 
 /*" Configuring the mail agent "*/
 
-- (void)setRelayHostByName:(NSString  *)hostname;
+- (void)setRelayHostByName:(NSString *)hostname;
 - (void)setRelayHost:(NSHost *)aHost;
 - (NSHost *)relayHost;
 

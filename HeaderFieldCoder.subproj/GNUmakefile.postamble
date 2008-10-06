@@ -1,5 +1,0 @@
-clean::
-	rm -f parsedate.c
-
-
-distclean:: clean

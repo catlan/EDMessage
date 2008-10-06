@@ -143,7 +143,7 @@
 		DEB8D1C30DD5315A007E88A5 /* EDStream+SSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EDStream+SSL.h"; path = "OP.subproj/EDStream+SSL.h"; sourceTree = "<group>"; };
 		DEB8D1C40DD5315A007E88A5 /* EDStream+SSL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EDStream+SSL.m"; path = "OP.subproj/EDStream+SSL.m"; sourceTree = "<group>"; };
 		DEB8D3370DD8A43E007E88A5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
-		DEDA090E0DDA2A6300A8B498 /* EDMessageTOC.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html.documentation; name = EDMessageTOC.html; path = Documentation/EDMessageTOC.html; sourceTree = "<group>"; };
+		DEDA090E0DDA2A6300A8B498 /* EDMessageTOC.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = EDMessageTOC.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
