@@ -2,7 +2,7 @@
 //  EDMailAgent.h created by erik on Fri 21-Apr-2000
 //  $Id: EDMailAgent.h,v 2.1 2002/08/19 00:05:41 erik Exp $
 //
-//  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 2000,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -25,7 +25,7 @@
 struct _EDMAFlags
 {
     unsigned 	skipExtensionTest : 1;
-	unsigned	usesSecureConnection : 1;
+	unsigned	usesSecureConnections : 1;
 };
 
 
@@ -34,7 +34,6 @@ struct _EDMAFlags
     NSHost 				*relayHost;		/*" All instance variables are private. "*/
 	int					port;			/*" "*/
 	struct _EDMAFlags 	flags;			/*" "*/		
-	id					delegate;		/*" "*/
 }
 
 
@@ -55,11 +54,8 @@ struct _EDMAFlags
 - (void)setSkipsExtensionTest:(BOOL)flag;
 - (BOOL)skipsExtensionTest;
 
-- (void)setUsesSecureConnection:(BOOL)flag;
-- (BOOL)usesSecureConnection;
-
-- (void)setDelegate:(id)aDelegate;
-- (id)delegate;
+- (void)setUsesSecureConnections:(BOOL)flag;
+- (BOOL)usesSecureConnections;
 
 /*" Sending messages "*/
 

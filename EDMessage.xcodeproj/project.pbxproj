@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03C571FC0E9D1DD50009F0F9 /* EDSMTPSStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 03C571FA0E9D1DD50009F0F9 /* EDSMTPSStream.h */; };
+		03C571FD0E9D1DD50009F0F9 /* EDSMTPSStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C571FB0E9D1DD50009F0F9 /* EDSMTPSStream.m */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 		DE0469DB0DF8450C00F0B352 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0469DA0DF8450C00F0B352 /* EDCommon.framework */; };
 		DE0C15960E61BA1F00C1BC3F /* parsedate.y in Sources */ = {isa = PBXBuildFile; fileRef = DE0C15950E61BA1F00C1BC3F /* parsedate.y */; };
@@ -67,13 +69,13 @@
 		DEB8D1AE0DD52DB4007E88A5 /* OPSSLSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB8D1AC0DD52DB4007E88A5 /* OPSSLSocket.m */; };
 		DEB8D1B20DD52E52007E88A5 /* NSString+OPOSErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = DEB8D1B00DD52E52007E88A5 /* NSString+OPOSErrors.h */; };
 		DEB8D1B30DD52E52007E88A5 /* NSString+OPOSErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB8D1B10DD52E52007E88A5 /* NSString+OPOSErrors.m */; };
-		DEB8D1C50DD5315A007E88A5 /* EDStream+SSL.h in Headers */ = {isa = PBXBuildFile; fileRef = DEB8D1C30DD5315A007E88A5 /* EDStream+SSL.h */; };
-		DEB8D1C60DD5315A007E88A5 /* EDStream+SSL.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB8D1C40DD5315A007E88A5 /* EDStream+SSL.m */; };
 		DEB8D3380DD8A43E007E88A5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEB8D3370DD8A43E007E88A5 /* Security.framework */; };
 		DEDA09100DDA2A6400A8B498 /* EDMessageTOC.html in Resources */ = {isa = PBXBuildFile; fileRef = DEDA090E0DDA2A6300A8B498 /* EDMessageTOC.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03C571FA0E9D1DD50009F0F9 /* EDSMTPSStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDSMTPSStream.h; sourceTree = "<group>"; };
+		03C571FB0E9D1DD50009F0F9 /* EDSMTPSStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSMTPSStream.m; sourceTree = "<group>"; };
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -140,8 +142,6 @@
 		DEB8D1AC0DD52DB4007E88A5 /* OPSSLSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPSSLSocket.m; path = OP.subproj/OPSSLSocket.m; sourceTree = "<group>"; };
 		DEB8D1B00DD52E52007E88A5 /* NSString+OPOSErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+OPOSErrors.h"; path = "OP.subproj/NSString+OPOSErrors.h"; sourceTree = "<group>"; };
 		DEB8D1B10DD52E52007E88A5 /* NSString+OPOSErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+OPOSErrors.m"; path = "OP.subproj/NSString+OPOSErrors.m"; sourceTree = "<group>"; };
-		DEB8D1C30DD5315A007E88A5 /* EDStream+SSL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EDStream+SSL.h"; path = "OP.subproj/EDStream+SSL.h"; sourceTree = "<group>"; };
-		DEB8D1C40DD5315A007E88A5 /* EDStream+SSL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EDStream+SSL.m"; path = "OP.subproj/EDStream+SSL.m"; sourceTree = "<group>"; };
 		DEB8D3370DD8A43E007E88A5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		DEDA090E0DDA2A6300A8B498 /* EDMessageTOC.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = EDMessageTOC.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -381,8 +381,9 @@
 		DE158C360E19964B00447697 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DE221EE60DD3E10F00DBD46E /* EDSMTPStream.m */,
 				DE221EE40DD3E10F00DBD46E /* EDMailAgent.m */,
+				DE221EE60DD3E10F00DBD46E /* EDSMTPStream.m */,
+				03C571FB0E9D1DD50009F0F9 /* EDSMTPSStream.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -390,8 +391,9 @@
 		DE158C370E19965300447697 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				DE221EE50DD3E10F00DBD46E /* EDSMTPStream.h */,
 				DE221EE30DD3E10F00DBD46E /* EDMailAgent.h */,
+				DE221EE50DD3E10F00DBD46E /* EDSMTPStream.h */,
+				03C571FA0E9D1DD50009F0F9 /* EDSMTPSStream.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -399,7 +401,6 @@
 		DE158C3B0E19972400447697 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DEB8D1C40DD5315A007E88A5 /* EDStream+SSL.m */,
 				DEB8D1B10DD52E52007E88A5 /* NSString+OPOSErrors.m */,
 				DEB8D1AC0DD52DB4007E88A5 /* OPSSLSocket.m */,
 			);
@@ -409,7 +410,6 @@
 		DE158C3C0E19972D00447697 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				DEB8D1C30DD5315A007E88A5 /* EDStream+SSL.h */,
 				DEB8D1B00DD52E52007E88A5 /* NSString+OPOSErrors.h */,
 				DEB8D1AB0DD52DB4007E88A5 /* OPSSLSocket.h */,
 			);
@@ -497,7 +497,7 @@
 				DE221EFB0DD3E13B00DBD46E /* EDMessagePart.h in Headers */,
 				DEB8D1AD0DD52DB4007E88A5 /* OPSSLSocket.h in Headers */,
 				DEB8D1B20DD52E52007E88A5 /* NSString+OPOSErrors.h in Headers */,
-				DEB8D1C50DD5315A007E88A5 /* EDStream+SSL.h in Headers */,
+				03C571FC0E9D1DD50009F0F9 /* EDSMTPSStream.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,8 +603,8 @@
 				DE221EFC0DD3E13B00DBD46E /* EDMessagePart.m in Sources */,
 				DEB8D1AE0DD52DB4007E88A5 /* OPSSLSocket.m in Sources */,
 				DEB8D1B30DD52E52007E88A5 /* NSString+OPOSErrors.m in Sources */,
-				DEB8D1C60DD5315A007E88A5 /* EDStream+SSL.m in Sources */,
 				DE0C15960E61BA1F00C1BC3F /* parsedate.y in Sources */,
+				03C571FD0E9D1DD50009F0F9 /* EDSMTPSStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

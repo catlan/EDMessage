@@ -2,7 +2,7 @@
 //  EDSMTPStream.h created by erik on Sun 12-Mar-2000
 //  $Id: EDSMTPStream.h,v 2.1 2003/04/08 17:06:05 znek Exp $
 //
-//  Copyright (c) 2000 by Erik Doernenburg. All rights reserved.
+//  Copyright (c) 2000,2008 by Erik Doernenburg. All rights reserved.
 //
 //  Permission to use, copy, modify and distribute this software and its documentation
 //  is hereby granted, provided that both the copyright notice and this permission
@@ -48,13 +48,9 @@ enum _EDSMTPState
     NSMutableArray		*pendingResponses;
 }
 
-+ (EDSMTPStream *)streamForRelayHost:(NSHost *)relayHost;
-+ (EDSMTPStream *)streamForRelayHostWithName:(NSString *)relayHostname;
-
 - (void)checkProtocolExtensions;
 - (BOOL)handles8BitBodies;
 - (BOOL)allowsPipelining;
-- (BOOL)supportsTLS;
 
 - (void)writeSender:(NSString *)sender;
 - (void)writeRecipient:(NSString *)recipient;
@@ -64,8 +60,24 @@ enum _EDSMTPState
 - (BOOL)hasPendingResponses;
 - (void)assertServerAcceptedCommand;
 
+// the following methods should only be used by subclasses
+
+- (void)sayEHLO;
+- (void)handleEHLOResponse250:(NSArray *)response;
+- (void)sayHELO;
+- (void)handleHELOResponse250:(NSArray *)response;
+- (void)authenticate;
+
+- (void)resetCapabilities;
+- (NSArray *)readResponse;
+
 @end
 
+EDMESSAGE_EXTERN NSString *EDSMTPHostname;
+EDMESSAGE_EXTERN NSString *EDSMTPPort;
+EDMESSAGE_EXTERN NSString *EDSMTPRequiresSecureSocket;
+EDMESSAGE_EXTERN NSString *EDSMTPUserName;
+EDMESSAGE_EXTERN NSString *EDSMTPPassword;
 
 EDMESSAGE_EXTERN NSString *EDSMTPException;
 EDMESSAGE_EXTERN NSString *EDBrokenSMPTServerHint;

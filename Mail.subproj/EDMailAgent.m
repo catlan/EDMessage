@@ -29,10 +29,12 @@
 #import "EDCompositeContentCoder.h"
 #import "EDMultimediaContentCoder.h"
 #import "EDInternetMessage.h"
-#import "EDSMTPStream.h"
+#import "EDSMTPSStream.h"
+#import "OPSSLSocket.h"
 #import "EDMailAgent.h"
 
 @interface EDMailAgent(PrivateAPI)
+- (EDSMTPStream *)_initStream;
 - (EDSMTPStream *)_getStream;
 - (void)_sendMail:(NSData *)data from:(NSString *)sender to:(NSArray *)recipients usingStream:(EDSMTPStream *)stream;
 @end
@@ -210,39 +212,29 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
 }
 
 
-/*" Sets or replaces the delegate. This is only used for secure connections. "*/
- 
-- (void)setDelegate:(id)aDelegate
-{
-	delegate = aDelegate;
-}
-
-
-/*" Returns the delegate. "*/
-
-- (id)delegate
-{
-	return delegate;
-}
-
-
 //---------------------------------------------------------------------------------------
 //	SENDING EMAILS (PRIVATE PRIMITIVES)
 //---------------------------------------------------------------------------------------
 
 - (EDSMTPStream *)_getStream
 {
+    EDSMTPSStream	*secureStream;
     EDSMTPStream	*stream;
     NSFileHandle	*logfile;
 
-#warning *** doesn't create secure streams yet	
-	if(flags.usesSecureConnection)
-		{
-		}
+	if([self usesSecureConnections])
+	   {
+	   stream = secureStream = [EDSMTPSStream streamConnectedToHost:relayHost port:port];
+#warning * make parametrisable
+	   [[secureStream socket] setAllowsAnyRootCertificate:YES];
+	   [[secureStream socket] setAllowsExpiredCertificates:YES];
+	   }
 	else
-		{
-		stream = [EDSMTPStream streamForRelayHost:relayHost];
-		}
+	   {
+	   stream = [EDSMTPStream streamConnectedToHost:relayHost port:port];
+	   }
+	
+	
 	// The documentation states that "if no file exists at path the method returns nil".
 	// This means that the mail agent will log if it find the file but will remain silent 
 	// when the file does not exist.
@@ -257,7 +249,8 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
         if([[[localException userInfo] objectForKey:EDBrokenSMPTServerHint] boolValue] == NO)
             [localException raise];
         NSLog(@"server problem during SMTP extension check.");
-        stream = [EDSMTPStream streamForRelayHost:relayHost];
+		flags.skipExtensionTest = YES;
+		stream = [self _getStream];
     NS_ENDHANDLER
 
     return stream;
