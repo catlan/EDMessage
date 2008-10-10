@@ -22,7 +22,7 @@
 
 @class OPSSLSocket;
 
-@interface EDSMTPSStream : EDSMTPStream 
+@interface EDSecureSMTPStream : EDSMTPStream 
 {
 }
 

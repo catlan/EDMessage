@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03C571FC0E9D1DD50009F0F9 /* EDSMTPSStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 03C571FA0E9D1DD50009F0F9 /* EDSMTPSStream.h */; };
-		03C571FD0E9D1DD50009F0F9 /* EDSMTPSStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C571FB0E9D1DD50009F0F9 /* EDSMTPSStream.m */; };
+		031A069C0E9F154A00DADB91 /* mailsender.m in Sources */ = {isa = PBXBuildFile; fileRef = 031A069B0E9F154A00DADB91 /* mailsender.m */; };
+		031A06B40E9F168A00DADB91 /* EDMessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* EDMessage.framework */; };
+		031A06B50E9F169000DADB91 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0469DA0DF8450C00F0B352 /* EDCommon.framework */; };
+		031A06B60E9F169100DADB91 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		03C571FC0E9D1DD50009F0F9 /* EDSecureSMTPStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 03C571FA0E9D1DD50009F0F9 /* EDSecureSMTPStream.h */; };
+		03C571FD0E9D1DD50009F0F9 /* EDSecureSMTPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C571FB0E9D1DD50009F0F9 /* EDSecureSMTPStream.m */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 		DE0469DB0DF8450C00F0B352 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0469DA0DF8450C00F0B352 /* EDCommon.framework */; };
 		DE0C15960E61BA1F00C1BC3F /* parsedate.y in Sources */ = {isa = PBXBuildFile; fileRef = DE0C15950E61BA1F00C1BC3F /* parsedate.y */; };
@@ -74,8 +78,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03C571FA0E9D1DD50009F0F9 /* EDSMTPSStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDSMTPSStream.h; sourceTree = "<group>"; };
-		03C571FB0E9D1DD50009F0F9 /* EDSMTPSStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSMTPSStream.m; sourceTree = "<group>"; };
+		031A06950E9F14EB00DADB91 /* MailSender */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MailSender; sourceTree = BUILT_PRODUCTS_DIR; };
+		031A069B0E9F154A00DADB91 /* mailsender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mailsender.m; path = Test/mailsender.m; sourceTree = "<group>"; };
+		03C571FA0E9D1DD50009F0F9 /* EDSecureSMTPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDSecureSMTPStream.h; sourceTree = "<group>"; };
+		03C571FB0E9D1DD50009F0F9 /* EDSecureSMTPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSecureSMTPStream.m; sourceTree = "<group>"; };
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -147,6 +153,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		031A06930E9F14EA00DADB91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031A06B40E9F168A00DADB91 /* EDMessage.framework in Frameworks */,
+				031A06B50E9F169000DADB91 /* EDCommon.framework in Frameworks */,
+				031A06B60E9F169100DADB91 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DC2EF560486A6940098B216 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -160,10 +176,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		031A068F0E9F14CD00DADB91 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				031A069B0E9F154A00DADB91 /* mailsender.m */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				8DC2EF5B0486A6940098B216 /* EDMessage.framework */,
+				031A06950E9F14EB00DADB91 /* MailSender */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +205,7 @@
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				DEB8D1A50DD52C02007E88A5 /* OPMessage Classes */,
 				089C1665FE841158C02AAC07 /* Resources */,
+				031A068F0E9F14CD00DADB91 /* Test */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				DEDA09150DDA2A8100A8B498 /* Documentation */,
@@ -383,7 +409,7 @@
 			children = (
 				DE221EE40DD3E10F00DBD46E /* EDMailAgent.m */,
 				DE221EE60DD3E10F00DBD46E /* EDSMTPStream.m */,
-				03C571FB0E9D1DD50009F0F9 /* EDSMTPSStream.m */,
+				03C571FB0E9D1DD50009F0F9 /* EDSecureSMTPStream.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -393,7 +419,7 @@
 			children = (
 				DE221EE30DD3E10F00DBD46E /* EDMailAgent.h */,
 				DE221EE50DD3E10F00DBD46E /* EDSMTPStream.h */,
-				03C571FA0E9D1DD50009F0F9 /* EDSMTPSStream.h */,
+				03C571FA0E9D1DD50009F0F9 /* EDSecureSMTPStream.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -497,13 +523,29 @@
 				DE221EFB0DD3E13B00DBD46E /* EDMessagePart.h in Headers */,
 				DEB8D1AD0DD52DB4007E88A5 /* OPSSLSocket.h in Headers */,
 				DEB8D1B20DD52E52007E88A5 /* NSString+OPOSErrors.h in Headers */,
-				03C571FC0E9D1DD50009F0F9 /* EDSMTPSStream.h in Headers */,
+				03C571FC0E9D1DD50009F0F9 /* EDSecureSMTPStream.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		031A06940E9F14EA00DADB91 /* MailSender */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 031A06990E9F151200DADB91 /* Build configuration list for PBXNativeTarget "MailSender" */;
+			buildPhases = (
+				031A06920E9F14EA00DADB91 /* Sources */,
+				031A06930E9F14EA00DADB91 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MailSender;
+			productName = MailSender;
+			productReference = 031A06950E9F14EB00DADB91 /* MailSender */;
+			productType = "com.apple.product-type.tool";
+		};
 		8DC2EF4F0486A6940098B216 /* EDMessage */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "EDMessage" */;
@@ -538,6 +580,7 @@
 			projectRoot = "";
 			targets = (
 				8DC2EF4F0486A6940098B216 /* EDMessage */,
+				031A06940E9F14EA00DADB91 /* MailSender */,
 			);
 		};
 /* End PBXProject section */
@@ -572,6 +615,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		031A06920E9F14EA00DADB91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031A069C0E9F154A00DADB91 /* mailsender.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DC2EF540486A6940098B216 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -604,13 +655,58 @@
 				DEB8D1AE0DD52DB4007E88A5 /* OPSSLSocket.m in Sources */,
 				DEB8D1B30DD52E52007E88A5 /* NSString+OPOSErrors.m in Sources */,
 				DE0C15960E61BA1F00C1BC3F /* parsedate.y in Sources */,
-				03C571FD0E9D1DD50009F0F9 /* EDSMTPSStream.m in Sources */,
+				03C571FD0E9D1DD50009F0F9 /* EDSecureSMTPStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		031A06970E9F14EB00DADB91 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = MailSender;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		031A06980E9F14EB00DADB91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = MailSender;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
 		1DEB91AE08733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -733,6 +829,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		031A06990E9F151200DADB91 /* Build configuration list for PBXNativeTarget "MailSender" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				031A06970E9F14EB00DADB91 /* Deployment */,
+				031A06980E9F14EB00DADB91 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
 		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "EDMessage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

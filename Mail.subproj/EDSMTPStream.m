@@ -36,6 +36,7 @@
 
 NSString *EDSMTPException = @"EDSMTPException";
 NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
+NSString *EDSMTPErrorDomain = @"EDSMTPErrorDomain";
 
 
 //---------------------------------------------------------------------------------------
@@ -142,13 +143,9 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
 		[[NSException exceptionWithName:[localException name] reason:[localException reason] userInfo:amendedUserInfo] raise];
 	
 	NS_ENDHANDLER
-	
-	if(state == ShouldTryAuth)
-	{
-		[self authenticate];
-	}
 }
-	
+
+
 - (void)sayEHLO
 {
 	NSArray	 *response;
@@ -186,7 +183,7 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
 		words = [[line substringFromIndex:4] componentsSeparatedByString:@" "];
 		[capabilities setObject:[words subarrayFromIndex:1] forKey:[[words objectAtIndex:0] uppercaseString]];
 		}
-	state = ShouldTryAuth;
+	state = ServerReadyForCommand;
 }
 
 
@@ -221,23 +218,46 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
 }
 
 
-- (void)authenticate
-{
-	NSArray *methods;
+- (BOOL)authenticatePlainWithUsername:(NSString *)aUsername andPassword:(NSString *)aPassword error:(NSError **)errorPtr
+{        
+	NSError				*error;
+	NSMutableDictionary	*errorInfo;
+	NSArray				*response;
+	NSString			*responseCode;
+    NSData				*token;
 	
-	if((methods = [capabilities objectForKey:@"AUTH"])) 
-	{
-		if(false)  // succeeded with auth 
-		{  
-			state = ServerReadyForCommand;
-		}
-		else
+	error = nil;
+	if([self supportsPlainAuthentication] == false)
 		{
-			state = InitFailed;
-			[NSException raise:EDSMTPException format:@"Failed to initialize STMP connection; authentication failed."];
+		errorInfo = [NSMutableDictionary dictionary];
+		[errorInfo setObject:@"Server does not support 'plain' authentication." forKey:@"message"];
+		if([self authenticationMethods] != nil)
+			[errorInfo setObject:[self authenticationMethods] forKey:@"methods"];	
+		error = [NSError errorWithDomain:EDSMTPErrorDomain code:0 userInfo:errorInfo];
 		}
-	}
-}	
+	else
+		{
+		token = [[[NSString stringWithFormat:@"\0%@\0%@", aUsername, aPassword] dataUsingEncoding:NSUTF8StringEncoding] encodeBase64];
+		[self writeFormat:@"AUTH PLAIN %@", [NSString stringWithData:token encoding:NSASCIIStringEncoding]];
+		response = [self readResponse];
+		responseCode = [[response objectAtIndex:0] substringToIndex:3];
+		if([responseCode isEqualToString:@"235"])
+			{
+			return YES;
+			}
+		else
+			{
+			errorInfo = [NSMutableDictionary dictionary];
+			[errorInfo setObject:@"Authentication failed." forKey:@"message"];
+			[errorInfo setObject:[response componentsJoinedByString:@" "] forKey:@"response"];	
+			error = [NSError errorWithDomain:EDSMTPErrorDomain code:[responseCode intValue] userInfo:errorInfo];
+			}
+		}
+	if((error != nil) && (errorPtr != NULL))
+		*errorPtr = error;
+	return NO;
+}
+
 
 - (void)_shutdown
 {
@@ -285,6 +305,16 @@ NSString *EDBrokenSMPTServerHint = @"EDBrokenSMPTServerHint";
 - (BOOL)allowsPipelining
 {
     return [capabilities objectForKey:@"PIPELINING"] != nil;
+}
+
+- (BOOL)supportsPlainAuthentication
+{
+	return [[self authenticationMethods] indexOfObject:@"PLAIN"] != NSNotFound;
+}
+
+- (NSArray *)authenticationMethods
+{
+	return [[capabilities objectForKey:@"AUTH"] arrayByMappingWithSelector:@selector(uppercaseString)];
 }
 				   
 

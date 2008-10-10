@@ -32,10 +32,9 @@ enum _EDSMTPState
 	MustReadServerGreeting = 0,
     ShouldSayEHLO = 1,
 	ShouldSayHELO = 2,
-	ShouldTryAuth = 3,
-	ServerReadyForCommand = 4,
-	InitFailed = 5,
-	ConnectionClosed = 6,
+	ServerReadyForCommand = 3,
+	InitFailed = 4,
+	ConnectionClosed = 5,
 	ServerReadingBody = 9
 };
 
@@ -51,14 +50,15 @@ enum _EDSMTPState
 - (void)checkProtocolExtensions;
 - (BOOL)handles8BitBodies;
 - (BOOL)allowsPipelining;
+- (BOOL)supportsPlainAuthentication;
+- (NSArray *)authenticationMethods;
+
+- (BOOL)authenticatePlainWithUsername:(NSString *)aUsername andPassword:(NSString *)aPassword error:(NSError **)error;
 
 - (void)writeSender:(NSString *)sender;
 - (void)writeRecipient:(NSString *)recipient;
 - (void)beginBody;
 - (void)finishBody;
-
-- (BOOL)hasPendingResponses;
-- (void)assertServerAcceptedCommand;
 
 // the following methods should only be used by subclasses
 
@@ -66,21 +66,16 @@ enum _EDSMTPState
 - (void)handleEHLOResponse250:(NSArray *)response;
 - (void)sayHELO;
 - (void)handleHELOResponse250:(NSArray *)response;
-- (void)authenticate;
 
+- (BOOL)hasPendingResponses;
+- (void)assertServerAcceptedCommand;
 - (void)resetCapabilities;
 - (NSArray *)readResponse;
 
 @end
 
-EDMESSAGE_EXTERN NSString *EDSMTPHostname;
-EDMESSAGE_EXTERN NSString *EDSMTPPort;
-EDMESSAGE_EXTERN NSString *EDSMTPRequiresSecureSocket;
-EDMESSAGE_EXTERN NSString *EDSMTPUserName;
-EDMESSAGE_EXTERN NSString *EDSMTPPassword;
-
 EDMESSAGE_EXTERN NSString *EDSMTPException;
 EDMESSAGE_EXTERN NSString *EDBrokenSMPTServerHint;
-
+EDMESSAGE_EXTERN NSString *EDSMTPErrorDomain;
 
 /*  You can only send 8bit bodies if #handles8BitBodies returns %YES. Note that if you do not call #checkProtocolExtensions directly after creating the stream, #handles8BitBodies will always return %NO. Some improperly-implemented servers close the connection as a response to the check or will not accept further greeting commands (see RFC1651, paragraph 4.7 for details.) In this case an NSFileHandleOperationException or an EDSMTPException is raised and the user info dictionary contains the key EDBrokenSMPTServerHint. You should then get a new stream and assume that only 7bit is acceptable. */

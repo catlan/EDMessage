@@ -29,7 +29,7 @@
 #import "EDCompositeContentCoder.h"
 #import "EDMultimediaContentCoder.h"
 #import "EDInternetMessage.h"
-#import "EDSMTPSStream.h"
+#import "EDSecureSMTPStream.h"
 #import "OPSSLSocket.h"
 #import "EDMailAgent.h"
 
@@ -81,25 +81,11 @@ Example to send a mail with two attachments: !{
 
 }
 
-
-If you do not know at compile time which SMTP server your application will use you should be prepared for broken SMTP servers that cannot even do the extensions check. In this case you must either disable the extensions or, if you want to use them when available, catch the error and retry as follows: !{
-
-    NS_DURING
-    mailAgent = [EDMailAgent mailAgentForRelayHostWithName:@"mail.example.com"];
-    [mailAgent sendMailWithHeaders:headerFields andBody:@"Some text"];
-    NS_HANDLER
-        if([[[localException userInfo] objectForKey:EDBrokenSMPTServerHint] boolValue] == NO)
-            [localException raise];
-        mailAgent = [EDMailAgent mailAgentForRelayHostWithName:@"mail.example.com"];
-        [mailAgent setSkipsExtensionTest:YES];
-        [mailAgent sendMailWithHeaders:headerFields andBody:@"Some text"];
-    NS_ENDHANDLER
-    
-}
-
-For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMPTServerHint}.
-
 "*/
+
+NSString *EDMailAgentException = @"EDMailAgentException";
+NSString *EDSMTPUserName = @"user name";
+NSString *EDSMTPPassword = @"password";
 
 
 //---------------------------------------------------------------------------------------
@@ -143,6 +129,7 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
 - (void)dealloc
 {
     [relayHost release];
+	[authInfo release];
     [super dealloc];
 }
 
@@ -196,6 +183,21 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
 }
 
 
+/*" Sets whether the mail agent should use transport layer security (TLS) when delivering messages. "*/
+
+- (void)setUsesSecureConnections:(BOOL)flag
+{
+	flags.usesSecureConnections = flag;
+}
+
+/*" Returns whether the mail agents should use transport layer security (TLS). "*/
+
+- (BOOL)usesSecureConnections
+{
+	return flags.usesSecureConnections;
+}
+
+
 /*" If set to YES the mail agent will not try to negotiate SMTP extensions with the server on the relay host. "*/
 
 - (void)setSkipsExtensionTest:(BOOL)flag
@@ -212,19 +214,39 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
 }
 
 
+/*" Sets the authentication information. The dictionary should contain values for the following keys: EDSMTPUserName, EDSMTPPassword. "*/
+
+- (void)setAuthInfo:(NSDictionary *)infoDictionary
+{
+	infoDictionary = [infoDictionary copy];
+	[authInfo release];
+	authInfo = infoDictionary;
+}
+
+
+/*" Returns the authentication information used by the mail agent. "*/
+
+- (NSDictionary *)authInfo
+{
+	return authInfo;
+}
+
+
 //---------------------------------------------------------------------------------------
 //	SENDING EMAILS (PRIVATE PRIMITIVES)
 //---------------------------------------------------------------------------------------
 
 - (EDSMTPStream *)_getStream
 {
-    EDSMTPSStream	*secureStream;
-    EDSMTPStream	*stream;
-    NSFileHandle	*logfile;
+    EDSecureSMTPStream	*secureStream;
+    EDSMTPStream		*stream;
+    NSFileHandle		*logfile;
+	NSString			*userName, *password;
+	NSError				*authError;
 
 	if([self usesSecureConnections])
 	   {
-	   stream = secureStream = [EDSMTPSStream streamConnectedToHost:relayHost port:port];
+	   stream = secureStream = [EDSecureSMTPStream streamConnectedToHost:relayHost port:port];
 #warning * make parametrisable
 	   [[secureStream socket] setAllowsAnyRootCertificate:YES];
 	   [[secureStream socket] setAllowsExpiredCertificates:YES];
@@ -252,6 +274,14 @@ For this you need to import EDSMTPStream to get the declaration of !{EDBrokenSMP
 		flags.skipExtensionTest = YES;
 		stream = [self _getStream];
     NS_ENDHANDLER
+	
+	userName = [authInfo objectForKey:EDSMTPUserName];
+	password = [authInfo objectForKey:EDSMTPPassword];
+	if((userName != nil) && ([userName isEmpty] == false))
+		{
+		if([stream authenticatePlainWithUsername:userName andPassword:password error:&authError] == false)
+			[[NSException exceptionWithName:EDMailAgentException reason:@"Authentication failed." userInfo:[authError userInfo]] raise];
+		}
 
     return stream;
 }

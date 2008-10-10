@@ -34,6 +34,7 @@ struct _EDMAFlags
     NSHost 				*relayHost;		/*" All instance variables are private. "*/
 	int					port;			/*" "*/
 	struct _EDMAFlags 	flags;			/*" "*/		
+	NSDictionary		*authInfo;		/*" "*/
 }
 
 
@@ -57,6 +58,9 @@ struct _EDMAFlags
 - (void)setUsesSecureConnections:(BOOL)flag;
 - (BOOL)usesSecureConnections;
 
+- (void)setAuthInfo:(NSDictionary *)infoDictionary;
+- (NSDictionary *)authInfo;
+
 /*" Sending messages "*/
 
 - (void)sendMailWithHeaders:(NSDictionary *)userHeaders andBody:(NSString *)body;
@@ -66,3 +70,7 @@ struct _EDMAFlags
 - (void)sendMessage:(EDInternetMessage *)message;
 
 @end
+
+EDMESSAGE_EXTERN NSString *EDMailAgentException;
+EDMESSAGE_EXTERN NSString *EDSMTPUserName;
+EDMESSAGE_EXTERN NSString *EDSMTPPassword;

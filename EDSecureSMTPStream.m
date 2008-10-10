@@ -18,11 +18,11 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import "EDSMTPSStream.h"
+#import "EDSecureSMTPStream.h"
 #import "OPSSLSocket.h"
 
 //---------------------------------------------------------------------------------------
-    @implementation EDSMTPSStream
+    @implementation EDSecureSMTPStream
 //---------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------
@@ -55,11 +55,12 @@
 
 - (void)handleHELOResponse250:(NSArray *)response
 {
-	if([[self socket] isEncrypted])
-		return;
-
-	state = InitFailed;
-	[NSException raise:EDSMTPException format:@"Failed to initialize STMP connection; requested TLS but server does not support it."];
+	if(![[self socket] isEncrypted])
+		{
+		state = InitFailed;
+		[NSException raise:EDSMTPException format:@"Failed to initialize STMP connection; requested TLS but server does not support it."];
+		}
+	[super handleHELOResponse250:response];
 }
 
 
