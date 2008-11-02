@@ -51,8 +51,8 @@ Example to send a simple mail: !{
     NSString	*text; // assume this exists
     
     headerFields = [NSMutableDictionary dictionary];
-    [headerFields setObject:@"Joe User <joe@example.com>" forKey:@"To"];
-    [headerFields setObject:@"Hi there" forKey:@"Subject"];
+    [headerFields setObject:@"Joe User <joe@example.com>" forKey:EDMailTo];
+    [headerFields setObject:@"Hi there" forKey:EDMailSubject];
 
     text = [text stringWithCanonicalLinebreaks];
 
@@ -67,8 +67,8 @@ Example to send a mail with two attachments: !{
     NSData *documentData, *logoData; // assume these exist
     
     headerFields = [NSMutableDictionary dictionary];
-    [headerFields setObject:@"Joe User <joe@example.com>" forKey:@"To"];
-    [headerFields setObject:@"Your weekly report" forKey:@"Subject"];
+    [headerFields setObject:@"Joe User <joe@example.com>" forKey:EDMailTo];
+    [headerFields setObject:@"Your weekly report" forKey:EDMailSubject];
 
     text = @"Here they are:\r\n";
 
@@ -87,6 +87,12 @@ NSString *EDMailAgentException = @"EDMailAgentException";
 NSString *EDSMTPUserName = @"user name";
 NSString *EDSMTPPassword = @"password";
 
+NSString *EDMailTo = @"To";
+NSString *EDMailCC = @"CC";
+NSString *EDMailBCC = @"BCC";
+NSString *EDMailFrom = @"From";
+NSString *EDMailSender = @"Sender";
+NSString *EDMailSubject = @"Subject";
 
 //---------------------------------------------------------------------------------------
 //	FACTORY METHODS
@@ -258,7 +264,7 @@ NSString *EDSMTPPassword = @"password";
 	
 	
 	// The documentation states that "if no file exists at path the method returns nil".
-	// This means that the mail agent will log if it find the file but will remain silent 
+	// This means that the mail agent will log if it finds the file but will remain silent 
 	// when the file does not exist.
     logfile = [NSFileHandle fileHandleForWritingAtPath:@"/tmp/EDMailAgent.log"];
     [logfile seekToEndOfFile];
@@ -363,18 +369,18 @@ NSString *EDSMTPPassword = @"password";
     id						 headerFieldBody;
 
     recipients = [NSMutableArray array];
-    if((newRecipients = [userHeaders objectForKey:@"To"]) != nil)
+    if((newRecipients = [userHeaders objectForKey:EDMailTo]) != nil)
         [recipients addObjectsFromArray:[newRecipients addressListFromEMailString]];
-    if((newRecipients = [userHeaders objectForKey:@"CC"]) != nil)
+    if((newRecipients = [userHeaders objectForKey:EDMailCC]) != nil)
         [recipients addObjectsFromArray:[newRecipients addressListFromEMailString]];
-    if((newRecipients = [userHeaders objectForKey:@"BCC"]) != nil)
+    if((newRecipients = [userHeaders objectForKey:EDMailBCC]) != nil)
         [recipients addObjectsFromArray:[newRecipients addressListFromEMailString]];
     if([recipients count] == 0)
         [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: No recipients in header list.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
     
-    if((sender = [userHeaders objectForKey:@"Sender"]) == nil)
+    if((sender = [userHeaders objectForKey:EDMailSender]) == nil)
         {
-        authors = [[userHeaders objectForKey:@"From"] addressListFromEMailString];
+        authors = [[userHeaders objectForKey:EDMailFrom] addressListFromEMailString];
         if([authors count] == 0)
             [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: No sender or from field in header list.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
         if([authors count] > 1)
@@ -414,7 +420,7 @@ NSString *EDSMTPPassword = @"password";
     while((headerFieldName = [headerFieldNameEnum nextObject]) != nil)
         {
         headerFieldBody = [userHeaders objectForKey:headerFieldName];
-        if([headerFieldName caseInsensitiveCompare:@"BCC"] != NSOrderedSame)
+        if([headerFieldName caseInsensitiveCompare:EDMailBCC] != NSOrderedSame)
             {
             if([headerFieldBody isKindOfClass:[NSDate class]])
                 headerFieldBody = [[EDDateFieldCoder encoderWithDate:headerFieldBody] fieldBody];
@@ -447,20 +453,20 @@ NSString *EDSMTPPassword = @"password";
     NSArray					*authors;
     NSString				*newRecipients, *sender;
     NSData					*transferData;
-
+	
     recipients = [NSMutableArray array];
-    if((newRecipients = [message bodyForHeaderField:@"To"]) != nil)
+    if((newRecipients = [message bodyForHeaderField:EDMailTo]) != nil)
         [recipients addObjectsFromArray:[newRecipients addressListFromEMailString]];
-    if((newRecipients = [message bodyForHeaderField:@"CC"]) != nil)
+    if((newRecipients = [message bodyForHeaderField:EDMailCC]) != nil)
         [recipients addObjectsFromArray:[newRecipients addressListFromEMailString]];
-    if((newRecipients = [message bodyForHeaderField:@"BCC"]) != nil)
+    if((newRecipients = [message bodyForHeaderField:EDMailBCC]) != nil)
         [recipients addObjectsFromArray:[newRecipients addressListFromEMailString]];
     if([recipients count] == 0)
         [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: No recipients in message headers.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
 
-    if((sender = [message bodyForHeaderField:@"Sender"]) == nil)
+    if((sender = [message bodyForHeaderField:EDMailSender]) == nil)
         {
-        authors = [[message bodyForHeaderField:@"From"] addressListFromEMailString];
+        authors = [[message bodyForHeaderField:EDMailFrom] addressListFromEMailString];
         if([authors count] == 0)
             [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: No sender or from field in message headers.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
         if([authors count] > 1)
