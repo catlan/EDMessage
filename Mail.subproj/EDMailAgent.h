@@ -26,6 +26,8 @@ struct _EDMAFlags
 {
     unsigned 	skipExtensionTest : 1;
 	unsigned	usesSecureConnections : 1;
+	unsigned	allowsAnyRootCertificate : 1;
+	unsigned	allowsExpiredCertificates : 1;
 };
 
 
@@ -57,6 +59,12 @@ struct _EDMAFlags
 
 - (void)setUsesSecureConnections:(BOOL)flag;
 - (BOOL)usesSecureConnections;
+
+- (void)setAllowsAnyRootCertificate:(BOOL)allowed;
+- (BOOL)allowsAnyRootCertificate;
+
+- (void)setAllowsExpiredCertificates:(BOOL)allowed;
+- (BOOL)allowsExpiredCertificates;
 
 - (void)setAuthInfo:(NSDictionary *)infoDictionary;
 - (NSDictionary *)authInfo;

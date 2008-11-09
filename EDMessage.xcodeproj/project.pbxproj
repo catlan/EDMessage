@@ -554,7 +554,6 @@
 				8DC2EF520486A6940098B216 /* Resources */,
 				8DC2EF540486A6940098B216 /* Sources */,
 				8DC2EF560486A6940098B216 /* Frameworks */,
-				DE046A790DF86DC400F0B352 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -596,23 +595,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		DE046A790DF86DC400F0B352 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "DOC_DIR=$INSTALL_DIR/EDMessage.framework/Documentation # changed by DFH\n\n# DFH addition\nif [ ! -d $DOC_DIR ]\nthen\n\tmkdir $DOC_DIR\nfi\n\n# remove autodoc code\n\n# PROJECT_DIR added to all commands below - DFH\necho cp $PROJECT_DIR/Documentation/*.html $DOC_DIR\ncp $PROJECT_DIR/Documentation/*.html $DOC_DIR\necho cp $PROJECT_DIR/Documentation/*.webarchive $DOC_DIR\ncp $PROJECT_DIR/Documentation/*.webarchive $DOC_DIR\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		031A06920E9F14EA00DADB91 /* Sources */ = {

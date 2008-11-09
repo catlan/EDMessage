@@ -211,12 +211,41 @@ NSString *EDMailSubject = @"Subject";
     flags.skipExtensionTest = flag;
 }
 
-
 /*" Returns whether the mail agent tries to negotiate SMTP extensions. "*/
 
 - (BOOL)skipsExtensionTest
 {
     return flags.skipExtensionTest;
+}
+
+
+/*" This flag is only relevant for secure connections. If set to YES the mail agent will accept connections even if the counterparty's certificate cannot be verified. This means an important aspect of the security protocol is ignored but it allows working with systems that use self-signed certificates. "*/
+ 
+- (void)setAllowsAnyRootCertificate:(BOOL)allowed
+{
+	flags.allowsAnyRootCertificate = allowed;
+}
+
+/*" Returns whether the mail agent will accept connections with any root certificate. See the setter for details. "*/
+
+- (BOOL)allowsAnyRootCertificate
+{
+	return flags.allowsAnyRootCertificate;
+}
+
+
+/*" This flag is only relevant for secure connections. If set to YES the mail agent will accept connections even if the counterparty's certificate is expired. This means an important aspect of the security protocol is ignored. "*/
+
+- (void)setAllowsExpiredCertificates:(BOOL)allowed
+{
+	flags.allowsExpiredCertificates = allowed;
+}
+
+/*" Returns whether the mail agent will accept expired certificates. See setter for details. "*/
+
+- (BOOL)allowsExpiredCertificates
+{
+	return flags.allowsExpiredCertificates;
 }
 
 
@@ -253,9 +282,8 @@ NSString *EDMailSubject = @"Subject";
 	if([self usesSecureConnections])
 	   {
 	   stream = secureStream = [EDSecureSMTPStream streamConnectedToHost:relayHost port:port];
-#warning * make parametrisable
-	   [[secureStream socket] setAllowsAnyRootCertificate:YES];
-	   [[secureStream socket] setAllowsExpiredCertificates:YES];
+	   [[secureStream socket] setAllowsAnyRootCertificate:flags.allowsAnyRootCertificate];
+	   [[secureStream socket] setAllowsExpiredCertificates:flags.allowsExpiredCertificates];
 	   }
 	else
 	   {
