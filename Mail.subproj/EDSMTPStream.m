@@ -261,7 +261,7 @@ NSString *EDSMTPErrorDomain = @"EDSMTPErrorDomain";
 
 - (void)_shutdown
 {
-    if(state < MustReadServerGreeting)
+    if(state == MustReadServerGreeting)
         [pendingResponses addObject:@"220"];
     else if(state == ServerReadingBody)
         [self finishBody];
