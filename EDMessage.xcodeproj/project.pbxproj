@@ -9,16 +9,14 @@
 /* Begin PBXBuildFile section */
 		031A069C0E9F154A00DADB91 /* mailsender.m in Sources */ = {isa = PBXBuildFile; fileRef = 031A069B0E9F154A00DADB91 /* mailsender.m */; };
 		031A06B40E9F168A00DADB91 /* EDMessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* EDMessage.framework */; };
-		031A06B50E9F169000DADB91 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0469DA0DF8450C00F0B352 /* EDCommon.framework */; };
 		031A06B60E9F169100DADB91 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		03AAC6390EC99B080083BD57 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03AAC6320EC9996D0083BD57 /* EDCommon.framework */; };
 		03C571FC0E9D1DD50009F0F9 /* EDSecureSMTPStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 03C571FA0E9D1DD50009F0F9 /* EDSecureSMTPStream.h */; };
 		03C571FD0E9D1DD50009F0F9 /* EDSecureSMTPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C571FB0E9D1DD50009F0F9 /* EDSecureSMTPStream.m */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
-		DE0469DB0DF8450C00F0B352 /* EDCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0469DA0DF8450C00F0B352 /* EDCommon.framework */; };
 		DE0C15960E61BA1F00C1BC3F /* parsedate.y in Sources */ = {isa = PBXBuildFile; fileRef = DE0C15950E61BA1F00C1BC3F /* parsedate.y */; };
 		DE221E890DD3E05B00DBD46E /* EDMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E850DD3E05B00DBD46E /* EDMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE221E8A0DD3E05B00DBD46E /* EDMessageDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E860DD3E05B00DBD46E /* EDMessageDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE221E8B0DD3E05B00DBD46E /* framework.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221E870DD3E05B00DBD46E /* framework.m */; };
 		DE221E8C0DD3E05B00DBD46E /* utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E880DD3E05B00DBD46E /* utilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE221E9B0DD3E08400DBD46E /* EDCompositeContentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E8F0DD3E08400DBD46E /* EDCompositeContentCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE221E9C0DD3E08400DBD46E /* EDCompositeContentCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221E900DD3E08400DBD46E /* EDCompositeContentCoder.m */; };
@@ -68,7 +66,6 @@
 		DE221EFA0DD3E13B00DBD46E /* EDMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EF20DD3E13B00DBD46E /* EDMConstants.m */; };
 		DE221EFB0DD3E13B00DBD46E /* EDMessagePart.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EF30DD3E13B00DBD46E /* EDMessagePart.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE221EFC0DD3E13B00DBD46E /* EDMessagePart.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EF40DD3E13B00DBD46E /* EDMessagePart.m */; };
-		DE221F6C0DD3E82A00DBD46E /* Version in Resources */ = {isa = PBXBuildFile; fileRef = DE221F6B0DD3E82A00DBD46E /* Version */; };
 		DEB8D1AD0DD52DB4007E88A5 /* OPSSLSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = DEB8D1AB0DD52DB4007E88A5 /* OPSSLSocket.h */; };
 		DEB8D1AE0DD52DB4007E88A5 /* OPSSLSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB8D1AC0DD52DB4007E88A5 /* OPSSLSocket.m */; };
 		DEB8D1B20DD52E52007E88A5 /* NSString+OPOSErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = DEB8D1B00DD52E52007E88A5 /* NSString+OPOSErrors.h */; };
@@ -77,23 +74,38 @@
 		DEDA09100DDA2A6400A8B498 /* EDMessageTOC.html in Resources */ = {isa = PBXBuildFile; fileRef = DEDA090E0DDA2A6300A8B498 /* EDMessageTOC.html */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		03AAC6310EC9996D0083BD57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03AAC6280EC9996D0083BD57 /* EDCommon.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AD39F33905443F3E0086D411 /* EDCommon.framework */;
+			remoteInfo = EDCommon;
+		};
+		03AAC6430EC99F530083BD57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03AAC6280EC9996D0083BD57 /* EDCommon.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = AD39F29B05443F3D0086D411 /* EDCommon */;
+			remoteInfo = EDCommon;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		031A06950E9F14EB00DADB91 /* MailSender */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MailSender; sourceTree = BUILT_PRODUCTS_DIR; };
 		031A069B0E9F154A00DADB91 /* mailsender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mailsender.m; path = Test/mailsender.m; sourceTree = "<group>"; };
+		03AAC6280EC9996D0083BD57 /* EDCommon.xcodeproj */ = {isa = PBXFileReference; explicitFileType = "wrapper.pb-project"; name = EDCommon.xcodeproj; path = Dependencies/edcommon/EDCommon.xcodeproj; sourceTree = SOURCE_ROOT; };
 		03C571FA0E9D1DD50009F0F9 /* EDSecureSMTPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDSecureSMTPStream.h; sourceTree = "<group>"; };
 		03C571FB0E9D1DD50009F0F9 /* EDSecureSMTPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSecureSMTPStream.m; sourceTree = "<group>"; };
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		32DBCF5E0370ADEE00C91783 /* EDMessage_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDMessage_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* EDMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EDMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		DE0469DA0DF8450C00F0B352 /* EDCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EDCommon.framework; path = /Library/Frameworks/EDCommon.framework; sourceTree = "<absolute>"; };
 		DE0C15950E61BA1F00C1BC3F /* parsedate.y */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.yacc; name = parsedate.y; path = HeaderFieldCoder.subproj/parsedate.y; sourceTree = "<group>"; };
 		DE221E850DD3E05B00DBD46E /* EDMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDMessage.h; sourceTree = "<group>"; };
 		DE221E860DD3E05B00DBD46E /* EDMessageDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDMessageDefines.h; sourceTree = "<group>"; };
-		DE221E870DD3E05B00DBD46E /* framework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = framework.m; sourceTree = "<group>"; };
 		DE221E880DD3E05B00DBD46E /* utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utilities.h; sourceTree = "<group>"; };
 		DE221E8F0DD3E08400DBD46E /* EDCompositeContentCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDCompositeContentCoder.h; path = ContentCoder.subproj/EDCompositeContentCoder.h; sourceTree = "<group>"; };
 		DE221E900DD3E08400DBD46E /* EDCompositeContentCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDCompositeContentCoder.m; path = ContentCoder.subproj/EDCompositeContentCoder.m; sourceTree = "<group>"; };
@@ -143,7 +155,6 @@
 		DE221EF20DD3E13B00DBD46E /* EDMConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDMConstants.m; path = Message.subproj/EDMConstants.m; sourceTree = "<group>"; };
 		DE221EF30DD3E13B00DBD46E /* EDMessagePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDMessagePart.h; path = Message.subproj/EDMessagePart.h; sourceTree = "<group>"; };
 		DE221EF40DD3E13B00DBD46E /* EDMessagePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDMessagePart.m; path = Message.subproj/EDMessagePart.m; sourceTree = "<group>"; };
-		DE221F6B0DD3E82A00DBD46E /* Version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Version; sourceTree = "<group>"; };
 		DEB8D1AB0DD52DB4007E88A5 /* OPSSLSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPSSLSocket.h; path = OP.subproj/OPSSLSocket.h; sourceTree = "<group>"; };
 		DEB8D1AC0DD52DB4007E88A5 /* OPSSLSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPSSLSocket.m; path = OP.subproj/OPSSLSocket.m; sourceTree = "<group>"; };
 		DEB8D1B00DD52E52007E88A5 /* NSString+OPOSErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+OPOSErrors.h"; path = "OP.subproj/NSString+OPOSErrors.h"; sourceTree = "<group>"; };
@@ -158,7 +169,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				031A06B40E9F168A00DADB91 /* EDMessage.framework in Frameworks */,
-				031A06B50E9F169000DADB91 /* EDCommon.framework in Frameworks */,
 				031A06B60E9F169100DADB91 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,7 +179,7 @@
 			files = (
 				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
 				DEB8D3380DD8A43E007E88A5 /* Security.framework in Frameworks */,
-				DE0469DB0DF8450C00F0B352 /* EDCommon.framework in Frameworks */,
+				03AAC6390EC99B080083BD57 /* EDCommon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +203,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		03AAC6240EC9993D0083BD57 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				03AAC6280EC9996D0083BD57 /* EDCommon.xcodeproj */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		03AAC62E0EC9996D0083BD57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03AAC6320EC9996D0083BD57 /* EDCommon.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0867D691FE84028FC02AAC07 /* EDMessage */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,10 +228,10 @@
 				DE158C1B0E1993EC00447697 /* HeaderFieldCoder */,
 				DE221E8E0DD3E06300DBD46E /* ContentCoder */,
 				DE221EE20DD3E0EC00DBD46E /* Mail */,
-				32C88DFF0371C24200C91783 /* Other Sources */,
 				DEB8D1A50DD52C02007E88A5 /* OPMessage Classes */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				031A068F0E9F14CD00DADB91 /* Test */,
+				03AAC6240EC9993D0083BD57 /* Dependencies */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				DEDA09150DDA2A8100A8B498 /* Documentation */,
@@ -233,7 +259,6 @@
 		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DE0469DA0DF8450C00F0B352 /* EDCommon.framework */,
 				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -248,16 +273,6 @@
 				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		32C88DFF0371C24200C91783 /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				DE221F6B0DD3E82A00DBD46E /* Version */,
-				DE221E870DD3E05B00DBD46E /* framework.m */,
-				32DBCF5E0370ADEE00C91783 /* EDMessage_Prefix.pch */,
-			);
-			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		DE158C0B0E198E7F00447697 /* Global Headers */ = {
@@ -558,6 +573,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				03AAC6440EC99F530083BD57 /* PBXTargetDependency */,
 			);
 			name = EDMessage;
 			productInstallPath = "$(HOME)/Library/Frameworks";
@@ -576,6 +592,12 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* EDMessage */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 03AAC62E0EC9996D0083BD57 /* Products */;
+					ProjectRef = 03AAC6280EC9996D0083BD57 /* EDCommon.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8DC2EF4F0486A6940098B216 /* EDMessage */,
@@ -584,12 +606,21 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		03AAC6320EC9996D0083BD57 /* EDCommon.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = EDCommon.framework;
+			remoteRef = 03AAC6310EC9996D0083BD57 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		8DC2EF520486A6940098B216 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE221F6C0DD3E82A00DBD46E /* Version in Resources */,
 				DEDA09100DDA2A6400A8B498 /* EDMessageTOC.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -609,7 +640,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE221E8B0DD3E05B00DBD46E /* framework.m in Sources */,
 				DE221E9C0DD3E08400DBD46E /* EDCompositeContentCoder.m in Sources */,
 				DE221E9E0DD3E08400DBD46E /* EDContentCoder.m in Sources */,
 				DE221EA00DD3E08400DBD46E /* EDHTMLTextContentCoder.m in Sources */,
@@ -642,6 +672,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		03AAC6440EC99F530083BD57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EDCommon;
+			targetProxy = 03AAC6430EC99F530083BD57 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		031A06970E9F14EB00DADB91 /* Release */ = {
@@ -710,6 +748,10 @@
 				DSTROOT = /;
 				DYLIB_COMPATIBILITY_VERSION = 17;
 				DYLIB_CURRENT_VERSION = 17;
+				FRAMEWORK_SEARCH_PATHS = (
+					Dependencies/edcommon/build/Release,
+					"(embedded)",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -756,11 +798,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
-				);
+				FRAMEWORK_SEARCH_PATHS = Dependencies/edcommon/build/Debug;
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -783,7 +821,7 @@
 				DSTROOT = /;
 				DYLIB_COMPATIBILITY_VERSION = 17;
 				DYLIB_CURRENT_VERSION = 17;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = Dependencies/edcommon/build/Release;
 				FRAMEWORK_VERSION = A;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
