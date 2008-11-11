@@ -874,7 +874,7 @@
 				031A06980E9F14EB00DADB91 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release (embedded)";
 		};
 		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "EDMessage" */ = {
 			isa = XCConfigurationList;
@@ -884,7 +884,7 @@
 				1DEB91AE08733DA50010E9CD /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release (embedded)";
 		};
 		1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "EDMessage" */ = {
 			isa = XCConfigurationList;
@@ -894,7 +894,7 @@
 				1DEB91B208733DA50010E9CD /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Release (embedded)";
 		};
 /* End XCConfigurationList section */
 	};
