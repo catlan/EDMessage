@@ -749,6 +749,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 17;
 				DYLIB_CURRENT_VERSION = 17;
 				FRAMEWORK_SEARCH_PATHS = (
+					Dependencies/edcommon/build/UninstalledProducts,
 					Dependencies/edcommon/build/Release,
 					"(embedded)",
 				);
