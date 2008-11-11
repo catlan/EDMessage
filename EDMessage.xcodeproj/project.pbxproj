@@ -79,14 +79,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 03AAC6280EC9996D0083BD57 /* EDCommon.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = AD39F33905443F3E0086D411 /* EDCommon.framework */;
+			remoteGlobalIDString = AD39F33905443F3E0086D411;
 			remoteInfo = EDCommon;
 		};
 		03AAC6430EC99F530083BD57 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03AAC6280EC9996D0083BD57 /* EDCommon.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = AD39F29B05443F3D0086D411 /* EDCommon */;
+			remoteGlobalIDString = AD39F29B05443F3D0086D411;
 			remoteInfo = EDCommon;
 		};
 /* End PBXContainerItemProxy section */
@@ -822,7 +822,10 @@
 				DSTROOT = /;
 				DYLIB_COMPATIBILITY_VERSION = 17;
 				DYLIB_CURRENT_VERSION = 17;
-				FRAMEWORK_SEARCH_PATHS = Dependencies/edcommon/build/Release;
+				FRAMEWORK_SEARCH_PATHS = (
+					Dependencies/edcommon/build/UninstalledProducts,
+					Dependencies/edcommon/build/Release,
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
