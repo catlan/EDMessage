@@ -10,6 +10,9 @@
 *.pbxuser
 
 
+*.xcworkspace
+*xcuserdata
+ 
 # Generated files
 VersionX-revision.h
 
