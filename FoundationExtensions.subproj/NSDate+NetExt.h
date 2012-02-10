@@ -18,7 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-@interface NSCalendarDate(EDNetExt)
+@interface NSDate(EDNetExt)
 
 + (id)dateWithMessageTimeSpecification:(NSString *)timespec;
 

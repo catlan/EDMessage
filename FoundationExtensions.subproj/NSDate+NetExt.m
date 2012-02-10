@@ -20,11 +20,11 @@
 
 #import <Foundation/Foundation.h>
 #import "utilities.h"
-#import "NSCalendarDate+NetExt.h"
+#import "NSDate+NetExt.h"
 
 
 //---------------------------------------------------------------------------------------
-    @implementation NSCalendarDate(EDNetExt)
+    @implementation NSDate(EDNetExt)
 //---------------------------------------------------------------------------------------
 
 #import <sys/types.h>
@@ -341,7 +341,16 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
     free(dateString);
 
     // calculate date
-    return [NSCalendarDate dateWithYear:year month:month day:day hour:thh minute:tmm second:tss timeZone:timeZone];
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setYear:year];
+    [dateComponents setMonth:month];
+    [dateComponents setDay:day];
+    [dateComponents setHour:thh];
+    [dateComponents setMinute:tmm];
+    [dateComponents setSecond:tss];
+    [dateComponents setTimeZone:timeZone];
+    
+    return [dateComponents date];
 }
 
 
