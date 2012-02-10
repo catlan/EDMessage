@@ -24,7 +24,7 @@
 
 @class EDHeaderFieldCoder;
 
-@interface EDHeaderBearingObject : EDIRCObject
+@interface EDHeaderBearingObject : NSObject
 {
     NSMutableArray		 *headerFields;
     NSMutableDictionary  *headerDictionary;
