@@ -26,7 +26,9 @@
 #import "EDEntityFieldCoder.h"
 #import "EDDateFieldCoder.h"
 #import "EDIdListFieldCoder.h"
+#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
 #import "EDFaceFieldCoder.h"
+#endif
 #import "EDHeaderBearingObject.h"
 
 
@@ -149,7 +151,7 @@
 }
 
 
-- (void)setDate:(NSCalendarDate *)value
+- (void)setDate:(NSDate *)value
 {
     EDDateFieldCoder *fCoder;
     
@@ -163,7 +165,7 @@
 }
 
 
-- (NSCalendarDate *)date
+- (NSDate *)date
 {
     NSString *fBody;
 
@@ -253,7 +255,7 @@ static NSMutableDictionary *coderClassCache = nil;
     [coderClassCache setObject:[EDDateFieldCoder class] forKey:@"expires"];
     [coderClassCache setObject:[EDIdListFieldCoder class] forKey:@"message-id"];
     [coderClassCache setObject:[EDIdListFieldCoder class] forKey:@"references"];
-#ifndef EDMESSAGE_WOBUILD
+#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
     [coderClassCache setObject:[EDFaceFieldCoder class] forKey:@"x-face"];
 #endif
 }

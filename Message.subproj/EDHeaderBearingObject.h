@@ -29,7 +29,7 @@
     NSMutableArray		 *headerFields;
     NSMutableDictionary  *headerDictionary;
     NSString			 *messageId;
-    NSCalendarDate		 *date;
+    NSDate               *date;
     NSString			 *subject;
     NSString			 *originalSubject;
     NSString			 *author;
@@ -46,8 +46,8 @@
 - (void)setMessageId:(NSString *)value;
 - (NSString *)messageId;
 
-- (void)setDate:(NSCalendarDate *)value;
-- (NSCalendarDate *)date;
+- (void)setDate:(NSDate *)value;
+- (NSDate *)date;
 
 - (void)setSubject:(NSString *)value;
 - (NSString *)subject;
