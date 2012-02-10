@@ -20,7 +20,7 @@
 
 #ifndef EDMESSAGE_WOBUILD
 
-#import <AppKit/AppKit.h>
+//#import <AppKit/AppKit.h>
 #import <EDCommon/EDCommon.h>
 #import "NSString+MessageUtils.h"
 #import "EDMessagePart.h"
@@ -30,7 +30,6 @@
 @interface EDTextContentCoder(PrivateAPI)
 - (NSString *)_stringFromMessagePart:(EDMessagePart *)mpart;
 - (void)_takeTextFromPlainTextMessagePart:(EDMessagePart *)mpart;
-- (void)_takeTextFromEnrichedTextMessagePart:(EDMessagePart *)mpart;
 - (void)_takeTextFromHTMLMessagePart:(EDMessagePart *)mpart;
 @end
 
@@ -73,8 +72,6 @@
         {
         if([[[mpart contentType] secondObject] isEqualToString:@"plain"])
             [self _takeTextFromPlainTextMessagePart:mpart];
-        else if([[[mpart contentType] secondObject] isEqualToString:@"enriched"])
-            [self _takeTextFromEnrichedTextMessagePart:mpart];
         else if([[[mpart contentType] secondObject] isEqualToString:@"html"])
             [self _takeTextFromHTMLMessagePart:mpart];
         }
@@ -122,113 +119,6 @@
     
     if((string = [self _stringFromMessagePart:mpart]) != nil)
         text = [[NSAttributedString allocWithZone:[self zone]] initWithString:string];
-}
-
-
-- (void)_takeTextFromEnrichedTextMessagePart:(EDMessagePart *)mpart
-{
-    static NSCharacterSet 	  *etSpecialSet = nil, *newlineSet;
-    NSScanner				  *scanner;
-    NSMutableAttributedString *output;
-    EDStack					  *markerStack;
-    EDObjectPair			  *marker;
-    NSString			  	  *string, *tag;
-    int					  	  nofillct, paramct, pos1;
-	unsigned int			  nlSeqLength;
-
-    if(etSpecialSet == nil)
-        {
-        etSpecialSet = [[NSCharacterSet characterSetWithCharactersInString:@"\n\r<"] retain];
-        newlineSet = [[NSCharacterSet characterSetWithCharactersInString:@"\n\r"] retain];
-        }
-
-    if((string = [self _stringFromMessagePart:mpart]) == nil)
-        return;
-    scanner = [NSScanner scannerWithString:string];
-    [scanner setCharactersToBeSkipped:nil];
-    markerStack = [EDStack stack];
-    text = [[NSMutableAttributedString alloc] init];
-    nofillct = paramct = 0;
-
-    while([scanner isAtEnd] == NO)
-        {
-        output = (paramct > 0) ? nil : text;
-        if([scanner scanUpToCharactersFromSet:etSpecialSet intoString:&string])
-            {
-            [output appendString:string];
-            }
-        else if([scanner scanString:@"<" intoString:NULL])
-            {
-            if([scanner scanString:@"<" intoString:NULL])
-                {
-                [output appendString:@"<"];
-                }
-            else
-                {
-                if([scanner scanUpToString:@">" intoString:&string] == NO)
-                    [NSException raise:EDMessageFormatException format:@"Missing `>' in text/enriched body."];
-                [scanner scanString:@">" intoString:NULL];
-                tag = [string lowercaseString];
-                if([tag isEqualToString:@"param"])
-                    {
-                    paramct += 1;
-                    }
-                else if([tag isEqualToString:@"/param"])
-                    {
-                    paramct -= 1;
-                    }
-                else if([tag isEqualToString:@"nofill"])
-                    {
-                    nofillct += 1;
-                    }
-                else if([tag isEqualToString:@"/nofill"])
-                    {
-                    nofillct -= 1;
-                    }
-                else if([tag isEqualToString:@"bold"])
-                    {
-                    marker = [EDObjectPair pairWithObjects:string:[NSNumber numberWithUnsignedInteger:[text length]]];
-                    [markerStack pushObject:marker];
-                    }
-                else if([tag isEqualToString:@"/bold"])
-                    {
-                    marker = [markerStack popObject];
-                    NSAssert([[marker firstObject] isEqualToString:@"bold"], @"unbalanced tags...");
-                    pos1 = [[marker secondObject] intValue];
-                    [text applyFontTraits:NSBoldFontMask range:NSMakeRange(pos1, [text length] - pos1)];
-                    }
-                else if([tag isEqualToString:@"italic"])
-                    {
-                    marker = [EDObjectPair pairWithObjects:string:[NSNumber numberWithUnsignedInteger:[text length]]];
-                    [markerStack pushObject:marker];
-                    }
-                else if([tag isEqualToString:@"/italic"])
-                    {
-                    marker = [markerStack popObject];
-                    NSAssert([[marker firstObject] isEqualToString:@"italic"], @"unbalanced tags...");
-                    pos1 = [[marker secondObject] intValue];
-                    [text applyFontTraits:NSItalicFontMask range:NSMakeRange(pos1, [text length] - pos1)];
-                    }
-#warning * a lot of tags are missing and bug with bold and italic
-                /* If you add more tags please take note that the current attribute handling model is extremely simple and applies the changes when the endmarker is reached, i.e. in reverse order. As bold and italic are not exclusive this works for the moment... Actually, it doesn't work at all because the attributes of the last character are applied to appended strings. Hence, we do need a two-pass approach!  */
-                }
-            }
-        else if([scanner scanCharactersFromSet:newlineSet intoString:&string])
-            {
-            if(nofillct > 0)
-                {
-                [output appendString:string];
-                }
-            else
-                {
-                nlSeqLength = [string hasPrefix:@"\r\n"] ? 2 : 1;
-                if([string length] == nlSeqLength)
-                    [output appendString:@" "];
-                else
-                    [output appendString:[string substringFromIndex:nlSeqLength]];
-                }
-            }
-        }
 }
 
 
