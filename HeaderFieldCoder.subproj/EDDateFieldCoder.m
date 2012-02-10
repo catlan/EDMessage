@@ -20,7 +20,7 @@
 
 #import <Foundation/Foundation.h>
 #import <EDCommon/EDCommon.h>
-#import "NSCalendarDate+NetExt.h"
+#import "NSDate+NetExt.h"
 #import "EDMConstants.h"
 #import "EDDateFieldCoder.h"
 
@@ -40,7 +40,17 @@
 
 + (NSString *)dateFormat
 {
-    return @"%a, %d %b %Y %H:%M:%S %z";
+    // map old format to new
+    // return @"%a, %d %b %Y %H:%M:%S %z";
+    // %a   ->  EEE     - Abbreviated weekday name
+    // %d   ->  dd      - Day of the month as a decimal number (01-31)
+    // %b   ->  MMM     - Abbreviated month name
+    // %Y   ->  yyyy    - Year with century (such as 1990)
+    // %H   ->  HH      - Hour based on a 24-hour clock as a decimal number (00-23)
+    // %M   ->  mm      - Minute as a decimal number (00-59)
+    // %S   ->  ss      - Second as a decimal number (00-59)
+    // %z   ->  ZZ      - Time zone offset in hours and minutes from GMT (HHMM)
+    return @"EEE',' dd MMM yyyy HH:mm:ss ZZ";
 }
 
 
@@ -48,7 +58,7 @@
 //	FACTORY
 //---------------------------------------------------------------------------------------
 
-+ (id)encoderWithDate:(NSCalendarDate *)value
++ (id)encoderWithDate:(NSDate *)value
 {
     return [[[self alloc] initWithDate:value] autorelease];
 }
@@ -66,7 +76,7 @@
 }
 
 
-- (id)initWithDate:(NSCalendarDate *)value
+- (id)initWithDate:(NSDate *)value
 {
     [self init];
     date = [value retain];
@@ -85,7 +95,7 @@
 //	ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
 
-- (NSCalendarDate *)date
+- (NSDate *)date
 {
     return date;
 }
@@ -93,19 +103,34 @@
 
 - (NSString *)stringValue
 {
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
     NSString *format = [[NSUserDefaults standardUserDefaults] stringForKey:@"NSDateFormatString"];
-    return [date descriptionWithCalendarFormat:format];
+    [formatter setDateFormat:format];
+    return [formatter stringFromDate:date];
 }
 
 
 - (NSString *)fieldBody
 {
-    NSCalendarDate	*canonicalDate;
+    NSDate	*canonicalDate;
 
     canonicalDate = [[date copy] autorelease];
-    [canonicalDate setTimeZone:[self _canonicalTimeZone]];
+    //[canonicalDate setTimeZone:[self _canonicalTimeZone]];
+    
+    /*
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]; 
+    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSTimeZoneCalendarUnit;
+    NSDateComponents *dateComponents = [gregorian components:unitFlags fromDate:canonicalDate];
+    [dateComponents setTimeZone:[self _canonicalTimeZone]];
+    */
+    
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [formatter setDateFormat:[[self class] dateFormat]];
+    [formatter setTimeZone:[self _canonicalTimeZone]];
 
-    return [canonicalDate descriptionWithCalendarFormat:[[self class] dateFormat]];
+    return [formatter stringFromDate:canonicalDate];
 }
 
 
@@ -120,7 +145,7 @@
 - (void)_takeDateFromString:(NSString *)string
 {
     string = [string stringByRemovingSurroundingWhitespace];
-    date = [[NSCalendarDate dateWithMessageTimeSpecification:string] retain];
+    date = [[NSDate dateWithMessageTimeSpecification:string] retain];
     if(date == nil)
         EDLog1(EDLogCoder, @"Invalid date spec; found \"%@\"\n", string);
 }

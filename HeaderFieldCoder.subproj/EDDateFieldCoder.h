@@ -22,13 +22,13 @@
 
 @interface EDDateFieldCoder : EDHeaderFieldCoder
 {
-    NSCalendarDate	*date;
+    NSDate	*date;
 }
 
 + (NSString *)dateFormat;
 
-+ (id)encoderWithDate:(NSCalendarDate *)value;
-- (id)initWithDate:(NSCalendarDate *)value;
-- (NSCalendarDate *)date;
++ (id)encoderWithDate:(NSDate *)value;
+- (id)initWithDate:(NSDate *)value;
+- (NSDate *)date;
 
 @end
