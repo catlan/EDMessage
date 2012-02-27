@@ -53,7 +53,3 @@
 #import "EDMultimediaContentCoder.h"
 #import "EDTextContentCoder.h"
 
-#if YOU_GONNA_BE_DELETED
-#import "EDSMTPStream.h"
-#import "EDMailAgent.h"
-#endif
