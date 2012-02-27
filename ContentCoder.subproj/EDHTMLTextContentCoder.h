@@ -32,4 +32,4 @@
 
 @end
 
-#endif	__EDHTMLTextContentCoder_h_INCLUDE
+#endif	//__EDHTMLTextContentCoder_h_INCLUDE
