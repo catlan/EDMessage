@@ -298,7 +298,7 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
         {
         NSString *tz;
 
-        tz = [[NSString alloc] initWithCString:timezoneString];
+        tz = [[NSString alloc] initWithCString:timezoneString encoding:NSUTF8StringEncoding];
         timeZone = [NSTimeZone timeZoneWithAbbreviation:tz];
 
         [tz release];
