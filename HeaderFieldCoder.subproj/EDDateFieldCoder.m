@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
+#import "EDCommon.h"
 #import "NSDate+NetExt.h"
 #import "EDMConstants.h"
 #import "EDDateFieldCoder.h"

@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
+#import "EDCommon.h"
 #import "EDHeaderFieldCoder.h"
 
 

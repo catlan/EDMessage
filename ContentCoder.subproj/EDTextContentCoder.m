@@ -21,7 +21,7 @@
 #ifndef EDMESSAGE_WOBUILD
 
 //#import <AppKit/AppKit.h>
-#import <EDCommon/EDCommon.h>
+#import "EDCommon.h"
 #import "NSString+MessageUtils.h"
 #import "EDMessagePart.h"
 #import "EDMConstants.h"

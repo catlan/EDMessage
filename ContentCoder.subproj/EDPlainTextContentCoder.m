@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <EDCommon/EDCommon.h>
+#import "EDCommon.h"
 #import "EDMConstants.h"
 #import "NSString+PlainTextFlowedExtensions.h"
 #import "NSData+MIME.h"

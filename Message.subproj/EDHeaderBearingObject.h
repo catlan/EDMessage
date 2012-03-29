@@ -20,7 +20,7 @@
 
 /* This class would be a real candidate for multiple inheritance. Fortunately, the classes that want to adopt its behaviour so far do not need to inherit from some other base class... */
 
-#import <EDCommon/EDCommon.h>
+#import "EDCommon.h"
 
 @class EDHeaderFieldCoder;
 
