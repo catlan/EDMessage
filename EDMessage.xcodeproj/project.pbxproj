@@ -847,7 +847,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /;
-				FRAMEWORK_SEARCH_PATHS = Dependencies/edcommon/build/Debug;
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -869,10 +868,6 @@
 				DSTROOT = /;
 				DYLIB_COMPATIBILITY_VERSION = 17;
 				DYLIB_CURRENT_VERSION = 17;
-				FRAMEWORK_SEARCH_PATHS = (
-					Dependencies/edcommon/build/UninstalledProducts,
-					Dependencies/edcommon/build/Release,
-				);
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = EDMessage_Prefix.pch;
