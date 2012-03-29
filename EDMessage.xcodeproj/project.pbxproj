@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		031A069C0E9F154A00DADB91 /* mailsender.m in Sources */ = {isa = PBXBuildFile; fileRef = 031A069B0E9F154A00DADB91 /* mailsender.m */; };
-		031A06B40E9F168A00DADB91 /* EDMessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* EDMessage.framework */; };
-		031A06B60E9F169100DADB91 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 		D15CC88E14E54DEC000047C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15CC88D14E54DEC000047C3 /* Foundation.framework */; };
 		D15CC89A14E54E70000047C3 /* NSCharacterSet+MIME.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EAE0DD3E0AE00DBD46E /* NSCharacterSet+MIME.m */; };
@@ -165,8 +162,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		031A06950E9F14EB00DADB91 /* MailSender */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MailSender; sourceTree = BUILT_PRODUCTS_DIR; };
-		031A069B0E9F154A00DADB91 /* mailsender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = mailsender.m; path = Test/mailsender.m; sourceTree = "<group>"; };
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -256,15 +251,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		031A06930E9F14EA00DADB91 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				031A06B40E9F168A00DADB91 /* EDMessage.framework in Frameworks */,
-				031A06B60E9F169100DADB91 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8DC2EF560486A6940098B216 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,19 +271,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		031A068F0E9F14CD00DADB91 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				031A069B0E9F154A00DADB91 /* mailsender.m */,
-			);
-			name = Test;
-			sourceTree = "<group>";
-		};
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				8DC2EF5B0486A6940098B216 /* EDMessage.framework */,
-				031A06950E9F14EB00DADB91 /* MailSender */,
 				D15CC88B14E54DEC000047C3 /* libEDMessageStatic.a */,
 			);
 			name = Products;
@@ -321,7 +298,6 @@
 				DE158C1B0E1993EC00447697 /* HeaderFieldCoder */,
 				DE221E8E0DD3E06300DBD46E /* ContentCoder */,
 				089C1665FE841158C02AAC07 /* Resources */,
-				031A068F0E9F14CD00DADB91 /* Test */,
 				03AAC6240EC9993D0083BD57 /* Dependencies */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				D15CC88C14E54DEC000047C3 /* Frameworks */,
@@ -708,22 +684,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		031A06940E9F14EA00DADB91 /* MailSender */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 031A06990E9F151200DADB91 /* Build configuration list for PBXNativeTarget "MailSender" */;
-			buildPhases = (
-				031A06920E9F14EA00DADB91 /* Sources */,
-				031A06930E9F14EA00DADB91 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MailSender;
-			productName = MailSender;
-			productReference = 031A06950E9F14EB00DADB91 /* MailSender */;
-			productType = "com.apple.product-type.tool";
-		};
 		8DC2EF4F0486A6940098B216 /* EDMessage */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "EDMessage" */;
@@ -781,7 +741,6 @@
 			projectRoot = "";
 			targets = (
 				8DC2EF4F0486A6940098B216 /* EDMessage */,
-				031A06940E9F14EA00DADB91 /* MailSender */,
 				D15CC88A14E54DEC000047C3 /* EDMessageStatic */,
 			);
 		};
@@ -800,14 +759,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		031A06920E9F14EA00DADB91 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				031A069C0E9F154A00DADB91 /* mailsender.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8DC2EF540486A6940098B216 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -890,49 +841,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		031A06970E9F14EB00DADB91 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = MailSender;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		031A06980E9F14EB00DADB91 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = /usr/local/bin;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = MailSender;
-				ZERO_LINK = YES;
-			};
-			name = Debug;
-		};
 		1DEB91AE08733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1059,15 +967,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		031A06990E9F151200DADB91 /* Build configuration list for PBXNativeTarget "MailSender" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				031A06970E9F14EB00DADB91 /* Release */,
-				031A06980E9F14EB00DADB91 /* Debug */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "EDMessage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
