@@ -331,9 +331,60 @@ static NSMutableDictionary *teTable = nil;
 
     if(teTable == nil)
         {
-        path = [[NSBundle bundleForClass:NSClassFromString(@"EDCommonFramework")] pathForResource:@"MIME" ofType:@"plist"];
-        teTable = [[[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL] propertyList] retain];
-        NSAssert([teTable isKindOfClass:[NSDictionary class]], @"Problem with MIME.plist");
+        teTable = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                       // Application types
+                       @"application/postscript", @"ps",
+                       
+                       // Message types
+                       @"message/rfc822", @"txt", 
+                       
+                       // Image types
+                       @"image/gif", @"gif", 
+                       @"image/jpeg", @"jpg", 
+                       @"image/jpeg", @"jpe", 
+                       @"image/ief", @"ief", 
+                       @"image/png", @"png", 
+                       @"image/tiff", @"tif", 
+                       @"image/tiff", @"tiff", 
+                       @"image/jpeg", @"jpeg", 
+                       
+                       // Audio types
+                       @"audio/basic", @"au", 
+                       @"audio/x-realaudio", @"ra", 
+                       @"audio/basic", @"snd", 
+                       @"audio/midi", @"mid", 
+                       @"audio/midi", @"kar", 
+                       @"audio/mpeg", @"mp2", 
+                       @"audio/x-aiff", @"aif", 
+                       @"audio/x-pn-realaudio", @"ram", 
+                       @"audio/x-pn-realaudio-plugin", @"rpm", 
+                       @"audio/x-wav", @"wav", 
+                       @"audio/midi", @"midi", 
+                       @"audio/mpeg", @"mpga", 
+                       @"audio/x-aiff", @"aiff", 
+                       @"audio/x-aiff", @"aifc", 
+                       
+                       // Video types
+                       @"video/quicktime", @"qt", 
+                       @"video/x-msvideo", @"avi", 
+                       @"video/mpeg", @"mpg", 
+                       @"video/mpe", @"mpe", 
+                       @"video/quicktime", @"mov", 
+                       @"video/mpeg", @"mpeg", 
+                       @"video/x-sgi-movie", @"movie", 
+                       
+                       // Text types
+                       @"text/html", @"html", 
+                       @"text/html", @"htm", 
+                       @"text/plain", @"txt", 
+                       @"text/richtext", @"rtx", 
+                       @"text/x-sgml", @"sgm", 
+                       @"text/x-sgml", @"sgml", 
+                       
+                       // Client-side components related types
+                       @"application/java-archive", @"jar", 
+                       @"application/applet", @"class", 
+                       nil];
         }
     return teTable;
 }
