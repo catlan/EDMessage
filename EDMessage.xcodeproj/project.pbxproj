@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		D15CC527152C5975008E8338 /* useful.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA50561524E0EA00300F15 /* useful.m */; };
 		D15CC88E14E54DEC000047C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D15CC88D14E54DEC000047C3 /* Foundation.framework */; };
 		D15CC89A14E54E70000047C3 /* NSCharacterSet+MIME.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EAE0DD3E0AE00DBD46E /* NSCharacterSet+MIME.m */; };
 		D15CC89B14E54E70000047C3 /* NSData+MIME.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EB00DD3E0AE00DBD46E /* NSData+MIME.m */; };
@@ -57,45 +58,45 @@
 		D15CC95514E58056000047C3 /* parsedate.y in Sources */ = {isa = PBXBuildFile; fileRef = DE0C15950E61BA1F00C1BC3F /* parsedate.y */; };
 		D1AA50571524E0EA00300F15 /* useful.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA50561524E0EA00300F15 /* useful.m */; };
 		D1B0B2B21524CEDE00791DAD /* EDCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2AE1524CEDE00791DAD /* EDCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B2B31524CEDE00791DAD /* EDCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2AE1524CEDE00791DAD /* EDCommon.h */; };
+		D1B0B2B31524CEDE00791DAD /* EDCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2AE1524CEDE00791DAD /* EDCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B2B41524CEDE00791DAD /* EDCommonDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2AF1524CEDE00791DAD /* EDCommonDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B2B51524CEDE00791DAD /* EDCommonDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2AF1524CEDE00791DAD /* EDCommonDefines.h */; };
+		D1B0B2B51524CEDE00791DAD /* EDCommonDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2AF1524CEDE00791DAD /* EDCommonDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B2B61524CEDE00791DAD /* EDObjcRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2B01524CEDE00791DAD /* EDObjcRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B2B71524CEDE00791DAD /* EDObjcRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2B01524CEDE00791DAD /* EDObjcRuntime.h */; };
+		D1B0B2B71524CEDE00791DAD /* EDObjcRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2B01524CEDE00791DAD /* EDObjcRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B2B81524CEDE00791DAD /* osdep.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2B11524CEDE00791DAD /* osdep.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B2B91524CEDE00791DAD /* osdep.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2B11524CEDE00791DAD /* osdep.h */; };
+		D1B0B2B91524CEDE00791DAD /* osdep.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2B11524CEDE00791DAD /* osdep.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B2E51524CF5B00791DAD /* MIME.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1B0B2E41524CF5B00791DAD /* MIME.plist */; };
 		D1B0B2F01524CFB500791DAD /* EDLightWeightLock.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2E71524CFB500791DAD /* EDLightWeightLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B2F11524CFB500791DAD /* EDLightWeightLock.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2E71524CFB500791DAD /* EDLightWeightLock.h */; };
+		D1B0B2F11524CFB500791DAD /* EDLightWeightLock.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2E71524CFB500791DAD /* EDLightWeightLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B2F31524CFB500791DAD /* EDMutableObjectPair.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2E91524CFB500791DAD /* EDMutableObjectPair.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B2F41524CFB500791DAD /* EDMutableObjectPair.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2E91524CFB500791DAD /* EDMutableObjectPair.h */; };
+		D1B0B2F41524CFB500791DAD /* EDMutableObjectPair.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2E91524CFB500791DAD /* EDMutableObjectPair.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B2F51524CFB500791DAD /* EDMutableObjectPair.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EA1524CFB500791DAD /* EDMutableObjectPair.m */; };
 		D1B0B2F61524CFB500791DAD /* EDMutableObjectPair.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EA1524CFB500791DAD /* EDMutableObjectPair.m */; };
 		D1B0B2F71524CFB500791DAD /* EDObjectPair.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2EB1524CFB500791DAD /* EDObjectPair.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B2F81524CFB500791DAD /* EDObjectPair.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2EB1524CFB500791DAD /* EDObjectPair.h */; };
+		D1B0B2F81524CFB500791DAD /* EDObjectPair.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2EB1524CFB500791DAD /* EDObjectPair.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B2F91524CFB500791DAD /* EDObjectPair.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EC1524CFB500791DAD /* EDObjectPair.m */; };
 		D1B0B2FA1524CFB500791DAD /* EDObjectPair.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EC1524CFB500791DAD /* EDObjectPair.m */; };
 		D1B0B2FB1524CFB500791DAD /* EDStringScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2ED1524CFB500791DAD /* EDStringScanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B2FC1524CFB500791DAD /* EDStringScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2ED1524CFB500791DAD /* EDStringScanner.h */; };
+		D1B0B2FC1524CFB500791DAD /* EDStringScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2ED1524CFB500791DAD /* EDStringScanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B2FD1524CFB500791DAD /* EDStringScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EE1524CFB500791DAD /* EDStringScanner.m */; };
 		D1B0B2FE1524CFB500791DAD /* EDStringScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EE1524CFB500791DAD /* EDStringScanner.m */; };
 		D1B0B3051524D04E00791DAD /* NSAttributedString+AppKitExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3031524D04E00791DAD /* NSAttributedString+AppKitExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B3061524D04E00791DAD /* NSAttributedString+AppKitExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3031524D04E00791DAD /* NSAttributedString+AppKitExtensions.h */; };
+		D1B0B3061524D04E00791DAD /* NSAttributedString+AppKitExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3031524D04E00791DAD /* NSAttributedString+AppKitExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B3071524D04E00791DAD /* NSAttributedString+AppKitExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3041524D04E00791DAD /* NSAttributedString+AppKitExtensions.m */; };
 		D1B0B3221524D2AD00791DAD /* functions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31B1524D2AD00791DAD /* functions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B3231524D2AD00791DAD /* functions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31B1524D2AD00791DAD /* functions.h */; };
+		D1B0B3231524D2AD00791DAD /* functions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31B1524D2AD00791DAD /* functions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B3241524D2AD00791DAD /* NSArray+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31C1524D2AD00791DAD /* NSArray+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B3251524D2AD00791DAD /* NSArray+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31C1524D2AD00791DAD /* NSArray+Extensions.h */; };
+		D1B0B3251524D2AD00791DAD /* NSArray+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31C1524D2AD00791DAD /* NSArray+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B3261524D2AD00791DAD /* NSAttributedString+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31D1524D2AD00791DAD /* NSAttributedString+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B3271524D2AD00791DAD /* NSAttributedString+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31D1524D2AD00791DAD /* NSAttributedString+Extensions.h */; };
+		D1B0B3271524D2AD00791DAD /* NSAttributedString+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31D1524D2AD00791DAD /* NSAttributedString+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B3281524D2AD00791DAD /* NSData+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31E1524D2AD00791DAD /* NSData+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B3291524D2AD00791DAD /* NSData+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31E1524D2AD00791DAD /* NSData+Extensions.h */; };
+		D1B0B3291524D2AD00791DAD /* NSData+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31E1524D2AD00791DAD /* NSData+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B32A1524D2AD00791DAD /* NSObject+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31F1524D2AD00791DAD /* NSObject+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B32B1524D2AD00791DAD /* NSObject+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31F1524D2AD00791DAD /* NSObject+Extensions.h */; };
+		D1B0B32B1524D2AD00791DAD /* NSObject+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31F1524D2AD00791DAD /* NSObject+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B32C1524D2AD00791DAD /* NSScanner+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3201524D2AD00791DAD /* NSScanner+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B32D1524D2AD00791DAD /* NSScanner+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3201524D2AD00791DAD /* NSScanner+Extensions.h */; };
+		D1B0B32D1524D2AD00791DAD /* NSScanner+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3201524D2AD00791DAD /* NSScanner+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B32E1524D2AD00791DAD /* NSString+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3211524D2AD00791DAD /* NSString+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B32F1524D2AD00791DAD /* NSString+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3211524D2AD00791DAD /* NSString+Extensions.h */; };
+		D1B0B32F1524D2AD00791DAD /* NSString+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3211524D2AD00791DAD /* NSString+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B3371524D2D300791DAD /* functions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3301524D2CE00791DAD /* functions.m */; };
 		D1B0B3381524D2D300791DAD /* functions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3301524D2CE00791DAD /* functions.m */; };
 		D1B0B3391524D2D300791DAD /* NSArray+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3311524D2CE00791DAD /* NSArray+Extensions.m */; };
@@ -808,6 +809,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D15CC527152C5975008E8338 /* useful.m in Sources */,
 				D15CC93E14E55F27000047C3 /* NSDate+NetExt.m in Sources */,
 				D15CC89F14E54E91000047C3 /* EDHeaderBearingObject.m in Sources */,
 				D15CC8A014E54E91000047C3 /* EDMessagePart.m in Sources */,
