@@ -19,7 +19,6 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import <AppKit/AppKit.h>
 
 #import "EDMessageDefines.h"
 
