@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <AppKit/AppKit.h>
-#import <EDCommon/EDCommon.h>
+#import "EDCommon.h"
 #import "NSImage+XFace.h"
 #import "EDFaceFieldCoder.h"
 
