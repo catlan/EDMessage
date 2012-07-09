@@ -851,7 +851,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /;
 				FRAMEWORK_VERSION = A;
@@ -862,6 +862,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = EDMessage;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -929,7 +930,9 @@
 				HEADER_SEARCH_PATHS = "\"${TARGET_BUILD_DIR}\"/usr/local/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/EDMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/EDMessage;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
@@ -960,7 +963,9 @@
 				HEADER_SEARCH_PATHS = "\"${TARGET_BUILD_DIR}\"/usr/local/include";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
+				PRIVATE_HEADERS_FOLDER_PATH = /usr/local/include/EDMessage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = /usr/local/include/EDMessage;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
