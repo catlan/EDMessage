@@ -39,4 +39,15 @@
 
 @end
 
+
+@interface EDRFC822ContentCoder : EDContentCoder
+{
+    EDInternetMessage *rfc822Message;
+}
+
+- (id)initWithMessage:(EDInternetMessage *)aMessage;
+- (EDInternetMessage *)rfc822Message;
+
+@end
+
 #endif	/* __EDCompositeContentCoder_h_INCLUDE */

@@ -270,3 +270,58 @@ static short boundaryId = 0;
 //---------------------------------------------------------------------------------------
     @end
 //---------------------------------------------------------------------------------------
+
+@implementation EDRFC822ContentCoder
+
+- (id)initWithMessage:(EDInternetMessage *)aMessage
+{
+    self = [super init];
+    if (self) {
+        rfc822Message = [aMessage retain];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [rfc822Message release];
+    
+    [super dealloc];
+}
+
+- (EDInternetMessage *)rfc822Message
+{
+    return [[rfc822Message retain] autorelease];
+}
+
+- (EDMessagePart *)messagePart
+{
+    EDMessagePart		*result, *subpart;
+    NSString			*boundary, *cte, *rootPartType;
+    NSMutableDictionary	*ctpDictionary;
+    NSMutableDictionary	*cdpDictionary;
+    NSEnumerator		*subpartEnum;
+    NSData				*boundaryData, *linebreakData;
+    NSMutableData		*contentData;
+    
+    result = [[[EDMessagePart alloc] init] autorelease];
+    
+    NSString *filename = [rfc822Message subject];
+    
+    ctpDictionary = [NSMutableDictionary dictionary];
+    if (filename)
+        [ctpDictionary setObject:filename forKey:@"name"];
+    [result setContentType:[EDObjectPair pairWithObjects:@"message":@"rfc822"] withParameters:ctpDictionary];
+    
+    cdpDictionary = [NSMutableDictionary dictionary];
+    if (filename)
+        [cdpDictionary setObject:filename forKey:@"filename"];
+    [result setContentDisposition:@"attachment" withParameters:cdpDictionary];
+    
+    [result setContentData:[rfc822Message transferData:NULL]];
+    [result setContentTransferEncoding:[rfc822Message contentTransferEncoding]];
+    
+    return result;
+}
+
+@end
