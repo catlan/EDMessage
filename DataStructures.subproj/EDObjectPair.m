@@ -149,7 +149,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat: @"<%@ 0x%x: (%@, %@)>", NSStringFromClass(isa), (void *)self, firstObject, secondObject];
+    return [NSString stringWithFormat: @"<%@ %p: (%@, %@)>", NSStringFromClass(isa), (void *)self, firstObject, secondObject];
 }
 
 

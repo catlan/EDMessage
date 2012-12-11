@@ -345,7 +345,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ 0x%x: %@>", NSStringFromClass(isa), self, [self bodyForHeaderField:@"content-type"]];
+    return [NSString stringWithFormat:@"<%@ %p: %@>", NSStringFromClass(isa), self, [self bodyForHeaderField:@"content-type"]];
 }
 
 
