@@ -50,18 +50,13 @@ EDCOMMON_EXTERN void (*_EDLogFunction)(NSString *);
 
 /*" Don't call this directly. "*/
 
-#define EDLogBody(area, format, arg1, arg2, arg3, arg4)	\
+#define EDLog(area, format, ...)	\
     do { \
         if(EDLogMask & area) \
-            (*_EDLogFunction)([NSString stringWithFormat:format, arg1, arg2, arg3, arg4]); \
+            (*_EDLogFunction)([NSString stringWithFormat:format, ##__VA_ARGS__]); \
     } while(0)
 
 
 /*" Log text with format %f and arguments %argN with the logmask specified in %{l}. If !{l & EDLogMask !== 0} the output is supressed and in this case none of the strings are needed. This means that you can pass !{[myObject description]} and the method is only invoked if the output is required."*/
 
-#define EDLog(l, f)								EDLogBody((l), (f), 0, 0, 0, 0)
-#define EDLog1(l, f, arg1)						EDLogBody((l), (f), arg1, 0, 0, 0)
-#define EDLog2(l, f, arg1, arg2)				EDLogBody((l), (f), arg1, arg2, 0, 0)
-#define EDLog3(l, f, arg1, arg2, arg3)			EDLogBody((l), (f), arg1, arg2, arg3, 0)
-#define EDLog4(l, f, arg1, arg2, arg3, arg4)	EDLogBody((l), (f), arg1, arg2, arg3, arg4)
 

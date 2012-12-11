@@ -137,7 +137,7 @@
 
     if((text = [NSString stringWithData:[mpart contentData] MIMEEncoding:charset]) == nil)
         {
-        EDLog1(EDLogCoder, @"cannot decode charset %@", charset);
+        EDLog(EDLogCoder, @"cannot decode charset %@", charset);
         return;
         }
     [text retain];

@@ -41,7 +41,7 @@
     // a bit late maybe...
     if(((version = [self bodyForHeaderField:@"mime-version"]) != nil) && ([version length] > 0))
         if([[version stringByRemovingBracketComments] floatValue] > 1.0)
-            EDLog1(EDLogCoder, @"MIME Decoder: decoded version %@ as 1.0.", version);
+            EDLog(EDLogCoder, @"MIME Decoder: decoded version %@ as 1.0.", version);
 
     return self;
 }

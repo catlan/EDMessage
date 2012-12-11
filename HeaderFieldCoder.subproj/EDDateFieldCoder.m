@@ -147,7 +147,7 @@
     string = [string stringByRemovingSurroundingWhitespace];
     date = [[NSDate dateWithMessageTimeSpecification:string] retain];
     if(date == nil)
-        EDLog1(EDLogCoder, @"Invalid date spec; found \"%@\"\n", string);
+        EDLog(EDLogCoder, @"Invalid date spec; found \"%@\"\n", string);
 }
 
 #else
@@ -176,7 +176,7 @@ extern time_t parsedate(const char *datespec);
     [string getCString:buffer maxLength:127];
     if((t = parsedate(buffer)) == -1)
         {
-        EDLog1(EDLogCoder, @"Invalid date spec; found \"%@\"\n", string);
+        EDLog(EDLogCoder, @"Invalid date spec; found \"%@\"\n", string);
         }
     else
         {
