@@ -129,6 +129,7 @@
     [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
     [formatter setDateFormat:[[self class] dateFormat]];
     [formatter setTimeZone:[self _canonicalTimeZone]];
+    [formatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease]];
 
     return [formatter stringFromDate:canonicalDate];
 }
