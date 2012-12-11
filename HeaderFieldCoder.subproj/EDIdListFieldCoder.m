@@ -58,7 +58,7 @@
 - (id)initWithIdList:(NSArray *)value
 {
    [self init];
-   list = [[NSArray allocWithZone:[self zone]] initWithArray:value];
+   list = [[NSMutableArray allocWithZone:[self zone]] initWithArray:value];
    return self;
 }
 

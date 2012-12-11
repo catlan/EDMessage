@@ -85,7 +85,7 @@ static short boundaryId = 0;
 - (id)initWithSubparts:(NSArray *)someParts
 {
     [super init];
-    subparts = [someParts retain];
+    subparts = [someParts mutableCopy];
     return self;
 }
 
@@ -212,7 +212,7 @@ static short boundaryId = 0;
     EDInternetMessage	*msg;
 
     msg = [[EDInternetMessage allocWithZone:[self zone]] initWithTransferData:[mpart contentData]];
-    subparts = [[NSArray allocWithZone:[self zone]] initWithObjects:msg, nil];
+    subparts = [[NSMutableArray allocWithZone:[self zone]] initWithObjects:msg, nil];
     [msg release];
 }
 
