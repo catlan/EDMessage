@@ -51,7 +51,7 @@
 //	TRANSFER LEVEL ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
 
-- (NSData *)transferData
+- (NSData *)transferData:(NSError **)error
 {
     // If we don't have a cached version we'll be constructing the transfer data. In this
     // case tag with our version.
@@ -60,7 +60,7 @@
         NSString *desig = [NSString stringWithFormat:@"EDMessage Framework v%@", EDMessageVersion];
         [self setBody:[NSString stringWithFormat:@"1.0 (%@)", desig] forHeaderField:@"MIME-Version"];
         }
-    return [super transferData];
+    return [super transferData:error];
 }
 
 

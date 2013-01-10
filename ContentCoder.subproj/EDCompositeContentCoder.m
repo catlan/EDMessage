@@ -254,7 +254,7 @@ static short boundaryId = 0;
         [contentData appendData:linebreakData];
         [contentData appendData:boundaryData];
         [contentData appendData:linebreakData];
-        [contentData appendData:[subpart transferData]];
+        [contentData appendData:[subpart transferData:NULL]];
         }
     [contentData appendData:linebreakData];
     [contentData appendData:boundaryData];

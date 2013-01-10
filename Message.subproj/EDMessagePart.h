@@ -36,7 +36,7 @@
 - (id)initWithTransferData:(NSData *)data fallbackStringEncoding:(NSStringEncoding)encoding;
 - (id)initWithTransferData:(NSData *)data fallbackHeaderFields:(NSDictionary *)fields;
 
-- (NSData *)transferData;
+- (NSData *)transferData:(NSError **)error;
 
 - (void)setContentType:(EDObjectPair *)aType;
 - (void)setContentType:(EDObjectPair *)aType withParameters:(NSDictionary *)someParameters;

@@ -110,7 +110,7 @@
 //	TRANSFER LEVEL ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
 
-- (NSData *)transferData
+- (NSData *)transferData:(NSError **)error
 {
     NSMutableData	*transferData;
     NSData			*headerData;
@@ -141,7 +141,14 @@
 
     [stringBuffer appendString:@"\r\n"];
     if((headerData = [stringBuffer dataUsingEncoding:NSASCIIStringEncoding]) == nil)
-        [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Transfer representation of header fields contains non ASCII characters.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
+    {
+        //[NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Transfer representation of header fields contains non ASCII characters.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
+        if (error != NULL)
+        {
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"-[%@ %@]: Transfer representation of header fields contains non ASCII characters.", NSStringFromClass(isa), NSStringFromSelector(_cmd)]};
+            *error = [[NSError alloc] initWithDomain:@"EDMessage" code:0 userInfo:userInfo];
+        }
+    }
     [transferData appendData:headerData];
 
     [transferData appendData:[contentData encodeContentWithTransferEncoding: [self contentTransferEncoding]]];
