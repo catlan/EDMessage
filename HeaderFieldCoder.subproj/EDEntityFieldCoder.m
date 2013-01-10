@@ -23,6 +23,7 @@
 #import "utilities.h"
 #import "NSCharacterSet+MIME.h"
 #import "NSString+MessageUtils.h"
+#import "NSData+MIME.h"
 #import "EDMConstants.h"
 #import "EDEntityFieldCoder.h"
 
