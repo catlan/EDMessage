@@ -40,17 +40,6 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
 
 //---------------------------------------------------------------------------------------
 
-/*" If the array contains exactly one object this is returned. Otherwise an #NSInternalInconsistencyException is raised. "*/
-
-- (id)singleObject
-{
-    if([self count] != 1)
-        [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Attempt to retrieve single object from an array that contains %d objects.", NSStringFromClass(isa), NSStringFromSelector(_cmd), [self count]];
-    return [self objectAtIndex:0];
-}
-
-//---------------------------------------------------------------------------------------
-
 /*" Return the object at index 0 or !{nil} if the array is empty. "*/
 
 - (id)firstObject

@@ -25,7 +25,6 @@
 @interface NSArray(EDExtensions)
 
 /*" Retrieving individual objects "*/
-- (id)singleObject;
 - (id)firstObject;
 
 /*" Handling subarrays "*/
