@@ -230,8 +230,8 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
         transferRep = b64Rep;
 
     // Note, that this might be wrong if QP was chosen even though it was longer than B64!
-    if((length = [transferRep length] + 7 + [encoding length]) > 75)
-        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Encoding of this header field body results in a MIME word which exceeds the maximum length of 75 characters. Try to split it into components that are separated by whitespaces.", NSStringFromClass(self), NSStringFromSelector(_cmd)];
+    //if((length = [transferRep length] + 7 + [encoding length]) > 75)
+    //    [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Encoding of this header field body results in a MIME word which exceeds the maximum length of 75 characters. Try to split it into components that are separated by whitespaces.", NSStringFromClass(self), NSStringFromSelector(_cmd)];
 
     result = [[[NSString allocWithZone:[(NSObject *)self zone]] initWithFormat:@"=?%@?%@?%@?=", encoding, (transferRep == qpRep) ? @"Q" : @"B", [NSString stringWithData:transferRep encoding:NSASCIIStringEncoding]] autorelease];
 
