@@ -900,7 +900,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_WARN_EMPTY_BODY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_SHADOW = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx;
 			};
@@ -910,7 +912,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_WARN_EMPTY_BODY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_SHADOW = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx;
 			};
