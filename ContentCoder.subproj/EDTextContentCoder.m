@@ -67,7 +67,7 @@
 
 - (id)initWithMessagePart:(EDMessagePart *)mpart
 {
-    [super init];
+    if (!(self = [super init])) return nil;
     if([[[mpart contentType] firstObject] isEqualToString:@"text"])
         {
         if([[[mpart contentType] secondObject] isEqualToString:@"plain"])
@@ -79,11 +79,6 @@
 }
 
 
-- (void)dealloc
-{
-    [text release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -118,7 +113,7 @@
     NSString *string;
     
     if((string = [self _stringFromMessagePart:mpart]) != nil)
-        text = [[NSMutableAttributedString allocWithZone:[self zone]] initWithString:string];
+        text = [[NSMutableAttributedString allocWithZone:nil] initWithString:string];
 }
 
 
@@ -133,7 +128,7 @@
     if((textEncoding = [NSString stringEncodingForMIMEEncoding:charset]) == 0)
         [NSException raise:EDMessageFormatException format:@"Invalid charset in message part; found '%@'", charset];
     data = [[NSString stringWithData:[mpart contentData] encoding:textEncoding] dataUsingEncoding:NSUnicodeStringEncoding];
-    text = [[NSMutableAttributedString allocWithZone:[self zone]] initWithHTML:data documentAttributes:NULL];
+    text = [[NSMutableAttributedString allocWithZone:nil] initWithHTML:data documentAttributes:NULL];
 }
 
 

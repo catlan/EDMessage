@@ -29,9 +29,6 @@
 - (void)methodIsObsolete:(SEL)selector;
 - (void)methodIsObsolete:(SEL)selector hint:(NSString *)hint;
 
-/*" Class hierarchy "*/
-+ (NSArray *)subclasses;
-
 /*" Mapping an array "*/
 - (NSArray *)mapArray:(NSArray *)anArray withSelector:(SEL)aSelector;
 
@@ -40,7 +37,3 @@
 - (void)performSelector:(SEL)selector withObjectsEnumeratedBy:(NSEnumerator *)enumerator;
 
 @end
-
-
-BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass);
-NSArray *EDSubclassesOfClass(Class aClass);

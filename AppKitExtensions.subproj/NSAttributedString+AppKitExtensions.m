@@ -88,11 +88,11 @@
     NSTextAttachment 	*attachment;
     NSAttributedString	*attchString;
 
-    wrapper = [[[NSFileWrapper alloc] initRegularFileWithContents:data] autorelease];
+    wrapper = [[NSFileWrapper alloc] initRegularFileWithContents:data];
     if(name != nil)
        [wrapper setPreferredFilename:name];
     // standard text attachment displays everything possible inline
-    attachment = [[[NSTextAttachment alloc] initWithFileWrapper:wrapper] autorelease];
+    attachment = [[NSTextAttachment alloc] initWithFileWrapper:wrapper];
     attchString = [NSAttributedString attributedStringWithAttachment:attachment];
     [self appendAttributedString:attchString];
 }
@@ -107,10 +107,10 @@
     NSCell			 	*cell;
     NSAttributedString	*attchString;
 
-    wrapper = [[[NSFileWrapper alloc] initRegularFileWithContents:data] autorelease];
+    wrapper = [[NSFileWrapper alloc] initRegularFileWithContents:data];
     if(name != nil)
         [wrapper setPreferredFilename:name];
-    attachment = [[[NSTextAttachment alloc] initWithFileWrapper:wrapper] autorelease];
+    attachment = [[NSTextAttachment alloc] initWithFileWrapper:wrapper];
     cell = (NSCell *)[attachment attachmentCell];
     NSAssert([cell isKindOfClass:[NSCell class]], @"AttachmentCell must inherit from NSCell.");
     [cell setImage:[[NSWorkspace sharedWorkspace] iconForFileType:[name pathExtension]]];
@@ -152,9 +152,9 @@
 
     if(colon == nil)
         {
-        colon = [[NSCharacterSet characterSetWithCharactersInString:@":"] retain];
-        alpha = [[NSCharacterSet alphanumericCharacterSet] retain];
-        urlstop = [[NSCharacterSet characterSetWithCharactersInString:@"\"<>()[]',; \t\n\r"] retain];
+        colon = [NSCharacterSet characterSetWithCharactersInString:@":"];
+        alpha = [NSCharacterSet alphanumericCharacterSet];
+        urlstop = [NSCharacterSet characterSetWithCharactersInString:@"\"<>()[]',; \t\n\r"];
         }
 
     string = [self string];

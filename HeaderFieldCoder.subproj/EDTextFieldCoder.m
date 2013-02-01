@@ -46,7 +46,7 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
 
 + (id)encoderWithText:(NSString *)value
 {
-    return [[[self alloc] initWithText:value] autorelease];
+    return [[self alloc] initWithText:value];
 }
 
 
@@ -56,25 +56,20 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
 
 - (id)initWithFieldBody:(NSString *)body
 {
-    [self init];
-    text = [[[self class] stringByDecodingMIMEWordsInString:body] retain];
+    if (!(self = [self init])) return nil;
+    text = [[self class] stringByDecodingMIMEWordsInString:body];
     return self;
 }
 
 
 - (id)initWithText:(NSString *)value
 {
-    [self init];
-    text = [value copyWithZone:[self zone]];
+    if (!(self = [self init])) return nil;
+    text = [value copyWithZone:nil];
     return self;
 }
 
 
-- (void)dealloc
-{
-    [text release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -171,7 +166,7 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
     NSString		*currentEncoding, *nextEncoding, *word, *spaces;
 
     spaceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    buffer = [[[NSMutableString allocWithZone:[(NSObject *)self zone]] init] autorelease];
+    buffer = [[NSMutableString allocWithZone:nil] init];
     scanner = [NSScanner scannerWithString:string];
     [scanner setCharactersToBeSkipped:nil];
 
@@ -196,7 +191,7 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
                 }
             [buffer appendString:spaces];
             currentEncoding = nextEncoding;
-            chunk = [[word mutableCopy] autorelease];
+            chunk = [word mutableCopy];
             }
         else
             {
@@ -233,7 +228,7 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
     //if((length = [transferRep length] + 7 + [encoding length]) > 75)
     //    [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Encoding of this header field body results in a MIME word which exceeds the maximum length of 75 characters. Try to split it into components that are separated by whitespaces.", NSStringFromClass(self), NSStringFromSelector(_cmd)];
 
-    result = [[[NSString allocWithZone:[(NSObject *)self zone]] initWithFormat:@"=?%@?%@?%@?=", encoding, (transferRep == qpRep) ? @"Q" : @"B", [NSString stringWithData:transferRep encoding:NSASCIIStringEncoding]] autorelease];
+    result = [[NSString allocWithZone:nil] initWithFormat:@"=?%@?%@?%@?=", encoding, (transferRep == qpRep) ? @"Q" : @"B", [NSString stringWithData:transferRep encoding:NSASCIIStringEncoding]];
 
     return result;
 }

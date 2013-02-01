@@ -301,7 +301,6 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
         tz = [[NSString alloc] initWithCString:timezoneString encoding:NSUTF8StringEncoding];
         timeZone = [NSTimeZone timeZoneWithAbbreviation:tz];
 
-        [tz release];
         }
 
     if (timeZone == nil)

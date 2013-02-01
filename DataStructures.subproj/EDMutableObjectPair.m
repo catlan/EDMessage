@@ -53,8 +53,6 @@
 
 - (void)setFirstObject:(id)anObject
 {
-    [anObject retain];
-    [firstObject release];
     firstObject = anObject;
 }
 
@@ -63,8 +61,6 @@
 
 - (void)setSecondObject:(id)anObject
 {
-    [anObject retain];
-    [secondObject release];
     secondObject = anObject;
 }
 

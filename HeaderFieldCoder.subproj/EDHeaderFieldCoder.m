@@ -33,7 +33,7 @@
 
 + (id)decoderWithFieldBody:(NSString *)fieldBody
 {
-    return [[[self alloc] initWithFieldBody:fieldBody] autorelease];
+    return [[self alloc] initWithFieldBody:fieldBody];
 }
 
 
@@ -48,10 +48,6 @@
 }
 
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------

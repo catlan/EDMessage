@@ -44,7 +44,7 @@ unichar EDStringScannerEndOfDataCharacter = '\0';
 
 + (id)scannerWithString:(NSString *)aString
 {
-    return [[[EDStringScanner alloc] initWithString:aString] autorelease];
+    return [[EDStringScanner alloc] initWithString:aString];
 }
 
 
@@ -56,8 +56,8 @@ unichar EDStringScannerEndOfDataCharacter = '\0';
 
 - (id)initWithString:(NSString *)aString
 {
-    [super init];
-    string = [aString retain];
+    if (!(self = [super init])) return nil;
+    string = aString;
     [self _getNextChunk];
     return self;
 }
@@ -65,9 +65,7 @@ unichar EDStringScannerEndOfDataCharacter = '\0';
 
 - (void)dealloc
 {
-    [string release];
-    NSZoneFree([self zone], buffer);
-    [super dealloc];
+    NSZoneFree(nil, buffer);
 }
 
 
@@ -81,7 +79,7 @@ unichar EDStringScannerEndOfDataCharacter = '\0';
     
     if(buffer == NULL)
         {
-        buffer = NSZoneMalloc([self zone], sizeof(unichar) * EDSBufferSize);
+        buffer = NSZoneMalloc(nil, sizeof(unichar) * EDSBufferSize);
         bufferOffset = 0;
         }
     else 

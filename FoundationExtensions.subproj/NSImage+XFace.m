@@ -73,8 +73,8 @@ All X-Face related methods are based on code written by James Ashton, Sydney Uni
         return [self initWithSize:NSZeroSize];
     
     size = NSMakeSize(WIDTH, HEIGHT);
-   	[self initWithSize:size];
-    imagerep = [[[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL pixelsWide:size.width pixelsHigh:size.height bitsPerSample:1 samplesPerPixel:1 hasAlpha:NO isPlanar:YES colorSpaceName:NSDeviceWhiteColorSpace bytesPerRow:0 bitsPerPixel:0] autorelease];
+   	if (!(self = [self initWithSize:size])) return nil;
+    imagerep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL pixelsWide:size.width pixelsHigh:size.height bitsPerSample:1 samplesPerPixel:1 hasAlpha:NO isPlanar:YES colorSpaceName:NSDeviceWhiteColorSpace bytesPerRow:0 bitsPerPixel:0];
     data = [imagerep bitmapData];
 
     // this should really be in initialize to avoid a potential race condition with the decode
@@ -84,12 +84,12 @@ All X-Face related methods are based on code written by James Ashton, Sydney Uni
         compfaceLock2 = [[NSLock alloc] init];
     [compfaceLock2 lock];
 
-    xfaceBuffer = NSZoneMalloc([self zone], [someData length] + 1);
+    xfaceBuffer = NSZoneMalloc(nil, [someData length] + 1);
     [someData getBytes:xfaceBuffer];
     xfaceBuffer[[someData length]] = 0;
     UnCompAll((const char *)xfaceBuffer);
     UnGenFace();
-    NSZoneFree([self zone], xfaceBuffer);
+    NSZoneFree(nil, xfaceBuffer);
 
     /* center in image */
     basex = (size.width - WIDTH) / 2;	  

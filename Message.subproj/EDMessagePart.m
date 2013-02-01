@@ -56,7 +56,7 @@
     NSString		*charset, *value;
 
     charset = [NSString MIMEEncodingForStringEncoding:encoding];
-    value = [[[[EDEntityFieldCoder alloc] initWithValues:[NSArray arrayWithObjects:@"text", @"plain", nil] andParameters:[NSDictionary dictionaryWithObject:charset forKey:@"charset"]] autorelease] fieldBody];
+    value = [[[EDEntityFieldCoder alloc] initWithValues:[NSArray arrayWithObjects:@"text", @"plain", nil] andParameters:[NSDictionary dictionaryWithObject:charset forKey:@"charset"]] fieldBody];
     fields = [NSDictionary dictionaryWithObject:value forKey:@"content-type"];
 
     return [self initWithTransferData:data fallbackHeaderFields:fields];
@@ -65,23 +65,23 @@
 
 - (id)initWithTransferData:(NSData *)data fallbackHeaderFields:(NSDictionary *)fields
 {
-    [super init];
+    if (!(self = [super init])) return nil;
     
     if(fields != nil)
         {
-        fallbackFields = [[NSMutableDictionary allocWithZone:[self zone]] initWithDictionary:[[self class] _defaultFallbackHeaders]];
+        fallbackFields = [[NSMutableDictionary allocWithZone:nil] initWithDictionary:[[self class] _defaultFallbackHeaders]];
         [(NSMutableDictionary *)fallbackFields addEntriesFromDictionary:fields];
         }
     else
         {
-        fallbackFields = [[[self class] _defaultFallbackHeaders] retain];
+        fallbackFields = [[self class] _defaultFallbackHeaders];
         }
 
     if((data == nil) || ([data length] == 0))
         return self;
 
     bodyRange = [self _takeHeadersFromData:data];
-    originalTransferData = [data retain];
+    originalTransferData = data;
 
     return self;
 }
@@ -89,21 +89,12 @@
 
 - (id)init
 {
-    [super init];
+    if (!(self = [super init])) return nil;
     fallbackFields = nil;
     return self;
 }
 
 
-- (void)dealloc
-{
-    [fallbackFields release];
-    [contentType release];
-    [contentTypeParameters release];
-    [contentData release];
-    [originalTransferData release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -136,7 +127,6 @@
         [headerLine appendString:[field secondObject]];
         [headerLine appendString:@"\r\n"];
         [stringBuffer appendString:[headerLine stringByFoldingToLimit:998]];
-        [headerLine release];
         }
 
     [stringBuffer appendString:@"\r\n"];
@@ -202,16 +192,11 @@
 {
     EDEntityFieldCoder *fCoder;
 
-    [aType retain];
-    [contentType release];
     contentType = aType;
-    [someParameters retain];
-    [contentTypeParameters release];
     contentTypeParameters = someParameters;
 
     fCoder = [[EDEntityFieldCoder alloc] initWithValues:[contentType allObjects] andParameters:contentTypeParameters];
     [self setBody:[fCoder fieldBody] forHeaderField:@"Content-Type"];
-    [fCoder release];
 }
 
 
@@ -223,8 +208,8 @@
     if((contentType == nil) && ((fBody = [self bodyForHeaderField:@"content-type"]) != nil))
         {
         coder = [EDEntityFieldCoder decoderWithFieldBody:fBody];
-        contentType = [[EDObjectPair allocWithZone:[self zone]] initWithObjects:[[coder values] objectAtIndex:0]:[[coder values] objectAtIndex:1]];
-        contentTypeParameters = [[coder parameters] retain];
+        contentType = [[EDObjectPair allocWithZone:nil] initWithObjects:[[coder values] objectAtIndex:0]:[[coder values] objectAtIndex:1]];
+        contentTypeParameters = [coder parameters];
         }
     return contentType;
 }
@@ -251,16 +236,11 @@
 {
     EDEntityFieldCoder *fCoder;
 
-    [aDispositionDirective retain];
-    [contentDisposition release];
     contentDisposition = aDispositionDirective;
-    [someParameters retain];
-    [contentDispositionParameters release];
     contentDispositionParameters = someParameters;
 
     fCoder = [[EDEntityFieldCoder alloc] initWithValues:[NSArray arrayWithObject:contentDisposition] andParameters:contentDispositionParameters];
     [self setBody:[fCoder fieldBody] forHeaderField:@"Content-Disposition"];
-    [fCoder release];
 }
 
 
@@ -272,8 +252,8 @@
     if((contentDisposition == nil) && ((fBody = [self bodyForHeaderField:@"content-disposition"]) != nil))
         {
         coder = [EDEntityFieldCoder decoderWithFieldBody:fBody];
-        contentDisposition = [[[coder values] objectAtIndex:0] retain];
-        contentDispositionParameters = [[coder parameters] retain];
+        contentDisposition = [[coder values] objectAtIndex:0];
+        contentDispositionParameters = [coder parameters];
         }
     return contentDisposition;
 }
@@ -309,8 +289,7 @@
 - (void)setContentData:(NSData *)data
 {
     [self _forgetOriginalTransferData];
-    [contentData autorelease];
-    contentData = [data copyWithZone:[self zone]];
+    contentData = [data copyWithZone:nil];
 }
 
 
@@ -374,11 +353,11 @@
         temp = [NSMutableDictionary dictionary];
         values = [NSArray arrayWithObjects:@"text", @"plain", nil];
         parameters = [NSDictionary dictionaryWithObject:MIMEAsciiStringEncoding forKey:@"charset"];
-        fBody = [[[[EDEntityFieldCoder alloc] initWithValues:values andParameters:parameters] autorelease] fieldBody];
+        fBody = [[[EDEntityFieldCoder alloc] initWithValues:values andParameters:parameters] fieldBody];
         [temp setObject:fBody forKey:@"content-type"];
         [temp setObject:MIME8BitContentTransferEncoding forKey:@"content-transfer-encoding"];
         values = [NSArray arrayWithObject:MIMEInlineContentDisposition];
-        fBody = [[[[EDEntityFieldCoder alloc] initWithValues:values andParameters:nil] autorelease] fieldBody];
+        fBody = [[[EDEntityFieldCoder alloc] initWithValues:values andParameters:nil] fieldBody];
         [temp setObject:fBody forKey:@"content-disposition"];
         defaultFallbackHeaders = [[NSDictionary alloc] initWithDictionary:temp];
         }
@@ -437,9 +416,8 @@
                 // we know something about the implementation of addToHeaderFields ;-)
                 // by uniqueing the string here we avoid creating another pair.
                 name = [name sharedInstance];
-                field = [[EDObjectPair allocWithZone:[self zone]] initWithObjects:name:fbodyContents];
+                field = [[EDObjectPair allocWithZone:nil] initWithObjects:name:fbodyContents];
                 [self addToHeaderFields:field];
-                [field release];
                 fbodyData = nil;
                 fnamePtr = p;
                 fbodyPtr = NULL;
@@ -470,7 +448,7 @@
 
     cte = [self contentTransferEncoding];
     rawData = [originalTransferData subdataWithRange:bodyRange];
-    contentData = [[rawData decodeContentWithTransferEncoding:cte] retain];
+    contentData = [rawData decodeContentWithTransferEncoding:cte];
 }
 
 
@@ -482,7 +460,6 @@
     if(bodyRange.length > 0)
         [self _takeContentDataFromOriginalTransferData];
 
-    [originalTransferData release];
     originalTransferData = nil;
 }
 

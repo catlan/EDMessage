@@ -33,7 +33,7 @@
     if([self rangeOfString:lineBreakSeq].location == NSNotFound)
         lineBreakSeq = @"\n";
 
-    flowedText = [[[NSMutableString allocWithZone:[self zone]] initWithCapacity:[self length]] autorelease];
+    flowedText = [[NSMutableString allocWithZone:nil] initWithCapacity:[self length]];
 
     paragraphs = [self componentsSeparatedByString:lineBreakSeq];
 
@@ -41,9 +41,8 @@
 
     while ((paragraph = [paragraphEnumerator nextObject]) != nil)
     {
-        NSAutoreleasePool *pool;
 
-        pool = [[NSAutoreleasePool alloc] init];
+        @autoreleasepool {
 
         /*
         1.  Ensure all lines (fixed and flowed) are 79 characters or
@@ -55,70 +54,70 @@
         /*
         2.  Trim spaces before user-inserted hard line breaks.
         */
-        while ([paragraph hasSuffix:@" "])
-            paragraph = [paragraph substringToIndex:[paragraph length] - 1]; // chop the last character
+            while ([paragraph hasSuffix:@" "])
+                paragraph = [paragraph substringToIndex:[paragraph length] - 1]; // chop the last character
 
-        if ([paragraph length] > 79)
-        {
-            NSString *wrappedParagraph;
-            NSArray *paragraphLines;
-            NSInteger i, count;
-            /*
-            When creating flowed text, the generating agent wraps, that is,
-            inserts 'soft' line breaks as needed.  Soft line breaks are added
-            between words.  Because a soft line break is a SP CRLF sequence, the
-            generating agent creates one by inserting a CRLF after the occurance
-            of a space.
-            */
-            wrappedParagraph = [[paragraph stringByAppendingString:lineBreakSeq] stringByWrappingToLineLength:72];
+            if ([paragraph length] > 79)
+            {
+                NSString *wrappedParagraph;
+                NSArray *paragraphLines;
+                NSInteger i, count;
+                /*
+                When creating flowed text, the generating agent wraps, that is,
+                inserts 'soft' line breaks as needed.  Soft line breaks are added
+                between words.  Because a soft line break is a SP CRLF sequence, the
+                generating agent creates one by inserting a CRLF after the occurance
+                of a space.
+                */
+                wrappedParagraph = [[paragraph stringByAppendingString:lineBreakSeq] stringByWrappingToLineLength:72];
 
-            // chop lineBreakSeq at the end
-            wrappedParagraph = [wrappedParagraph substringToIndex:[wrappedParagraph length] - [lineBreakSeq length]];
-            paragraphLines = [wrappedParagraph componentsSeparatedByString:lineBreakSeq];
+                // chop lineBreakSeq at the end
+                wrappedParagraph = [wrappedParagraph substringToIndex:[wrappedParagraph length] - [lineBreakSeq length]];
+                paragraphLines = [wrappedParagraph componentsSeparatedByString:lineBreakSeq];
 
-            count = [paragraphLines count];
+                count = [paragraphLines count];
 
-            for (i = 0; i < count; i++)
-            {	
-                NSString *line;
+                for (i = 0; i < count; i++)
+                {	
+                    NSString *line;
 
-                line = [paragraphLines objectAtIndex:i];
+                    line = [paragraphLines objectAtIndex:i];
 
+                    /*
+                    3.  Space-stuff lines which start with a space, "From ", or ">".
+                    */  
+                    line = [line stringBySpaceStuffing];
+
+                    if (i < (count-1) ) // ensure soft-break
+                    {
+                        if (! [line hasSuffix:@" "])
+                        {
+                            line = [line stringByAppendingString:@" "];
+                        }
+                    }
+                    else
+                    {
+                        while ([line hasSuffix:@" "])
+                        {
+                            line = [line substringToIndex:[line length] - 1]; // chop the last character (space)
+                        }
+                    }
+                    [flowedText appendString:line];
+                    [flowedText appendString:lineBreakSeq];
+                }
+            }
+            else
+            {
+                // add paragraph to flowedText
                 /*
                 3.  Space-stuff lines which start with a space, "From ", or ">".
                 */  
-                line = [line stringBySpaceStuffing];
-
-                if (i < (count-1) ) // ensure soft-break
-                {
-                    if (! [line hasSuffix:@" "])
-                    {
-                        line = [line stringByAppendingString:@" "];
-                    }
-                }
-                else
-                {
-                    while ([line hasSuffix:@" "])
-                    {
-                        line = [line substringToIndex:[line length] - 1]; // chop the last character (space)
-                    }
-                }
-                [flowedText appendString:line];
+                paragraph = [paragraph stringBySpaceStuffing];
+                [flowedText appendString:paragraph];
                 [flowedText appendString:lineBreakSeq];
             }
-        }
-        else
-        {
-            // add paragraph to flowedText
-            /*
-            3.  Space-stuff lines which start with a space, "From ", or ">".
-            */  
-            paragraph = [paragraph stringBySpaceStuffing];
-            [flowedText appendString:paragraph];
-            [flowedText appendString:lineBreakSeq];
-        }
 
-        [pool release];
+        }
     }
 
     // chop lineBreakSeq at the end
@@ -139,7 +138,7 @@
     if([self rangeOfString:lineBreakSeq].location == NSNotFound)
         lineBreakSeq = @"\n";
             
-    flowedText = [[NSMutableString allocWithZone:[self zone]] initWithCapacity:[self length]];
+    flowedText = [[NSMutableString allocWithZone:nil] initWithCapacity:[self length]];
     
     paragraph = [NSMutableString string];
         
@@ -152,7 +151,6 @@
     
     while ((line = [lineEnumerator nextObject]) != nil)
     {
-        NSAutoreleasePool *pool;
         int quoteDepth = 0;
         /*
         4.2.  Interpreting Format=Flowed
@@ -166,67 +164,67 @@
         (that is, before checking for space-stuffed and flowed).     
         */
         
-        pool = [[NSAutoreleasePool alloc] init];
+        @autoreleasepool {
         
-        while ([line hasPrefix:@">"])
-        {
-            line = [line substringFromIndex:1]; // chop of the first character
-            quoteDepth += 1;
-        }
-        
-        if ((paragraphQuoteDepth == 0) && (quoteDepth != 0))
-            paragraphQuoteDepth = quoteDepth;
-            
-        /*
-        If the first character of a line is a space, the line has been
-        space-stuffed (see section 4.4).  Logically, this leading space is
-        deleted before examining the line further (that is, before checking
-        for flowed).   
-        */
-        
-        if ([line hasPrefix:@" "])
-            line = [line substringFromIndex:1]; // chop of the first character
-        
-        /*
-        If the line ends in one or more spaces, the line is flowed.
-        Otherwise it is fixed.  Trailing spaces are part of the line's
-        content, but the CRLF of a soft line break is not.
-        */
-        
-        isFlowed = [line hasSuffix:@" "] 
-            && (paragraphQuoteDepth == quoteDepth) 
-            && ([line caseInsensitiveCompare:@"-- "] != NSOrderedSame);
-        
-        /*
-        A series of one or more flowed lines followed by one fixed line is
-        considered a paragraph, and MAY be flowed (wrapped and unwrapped) as
-        appropriate on display and in the construction of new messages (see
-        section 4.5).   
-        */
-        
-        
-        [paragraph appendString:line];
-        if (! isFlowed)
-        {
-            if (paragraphQuoteDepth > 0) // add quote chars if needed
+            while ([line hasPrefix:@">"])
             {
-                int i;
-            
-                for (i=0; i<paragraphQuoteDepth; i++)
-                    [flowedText appendString:@">"];
-                
-                [flowedText appendString:@" "];
+                line = [line substringFromIndex:1]; // chop of the first character
+                quoteDepth += 1;
             }
             
-            [flowedText appendString:paragraph];
-            [flowedText appendString:lineBreakSeq];
+            if ((paragraphQuoteDepth == 0) && (quoteDepth != 0))
+                paragraphQuoteDepth = quoteDepth;
+                
+            /*
+            If the first character of a line is a space, the line has been
+            space-stuffed (see section 4.4).  Logically, this leading space is
+            deleted before examining the line further (that is, before checking
+            for flowed).   
+            */
             
-            // reset values for next paragraph
-            paragraphQuoteDepth = 0;
-            [paragraph setString:@""];
-        }
+            if ([line hasPrefix:@" "])
+                line = [line substringFromIndex:1]; // chop of the first character
+            
+            /*
+            If the line ends in one or more spaces, the line is flowed.
+            Otherwise it is fixed.  Trailing spaces are part of the line's
+            content, but the CRLF of a soft line break is not.
+            */
+            
+            isFlowed = [line hasSuffix:@" "] 
+                && (paragraphQuoteDepth == quoteDepth) 
+                && ([line caseInsensitiveCompare:@"-- "] != NSOrderedSame);
+            
+            /*
+            A series of one or more flowed lines followed by one fixed line is
+            considered a paragraph, and MAY be flowed (wrapped and unwrapped) as
+            appropriate on display and in the construction of new messages (see
+            section 4.5).   
+            */
+            
+            
+            [paragraph appendString:line];
+            if (! isFlowed)
+            {
+                if (paragraphQuoteDepth > 0) // add quote chars if needed
+                {
+                    int i;
+                
+                    for (i=0; i<paragraphQuoteDepth; i++)
+                        [flowedText appendString:@">"];
+                    
+                    [flowedText appendString:@" "];
+                }
+                
+                [flowedText appendString:paragraph];
+                [flowedText appendString:lineBreakSeq];
+                
+                // reset values for next paragraph
+                paragraphQuoteDepth = 0;
+                [paragraph setString:@""];
+            }
         
-        [pool release];
+        }
     }
     
     // take care of the last paragraph
@@ -245,7 +243,7 @@
         [flowedText appendString:paragraph];
     }
     
-    return [flowedText autorelease];
+    return flowedText;
 }
 
 - (NSString *)stringBySpaceStuffing

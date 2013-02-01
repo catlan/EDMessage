@@ -39,7 +39,7 @@
 
 + (id)encoderWithIdList:(NSArray *)value
 {
-    return [[[self alloc] initWithIdList:value] autorelease];
+    return [[self alloc] initWithIdList:value];
 }
 
 
@@ -49,7 +49,7 @@
 
 - (id)initWithFieldBody:(NSString *)body
 {
-   [self init];
+   if (!(self = [self init])) return nil;
    [self _takeListFromString:body];
    return self;
 }
@@ -57,17 +57,12 @@
 
 - (id)initWithIdList:(NSArray *)value
 {
-   [self init];
-   list = [[NSMutableArray allocWithZone:[self zone]] initWithArray:value];
+   if (!(self = [self init])) return nil;
+   list = [[NSMutableArray allocWithZone:nil] initWithArray:value];
    return self;
 }
 
 
-- (void)dealloc
-{
-   [list release];
-   [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -105,11 +100,11 @@
 
     if(bracketSet == nil)
         {
-        bracketSet = [[NSCharacterSet characterSetWithCharactersInString:@"<>"] retain];
-        nonWhitespaceSet = [[[NSCharacterSet whitespaceCharacterSet] invertedSet] retain];
+        bracketSet = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
+        nonWhitespaceSet = [[NSCharacterSet whitespaceCharacterSet] invertedSet];
         }
 
-    list = [[NSMutableArray allocWithZone:[self zone]] init];
+    list = [[NSMutableArray allocWithZone:nil] init];
 
     start = -1;
     searchRange = NSMakeRange(0, [body length]);

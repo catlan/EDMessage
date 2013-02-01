@@ -30,7 +30,7 @@
 
 + (id)encoderWithImage:(NSImage *)anImage
 {
-    return [[[self alloc] initWithImage:anImage] autorelease];
+    return [[self alloc] initWithImage:anImage];
 }
 
 
@@ -40,25 +40,20 @@
 
 - (id)initWithFieldBody:(NSString *)body
 {
-    [self init];
-    image = [[NSImage allocWithZone:[self zone]] initWithXFaceData:[body dataUsingEncoding:NSASCIIStringEncoding]];
+    if (!(self = [self init])) return nil;
+    image = [[NSImage allocWithZone:nil] initWithXFaceData:[body dataUsingEncoding:NSASCIIStringEncoding]];
     return self;
 }
 
 
 - (id)initWithImage:(NSImage *)anImage
 {
-    [self init];
-    image = [anImage retain];
+    if (!(self = [self init])) return nil;
+    image = anImage;
     return self;
 }
 
 
-- (void)dealloc
-{
-    [image release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -79,7 +74,7 @@
 
 - (NSString *)fieldBody
 {
-    return [[[NSString alloc] initWithData:[image xFaceData] encoding:NSASCIIStringEncoding] autorelease];	
+    return [[NSString alloc] initWithData:[image xFaceData] encoding:NSASCIIStringEncoding];	
 }
 
 

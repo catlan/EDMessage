@@ -851,7 +851,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /;
@@ -863,6 +864,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = EDMessage;
 				WRAPPER_EXTENSION = framework;
@@ -872,6 +874,8 @@
 		1DEB91AF08733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_LOCATION = NO;
@@ -886,6 +890,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_MODE_FLAG = "u+w,go-w,o+rX";
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
 				OTHER_LDFLAGS = (
 					"-seg1addr",
 					0x35000000,
@@ -903,7 +908,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_SHADOW = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -915,7 +920,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_SHADOW = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
 			};
 			name = Release;

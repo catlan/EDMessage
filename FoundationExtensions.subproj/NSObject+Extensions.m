@@ -75,94 +75,6 @@
 }
 
 
-- (NSString *)className
-{
-    return NSStringFromClass([self class]);
-}
-
-
-//---------------------------------------------------------------------------------------
-//	EXTENDED INTROSPECTION 
-//---------------------------------------------------------------------------------------
-#if 0
-IMP EDGetFirstUnusedIMPForSelector(Class aClass, SEL aSelector, BOOL isClassMethod)
-{
-#ifndef GNU_RUNTIME
-    IMP						activeIMP;
-    struct objc_method_list	*mlist;
-    void					*iterator;
-    int						i;
-
-    if(isClassMethod)
-        aClass = aClass->isa;
-    iterator = 0;
-    activeIMP = [aClass instanceMethodForSelector:aSelector];
-    while((mlist = class_nextMethodList(aClass, &iterator)) != NULL)
-        {
-        for(i = 0; i < mlist->method_count; i++)
-            {
-            if((mlist->method_list[i].method_name == aSelector) && (mlist->method_list[i].method_imp != activeIMP))
-                return mlist->method_list[i].method_imp;
-            }
-        }
-    return NULL;
-#else /* GNU_RUNTIME */
-#warning ** implementation missing for GNU runtime
-    return NULL;
-#endif
-}
-#endif
-
-BOOL EDClassIsSuperclassOfClass(Class aClass, Class subClass)
-{
-    Class class;
-
-    class = class_getSuperclass(subClass);
-    while(class != nil)
-        {
-        if(class == aClass)
-            return YES;
-		class = class_getSuperclass(subClass);
-        }
-    return NO;
-}
-
-
-NSArray *EDSubclassesOfClass(Class aClass)
-{
-    NSMutableArray *subclasses;
-    Class          *classes;
-    int            numClasses, newNumClasses, i;
-
-    // cf. /System/Library/Frameworks/System.framework/Headers/objc/objc-runtime.h
-    numClasses = 0, newNumClasses = objc_getClassList(NULL, 0);
-    classes = NULL;
-    while (numClasses < newNumClasses)
-        {
-        numClasses = newNumClasses;
-        classes = realloc(classes, sizeof(Class) * numClasses);
-        newNumClasses = objc_getClassList(classes, numClasses);
-        }
-
-    subclasses = [NSMutableArray array];
-    for(i = 0; i < numClasses; i++)
-        {
-        if(EDClassIsSuperclassOfClass(aClass, classes[i]) == YES)
-            [subclasses addObject:classes[i]];
-        }
-    free(classes);
-
-    return subclasses;
-}
-
-/*" Returns all subclasses of the receiving class "*/
-
-+ (NSArray *)subclasses
-{
-    return EDSubclassesOfClass(self);
-}
-
-
 //---------------------------------------------------------------------------------------
 //  MAPPING
 //---------------------------------------------------------------------------------------
@@ -176,7 +88,7 @@ Example: Assume you have an array !{a} which contains names and an object !{phon
     NSMutableArray	*mappedArray;
     unsigned int	i, n = [anArray count];
 
-    mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
+    mappedArray = [[NSMutableArray allocWithZone:nil] initWithCapacity:n];
     for(i = 0; i < n; i++)
         [mappedArray addObject:EDObjcMsgSend1(self, selector, [anArray objectAtIndex:i])];
 

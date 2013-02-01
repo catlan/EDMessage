@@ -41,7 +41,7 @@
 
 + (id)encoderWithValues:(NSArray *)someValues andParameters:(NSDictionary *)someParameters
 {
-    return [[[self alloc] initWithValues:someValues andParameters:someParameters] autorelease];
+    return [[self alloc] initWithValues:someValues andParameters:someParameters];
 }
 
 
@@ -51,37 +51,23 @@
 
 - (id)initWithFieldBody:(NSString *)body
 {
-    [self init];
-    NS_DURING
+    self = [super init];
+    if (self) {
         [self _takeValueFromString:body];
-    NS_HANDLER
-        [self autorelease];
-        [localException raise];
-    NS_ENDHANDLER
+    }
     return self;
 }
-
 
 - (id)initWithValues:(NSArray *)someValues andParameters:(NSDictionary *)someParameters
 {
-    [self init];
-    NS_DURING
+    self = [super init];
+    if (self) {
         [self _setValues:someValues];
         [self _setParameters:someParameters];
-    NS_HANDLER
-        [self autorelease];
-        [localException raise];
-    NS_ENDHANDLER
+    }
     return self;
 }
 
-
-- (void)dealloc
-{
-    [values release];
-    [parameters release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -121,8 +107,7 @@
     NSEnumerator *valueEnum;
     NSString	 *value;
 
-    [values autorelease];
-    values = [[NSMutableArray allocWithZone:[self zone]] initWithCapacity:[someValues count]];
+    values = [[NSMutableArray allocWithZone:nil] initWithCapacity:[someValues count]];
     valueEnum = [someValues objectEnumerator];
     while((value = [valueEnum nextObject]) != nil)
         {
@@ -139,8 +124,7 @@
     NSEnumerator *attrEnum;
     NSString	 *attr, *value;
 
-    [parameters autorelease];
-    parameters = [[NSMutableDictionary allocWithZone:[self zone]] init];
+    parameters = [[NSMutableDictionary allocWithZone:nil] init];
     attrEnum = [someParameters keyEnumerator];
     while((attr = [attrEnum nextObject]) != nil)
     {
@@ -190,10 +174,10 @@
         [scannedValues addObject:value];
         }
     while([scanner scanString:@"/" intoString:NULL] == YES);
-    values = [[NSArray allocWithZone:[self zone]] initWithArray:scannedValues];
+    values = [[NSArray allocWithZone:nil] initWithArray:scannedValues];
 
     // forgiving, ie. simply skips syntactially incorrect attribute/value pairs...
-    scannedParameters = [[NSMutableDictionary allocWithZone:[self zone]] init];
+    scannedParameters = [[NSMutableDictionary allocWithZone:nil] init];
     while((parameterPart = [fieldBodyPartEnum nextObject]) != nil)
         {
         scanner = [NSScanner scannerWithString:parameterPart];
@@ -213,7 +197,7 @@
                 [scannedParameters setObject:attrValue forKey:attr];
             }
         }
-    parameters = [[NSDictionary allocWithZone:[self zone]] initWithDictionary:scannedParameters];
+    parameters = [[NSDictionary allocWithZone:nil] initWithDictionary:scannedParameters];
 }
 
 
@@ -247,7 +231,7 @@
     NSString		*currentEncoding, *nextEncoding, *word, *spaces;
     
     spaceCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    buffer = [[[NSMutableString allocWithZone:[(NSObject *)self zone]] init] autorelease];
+    buffer = [[NSMutableString allocWithZone:nil] init];
     scanner = [NSScanner scannerWithString:string];
     [scanner setCharactersToBeSkipped:nil];
     
@@ -272,7 +256,7 @@
             }
             [buffer appendString:spaces];
             currentEncoding = nextEncoding;
-            chunk = [[word mutableCopy] autorelease];
+            chunk = [word mutableCopy];
         }
         else
         {
@@ -309,7 +293,7 @@
     //if((length = [transferRep length] + 7 + [encoding length]) > 75)
     //    [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Encoding of this header field body results in a MIME word which exceeds the maximum length of 75 characters. Try to split it into components that are separated by whitespaces.", NSStringFromClass(self), NSStringFromSelector(_cmd)];
     
-    result = [[[NSString allocWithZone:[(NSObject *)self zone]] initWithFormat:@"=?%@?%@?%@?=", encoding, (transferRep == qpRep) ? @"Q" : @"B", [NSString stringWithData:transferRep encoding:NSASCIIStringEncoding]] autorelease];
+    result = [[NSString allocWithZone:nil] initWithFormat:@"=?%@?%@?%@?=", encoding, (transferRep == qpRep) ? @"Q" : @"B", [NSString stringWithData:transferRep encoding:NSASCIIStringEncoding]];
     
     return result;
 }

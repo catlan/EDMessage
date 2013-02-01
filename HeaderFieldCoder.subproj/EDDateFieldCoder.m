@@ -60,7 +60,7 @@
 
 + (id)encoderWithDate:(NSDate *)value
 {
-    return [[[self alloc] initWithDate:value] autorelease];
+    return [[self alloc] initWithDate:value];
 }
 
 
@@ -70,7 +70,7 @@
 
 - (id)initWithFieldBody:(NSString *)body
 {
-    [self init];
+    if (!(self = [self init])) return nil;
     [self _takeDateFromString:body];
     return self;
 }
@@ -78,17 +78,12 @@
 
 - (id)initWithDate:(NSDate *)value
 {
-    [self init];
-    date = [value retain];
+    if (!(self = [self init])) return nil;
+    date = value;
     return self;
 }
 
 
-- (void)dealloc
-{
-    [date release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -103,7 +98,7 @@
 
 - (NSString *)stringValue
 {
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
     NSString *format = [[NSUserDefaults standardUserDefaults] stringForKey:@"NSDateFormatString"];
     [formatter setDateFormat:format];
@@ -115,7 +110,7 @@
 {
     NSDate	*canonicalDate;
 
-    canonicalDate = [[date copy] autorelease];
+    canonicalDate = [date copy];
     //[canonicalDate setTimeZone:[self _canonicalTimeZone]];
     
     /*
@@ -125,11 +120,11 @@
     [dateComponents setTimeZone:[self _canonicalTimeZone]];
     */
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
     [formatter setDateFormat:[[self class] dateFormat]];
     [formatter setTimeZone:[self _canonicalTimeZone]];
-    [formatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease]];
+    [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
 
     return [formatter stringFromDate:canonicalDate];
 }
@@ -146,7 +141,7 @@
 - (void)_takeDateFromString:(NSString *)string
 {
     string = [string stringByRemovingSurroundingWhitespace];
-    date = [[NSDate dateWithMessageTimeSpecification:string] retain];
+    date = [NSDate dateWithMessageTimeSpecification:string];
     if(date == nil)
         EDLog(EDLogCoder, @"Invalid date spec; found \"%@\"\n", string);
 }

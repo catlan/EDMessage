@@ -62,7 +62,7 @@ static short boundaryId = 0;
 
 - (id)initWithMessagePart:(EDMessagePart *)mpart
 {
-    [super init];
+    if (!(self = [super init])) return nil;
 
     if([[[mpart contentType] firstObject] isEqualToString:@"multipart"])
         {
@@ -84,18 +84,13 @@ static short boundaryId = 0;
 
 - (id)initWithSubparts:(NSArray *)someParts
 {
-    [super init];
+    if (!(self = [super init])) return nil;
     subparts = [someParts mutableCopy];
     return self;
 }
 
 
 
-- (void)dealloc
-{
-    [subparts release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -151,17 +146,17 @@ static short boundaryId = 0;
     blen = (unsigned int)strlen(btext);
     if([[[mpart contentType] secondObject] isEqualToString:@"digest"])
         {
-        fcoder = [[[EDEntityFieldCoder alloc] initWithValues:[NSArray arrayWithObjects:@"message", @"rfc822", nil] andParameters:[NSDictionary dictionary]] autorelease];
+        fcoder = [[EDEntityFieldCoder alloc] initWithValues:[NSArray arrayWithObjects:@"message", @"rfc822", nil] andParameters:[NSDictionary dictionary]];
         defaultHeadersFields = [NSDictionary dictionaryWithObject:[fcoder fieldBody] forKey:@"content-type"];
         }
     else
         {
         charset = [NSString MIMEEncodingForStringEncoding:NSASCIIStringEncoding];
-        fcoder = [[[EDEntityFieldCoder alloc] initWithValues:[NSArray arrayWithObjects:@"text", @"plain", nil] andParameters:[NSDictionary dictionaryWithObject:charset forKey:@"charset"]] autorelease];
+        fcoder = [[EDEntityFieldCoder alloc] initWithValues:[NSArray arrayWithObjects:@"text", @"plain", nil] andParameters:[NSDictionary dictionaryWithObject:charset forKey:@"charset"]];
         defaultHeadersFields = [NSDictionary dictionaryWithObject:[fcoder fieldBody] forKey:@"content-type"];
         }
 
-    subparts = [[NSMutableArray allocWithZone:[self zone]] init];
+    subparts = [[NSMutableArray allocWithZone:nil] init];
 
     pmin = p = [[mpart contentData] bytes];
     pmax = p + [[mpart contentData] length];
@@ -191,7 +186,7 @@ static short boundaryId = 0;
                 {
                 subpartRange.location = startPtr - (const char *)[[mpart contentData] bytes];
                 subpartRange.length = possibleEndPtr - startPtr;
-                subpart = [[[EDMessagePart allocWithZone:[self zone]] initWithTransferData:[[mpart contentData] subdataWithRange:subpartRange] fallbackHeaderFields:defaultHeadersFields] autorelease];
+                subpart = [[EDMessagePart allocWithZone:nil] initWithTransferData:[[mpart contentData] subdataWithRange:subpartRange] fallbackHeaderFields:defaultHeadersFields];
                 [subparts addObject:subpart];
                 }
             startPtr = p = skipnewline(q, pmax); // trailing crlf belongs to boundary
@@ -211,9 +206,8 @@ static short boundaryId = 0;
 {
     EDInternetMessage	*msg;
 
-    msg = [[EDInternetMessage allocWithZone:[self zone]] initWithTransferData:[mpart contentData]];
-    subparts = [[NSMutableArray allocWithZone:[self zone]] initWithObjects:msg, nil];
-    [msg release];
+    msg = [[EDInternetMessage allocWithZone:nil] initWithTransferData:[mpart contentData]];
+    subparts = [[NSMutableArray allocWithZone:nil] initWithObjects:msg, nil];
 }
 
 
@@ -226,7 +220,7 @@ static short boundaryId = 0;
     NSData				*boundaryData, *linebreakData;
     NSMutableData		*contentData;
 
-    result = [[[targetClass alloc] init] autorelease];
+    result = [[targetClass alloc] init];
 
     // Is it okay to use a time stamp? (Conveys information which might not be known otherwise...)
 	// 978307200 is the difference between unix and foundation reference dates
@@ -277,21 +271,15 @@ static short boundaryId = 0;
 {
     self = [super init];
     if (self) {
-        rfc822Message = [aMessage retain];
+        rfc822Message = aMessage;
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [rfc822Message release];
-    
-    [super dealloc];
-}
 
 - (EDInternetMessage *)rfc822Message
 {
-    return [[rfc822Message retain] autorelease];
+    return rfc822Message;
 }
 
 - (EDMessagePart *)messagePart
@@ -304,7 +292,7 @@ static short boundaryId = 0;
     NSData				*boundaryData, *linebreakData;
     NSMutableData		*contentData;
     
-    result = [[[EDMessagePart alloc] init] autorelease];
+    result = [[EDMessagePart alloc] init];
     
     NSString *filename = [rfc822Message subject];
     

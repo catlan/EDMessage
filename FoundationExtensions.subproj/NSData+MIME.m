@@ -200,7 +200,7 @@ static __inline__ BOOL isqpliteral(byte b)
     const byte		*source, *chunkStart, *endOfSource;
     byte			c;
 
-    dest = [[[NSMutableData allocWithZone:[self zone]] init] autorelease];
+    dest = [[NSMutableData allocWithZone:nil] init];
     source = [self bytes];
     endOfSource = source + [self length];
     while(source < endOfSource)
@@ -261,7 +261,7 @@ static __inline__ BOOL isqpliteral(byte b)
     const byte		*source, *chunkStart, *startOfSource, *endOfSource, *softbreakPos;
     ptrdiff_t		lineLength;
 
-    dest = [[[NSMutableData allocWithZone:[self zone]] init] autorelease];
+    dest = [[NSMutableData allocWithZone:nil] init];
     startOfSource = source = [self bytes];
     endOfSource = source + [self length];
     chunkStart = source;
@@ -369,8 +369,7 @@ static __inline__ BOOL isqpliteral(byte b)
         {
         tempCharacterSet = [[NSCharacterSet MIMEHeaderDefaultLiteralCharacterSet] mutableCopy];
         [tempCharacterSet removeCharactersInString:escChars];
-        literalChars = [[tempCharacterSet copy] autorelease];
-        [tempCharacterSet release];
+        literalChars = [tempCharacterSet copy];
         }
     else
         {
@@ -378,7 +377,7 @@ static __inline__ BOOL isqpliteral(byte b)
         }
 
     length = [self length];
-    buffer = [[[NSMutableData alloc] initWithCapacity:length + length / 10] autorelease];
+    buffer = [[NSMutableData alloc] initWithCapacity:length + length / 10];
 
     chunkStart = source = [self bytes];
     endOfSource = source + length;

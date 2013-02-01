@@ -65,7 +65,7 @@
     NSDictionary		*parameters;
     NSData				*contentData;
 
-    result = [[[targetClass alloc] init] autorelease];
+    result = [[targetClass alloc] init];
     charset = [text recommendedMIMEEncoding];
     parameters = [NSDictionary dictionaryWithObjectsAndKeys:charset ,@"charset", nil];
     [result setContentType:[EDObjectPair pairWithObjects:@"text":@"html"] withParameters:parameters];

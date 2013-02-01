@@ -66,7 +66,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
     NSMutableString	*result;
 
     stopSet = [NSCharacterSet characterSetWithCharactersInString:@"("];
-    result = [[[NSMutableString allocWithZone:[self zone]] init] autorelease];
+    result = [[NSMutableString allocWithZone:nil] init];
     scanner = [NSScanner scannerWithString:self];
     while([scanner isAtEnd] == NO)
         {
@@ -87,7 +87,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 	NSRange charPos, char2Pos, nameRange;
 	
 	if(skipChars == nil)
-		skipChars = [[NSCharacterSet characterSetWithCharactersInString:@"\"' "] retain];
+		skipChars = [NSCharacterSet characterSetWithCharactersInString:@"\"' "];
 
 	if((charPos = [self rangeOfString:@"@"]).length == 0)
 		{
@@ -133,7 +133,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
         {
         NSMutableCharacterSet *workingSet;
 
-        workingSet = [[[NSCharacterSet characterSetWithCharactersInString:@"()<>@,;:\\\"[]"] mutableCopy] autorelease];
+        workingSet = [[NSCharacterSet characterSetWithCharactersInString:@"()<>@,;:\\\"[]"] mutableCopy];
         [workingSet formUnionWithCharacterSet:[NSCharacterSet controlCharacterSet]];
         [workingSet formUnionWithCharacterSet:[NSCharacterSet linebreakCharacterSet]];
         [workingSet formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -189,7 +189,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
     NSMutableString	*result;
 
     stopSet = [NSCharacterSet characterSetWithCharactersInString:@"\""];
-    result = [[[NSMutableString allocWithZone:[self zone]] init] autorelease];
+    result = [[NSMutableString allocWithZone:nil] init];
     scanner = [NSScanner scannerWithString:self];
     while([scanner isAtEnd] == NO)
         {
@@ -283,7 +283,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 	unichar			*buffer, *cp;
 
 	length = [self length];
-	buffer = NSZoneMalloc([self zone], length * sizeof(unichar));
+	buffer = NSZoneMalloc(nil, length * sizeof(unichar));
 	[self getCharacters:buffer range:NSMakeRange(0, length)];
 	for(i = 0, cp = buffer; i < length; i++, cp++)
 		if((*cp >= (unichar)'a') && (*cp <= (unichar)'z'))
@@ -291,7 +291,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 		else if((*cp >= (unichar)'A') && (*cp <= (unichar)'Z'))
 			*cp = (((*cp - 'A') + 13) % 26) + 'A';
 	result = [NSString stringWithCharacters:buffer length:length];
-	NSZoneFree([self zone], buffer);
+	NSZoneFree(nil, buffer);
 	
 	return result;
 }
@@ -306,7 +306,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
     NSRange			range;
 
     scanner = [EDStringScanner scannerWithString:self];
-    result = [[[NSMutableString allocWithZone:[self zone]] initWithCapacity:[self length]] autorelease];
+    result = [[NSMutableString allocWithZone:nil] initWithCapacity:[self length]];
     start = 0;
     lc = EDStringScannerEndOfDataCharacter;
     while((c = [scanner getCharacter]) != EDStringScannerEndOfDataCharacter)
@@ -348,7 +348,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
     
     separatorSet = [NSCharacterSet characterSetWithCharactersInString:@" -\t"];
     forceBreakSet = [NSCharacterSet characterSetWithCharactersInString:@" \t.?!:-1234567890>}#%|"]; // ∑ removed
-    buffer = [[[NSMutableString allocWithZone:[self zone]] init] autorelease];
+    buffer = [[NSMutableString allocWithZone:nil] init];
     lineEnum = [[self componentsSeparatedByString:lineBreakSeq] objectEnumerator];
     currentLine = [lineEnum nextObject];
     while((nextLine = [lineEnum nextObject]) != nil)
@@ -388,7 +388,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 
     breakSet = [NSCharacterSet characterSetWithCharactersInString:@" \t-"];
     textSet = [[NSCharacterSet characterSetWithCharactersInString:@" \t>}#%|"] invertedSet];
-    buffer = [[[NSMutableString allocWithZone:[self zone]] init] autorelease];
+    buffer = [[NSMutableString allocWithZone:nil] init];
 	spillOver = nil; lastPrefix = nil; // keep compiler happy...
     lineEnum = [[self componentsSeparatedByString:lineBreakSeq] objectEnumerator];
     while((originalLine = [lineEnum nextObject]) != nil)
@@ -409,7 +409,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 				}
 			else
 				{
-				originalLine = mcopy = [[originalLine mutableCopy] autorelease];
+				originalLine = mcopy = [originalLine mutableCopy];
 				[mcopy insertString:@" " atIndex:lineStart];
 				[mcopy insertString:spillOver atIndex:lineStart];
 				}
@@ -472,7 +472,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
     if([self rangeOfString:lineBreakSeq].length == 0)
         lineBreakSeq = @"\n";
 
-    buffer = [[[NSMutableString allocWithZone:[self zone]] init] autorelease];
+    buffer = [[NSMutableString allocWithZone:nil] init];
     lineEnum = [[self componentsSeparatedByString:lineBreakSeq] objectEnumerator];
     while((line = [lineEnum nextObject]) != nil)
         {

@@ -24,14 +24,6 @@
 #import "EDObjcRuntime.h"
 
 
-static NSComparisonResult compareAttributes(id object1, id object2, void *context)
-{
-    // The cast of the first value to an NSString is merely to avoid a compiler warning that compare:
-    // is declared in several classes. It does not limit the attribute values to strings.
-    return [(NSString *)[object1 valueForKey:(id)context] compare:[object2 valueForKey:(id)context]];
-}
-
-
 //=======================================================================================
     @implementation NSArray(EDExtensions)
 //=======================================================================================
@@ -63,7 +55,7 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
 
 - (NSArray *)shuffledArray
 {
-    NSMutableArray *copy = [[self mutableCopyWithZone:[self zone]] autorelease];
+    NSMutableArray *copy = [self mutableCopyWithZone:nil];
     [copy shuffle];
     return copy;
 }
@@ -77,14 +69,6 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
 }
 
 
-/*" Returns a new array that is a copy of the receiver with the objects sorted according to the values of their attribute %{attributeName}. These are retrieved using key/value coding. "*/
-
-- (NSArray *)sortedArrayByComparingAttribute:(NSString *)attributeName
-{
-    return [self sortedArrayUsingFunction:compareAttributes context:attributeName];
-}
-
-
 /*" If the receiver contains instances of #NSArray the objects from the embedded array are transferred to the receiver and the embedded array is deleted. This method works recursively which means that embedded arrays are also flattened before their contents are transferred. "*/
 
 - (NSArray *)flattenedArray
@@ -93,7 +77,7 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
     id				object;
     NSUInteger		i, n = [self count];
 
-    flattenedArray = [[[NSMutableArray allocWithZone:[self zone]] init] autorelease];
+    flattenedArray = [[NSMutableArray allocWithZone:nil] init];
     for(i = 0; i < n; i++)
         {
         object = [self objectAtIndex:i];
@@ -116,7 +100,7 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
     NSMutableArray	*mappedArray;
     NSUInteger		i, n = [self count];
 
-    mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
+    mappedArray = [[NSMutableArray allocWithZone:nil] initWithCapacity:n];
     for(i = 0; i < n; i++)
         [mappedArray addObject:[mapping objectForKey:[self objectAtIndex:i]]];
 
@@ -131,7 +115,7 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
     NSMutableArray	*mappedArray;
     NSUInteger		i, n = [self count];
 
-    mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
+    mappedArray = [[NSMutableArray allocWithZone:nil] initWithCapacity:n];
     for(i = 0; i < n; i++)
         [mappedArray addObject:EDObjcMsgSend([self objectAtIndex:i], selector)];
 
@@ -146,7 +130,7 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
     NSMutableArray	*mappedArray;
     NSUInteger		i, n = [self count];
 
-    mappedArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:n] autorelease];
+    mappedArray = [[NSMutableArray allocWithZone:nil] initWithCapacity:n];
     for(i = 0; i < n; i++)
         [mappedArray addObject:EDObjcMsgSend1([self objectAtIndex:i], selector, object)];
 
@@ -256,9 +240,9 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
 
     if(paths == nil)
         {
-        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-        paths = [NSSearchPathForDirectoriesInDomains(NSAllLibrariesDirectory, NSAllDomainsMask, YES) retain];
-        [pool release];
+        @autoreleasepool {
+        paths = NSSearchPathForDirectoriesInDomains(NSAllLibrariesDirectory, NSAllDomainsMask, YES);
+        }
         }
     return paths;
 }
@@ -289,10 +273,9 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
         j = random() % n;
         if(j == i)
             continue;
-        d = [[self objectAtIndex:i] retain];
+        d = [self objectAtIndex:i];
         [self replaceObjectAtIndex:i withObject:[self objectAtIndex:j]];
         [self replaceObjectAtIndex:j withObject:d];
-        [d release];
         }
 }
 
@@ -302,14 +285,6 @@ static NSComparisonResult compareAttributes(id object1, id object2, void *contex
 - (void)sort
 {
     [self sortUsingSelector:@selector(compare:)];
-}
-
-
-/*" Sorts objects according to the values of their %{attributeName}. These are retrieved using key/value coding. "*/
-
-- (void)sortByComparingAttribute:(NSString *)attributeName
-{
-    [self sortUsingFunction:compareAttributes context:attributeName];
 }
 
 

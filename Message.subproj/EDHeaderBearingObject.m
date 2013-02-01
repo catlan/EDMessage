@@ -43,24 +43,13 @@
 
 - (id)init
 {
-    [super init];
-    headerFields = [[NSMutableArray allocWithZone:[self zone]] init];
-    headerDictionary = [[NSMutableDictionary allocWithZone:[self zone]] init];
+    if (!(self = [super init])) return nil;
+    headerFields = [[NSMutableArray allocWithZone:nil] init];
+    headerDictionary = [[NSMutableDictionary allocWithZone:nil] init];
     return self;
 }
 
 
-- (void)dealloc
-{
-    [headerFields release];
-    [headerDictionary release];
-    [messageId release];
-    [date release];
-    [subject release];
-    [originalSubject release];
-    [author release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -74,7 +63,7 @@
     fieldName = [headerField firstObject];
     fieldBody = [headerField secondObject];
     if((sharedName = [fieldName sharedInstance]) != fieldName)
-        headerField = [[[EDObjectPair allocWithZone:[self zone]] initWithObjects:sharedName:fieldBody] autorelease];
+        headerField = [[EDObjectPair allocWithZone:nil] initWithObjects:sharedName:fieldBody];
     [headerFields addObject:headerField];
     [headerDictionary setObject:fieldBody forKey:[[fieldName lowercaseString] sharedInstance]];
 }
@@ -94,7 +83,7 @@
     
     fieldName = [fieldName sharedInstance];
     canonicalName = [[fieldName lowercaseString] sharedInstance];
-    headerField = [[EDObjectPair allocWithZone:[self zone]] initWithObjects:fieldName:fieldBody];
+    headerField = [[EDObjectPair allocWithZone:nil] initWithObjects:fieldName:fieldBody];
     if([headerDictionary objectForKey:canonicalName] != nil)
         {
         for(i = 0, n = [headerFields count]; i < n; i++)
@@ -108,7 +97,6 @@
         [headerFields addObject:headerField];
         }
     [headerDictionary setObject:fieldBody forKey:canonicalName];
-    [headerField release];
 }
 
 
@@ -131,13 +119,10 @@
 {
     EDIdListFieldCoder *fCoder;
 
-    [value retain];
-    [messageId release];
     messageId = value;
 
     fCoder = [[EDIdListFieldCoder alloc] initWithIdList:[NSArray arrayWithObject:messageId]];
     [self setBody:[fCoder fieldBody] forHeaderField:@"Message-Id"];
-    [fCoder release];
 }
 
 
@@ -146,7 +131,7 @@
     NSString *fBody;
 
     if((messageId == nil) && ((fBody = [self bodyForHeaderField:@"message-id"]) != nil))
-        messageId = [[[[EDIdListFieldCoder decoderWithFieldBody:fBody] list] lastObject] retain];
+        messageId = [[[EDIdListFieldCoder decoderWithFieldBody:fBody] list] lastObject];
     return messageId;
 }
 
@@ -155,13 +140,10 @@
 {
     EDDateFieldCoder *fCoder;
     
-    [value retain];
-    [date release];
     date = value;
 
     fCoder = [[EDDateFieldCoder alloc] initWithDate:date];
     [self setBody:[fCoder fieldBody] forHeaderField:@"Date"];
-    [fCoder release];
 }
 
 
@@ -170,7 +152,7 @@
     NSString *fBody;
 
     if((date == nil) && ((fBody = [self bodyForHeaderField:@"date"]) != nil))
-        date = [[[EDDateFieldCoder decoderWithFieldBody:fBody] date] retain];
+        date = [[EDDateFieldCoder decoderWithFieldBody:fBody] date];
     return date;
 }	
 
@@ -179,15 +161,11 @@
 {
     EDTextFieldCoder *fCoder;
 
-    [value retain];
-    [subject release];
     subject = value;
-    [originalSubject release];
     originalSubject = nil;
 
     fCoder = [[EDTextFieldCoder alloc] initWithText:value];
     [self setBody:[fCoder fieldBody] forHeaderField:@"Subject"];
-    [fCoder release];
 
 }
 
@@ -197,7 +175,7 @@
     NSString *fBody;
 
     if((subject == nil) && ((fBody = [self bodyForHeaderField:@"subject"]) != nil))
-        subject = [[[EDTextFieldCoder decoderWithFieldBody:fBody] text] retain];
+        subject = [[EDTextFieldCoder decoderWithFieldBody:fBody] text];
     return subject;
 }
 
@@ -209,7 +187,7 @@
 - (NSString *)originalSubject
 {
     if(originalSubject == nil)
-        originalSubject = [[[self subject] stringByRemovingReplyPrefix] retain];
+        originalSubject = [[self subject] stringByRemovingReplyPrefix];
     return originalSubject;
 }
 
@@ -236,7 +214,7 @@
 
     // Actually, a message can have multiple authors, but this will not look too bad...
     if((author == nil) && ((fBody = [self bodyForHeaderField:@"from"]) != nil))
-        author = [[[[EDTextFieldCoder decoderWithFieldBody:fBody] text] realnameFromEMailString] retain];
+        author = [[[EDTextFieldCoder decoderWithFieldBody:fBody] text] realnameFromEMailString];
     return author;
 }
 

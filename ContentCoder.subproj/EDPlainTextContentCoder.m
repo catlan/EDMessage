@@ -64,7 +64,7 @@
 
 - (id)initWithMessagePart:(EDMessagePart *)mpart
 {
-    [super init];
+    if (!(self = [super init])) return nil;
     if([[[mpart contentType] firstObject] isEqualToString:@"text"])
         [self _takeTextFromMessagePart:mpart];
     return self;
@@ -73,17 +73,12 @@
 
 - (id)initWithText:(NSString *)someText
 {
-    [super init];
-    text = [someText retain];
+    if (!(self = [super init])) return nil;
+    text = someText;
     return self;
 }
 
 
-- (void)dealloc
-{
-    [text release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -140,15 +135,13 @@
         EDLog(EDLogCoder, @"cannot decode charset %@", charset);
         return;
         }
-    [text retain];
 
     format = [[mpart contentTypeParameters] objectForKey:@"format"];
     if((format != nil) && ([format caseInsensitiveCompare:@"flowed"] == NSOrderedSame))
         {
         NSString *deflowed;
         
-        deflowed = [[text stringByDecodingFlowedFormat] retain];
-        [text release];
+        deflowed = [text stringByDecodingFlowedFormat];
         text = deflowed;
         }
 }
@@ -163,7 +156,7 @@
 
     flowedText = [text stringByEncodingFlowedFormat];
     
-    result = [[[targetClass alloc] init] autorelease];
+    result = [[targetClass alloc] init];
     charset = [flowedText recommendedMIMEEncoding];
     parameters = [NSDictionary dictionaryWithObjectsAndKeys:charset ,@"charset", @"flowed", @"format", nil];
     [result setContentType:[EDObjectPair pairWithObjects:@"text":@"plain"] withParameters:parameters];

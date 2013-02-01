@@ -36,7 +36,7 @@
 {
     NSString *version;
     
-    [super initWithTransferData:data fallbackHeaderFields:fields];
+    if (!(self = [super initWithTransferData:data fallbackHeaderFields:fields])) return nil;
 
     // a bit late maybe...
     if(((version = [self bodyForHeaderField:@"mime-version"]) != nil) && ([version length] > 0))

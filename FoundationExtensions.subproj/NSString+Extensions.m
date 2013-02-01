@@ -75,7 +75,7 @@ static NSCharacterSet *iwsSet = nil;
 
 + (NSString *)stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding
 {
-    return [[[NSString alloc] initWithData:data encoding:encoding] autorelease];
+    return [[NSString alloc] initWithData:data encoding:encoding];
 }
 
 
@@ -90,7 +90,7 @@ static NSCharacterSet *iwsSet = nil;
     NSRange		start, end, result;
 
     if(iwsSet == nil)
-        iwsSet = [[[NSCharacterSet whitespaceCharacterSet] invertedSet] retain];
+        iwsSet = [[NSCharacterSet whitespaceCharacterSet] invertedSet];
 
     start = [self rangeOfCharacterFromSet:iwsSet];
     if(start.length == 0)
@@ -111,7 +111,7 @@ static NSCharacterSet *iwsSet = nil;
 - (BOOL)isWhitespace
 {
     if(iwsSet == nil)
-        iwsSet = [[[NSCharacterSet whitespaceCharacterSet] invertedSet] retain];
+        iwsSet = [[NSCharacterSet whitespaceCharacterSet] invertedSet];
 
     return ([self rangeOfCharacterFromSet:iwsSet].length == 0);
 
@@ -134,7 +134,7 @@ static NSCharacterSet *iwsSet = nil;
 
     if([self rangeOfCharacterFromSet:set options:NSLiteralSearch].length == 0)
         return self;
-    temp = [[self mutableCopyWithZone:[self zone]] autorelease];
+    temp = [self mutableCopyWithZone:nil];
     [temp removeCharactersInSet:set];
 
     return temp;
@@ -164,7 +164,7 @@ static NSCharacterSet *iwsSet = nil;
     if([result sizeWithAttributes:attributes].width <= maxWidth)
         return result;
 
-    components = [[[result pathComponents] mutableCopy] autorelease];
+    components = [[result pathComponents] mutableCopy];
     if([[components objectAtIndex:0] isEqualToString:@"/"])
         [components removeObjectAtIndex:0];
     if([components count] < 2)
@@ -230,7 +230,7 @@ static NSCharacterSet *iwsSet = nil;
 
 + (NSString *)stringWithData:(NSData *)data MIMEEncoding:(NSString *)charsetName
 {
-    return [[[NSString alloc] initWithData:data MIMEEncoding:charsetName] autorelease];
+    return [[NSString alloc] initWithData:data MIMEEncoding:charsetName];
 }
 
 
@@ -238,7 +238,7 @@ static NSCharacterSet *iwsSet = nil;
 
 + (NSString *)stringWithBytes:(const void *)buffer length:(unsigned int)length MIMEEncoding:(NSString *)charsetName
 {
-    return [[[NSString alloc] initWithData:[NSData dataWithBytes:buffer length:length] MIMEEncoding:charsetName] autorelease];
+    return [[NSString alloc] initWithData:[NSData dataWithBytes:buffer length:length] MIMEEncoding:charsetName];
 }
 
 
@@ -397,7 +397,6 @@ static NSMutableDictionary *teTable = nil;
     [self _contentTypeExtensionMapping];
     if([teTable isKindOfClass:[NSMutableDictionary class]] == NO)
         {
-        [teTable autorelease];
         teTable = [[NSMutableDictionary alloc] initWithDictionary:teTable];
         }
     [teTable setObject:[tePair secondObject] forKey:[tePair firstObject]];
@@ -542,10 +541,9 @@ This method is thread-safe. "*/
 
     [encryptLock lock];
     encryptedCString = crypt((const char *)[sdata bytes], (const char *)salt);
-    encryptedString = [[[NSString allocWithZone:[self zone]] initWithCString:encryptedCString encoding:NSUTF8StringEncoding] autorelease];
+    encryptedString = [[NSString allocWithZone:nil] initWithCString:encryptedCString encoding:NSUTF8StringEncoding];
     [encryptLock unlock];
 
-    [sdata release];
     
     return encryptedString;
 }
@@ -600,7 +598,6 @@ This method is thread-safe. "*/
     va_start(args, format);
     buffer = [[NSString alloc] initWithFormat:format arguments:args];
     [buffer printf];
-    [buffer release];
     va_end(args);
 }
 
@@ -615,7 +612,6 @@ This method is thread-safe. "*/
     va_start(args, format);
     buffer = [[NSString alloc] initWithFormat:format arguments:args];
     [buffer fprintf:fileHandle];
-    [buffer release];
     va_end(args);
 }
 
@@ -629,7 +625,7 @@ This method is thread-safe. "*/
 
     [printfLock lock];
     if(stdoutFileHandle == nil)
-        stdoutFileHandle = [[NSFileHandle fileHandleWithStandardOutput] retain];
+        stdoutFileHandle = [NSFileHandle fileHandleWithStandardOutput];
     [stdoutFileHandle writeData:[self dataUsingEncoding:[NSString defaultCStringEncoding]]];
     [printfLock unlock];
 }
@@ -666,7 +662,7 @@ This method is thread-safe. "*/
     NSRange		start, end;
 
     if(iwsSet == nil)
-        iwsSet = [[[NSCharacterSet whitespaceCharacterSet] invertedSet] retain];
+        iwsSet = [[NSCharacterSet whitespaceCharacterSet] invertedSet];
 
     start = [self rangeOfCharacterFromSet:iwsSet];
     if(start.length == 0)

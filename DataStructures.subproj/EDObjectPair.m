@@ -48,7 +48,7 @@
 
 + (id)pair
 {
-    return [[[self alloc] init] autorelease];
+    return [[self alloc] init];
 }
 
 
@@ -56,7 +56,7 @@
 
 + (id)pairWithObjectPair:(EDObjectPair *)aPair
 {
-    return [[[self alloc] initWithObjects:[aPair firstObject]:[aPair secondObject]] autorelease];
+    return [[self alloc] initWithObjects:[aPair firstObject]:[aPair secondObject]];
 }
 
 
@@ -64,7 +64,7 @@
 
 + (id)pairWithObjects:(id)anObject:(id)anotherObject
 {
-    return [[[self alloc] initWithObjects:anObject:anotherObject] autorelease];
+    return [[self alloc] initWithObjects:anObject:anotherObject];
 }
 
 
@@ -84,19 +84,13 @@
 
 - (id)initWithObjects:(id)anObject:(id)anotherObject
 {
-    [super init];
-    firstObject = [anObject retain];
-    secondObject = [anotherObject retain];
+    if (!(self = [super init])) return nil;
+    firstObject = anObject;
+    secondObject = anotherObject;
     return self;
 }
 
 
-- (void)dealloc
-{
-    [firstObject release];
-    [secondObject release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -114,12 +108,12 @@
 {
     unsigned int version;
 
-    [super init];
+    if (!(self = [super init])) return nil;
     version = [decoder versionForClassName:@"EDObjectPair"];
     if(version > 0)
         {
-        firstObject = [[decoder decodeObject] retain];
-        secondObject = [[decoder decodeObject] retain];
+        firstObject = [decoder decodeObject];
+        secondObject = [decoder decodeObject];
         }
     return self;
 }
@@ -131,8 +125,6 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    if(NSShouldRetainWithZone(self, zone))
-        return [self retain];
     return [[EDObjectPair allocWithZone:zone] initWithObjects:firstObject:secondObject];
 }
 

@@ -51,15 +51,15 @@
 
 - (id)initWithMessagePart:(EDMessagePart *)mpart
 {
-    [super init];
+    if (!(self = [super init])) return nil;
 
     if((filename = [[mpart contentDispositionParameters] objectForKey:@"filename"]) != nil)
-        filename = [[filename lastPathComponent] retain];
+        filename = [filename lastPathComponent];
     else if((filename = [[mpart contentTypeParameters] objectForKey:@"name"]) != nil)
-        filename = [[filename lastPathComponent] retain];
+        filename = [filename lastPathComponent];
     else
         filename = nil;
-    data = [[mpart contentData] retain];
+    data = [mpart contentData];
     if([mpart contentDisposition] == nil)
         {
         NSString *ct = [[mpart contentType] firstObject];
@@ -85,20 +85,14 @@
 
 - (id)initWithData:(NSData *)someData filename:(NSString *)aFilename inlineFlag:(BOOL)inlineFlag
 {
-    [super init];
-    data = [someData retain];
-    filename = [aFilename retain];
+    if (!(self = [super init])) return nil;
+    data = someData;
+    filename = aFilename;
     shouldBeDisplayedInline = inlineFlag;
     return self;
 }
 
 
-- (void)dealloc
-{
-    [data release];
-    [filename release];
-    [super dealloc];
-}
 
 
 //---------------------------------------------------------------------------------------
@@ -147,7 +141,7 @@
     EDObjectPair		*contentType;
     NSDictionary 		*parameters;
     
-    result = [[[targetClass alloc] init] autorelease];
+    result = [[targetClass alloc] init];
     
     if((filename != nil) && ((ctString = [NSString contentTypeForPathExtension:[filename pathExtension]]) != nil))
         {

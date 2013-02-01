@@ -70,7 +70,7 @@
     cBracket = brackets[i + 1];
     bset = [NSCharacterSet characterSetWithCharactersInString:[NSString stringWithCharacters:&brackets[i] length:2]];
 
-    result = [[[NSMutableString alloc] init] autorelease];
+    result = [[NSMutableString alloc] init];
     while(([self isAtEnd] == NO) && (nestingLevel > 0))
         {
         if([self scanUpToCharactersFromSet:bset intoString:&literal])

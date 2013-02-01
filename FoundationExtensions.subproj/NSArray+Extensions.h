@@ -38,7 +38,6 @@
 - (NSArray *)reversedArray;
 - (NSArray *)shuffledArray;
 - (NSArray *)sortedArray;
-- (NSArray *)sortedArrayByComparingAttribute:(NSString *)attributeName;
 - (NSArray *)flattenedArray;
 
 /*" Mapping the array "*/
@@ -60,5 +59,4 @@
 /*" Rearranging the array "*/
 - (void)shuffle;
 - (void)sort;
-- (void)sortByComparingAttribute:(NSString *)attributeName;
 @end
