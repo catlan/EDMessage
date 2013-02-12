@@ -25,9 +25,6 @@
 #import "NSDate+NetExt.h"
 #import "NSCharacterSet+MIME.h"
 #import "NSData+MIME.h"
-#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
-#import "NSImage+XFace.h"
-#endif
 #import "NSString+MessageUtils.h"
 #import "NSString+PlainTextFlowedExtensions.h"
 
@@ -41,9 +38,6 @@
 #import "EDDateFieldCoder.h"
 #import "EDIdListFieldCoder.h"
 #import "EDEntityFieldCoder.h"
-#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
-#import "EDFaceFieldCoder.h"
-#endif
 
 #import "EDContentCoder.h"
 #import "EDCompositeContentCoder.h"
