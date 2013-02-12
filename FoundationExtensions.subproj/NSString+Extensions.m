@@ -327,8 +327,6 @@ static NSMutableDictionary *teTable = nil;
 
 + (NSDictionary *)_contentTypeExtensionMapping
 {
-    NSString *path;
-
     if(teTable == nil)
         {
         teTable = [[NSMutableDictionary alloc] initWithObjectsAndKeys:

@@ -284,13 +284,9 @@ static short boundaryId = 0;
 
 - (EDMessagePart *)messagePart
 {
-    EDMessagePart		*result, *subpart;
-    NSString			*boundary, *cte, *rootPartType;
+    EDMessagePart		*result;
     NSMutableDictionary	*ctpDictionary;
     NSMutableDictionary	*cdpDictionary;
-    NSEnumerator		*subpartEnum;
-    NSData				*boundaryData, *linebreakData;
-    NSMutableData		*contentData;
     
     result = [[EDMessagePart alloc] init];
     

@@ -213,7 +213,7 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
 {
     NSData			*stringData, *b64Rep, *qpRep, *transferRep;
     NSString		*result;
-    NSUInteger		b64Length, qpLength, length;
+    NSUInteger		b64Length, qpLength;
 
     stringData = [aString dataUsingMIMEEncoding:encoding];
     b64Rep = [stringData encodeBase64WithLineLength:(UINT_MAX - 3) andNewlineAtEnd:NO];
