@@ -35,7 +35,6 @@
 		D15CC8BA14E55120000047C3 /* NSDate+NetExt.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EA90DD3E0AE00DBD46E /* NSDate+NetExt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D15CC8BB14E55120000047C3 /* NSCharacterSet+MIME.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EAD0DD3E0AE00DBD46E /* NSCharacterSet+MIME.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D15CC8BC14E55120000047C3 /* NSData+MIME.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EAF0DD3E0AE00DBD46E /* NSData+MIME.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D15CC8BD14E55120000047C3 /* NSImage+XFace.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EB10DD3E0AE00DBD46E /* NSImage+XFace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D15CC8BE14E55120000047C3 /* NSString+MessageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EB30DD3E0AE00DBD46E /* NSString+MessageUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D15CC8BF14E55120000047C3 /* NSString+PlainTextFlowedExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EB50DD3E0AE00DBD46E /* NSString+PlainTextFlowedExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D15CC8C014E55120000047C3 /* EDMConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EF10DD3E13B00DBD46E /* EDMConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,7 +43,6 @@
 		D15CC8C314E55120000047C3 /* EDInternetMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EEF0DD3E13B00DBD46E /* EDInternetMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D15CC8C414E55120000047C3 /* EDDateFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EC70DD3E0DD00DBD46E /* EDDateFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D15CC8C514E55120000047C3 /* EDEntityFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EC90DD3E0DD00DBD46E /* EDEntityFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D15CC8C614E55120000047C3 /* EDFaceFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221ECB0DD3E0DD00DBD46E /* EDFaceFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D15CC8C714E55120000047C3 /* EDHeaderFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221ECD0DD3E0DD00DBD46E /* EDHeaderFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D15CC8C814E55120000047C3 /* EDIdListFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221ECF0DD3E0DD00DBD46E /* EDIdListFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D15CC8C914E55120000047C3 /* EDTextFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221ED10DD3E0DD00DBD46E /* EDTextFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -133,8 +131,6 @@
 		DE221EBC0DD3E0AE00DBD46E /* NSCharacterSet+MIME.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EAE0DD3E0AE00DBD46E /* NSCharacterSet+MIME.m */; };
 		DE221EBD0DD3E0AE00DBD46E /* NSData+MIME.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EAF0DD3E0AE00DBD46E /* NSData+MIME.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE221EBE0DD3E0AE00DBD46E /* NSData+MIME.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EB00DD3E0AE00DBD46E /* NSData+MIME.m */; };
-		DE221EBF0DD3E0AE00DBD46E /* NSImage+XFace.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EB10DD3E0AE00DBD46E /* NSImage+XFace.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE221EC00DD3E0AE00DBD46E /* NSImage+XFace.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EB20DD3E0AE00DBD46E /* NSImage+XFace.m */; };
 		DE221EC10DD3E0AE00DBD46E /* NSString+MessageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EB30DD3E0AE00DBD46E /* NSString+MessageUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE221EC20DD3E0AE00DBD46E /* NSString+MessageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EB40DD3E0AE00DBD46E /* NSString+MessageUtils.m */; };
 		DE221EC30DD3E0AE00DBD46E /* NSString+PlainTextFlowedExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EB50DD3E0AE00DBD46E /* NSString+PlainTextFlowedExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -143,8 +139,6 @@
 		DE221ED50DD3E0DD00DBD46E /* EDDateFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EC80DD3E0DD00DBD46E /* EDDateFieldCoder.m */; };
 		DE221ED60DD3E0DD00DBD46E /* EDEntityFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EC90DD3E0DD00DBD46E /* EDEntityFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE221ED70DD3E0DD00DBD46E /* EDEntityFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221ECA0DD3E0DD00DBD46E /* EDEntityFieldCoder.m */; };
-		DE221ED80DD3E0DD00DBD46E /* EDFaceFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221ECB0DD3E0DD00DBD46E /* EDFaceFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE221ED90DD3E0DD00DBD46E /* EDFaceFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221ECC0DD3E0DD00DBD46E /* EDFaceFieldCoder.m */; };
 		DE221EDA0DD3E0DD00DBD46E /* EDHeaderFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221ECD0DD3E0DD00DBD46E /* EDHeaderFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE221EDB0DD3E0DD00DBD46E /* EDHeaderFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221ECE0DD3E0DD00DBD46E /* EDHeaderFieldCoder.m */; };
 		DE221EDC0DD3E0DD00DBD46E /* EDIdListFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221ECF0DD3E0DD00DBD46E /* EDIdListFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -223,8 +217,6 @@
 		DE221EAE0DD3E0AE00DBD46E /* NSCharacterSet+MIME.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCharacterSet+MIME.m"; path = "FoundationExtensions.subproj/NSCharacterSet+MIME.m"; sourceTree = "<group>"; };
 		DE221EAF0DD3E0AE00DBD46E /* NSData+MIME.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+MIME.h"; path = "FoundationExtensions.subproj/NSData+MIME.h"; sourceTree = "<group>"; };
 		DE221EB00DD3E0AE00DBD46E /* NSData+MIME.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+MIME.m"; path = "FoundationExtensions.subproj/NSData+MIME.m"; sourceTree = "<group>"; };
-		DE221EB10DD3E0AE00DBD46E /* NSImage+XFace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+XFace.h"; path = "FoundationExtensions.subproj/NSImage+XFace.h"; sourceTree = "<group>"; };
-		DE221EB20DD3E0AE00DBD46E /* NSImage+XFace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+XFace.m"; path = "FoundationExtensions.subproj/NSImage+XFace.m"; sourceTree = "<group>"; };
 		DE221EB30DD3E0AE00DBD46E /* NSString+MessageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MessageUtils.h"; path = "FoundationExtensions.subproj/NSString+MessageUtils.h"; sourceTree = "<group>"; };
 		DE221EB40DD3E0AE00DBD46E /* NSString+MessageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MessageUtils.m"; path = "FoundationExtensions.subproj/NSString+MessageUtils.m"; sourceTree = "<group>"; };
 		DE221EB50DD3E0AE00DBD46E /* NSString+PlainTextFlowedExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PlainTextFlowedExtensions.h"; path = "FoundationExtensions.subproj/NSString+PlainTextFlowedExtensions.h"; sourceTree = "<group>"; };
@@ -233,8 +225,6 @@
 		DE221EC80DD3E0DD00DBD46E /* EDDateFieldCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDDateFieldCoder.m; path = HeaderFieldCoder.subproj/EDDateFieldCoder.m; sourceTree = "<group>"; };
 		DE221EC90DD3E0DD00DBD46E /* EDEntityFieldCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDEntityFieldCoder.h; path = HeaderFieldCoder.subproj/EDEntityFieldCoder.h; sourceTree = "<group>"; };
 		DE221ECA0DD3E0DD00DBD46E /* EDEntityFieldCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDEntityFieldCoder.m; path = HeaderFieldCoder.subproj/EDEntityFieldCoder.m; sourceTree = "<group>"; };
-		DE221ECB0DD3E0DD00DBD46E /* EDFaceFieldCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDFaceFieldCoder.h; path = HeaderFieldCoder.subproj/EDFaceFieldCoder.h; sourceTree = "<group>"; };
-		DE221ECC0DD3E0DD00DBD46E /* EDFaceFieldCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDFaceFieldCoder.m; path = HeaderFieldCoder.subproj/EDFaceFieldCoder.m; sourceTree = "<group>"; };
 		DE221ECD0DD3E0DD00DBD46E /* EDHeaderFieldCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDHeaderFieldCoder.h; path = HeaderFieldCoder.subproj/EDHeaderFieldCoder.h; sourceTree = "<group>"; };
 		DE221ECE0DD3E0DD00DBD46E /* EDHeaderFieldCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDHeaderFieldCoder.m; path = HeaderFieldCoder.subproj/EDHeaderFieldCoder.m; sourceTree = "<group>"; };
 		DE221ECF0DD3E0DD00DBD46E /* EDIdListFieldCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDIdListFieldCoder.h; path = HeaderFieldCoder.subproj/EDIdListFieldCoder.h; sourceTree = "<group>"; };
@@ -432,7 +422,6 @@
 				DE221EA90DD3E0AE00DBD46E /* NSDate+NetExt.h */,
 				DE221EAD0DD3E0AE00DBD46E /* NSCharacterSet+MIME.h */,
 				DE221EAF0DD3E0AE00DBD46E /* NSData+MIME.h */,
-				DE221EB10DD3E0AE00DBD46E /* NSImage+XFace.h */,
 				DE221EB30DD3E0AE00DBD46E /* NSString+MessageUtils.h */,
 				DE221EB50DD3E0AE00DBD46E /* NSString+PlainTextFlowedExtensions.h */,
 			);
@@ -453,7 +442,6 @@
 				DE221EAA0DD3E0AE00DBD46E /* NSDate+NetExt.m */,
 				DE221EAE0DD3E0AE00DBD46E /* NSCharacterSet+MIME.m */,
 				DE221EB00DD3E0AE00DBD46E /* NSData+MIME.m */,
-				DE221EB20DD3E0AE00DBD46E /* NSImage+XFace.m */,
 				DE221EB40DD3E0AE00DBD46E /* NSString+MessageUtils.m */,
 				DE221EB60DD3E0AE00DBD46E /* NSString+PlainTextFlowedExtensions.m */,
 			);
@@ -512,7 +500,6 @@
 			children = (
 				DE221EC80DD3E0DD00DBD46E /* EDDateFieldCoder.m */,
 				DE221ECA0DD3E0DD00DBD46E /* EDEntityFieldCoder.m */,
-				DE221ECC0DD3E0DD00DBD46E /* EDFaceFieldCoder.m */,
 				DE221ECE0DD3E0DD00DBD46E /* EDHeaderFieldCoder.m */,
 				DE221ED00DD3E0DD00DBD46E /* EDIdListFieldCoder.m */,
 				DE221ED20DD3E0DD00DBD46E /* EDTextFieldCoder.m */,
@@ -525,7 +512,6 @@
 			children = (
 				DE221EC70DD3E0DD00DBD46E /* EDDateFieldCoder.h */,
 				DE221EC90DD3E0DD00DBD46E /* EDEntityFieldCoder.h */,
-				DE221ECB0DD3E0DD00DBD46E /* EDFaceFieldCoder.h */,
 				DE221ECD0DD3E0DD00DBD46E /* EDHeaderFieldCoder.h */,
 				DE221ECF0DD3E0DD00DBD46E /* EDIdListFieldCoder.h */,
 				DE221ED10DD3E0DD00DBD46E /* EDTextFieldCoder.h */,
@@ -616,12 +602,10 @@
 				DE221EB70DD3E0AE00DBD46E /* NSDate+NetExt.h in Headers */,
 				DE221EBB0DD3E0AE00DBD46E /* NSCharacterSet+MIME.h in Headers */,
 				DE221EBD0DD3E0AE00DBD46E /* NSData+MIME.h in Headers */,
-				DE221EBF0DD3E0AE00DBD46E /* NSImage+XFace.h in Headers */,
 				DE221EC10DD3E0AE00DBD46E /* NSString+MessageUtils.h in Headers */,
 				DE221EC30DD3E0AE00DBD46E /* NSString+PlainTextFlowedExtensions.h in Headers */,
 				DE221ED40DD3E0DD00DBD46E /* EDDateFieldCoder.h in Headers */,
 				DE221ED60DD3E0DD00DBD46E /* EDEntityFieldCoder.h in Headers */,
-				DE221ED80DD3E0DD00DBD46E /* EDFaceFieldCoder.h in Headers */,
 				DE221EDA0DD3E0DD00DBD46E /* EDHeaderFieldCoder.h in Headers */,
 				DE221EDC0DD3E0DD00DBD46E /* EDIdListFieldCoder.h in Headers */,
 				DE221EDE0DD3E0DD00DBD46E /* EDTextFieldCoder.h in Headers */,
@@ -647,7 +631,6 @@
 				D15CC8BA14E55120000047C3 /* NSDate+NetExt.h in Headers */,
 				D15CC8BB14E55120000047C3 /* NSCharacterSet+MIME.h in Headers */,
 				D15CC8BC14E55120000047C3 /* NSData+MIME.h in Headers */,
-				D15CC8BD14E55120000047C3 /* NSImage+XFace.h in Headers */,
 				D15CC8BE14E55120000047C3 /* NSString+MessageUtils.h in Headers */,
 				D15CC8BF14E55120000047C3 /* NSString+PlainTextFlowedExtensions.h in Headers */,
 				D15CC8C014E55120000047C3 /* EDMConstants.h in Headers */,
@@ -656,7 +639,6 @@
 				D15CC8C314E55120000047C3 /* EDInternetMessage.h in Headers */,
 				D15CC8C414E55120000047C3 /* EDDateFieldCoder.h in Headers */,
 				D15CC8C514E55120000047C3 /* EDEntityFieldCoder.h in Headers */,
-				D15CC8C614E55120000047C3 /* EDFaceFieldCoder.h in Headers */,
 				D15CC8C714E55120000047C3 /* EDHeaderFieldCoder.h in Headers */,
 				D15CC8C814E55120000047C3 /* EDIdListFieldCoder.h in Headers */,
 				D15CC8C914E55120000047C3 /* EDTextFieldCoder.h in Headers */,
@@ -776,12 +758,10 @@
 				DE221EB80DD3E0AE00DBD46E /* NSDate+NetExt.m in Sources */,
 				DE221EBC0DD3E0AE00DBD46E /* NSCharacterSet+MIME.m in Sources */,
 				DE221EBE0DD3E0AE00DBD46E /* NSData+MIME.m in Sources */,
-				DE221EC00DD3E0AE00DBD46E /* NSImage+XFace.m in Sources */,
 				DE221EC20DD3E0AE00DBD46E /* NSString+MessageUtils.m in Sources */,
 				DE221EC40DD3E0AE00DBD46E /* NSString+PlainTextFlowedExtensions.m in Sources */,
 				DE221ED50DD3E0DD00DBD46E /* EDDateFieldCoder.m in Sources */,
 				DE221ED70DD3E0DD00DBD46E /* EDEntityFieldCoder.m in Sources */,
-				DE221ED90DD3E0DD00DBD46E /* EDFaceFieldCoder.m in Sources */,
 				DE221EDB0DD3E0DD00DBD46E /* EDHeaderFieldCoder.m in Sources */,
 				DE221EDD0DD3E0DD00DBD46E /* EDIdListFieldCoder.m in Sources */,
 				DE221EDF0DD3E0DD00DBD46E /* EDTextFieldCoder.m in Sources */,

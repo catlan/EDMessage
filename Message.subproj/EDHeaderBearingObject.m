@@ -26,9 +26,6 @@
 #import "EDEntityFieldCoder.h"
 #import "EDDateFieldCoder.h"
 #import "EDIdListFieldCoder.h"
-#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
-#import "EDFaceFieldCoder.h"
-#endif
 #import "EDHeaderBearingObject.h"
 
 
@@ -233,9 +230,6 @@ static NSMutableDictionary *coderClassCache = nil;
     [coderClassCache setObject:[EDDateFieldCoder class] forKey:@"expires"];
     [coderClassCache setObject:[EDIdListFieldCoder class] forKey:@"message-id"];
     [coderClassCache setObject:[EDIdListFieldCoder class] forKey:@"references"];
-#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
-    [coderClassCache setObject:[EDFaceFieldCoder class] forKey:@"x-face"];
-#endif
 }
 
 

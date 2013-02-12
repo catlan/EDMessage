@@ -388,7 +388,7 @@
             fbodyPtr = p + 1;
             if((fbodyPtr < pmax) && (iswhitespace(*fbodyPtr)))
                 fbodyPtr += 1;
-            name = [NSString stringWithCString:fnamePtr length:(p - fnamePtr)];
+            name = [[NSString alloc] initWithBytes:fnamePtr length:(p - fnamePtr) encoding:NSUTF8StringEncoding];
             }
         else if(iscrlf(*p))
             {
