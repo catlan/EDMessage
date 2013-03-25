@@ -128,7 +128,11 @@
     if((textEncoding = [NSString stringEncodingForMIMEEncoding:charset]) == 0)
         [NSException raise:EDMessageFormatException format:@"Invalid charset in message part; found '%@'", charset];
     data = [[NSString stringWithData:[mpart contentData] encoding:textEncoding] dataUsingEncoding:NSUnicodeStringEncoding];
+#if defined(TARGET_OS_IPHONE) || TARGET_OS_IPHONE
+    text = [[NSMutableAttributedString allocWithZone:nil] initWithString:[NSString stringWithData:[mpart contentData] encoding:textEncoding]];
+#else
     text = [[NSMutableAttributedString allocWithZone:nil] initWithHTML:data documentAttributes:NULL];
+#endif
 }
 
 
