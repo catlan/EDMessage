@@ -70,7 +70,7 @@
 
 - (BOOL)isEqual:(id)other
 {
-    if((isa != ((EDInternetMessage *)other)->isa) && ([other isKindOfClass:[EDInternetMessage class]] == NO))
+    if ([other isKindOfClass:[EDInternetMessage class]] == NO)
         return NO;
     return [[self messageId] isEqualToString:[other messageId]];
 }
