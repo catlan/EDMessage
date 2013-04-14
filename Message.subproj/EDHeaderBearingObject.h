@@ -33,6 +33,11 @@
     NSString			 *subject;
     NSString			 *originalSubject;
     NSString			 *author;
+    NSString			 *from;
+    NSArray              *to;
+    NSArray 			 *cc;
+    NSArray 			 *bcc;
+    NSArray              *attachments;
 }
 
 - (void)addToHeaderFields:(EDObjectPair *)headerField;
@@ -56,5 +61,10 @@
 - (NSString *)replySubject;
 - (NSString *)forwardSubject;
 - (NSString *)author;
+- (NSString *)from;
+- (NSArray *)to;
+- (NSArray *)cc;
+- (NSArray *)bcc;
+- (NSArray *)attachments;
 
 @end

@@ -27,6 +27,7 @@
 #import "EDDateFieldCoder.h"
 #import "EDIdListFieldCoder.h"
 #import "EDHeaderBearingObject.h"
+#import "EDCompositeContentCoder.h"
 
 
 //---------------------------------------------------------------------------------------
@@ -215,6 +216,71 @@
     return author;
 }
 
+
+- (NSString *)from
+{
+    NSString *fBody;
+    
+    // Actually, a message can have multiple authors, but this will not look too bad...
+    if((from == nil) && ((fBody = [self bodyForHeaderField:@"from"]) != nil))
+        from = [[EDTextFieldCoder decoderWithFieldBody:fBody] text];
+    return from;
+}
+
+
+- (NSArray *)to
+{
+    NSString *fBody;
+    
+    // Actually, a message can have multiple authors, but this will not look too bad...
+    if((to == nil) && ((fBody = [self bodyForHeaderField:@"to"]) != nil)) {
+        NSString *headerField = [[EDTextFieldCoder decoderWithFieldBody:fBody] text];
+        NSArray *components = [headerField componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
+        components = [components filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self <> ''"]];
+        to = components;
+    }
+    return to;
+}
+
+
+- (NSArray *)cc
+{
+    NSString *fBody;
+    
+    // Actually, a message can have multiple authors, but this will not look too bad...
+    if((cc == nil) && ((fBody = [self bodyForHeaderField:@"cc"]) != nil)) {
+        NSString *headerField = [[EDTextFieldCoder decoderWithFieldBody:fBody] text];
+        NSArray *components = [headerField componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
+        components = [components filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self <> ''"]];
+        cc = components;
+    }
+    return cc;
+}
+
+
+- (NSArray *)bcc
+{
+    NSString *fBody;
+    
+    // Actually, a message can have multiple authors, but this will not look too bad...
+    if((bcc == nil) && ((fBody = [self bodyForHeaderField:@"bcc"]) != nil)) {
+        NSString *headerField = [[EDTextFieldCoder decoderWithFieldBody:fBody] text];
+        NSArray *components = [headerField componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
+        components = [components filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self <> ''"]];
+        bcc = components;
+    }
+    return bcc;
+}
+
+
+- (NSArray *)attachments
+{
+    EDCompositeContentCoder *compositeContentCoder = [[EDCompositeContentCoder alloc] initWithMessagePart:(EDMessagePart *)self];
+    if (!compositeContentCoder)
+        return nil;
+    
+    return [compositeContentCoder subparts];
+}
 
 //---------------------------------------------------------------------------------------
 //	CODER CLASS CACHE

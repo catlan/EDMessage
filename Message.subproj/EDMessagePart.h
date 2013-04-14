@@ -47,6 +47,7 @@
 - (void)setContentDisposition:(NSString *)aDispositionDirective withParameters:(NSDictionary *)someParameters;
 - (NSString *)contentDisposition;
 - (NSDictionary *)contentDispositionParameters;
+- (NSString *)attachmentFilename;
 
 - (void)setContentTransferEncoding:(NSString *)anEncoding;
 - (NSString *)contentTransferEncoding;

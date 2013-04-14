@@ -266,6 +266,17 @@
 }
 
 
+- (NSString *)attachmentFilename
+{
+    NSString *attachmentFilename = [[self contentDispositionParameters] objectForKey:@"filename"];
+    if (!attachmentFilename)
+    {
+        attachmentFilename = [[self contentTypeParameters] objectForKey:@"name"];
+    }
+    return attachmentFilename;
+}
+
+
 //---------------------------------------------------------------------------------------
 //	CONTENT TRANSFER ENCODING
 //---------------------------------------------------------------------------------------
