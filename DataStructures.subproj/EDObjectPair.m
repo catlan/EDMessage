@@ -157,7 +157,7 @@
 
     if(otherObject == nil)
         return NO;
-    else if((isa != ((EDObjectPair *)otherObject)->isa) && ([otherObject isKindOfClass:[EDObjectPair class]] == NO))
+    else if([otherObject isKindOfClass:[EDObjectPair class]] == NO)
         return NO;
 
     otherFirstObject = ((EDObjectPair *)otherObject)->firstObject;
