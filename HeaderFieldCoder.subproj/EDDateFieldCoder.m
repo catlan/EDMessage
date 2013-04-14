@@ -140,8 +140,22 @@
 
 - (void)_takeDateFromString:(NSString *)string
 {
+    static NSDateFormatter* dateFormatter = nil;
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] ;
+        NSAssert(enUSPOSIXLocale != nil, @"POSIX may not be nil.");
+        [dateFormatter setLocale:enUSPOSIXLocale];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        
+        dateFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss +0000";
+    }
+    
+    
     string = [string stringByRemovingSurroundingWhitespace];
     date = [NSDate dateWithMessageTimeSpecification:string];
+    if(date == nil)
+        date = [dateFormatter dateFromString:string];
     if(date == nil)
         EDLog(EDLogCoder, @"Invalid date spec; found \"%@\"\n", string);
 }
