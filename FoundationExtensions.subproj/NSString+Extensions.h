@@ -80,7 +80,6 @@
 
 /*" Printing/formatting "*/
 + (void)printf:(NSString *)format, ...;
-+ (void)fprintf:(NSFileHandle *)fileHandle:(NSString *)format, ...;
 - (void)printf;
 - (void)fprintf:(NSFileHandle *)fileHandle;
 

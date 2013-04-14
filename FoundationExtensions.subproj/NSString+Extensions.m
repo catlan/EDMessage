@@ -600,20 +600,6 @@ This method is thread-safe. "*/
 }
 
 
-/*" Writes the %printf format string to %fileHandle using the default C String encoding. "*/
-
-+ (void)fprintf:(NSFileHandle *)fileHandle:(NSString *)format, ...
-{
-    va_list   	args;
-    NSString	*buffer;
-
-    va_start(args, format);
-    buffer = [[NSString alloc] initWithFormat:format arguments:args];
-    [buffer fprintf:fileHandle];
-    va_end(args);
-}
-
-
 /*" Writes the contents of the reciever to %stdout using the default C String encoding. "*/
 
 - (void)printf
