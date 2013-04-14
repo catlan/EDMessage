@@ -30,4 +30,6 @@
 
 - (NSString *)stringValue;
 
++ (NSString *)stringByDecodingMIMEWordsInString:(NSString *)fieldBody;
+
 @end

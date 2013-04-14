@@ -32,7 +32,6 @@
 
 // public interface to low-level coders
 
-+ (NSString *)stringByDecodingMIMEWordsInString:(NSString *)fieldBody;
 + (NSString *)stringByEncodingString:(NSString *)string;
 
 @end

@@ -179,7 +179,7 @@
     // forgiving, ie. simply skips syntactially incorrect attribute/value pairs...
     scannedParameters = [[NSMutableDictionary allocWithZone:nil] init];
     while((parameterPart = [fieldBodyPartEnum nextObject]) != nil)
-        {
+    {
         scanner = [NSScanner scannerWithString:parameterPart];
         if([scanner scanCharactersFromSet:[NSCharacterSet MIMETokenCharacterSet] intoString:&attr] == NO)
             continue;
@@ -187,16 +187,20 @@
         if([scanner scanString:@"=" intoString:NULL] == NO)
             continue;
         if([scanner scanString:DOUBLEQUOTE intoString:NULL] == NO)
-            {
-            if([scanner scanCharactersFromSet:[NSCharacterSet MIMETokenCharacterSet] intoString:&attrValue] == YES)
-                [scannedParameters setObject:attrValue forKey:attr];
-            }
-        else
-            {
-            if([scanner scanUpToString:DOUBLEQUOTE intoString:&attrValue] == YES)
+        {
+            if([scanner scanCharactersFromSet:[NSCharacterSet MIMETokenCharacterSet] intoString:&attrValue] == YES) {
+                attrValue = [[self class] stringByDecodingMIMEWordsInString:attrValue];
                 [scannedParameters setObject:attrValue forKey:attr];
             }
         }
+        else
+        {
+            if([scanner scanUpToString:DOUBLEQUOTE intoString:&attrValue] == YES)  {
+                attrValue = [[self class] stringByDecodingMIMEWordsInString:attrValue];
+                [scannedParameters setObject:attrValue forKey:attr];
+            }
+        }
+    }
     parameters = [[NSDictionary allocWithZone:nil] initWithDictionary:scannedParameters];
 }
 

@@ -29,12 +29,6 @@
 + (NSString *)_wrappedWord:(NSString *)aString encoding:(NSString *)encoding;
 @end
 
-#define EDLS_MALFORMED_MIME_HEADER_WORD \
-NSLocalizedString(@"Syntax error in MIME header word \"%@\"", "Reason for exception which is raised when a MIME header word is encountered that is syntactically malformed.")
-
-#define EDLS_UNKNOWN_ENCODING_SPEC \
-NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "Reason for exception which is raised when an unknown encoding specifier is found.")
-
 
 //---------------------------------------------------------------------------------------
     @implementation EDTextFieldCoder
@@ -97,65 +91,6 @@ NSLocalizedString(@"Unknown encoding specifier in header field; found \"%@\"", "
 //---------------------------------------------------------------------------------------
 //	HELPER METHODS
 //---------------------------------------------------------------------------------------
-
-+ (NSString *)stringByDecodingMIMEWordsInString:(NSString *)fieldBody
-{
-    NSMutableString		*result;
-    NSScanner			*scanner;
-    NSString			*chunk, *charset, *transferEncoding, *previousChunk, *decodedWord;
-    NSStringEncoding	stringEncoding;
-    NSData				*wContents;
-    BOOL				hasSeenEncodedWord;
-
-    result = [NSMutableString string];
-    hasSeenEncodedWord = NO;
-    scanner = [NSScanner scannerWithString:fieldBody];
-    [scanner setCharactersToBeSkipped:nil];
-    while([scanner isAtEnd] == NO)
-        {
-        if([scanner scanUpToString:@"=?" intoString:&chunk] == YES)
-            {
-            if((hasSeenEncodedWord == NO) || ([chunk isWhitespace] == NO))
-                [result appendString:chunk];
-            }
-        if([scanner scanString:@"=?" intoString:NULL] == YES)
-            {
-            previousChunk = chunk;
-            if(([scanner scanUpToString:@"?" intoString:&charset] == NO) ||
-               ([scanner scanString:@"?" intoString:NULL] == NO) ||
-               ([scanner scanUpToString:@"?" intoString:&transferEncoding] == NO) ||
-               ([scanner scanString:@"?" intoString:NULL] == NO) ||
-               ([scanner scanUpToString:@"?=" intoString:&chunk] == NO) ||
-               ([scanner scanString:@"?=" intoString:NULL] == NO))
-                {
-                [NSException raise:EDMessageFormatException format:EDLS_MALFORMED_MIME_HEADER_WORD, fieldBody];
-                if([previousChunk isWhitespace])
-                    [result appendString:previousChunk];
-                hasSeenEncodedWord = NO;
-               }
-            else
-                {
-                wContents = [chunk dataUsingEncoding:NSASCIIStringEncoding];
-                if([transferEncoding caseInsensitiveCompare:@"Q"] == NSOrderedSame)
-                    wContents = [wContents decodeHeaderQuotedPrintable];
-                else if([transferEncoding caseInsensitiveCompare:@"B"] == NSOrderedSame)
-                    wContents = [wContents decodeBase64];
-                else
-                    [NSException raise:EDMessageFormatException format:EDLS_UNKNOWN_ENCODING_SPEC, transferEncoding];
-                charset = [charset lowercaseString];
-                if((stringEncoding = [NSString stringEncodingForMIMEEncoding:charset]) == 0)
-                    stringEncoding = NSASCIIStringEncoding;
-                // Only very few string encodings make malformed words possible but of course,
-                // if there is something to break a user agent will. In this case stringWithData
-                // returns nil by the way.
-                if((decodedWord = [NSString stringWithData:wContents encoding:stringEncoding]) != nil)
-                    [result appendString:decodedWord];
-                hasSeenEncodedWord = YES;
-                }
-            }
-        }
-    return result;
-}
 
 
 + (NSString *)stringByEncodingString:(NSString *)string
