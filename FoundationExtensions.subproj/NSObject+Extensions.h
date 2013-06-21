@@ -26,8 +26,6 @@
 
 /*" Developer notes "*/
 - (volatile void)methodIsAbstract:(SEL)selector;
-- (void)methodIsObsolete:(SEL)selector;
-- (void)methodIsObsolete:(SEL)selector hint:(NSString *)hint;
 
 /*" Mapping an array "*/
 - (NSArray *)mapArray:(NSArray *)anArray withSelector:(SEL)aSelector;

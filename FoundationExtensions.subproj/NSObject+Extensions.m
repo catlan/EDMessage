@@ -41,40 +41,6 @@
 }
 
 
-/*" Prints a warning that the method is obsolete. This warning is only printed once per method. "*/
-
-- (void)methodIsObsolete:(SEL)selector
-{
-    [self methodIsObsolete:selector hint:nil];
-}
-
-
-/*" Prints a warning that the method is obsolete including the %hint supplied. This warning is only printed once per method. "*/
-
-- (void)methodIsObsolete:(SEL)selector hint:(NSString *)hint
-{
-    static NSMutableSet *methodList = nil;
-    EDObjcMethodInfo method;
-    NSValue *methodKey;
-
-    if(methodList == nil)
-        methodList = [[NSMutableSet alloc] init];
-
-   if((method = EDObjcClassGetInstanceMethod(isa, selector)) == NULL)
-       method = EDObjcClassGetClassMethod(isa, selector);
-
-   methodKey = [NSValue valueWithBytes:&method objCType:@encode(Method)];
-   if([methodList containsObject:methodKey] == NO)
-       {
-       [methodList addObject:methodKey];
-       if(hint == nil)
-           NSLog(@"*** Warning: Compatibility method '%@' in class %@ has been invoked at least once.", NSStringFromSelector(selector), NSStringFromClass([self class]));
-       else
-           NSLog(@"*** Warning: Compatibility method '%@' in class %@ has been invoked at least once. %@", NSStringFromSelector(selector), NSStringFromClass([self class]), hint);
-        }
-}
-
-
 //---------------------------------------------------------------------------------------
 //  MAPPING
 //---------------------------------------------------------------------------------------
