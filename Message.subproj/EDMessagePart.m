@@ -135,7 +135,7 @@
         //[NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Transfer representation of header fields contains non ASCII characters.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
         if (error != NULL)
         {
-            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"-[%@ %@]: Transfer representation of header fields contains non ASCII characters.", NSStringFromClass(isa), NSStringFromSelector(_cmd)]};
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : [NSString stringWithFormat:@"-[%@ %@]: Transfer representation of header fields contains non ASCII characters.", NSStringFromClass([self class]), NSStringFromSelector(_cmd)]};
             *error = [[NSError alloc] initWithDomain:@"EDMessage" code:0 userInfo:userInfo];
         }
     }
@@ -342,7 +342,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p: %@>", NSStringFromClass(isa), self, [self bodyForHeaderField:@"content-type"]];
+    return [NSString stringWithFormat:@"<%@ %p: %@>", NSStringFromClass([self class]), self, [self bodyForHeaderField:@"content-type"]];
 }
 
 

@@ -141,7 +141,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat: @"<%@ %p: (%@, %@)>", NSStringFromClass(isa), (void *)self, firstObject, secondObject];
+    return [NSString stringWithFormat: @"<%@ %p: (%@, %@)>", NSStringFromClass([self class]), (void *)self, firstObject, secondObject];
 }
 
 

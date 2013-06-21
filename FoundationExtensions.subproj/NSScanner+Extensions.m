@@ -59,7 +59,7 @@
     int		   		nestingLevel = 1, location, i;
 
     if((location = [self scanLocation]) == 0)
-        [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Attempt to scan up to a closing bracket even though no bracket has been scanned.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
+        [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Attempt to scan up to a closing bracket even though no bracket has been scanned.", NSStringFromClass([self class]), NSStringFromSelector(_cmd)];
 
     oBracket = [[self string] characterAtIndex:location - 1];
     for(i = 0; brackets[i] != '\0'; i += 2)

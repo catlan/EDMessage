@@ -131,7 +131,7 @@ static __inline__ BOOL isqpliteral(byte b)
         return [self encodeQuotedPrintable];
     if([encodingName isEqualToString:MIMEBase64ContentTransferEncoding])
         return [self encodeBase64];
-    [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Unknown content transfer encoding; found '%@'", NSStringFromClass(isa), NSStringFromSelector(_cmd), encodingName];
+    [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Unknown content transfer encoding; found '%@'", NSStringFromClass([self class]), NSStringFromSelector(_cmd), encodingName];
     return nil; // keep compiler happy
 }
 

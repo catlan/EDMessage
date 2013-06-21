@@ -272,7 +272,7 @@ If %lineLength is greater than 0, linebreaks are inserted after every %lineLengt
     numgroups = udivroundup([self length], 3);
     groupsPerLine = lineLength / 4;
     if(groupsPerLine == 0)
-        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Line length must be > 3", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
+        [NSException raise:NSInvalidArgumentException format:@"-[%@ %@]: Line length must be > 3", NSStringFromClass([self class]), NSStringFromSelector(_cmd)];
     dataLength = numgroups * 4;
     if(lineLength > 0)
         dataLength += udivroundup(numgroups, groupsPerLine) * 2;
