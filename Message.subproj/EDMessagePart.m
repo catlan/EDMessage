@@ -451,7 +451,7 @@
     NSData		*rawData;
 
     if(originalTransferData == nil)
-        [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Original transfer data not available anymore.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];
+        [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Original transfer data not available anymore.", NSStringFromClass([self class]), NSStringFromSelector(_cmd)];
 
     // If we have a contentData already, it must have been created from the original before
     if(contentData != nil)

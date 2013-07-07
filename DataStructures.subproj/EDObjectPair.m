@@ -62,7 +62,7 @@
 
 /*" Creates and returns a pair containing anObject and anotherObject. "*/
 
-+ (id)pairWithObjects:(id)anObject:(id)anotherObject
++ (id)pairWithObjects:(id)anObject :(id)anotherObject
 {
     return [[self alloc] initWithObjects:anObject:anotherObject];
 }
@@ -82,7 +82,7 @@
 
 /*" Initialises a newly allocated pair by adding anObject and anotherObject to it. Objects are, of course, retained. "*/
 
-- (id)initWithObjects:(id)anObject:(id)anotherObject
+- (id)initWithObjects:(id)anObject :(id)anotherObject
 {
     if (!(self = [super init])) return nil;
     firstObject = anObject;

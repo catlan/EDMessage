@@ -28,10 +28,10 @@
 /*" Creating new pair objects "*/
 + (id)pair;
 + (id)pairWithObjectPair:(EDObjectPair *)aPair;
-+ (id)pairWithObjects:(id)anObject:(id)anotherObject;
++ (id)pairWithObjects:(id)anObject :(id)anotherObject;
 
 - (id)initWithObjectPair:(EDObjectPair *)aPair;
-- (id)initWithObjects:(id)anObject:(id)anotherObject; // designated initializer
+- (id)initWithObjects:(id)anObject :(id)anotherObject; // designated initializer
 
 /*" Retrieving objects "*/
 - (id)firstObject;
