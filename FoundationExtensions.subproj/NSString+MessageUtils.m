@@ -415,7 +415,7 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 				}
             }
 		// note that this doesn't work properly if length(prefix) > length!, so...
-		NSAssert(prefixLength <= length, @"line prefix too long.");
+		//NSAssert(prefixLength <= length, @"line prefix too long.");
 	
 		if([originalLine length] - lineStart  > length - prefixLength)
 			{
