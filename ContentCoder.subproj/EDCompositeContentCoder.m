@@ -239,21 +239,24 @@ static short boundaryId = 0;
 
     cte = MIME7BitContentTransferEncoding;
     contentData = [NSMutableData data];
-    [contentData appendData:[@"This is a MIME encoded message.\r\n" dataUsingEncoding:NSASCIIStringEncoding]];
-    subpartEnum = [subparts objectEnumerator];
-    while((subpart = [subpartEnum nextObject]) != nil)
+    if ([subparts count] > 0)
+    {
+        [contentData appendData:[@"This is a MIME encoded message.\r\n" dataUsingEncoding:NSASCIIStringEncoding]];
+        subpartEnum = [subparts objectEnumerator];
+        while((subpart = [subpartEnum nextObject]) != nil)
         {
-        if([[subpart contentTransferEncoding] isEqualToString:MIME8BitContentTransferEncoding])
-            cte = MIME8BitContentTransferEncoding;
+            if([[subpart contentTransferEncoding] isEqualToString:MIME8BitContentTransferEncoding])
+                cte = MIME8BitContentTransferEncoding;
+            [contentData appendData:linebreakData];
+            [contentData appendData:boundaryData];
+            [contentData appendData:linebreakData];
+            [contentData appendData:[subpart transferData:NULL]];
+        }
         [contentData appendData:linebreakData];
         [contentData appendData:boundaryData];
-        [contentData appendData:linebreakData];
-        [contentData appendData:[subpart transferData:NULL]];
-        }
-    [contentData appendData:linebreakData];
-    [contentData appendData:boundaryData];
-    [contentData appendData:[@"--\r\n" dataUsingEncoding:NSASCIIStringEncoding]];
-    
+        [contentData appendData:[@"--\r\n" dataUsingEncoding:NSASCIIStringEncoding]];
+    }
+        
     [result setContentData:contentData];
     [result setContentTransferEncoding:cte];
 
