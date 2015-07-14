@@ -230,7 +230,7 @@ static short boundaryId = 0;
     [ctpDictionary setObject:boundary forKey:@"boundary"];
     if([[subtype lowercaseString] isEqualToString:@"related"])
         {
-        rootPartType = [[[[subparts objectAtIndex:0] contentType] allObjects] componentsJoinedByString:@"/"];
+        rootPartType = [[[(EDMessagePart *)[subparts objectAtIndex:0] contentType] allObjects] componentsJoinedByString:@"/"];
         [ctpDictionary setObject:rootPartType forKey:@"type"];
         }
     [result setContentType:[EDObjectPair pairWithObjects:@"multipart":subtype] withParameters:ctpDictionary];
