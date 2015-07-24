@@ -562,27 +562,6 @@ This method is thread-safe. "*/
 
 
 //---------------------------------------------------------------------------------------
-//	SHARING STRING INSTANCES
-//---------------------------------------------------------------------------------------
-
-/*" Maintains a global pool of string instances. Returns the instance stored in the pool or adds the receiver if no such string was in the pool before. This can be used to allow for equality tests using #{==} instead of #{isEqual:} but this "leaks" all string instances that are ever shared and, hence, should be used with caution. "*/
-
-- (NSString *)sharedInstance
-{
-    static NSMutableSet *stringPool;
-    NSString *sharedInstance;
-
-    if(stringPool == nil)
-        stringPool = [[NSMutableSet alloc] init];
-
-    if((sharedInstance = [stringPool member:self]) != nil)
-        return sharedInstance;
-    [stringPool addObject:self];
-    return self;
-}
-
-
-//---------------------------------------------------------------------------------------
 //	PRINTING
 //---------------------------------------------------------------------------------------
 

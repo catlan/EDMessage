@@ -424,9 +424,6 @@
                 else
                     [fbodyData appendBytes:fbodyPtr length:(eolPtr - fbodyPtr)];
                 fbodyContents = [NSString stringWithData:fbodyData encoding:encoding];
-                // we know something about the implementation of addToHeaderFields ;-)
-                // by uniqueing the string here we avoid creating another pair.
-                name = [name sharedInstance];
                 field = [[EDObjectPair allocWithZone:nil] initWithObjects:name:fbodyContents];
                 [self addToHeaderFields:field];
                 fbodyData = nil;

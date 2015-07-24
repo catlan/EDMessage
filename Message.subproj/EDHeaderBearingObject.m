@@ -60,10 +60,8 @@
 
     fieldName = [headerField firstObject];
     fieldBody = [headerField secondObject];
-    if((sharedName = [fieldName sharedInstance]) != fieldName)
-        headerField = [[EDObjectPair allocWithZone:nil] initWithObjects:sharedName:fieldBody];
     [headerFields addObject:headerField];
-    [headerDictionary setObject:fieldBody forKey:[[fieldName lowercaseString] sharedInstance]];
+    [headerDictionary setObject:fieldBody forKey:[fieldName lowercaseString]];
 }
 
 
@@ -79,8 +77,7 @@
     NSString 		*canonicalName;
     NSUInteger		i, n;
     
-    fieldName = [fieldName sharedInstance];
-    canonicalName = [[fieldName lowercaseString] sharedInstance];
+    canonicalName = [fieldName lowercaseString];
     headerField = [[EDObjectPair allocWithZone:nil] initWithObjects:fieldName:fieldBody];
     if([headerDictionary objectForKey:canonicalName] != nil)
         {

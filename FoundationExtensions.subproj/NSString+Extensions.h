@@ -75,9 +75,6 @@
 - (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forAttributes:(NSDictionary *)attributes;
 #endif
 
-/*" Sharing instances "*/
-- (NSString *)sharedInstance;
-
 /*" Printing/formatting "*/
 + (void)printf:(NSString *)format, ...;
 - (void)printf;
