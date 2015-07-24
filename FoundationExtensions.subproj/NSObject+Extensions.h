@@ -27,11 +27,4 @@
 /*" Developer notes "*/
 - (volatile void)methodIsAbstract:(SEL)selector;
 
-/*" Mapping an array "*/
-- (NSArray *)mapArray:(NSArray *)anArray withSelector:(SEL)aSelector;
-
-/*" Repeatedly performing a selector "*/
-- (void)performSelector:(SEL)selector withObjects:(NSArray *)objectList;
-- (void)performSelector:(SEL)selector withObjectsEnumeratedBy:(NSEnumerator *)enumerator;
-
 @end

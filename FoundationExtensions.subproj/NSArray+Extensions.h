@@ -27,36 +27,13 @@
 /*" Retrieving individual objects "*/
 - (id)firstObject;
 
-/*" Handling subarrays "*/
-- (NSArray *)subarrayToIndex:(NSUInteger)index;
-- (NSArray *)subarrayFromIndex:(NSUInteger)index;
-
-- (BOOL)isSubarrayOfArray:(NSArray *)other atOffset:(int)offset;
-- (NSUInteger)indexOfSubarray:(NSArray *)other;
-
-/*" Rearranging the array "*/
-- (NSArray *)reversedArray;
-- (NSArray *)shuffledArray;
-- (NSArray *)sortedArray;
-- (NSArray *)flattenedArray;
 
 /*" Mapping the array "*/
 - (NSArray *)arrayByMappingWithDictionary:(NSDictionary *)mapping;
 - (NSArray *)arrayByMappingWithSelector:(SEL)selector; // similar to valueForKey:
 - (NSArray *)arrayByMappingWithSelector:(SEL)selector withObject:(id)object;
 
-/*" List files "*/
-+ (NSArray *)librarySearchPaths;
-+ (NSArray *)arrayWithFilesOfType:(NSString *)type inPath:(NSString *)aPath;
-+ (NSArray *)arrayWithFilesOfType:(NSString *)type inLibrary:(NSString *)libraryName;
-
 @end
 
 
-/*" Various common extensions to #NSMutableArray. "*/
 
-@interface NSMutableArray(EDExtensions)
-/*" Rearranging the array "*/
-- (void)shuffle;
-- (void)sort;
-@end

@@ -16,7 +16,6 @@
 		D1375D76176FE8DD00542175 /* utilities.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE221E880DD3E05B00DBD46E /* utilities.h */; };
 		D1375D77176FE8DD00542175 /* functions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1B0B31B1524D2AD00791DAD /* functions.h */; };
 		D1375D78176FE8DD00542175 /* NSArray+Extensions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1B0B31C1524D2AD00791DAD /* NSArray+Extensions.h */; };
-		D1375D79176FE8DD00542175 /* NSAttributedString+Extensions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1B0B31D1524D2AD00791DAD /* NSAttributedString+Extensions.h */; };
 		D1375D7A176FE8DD00542175 /* NSData+Extensions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1B0B31E1524D2AD00791DAD /* NSData+Extensions.h */; };
 		D1375D7B176FE8DD00542175 /* NSObject+Extensions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1B0B31F1524D2AD00791DAD /* NSObject+Extensions.h */; };
 		D1375D7C176FE8DD00542175 /* NSScanner+Extensions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1B0B3201524D2AD00791DAD /* NSScanner+Extensions.h */; };
@@ -30,7 +29,6 @@
 		D1375D84176FE8DD00542175 /* EDMutableObjectPair.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1B0B2E91524CFB500791DAD /* EDMutableObjectPair.h */; };
 		D1375D85176FE8DD00542175 /* EDObjectPair.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1B0B2EB1524CFB500791DAD /* EDObjectPair.h */; };
 		D1375D86176FE8DD00542175 /* EDStringScanner.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1B0B2ED1524CFB500791DAD /* EDStringScanner.h */; };
-		D1375D87176FE8DD00542175 /* NSAttributedString+AppKitExtensions.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D1B0B3031524D04E00791DAD /* NSAttributedString+AppKitExtensions.h */; };
 		D1375D88176FE8DD00542175 /* EDMConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE221EF10DD3E13B00DBD46E /* EDMConstants.h */; };
 		D1375D89176FE8DD00542175 /* EDHeaderBearingObject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE221EED0DD3E13B00DBD46E /* EDHeaderBearingObject.h */; };
 		D1375D8A176FE8DD00542175 /* EDMessagePart.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DE221EF30DD3E13B00DBD46E /* EDMessagePart.h */; };
@@ -87,11 +85,8 @@
 		D1B0B2FB1524CFB500791DAD /* EDStringScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2ED1524CFB500791DAD /* EDStringScanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B2FD1524CFB500791DAD /* EDStringScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EE1524CFB500791DAD /* EDStringScanner.m */; };
 		D1B0B2FE1524CFB500791DAD /* EDStringScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EE1524CFB500791DAD /* EDStringScanner.m */; };
-		D1B0B3051524D04E00791DAD /* NSAttributedString+AppKitExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3031524D04E00791DAD /* NSAttributedString+AppKitExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B3071524D04E00791DAD /* NSAttributedString+AppKitExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3041524D04E00791DAD /* NSAttributedString+AppKitExtensions.m */; };
 		D1B0B3221524D2AD00791DAD /* functions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31B1524D2AD00791DAD /* functions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B3241524D2AD00791DAD /* NSArray+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31C1524D2AD00791DAD /* NSArray+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1B0B3261524D2AD00791DAD /* NSAttributedString+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31D1524D2AD00791DAD /* NSAttributedString+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B3281524D2AD00791DAD /* NSData+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31E1524D2AD00791DAD /* NSData+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B32A1524D2AD00791DAD /* NSObject+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31F1524D2AD00791DAD /* NSObject+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B0B32C1524D2AD00791DAD /* NSScanner+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3201524D2AD00791DAD /* NSScanner+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -100,8 +95,6 @@
 		D1B0B3381524D2D300791DAD /* functions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3301524D2CE00791DAD /* functions.m */; };
 		D1B0B3391524D2D300791DAD /* NSArray+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3311524D2CE00791DAD /* NSArray+Extensions.m */; };
 		D1B0B33A1524D2D300791DAD /* NSArray+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3311524D2CE00791DAD /* NSArray+Extensions.m */; };
-		D1B0B33B1524D2D300791DAD /* NSAttributedString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3321524D2CE00791DAD /* NSAttributedString+Extensions.m */; };
-		D1B0B33C1524D2D300791DAD /* NSAttributedString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3321524D2CE00791DAD /* NSAttributedString+Extensions.m */; };
 		D1B0B33D1524D2D300791DAD /* NSData+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3331524D2CF00791DAD /* NSData+Extensions.m */; };
 		D1B0B33E1524D2D300791DAD /* NSData+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3331524D2CF00791DAD /* NSData+Extensions.m */; };
 		D1B0B33F1524D2D300791DAD /* NSObject+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3341524D2D000791DAD /* NSObject+Extensions.m */; };
@@ -173,7 +166,6 @@
 				D1375D76176FE8DD00542175 /* utilities.h in CopyFiles */,
 				D1375D77176FE8DD00542175 /* functions.h in CopyFiles */,
 				D1375D78176FE8DD00542175 /* NSArray+Extensions.h in CopyFiles */,
-				D1375D79176FE8DD00542175 /* NSAttributedString+Extensions.h in CopyFiles */,
 				D1375D7A176FE8DD00542175 /* NSData+Extensions.h in CopyFiles */,
 				D1375D7B176FE8DD00542175 /* NSObject+Extensions.h in CopyFiles */,
 				D1375D7C176FE8DD00542175 /* NSScanner+Extensions.h in CopyFiles */,
@@ -187,7 +179,6 @@
 				D1375D84176FE8DD00542175 /* EDMutableObjectPair.h in CopyFiles */,
 				D1375D85176FE8DD00542175 /* EDObjectPair.h in CopyFiles */,
 				D1375D86176FE8DD00542175 /* EDStringScanner.h in CopyFiles */,
-				D1375D87176FE8DD00542175 /* NSAttributedString+AppKitExtensions.h in CopyFiles */,
 				D1375D88176FE8DD00542175 /* EDMConstants.h in CopyFiles */,
 				D1375D89176FE8DD00542175 /* EDHeaderBearingObject.h in CopyFiles */,
 				D1375D8A176FE8DD00542175 /* EDMessagePart.h in CopyFiles */,
@@ -227,18 +218,14 @@
 		D1B0B2EC1524CFB500791DAD /* EDObjectPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDObjectPair.m; sourceTree = "<group>"; };
 		D1B0B2ED1524CFB500791DAD /* EDStringScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDStringScanner.h; sourceTree = "<group>"; };
 		D1B0B2EE1524CFB500791DAD /* EDStringScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDStringScanner.m; sourceTree = "<group>"; };
-		D1B0B3031524D04E00791DAD /* NSAttributedString+AppKitExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+AppKitExtensions.h"; sourceTree = "<group>"; };
-		D1B0B3041524D04E00791DAD /* NSAttributedString+AppKitExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+AppKitExtensions.m"; sourceTree = "<group>"; };
 		D1B0B31B1524D2AD00791DAD /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = functions.h; path = FoundationExtensions.subproj/functions.h; sourceTree = "<group>"; };
 		D1B0B31C1524D2AD00791DAD /* NSArray+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Extensions.h"; path = "FoundationExtensions.subproj/NSArray+Extensions.h"; sourceTree = "<group>"; };
-		D1B0B31D1524D2AD00791DAD /* NSAttributedString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Extensions.h"; path = "FoundationExtensions.subproj/NSAttributedString+Extensions.h"; sourceTree = "<group>"; };
 		D1B0B31E1524D2AD00791DAD /* NSData+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Extensions.h"; path = "FoundationExtensions.subproj/NSData+Extensions.h"; sourceTree = "<group>"; };
 		D1B0B31F1524D2AD00791DAD /* NSObject+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+Extensions.h"; path = "FoundationExtensions.subproj/NSObject+Extensions.h"; sourceTree = "<group>"; };
 		D1B0B3201524D2AD00791DAD /* NSScanner+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSScanner+Extensions.h"; path = "FoundationExtensions.subproj/NSScanner+Extensions.h"; sourceTree = "<group>"; };
 		D1B0B3211524D2AD00791DAD /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Extensions.h"; path = "FoundationExtensions.subproj/NSString+Extensions.h"; sourceTree = "<group>"; };
 		D1B0B3301524D2CE00791DAD /* functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = functions.m; path = FoundationExtensions.subproj/functions.m; sourceTree = "<group>"; };
 		D1B0B3311524D2CE00791DAD /* NSArray+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Extensions.m"; path = "FoundationExtensions.subproj/NSArray+Extensions.m"; sourceTree = "<group>"; };
-		D1B0B3321524D2CE00791DAD /* NSAttributedString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Extensions.m"; path = "FoundationExtensions.subproj/NSAttributedString+Extensions.m"; sourceTree = "<group>"; };
 		D1B0B3331524D2CF00791DAD /* NSData+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Extensions.m"; path = "FoundationExtensions.subproj/NSData+Extensions.m"; sourceTree = "<group>"; };
 		D1B0B3341524D2D000791DAD /* NSObject+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Extensions.m"; path = "FoundationExtensions.subproj/NSObject+Extensions.m"; sourceTree = "<group>"; };
 		D1B0B3351524D2D100791DAD /* NSScanner+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSScanner+Extensions.m"; path = "FoundationExtensions.subproj/NSScanner+Extensions.m"; sourceTree = "<group>"; };
@@ -326,7 +313,6 @@
 				DE158C0B0E198E7F00447697 /* Global Headers */,
 				DE158C0C0E198F7B00447697 /* FoundationExtensions */,
 				D1B0B2E61524CFB500791DAD /* DataStructures */,
-				D1B0B3021524D04E00791DAD /* AppKitExtensions */,
 				DE221EEC0DD3E12400DBD46E /* Message */,
 				DE158C1B0E1993EC00447697 /* HeaderFieldCoder */,
 				DE221E8E0DD3E06300DBD46E /* ContentCoder */,
@@ -387,16 +373,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		D1B0B3021524D04E00791DAD /* AppKitExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				D1B0B3031524D04E00791DAD /* NSAttributedString+AppKitExtensions.h */,
-				D1B0B3041524D04E00791DAD /* NSAttributedString+AppKitExtensions.m */,
-			);
-			name = AppKitExtensions;
-			path = AppKitExtensions.subproj;
-			sourceTree = "<group>";
-		};
 		DE158C0B0E198E7F00447697 /* Global Headers */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,7 +401,6 @@
 			children = (
 				D1B0B31B1524D2AD00791DAD /* functions.h */,
 				D1B0B31C1524D2AD00791DAD /* NSArray+Extensions.h */,
-				D1B0B31D1524D2AD00791DAD /* NSAttributedString+Extensions.h */,
 				D1B0B31E1524D2AD00791DAD /* NSData+Extensions.h */,
 				D1B0B31F1524D2AD00791DAD /* NSObject+Extensions.h */,
 				D1B0B3201524D2AD00791DAD /* NSScanner+Extensions.h */,
@@ -445,7 +420,6 @@
 				D1AA50561524E0EA00300F15 /* useful.m */,
 				D1B0B3301524D2CE00791DAD /* functions.m */,
 				D1B0B3311524D2CE00791DAD /* NSArray+Extensions.m */,
-				D1B0B3321524D2CE00791DAD /* NSAttributedString+Extensions.m */,
 				D1B0B3331524D2CF00791DAD /* NSData+Extensions.m */,
 				D1B0B3341524D2D000791DAD /* NSObject+Extensions.m */,
 				D1B0B3351524D2D100791DAD /* NSScanner+Extensions.m */,
@@ -599,7 +573,6 @@
 				DE221E8C0DD3E05B00DBD46E /* utilities.h in Headers */,
 				D1B0B3221524D2AD00791DAD /* functions.h in Headers */,
 				D1B0B3241524D2AD00791DAD /* NSArray+Extensions.h in Headers */,
-				D1B0B3261524D2AD00791DAD /* NSAttributedString+Extensions.h in Headers */,
 				D1B0B3281524D2AD00791DAD /* NSData+Extensions.h in Headers */,
 				D1B0B32A1524D2AD00791DAD /* NSObject+Extensions.h in Headers */,
 				D1B0B32C1524D2AD00791DAD /* NSScanner+Extensions.h in Headers */,
@@ -627,7 +600,6 @@
 				D1B0B2F31524CFB500791DAD /* EDMutableObjectPair.h in Headers */,
 				D1B0B2F71524CFB500791DAD /* EDObjectPair.h in Headers */,
 				D1B0B2FB1524CFB500791DAD /* EDStringScanner.h in Headers */,
-				D1B0B3051524D04E00791DAD /* NSAttributedString+AppKitExtensions.h in Headers */,
 				DE221EFB0DD3E13B00DBD46E /* EDMessagePart.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,10 +710,8 @@
 				D1B0B2F51524CFB500791DAD /* EDMutableObjectPair.m in Sources */,
 				D1B0B2F91524CFB500791DAD /* EDObjectPair.m in Sources */,
 				D1B0B2FD1524CFB500791DAD /* EDStringScanner.m in Sources */,
-				D1B0B3071524D04E00791DAD /* NSAttributedString+AppKitExtensions.m in Sources */,
 				D1B0B3371524D2D300791DAD /* functions.m in Sources */,
 				D1B0B3391524D2D300791DAD /* NSArray+Extensions.m in Sources */,
-				D1B0B33B1524D2D300791DAD /* NSAttributedString+Extensions.m in Sources */,
 				D1B0B33D1524D2D300791DAD /* NSData+Extensions.m in Sources */,
 				D1B0B33F1524D2D300791DAD /* NSObject+Extensions.m in Sources */,
 				D1B0B3411524D2D300791DAD /* NSScanner+Extensions.m in Sources */,
@@ -781,7 +751,6 @@
 				D1B0B2FE1524CFB500791DAD /* EDStringScanner.m in Sources */,
 				D1B0B3381524D2D300791DAD /* functions.m in Sources */,
 				D1B0B33A1524D2D300791DAD /* NSArray+Extensions.m in Sources */,
-				D1B0B33C1524D2D300791DAD /* NSAttributedString+Extensions.m in Sources */,
 				D1B0B33E1524D2D300791DAD /* NSData+Extensions.m in Sources */,
 				D1B0B3401524D2D300791DAD /* NSObject+Extensions.m in Sources */,
 				D1B0B3421524D2D300791DAD /* NSScanner+Extensions.m in Sources */,

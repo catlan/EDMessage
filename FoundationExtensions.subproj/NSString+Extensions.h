@@ -36,14 +36,6 @@
 - (NSString *)stringByRemovingWhitespace;
 - (NSString *)stringByRemovingCharactersFromSet:(NSCharacterSet *)set;
 
-/*" Comparisons "*/
-- (BOOL)hasPrefixCaseInsensitive:(NSString *)string;
-- (BOOL)isEmpty;
-
-/*" Conversions "*/
-- (BOOL)boolValue;
-- (unsigned int)intValueForHex;
-
 /*" Using MIME encoding names "*/
 + (NSString *)stringWithData:(NSData *)data MIMEEncoding:(NSString *)charsetName;
 + (NSString *)stringWithBytes:(const void *)buffer length:(unsigned int)length MIMEEncoding:(NSString *)charsetName;
@@ -60,25 +52,6 @@
 + (NSString *)contentTypeForPathExtension:(NSString *)extension;
 + (void)addContentTypePathExtensionPair:(EDObjectPair *)tePair;
 
-/*" Determining encoding of XML documents "*/
-+ (NSString *)MIMEEncodingOfXMLDocument:(NSData *)xmlData;
-+ (NSStringEncoding)encodingOfXMLDocument:(NSData *)xmlData;
-
-/*" Encryptions "*/
-- (NSString *)encryptedString;
-- (NSString *)encryptedStringWithSalt:(const char *)salt;
-- (BOOL)isValidEncryptionOfString:(NSString *)aString;
-
-#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
-/*" Abbreviating paths "*/
-- (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forFont:(NSFont *)font;
-- (NSString *)stringByAbbreviatingPathToWidth:(float)maxWidth forAttributes:(NSDictionary *)attributes;
-#endif
-
-/*" Printing/formatting "*/
-+ (void)printf:(NSString *)format, ...;
-- (void)printf;
-- (void)fprintf:(NSFileHandle *)fileHandle;
 
 @end
 
