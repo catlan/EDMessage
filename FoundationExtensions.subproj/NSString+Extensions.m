@@ -221,17 +221,32 @@ static NSCharacterSet *iwsSet = nil;
 - (NSString *)recommendedMIMEEncoding
 {
     static NSStringEncoding preferredEncodings[] = {
-        NSASCIIStringEncoding, NSISOLatin1StringEncoding, NSISOLatin2StringEncoding,
+        kCFStringEncodingASCII,
+        kCFStringEncodingISOLatin1,
+        kCFStringEncodingISOLatin2,
         // no constants available for ISO8859-3 through ISO8859-15
-        2147484163U, 2147484164U, 2147484165U, 2147484166U, 2147484167U,
-        2147484168U, 2147484169U, 2147484170U, 2147484171U, 2147484173U,
-        2147484174U, 2147484175U, 0 };
+        kCFStringEncodingISOLatin3,
+        kCFStringEncodingISOLatin4,
+        kCFStringEncodingISOLatinCyrillic,
+        kCFStringEncodingISOLatinArabic,
+        kCFStringEncodingISOLatinGreek,
+        kCFStringEncodingISOLatinHebrew,
+        kCFStringEncodingISOLatin5,
+        kCFStringEncodingISOLatin6,
+        kCFStringEncodingISOLatinThai,
+        kCFStringEncodingISOLatin7,
+        kCFStringEncodingISOLatin8,
+        kCFStringEncodingISOLatin9,
+        kCFStringEncodingUTF8,
+        0 };
+    
+    
     NSStringEncoding *encodingPtr;
 
     for(encodingPtr = preferredEncodings; *encodingPtr != 0; encodingPtr++)
         {
-        if([self canBeConvertedToEncoding:*encodingPtr])
-            return [NSString MIMEEncodingForStringEncoding:*encodingPtr];
+        if([self canBeConvertedToEncoding:CFStringConvertEncodingToNSStringEncoding(*encodingPtr)])
+            return [NSString MIMEEncodingForStringEncoding:CFStringConvertEncodingToNSStringEncoding(*encodingPtr)];
         }
 
     return [NSString MIMEEncodingForStringEncoding:[self smallestEncoding]];
