@@ -56,7 +56,7 @@
 
 - (void)addToHeaderFields:(EDObjectPair *)headerField
 {
-    NSString	 *fieldName, *sharedName, *fieldBody;
+    NSString	 *fieldName, *fieldBody;
 
     fieldName = [headerField firstObject];
     fieldBody = [headerField secondObject];

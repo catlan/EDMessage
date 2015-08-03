@@ -220,7 +220,7 @@ static NSCharacterSet *iwsSet = nil;
 
 - (NSString *)recommendedMIMEEncoding
 {
-    static NSStringEncoding preferredEncodings[] = {
+    static CFStringEncoding preferredEncodings[] = {
         kCFStringEncodingASCII,
         kCFStringEncodingISOLatin1,
         kCFStringEncodingISOLatin2,
@@ -241,7 +241,7 @@ static NSCharacterSet *iwsSet = nil;
         0 };
     
     
-    NSStringEncoding *encodingPtr;
+    CFStringEncoding *encodingPtr;
 
     for(encodingPtr = preferredEncodings; *encodingPtr != 0; encodingPtr++)
         {
