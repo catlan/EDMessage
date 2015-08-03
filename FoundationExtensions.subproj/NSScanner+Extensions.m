@@ -56,7 +56,8 @@
     NSMutableString	*result;
     NSString		*literal;
     unichar    		oBracket, cBracket;
-    int		   		nestingLevel = 1, location, i;
+    NSInteger		nestingLevel = 1, i;
+    NSUInteger      location;
 
     if((location = [self scanLocation]) == 0)
         [NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Attempt to scan up to a closing bracket even though no bracket has been scanned.", NSStringFromClass([self class]), NSStringFromSelector(_cmd)];

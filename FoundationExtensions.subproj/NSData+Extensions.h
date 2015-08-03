@@ -26,7 +26,7 @@
 
 /*" Calculating CRCs "*/
 - (unsigned short)crc16;
-- (unsigned int)crc32;
+- (NSUInteger)crc32;
 
 
 /*" Base64 encoding "*/

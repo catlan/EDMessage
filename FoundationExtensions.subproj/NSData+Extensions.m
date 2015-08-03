@@ -112,7 +112,7 @@ static const unsigned long crc32table[] =
 - (unsigned short)crc16
 {
     unsigned int	crc;
-    unsigned int	i, n;
+    NSUInteger      i, n;
     const void		*bytes;
 
 	bytes = [self bytes];
@@ -130,10 +130,10 @@ static const unsigned long crc32table[] =
 
 /*" Returns the CRC32 for the receiver. "*/
 
-- (unsigned int)crc32
+- (NSUInteger)crc32
 {
-    unsigned int	crc;
-    unsigned int	i, n;
+    NSUInteger      crc;
+    NSUInteger      i, n;
     const void		*bytes;
 
 
@@ -186,7 +186,7 @@ static __inline__ byte invchar64(byte b)
 }
 
 
-static __inline__ unsigned int udivroundup(unsigned int a, unsigned int b)
+static __inline__ NSUInteger udivroundup(NSUInteger a, NSUInteger b)
 {
     return (a / b) + ((a % b > 0) ? 1 : 0);
 }
@@ -262,7 +262,7 @@ If %lineLength is greater than 0, linebreaks are inserted after every %lineLengt
     const byte		*source, *endOfSource;
     byte			*dest, groupv[4], b;
     int				i, bytec = 0, groupc = 0;
-    unsigned int	numgroups, groupsPerLine, dataLength;
+    NSUInteger      numgroups, groupsPerLine, dataLength;
 
     source = [self bytes];
     endOfSource = source + [self length];

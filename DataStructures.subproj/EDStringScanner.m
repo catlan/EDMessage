@@ -75,7 +75,7 @@ unichar EDStringScannerEndOfDataCharacter = '\0';
 
 - (void)_getNextChunk
 {
-    unsigned int chunkSize;
+    NSUInteger chunkSize;
     
     if(buffer == NULL)
         {

@@ -106,7 +106,7 @@
 
 - (id)initWithCoder:(NSCoder *)decoder
 {
-    unsigned int version;
+    NSInteger version;
 
     if (!(self = [super init])) return nil;
     version = [decoder versionForClassName:@"EDObjectPair"];

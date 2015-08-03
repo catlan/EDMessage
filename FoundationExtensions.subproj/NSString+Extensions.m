@@ -410,7 +410,7 @@ static NSMutableDictionary *teTable = nil;
 - (void)removeCharactersInSet:(NSCharacterSet *)set
 {
     NSRange			matchRange, searchRange, replaceRange;
-    unsigned int    length;
+    NSUInteger      length;
 
     length = [self length];
     matchRange = [self rangeOfCharacterFromSet:set options:NSLiteralSearch range:NSMakeRange(0, length)];
