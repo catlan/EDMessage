@@ -22,14 +22,14 @@
 #import "utilities.h"
 #import "NSDate+NetExt.h"
 
+#import <sys/types.h>
+#import <stdio.h>
+#import <sys/stat.h>
 
 //---------------------------------------------------------------------------------------
     @implementation NSDate(EDNetExt)
 //---------------------------------------------------------------------------------------
 
-#import <sys/types.h>
-#import <stdio.h>
-#import <sys/stat.h>
 
 + (id)dateWithMessageTimeSpecification:(NSString *)timespec
     /*"
