@@ -59,7 +59,6 @@ NSString *MIMEAttachmentContentDisposition = @"attachment";
 
 
 static NSFileHandle *stdoutFileHandle = nil;
-static NSLock *printfLock = nil;
 static NSCharacterSet *iwsSet = nil;
 
 
