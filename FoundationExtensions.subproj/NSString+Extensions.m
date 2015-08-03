@@ -22,10 +22,6 @@
 #import "EDObjectPair.h"
 
 
-#if !defined(TARGET_OS_IPHONE) || !TARGET_OS_IPHONE
-#import <Cocoa/Cocoa.h>
-#endif
-
 @interface NSString(EDExtensionsPrivateAPI)
 + (NSDictionary *)_contentTypeExtensionMapping;
 @end

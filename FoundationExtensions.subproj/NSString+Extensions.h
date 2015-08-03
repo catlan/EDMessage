@@ -18,7 +18,8 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import <Foundation/NSString.h>
+#import <Foundation/Foundation.h>
+
 #import "EDCommonDefines.h"
 
 @class NSFileHandle, NSFont, EDObjectPair;

@@ -17,6 +17,8 @@
      OR OF ANY DERIVATIVE WORK.
 */
 
+#import <Foundation/Foundation.h>
+
 @interface NSString(PlainTextFlowedExtensions)
 
 - (NSString *)stringByEncodingFlowedFormat;
