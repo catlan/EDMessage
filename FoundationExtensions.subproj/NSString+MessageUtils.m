@@ -519,7 +519,8 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
             [result appendString:[self substringWithRange:NSMakeRange(lineStart, lineEnd.location - lineStart)]];
             [result appendString:@"\r\n "];
 
-            lineStart = NSMaxRange(lineEnd);
+            //lineStart = NSMaxRange(lineEnd); Seems wrong to me. We want to keep the whitespace when we folder?!
+            lineStart = lineEnd.location;
             }
         else
             {
