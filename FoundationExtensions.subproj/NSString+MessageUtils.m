@@ -502,32 +502,36 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
     lineStart = 0;
 
     while (lineStart < [self length])
+    {
+        if (([self length] - lineStart) > limit) // something to fold left over?
         {
-        if (([self length] - lineStart) > limit)
-            // something to fold left over?
-            {
             NSRange lineEnd;
 
             // find place to fold
             lineEnd = [self rangeOfCharacterFromSet:whitespaces options:NSBackwardsSearch range:NSMakeRange(lineStart, limit)];
 
             if (lineEnd.location == NSNotFound) // no whitespace found -> use hard break
-                {
+            {
                 lineEnd.location = lineStart + limit;
-                }
+            }
+            else if (lineStart == lineEnd.location) // whitespace found is the same we broke last time -> use hard break
+            {
+                lineEnd.location = lineStart + limit;
+            }
 
             [result appendString:[self substringWithRange:NSMakeRange(lineStart, lineEnd.location - lineStart)]];
             [result appendString:@"\r\n "];
 
-            lineStart = NSMaxRange(lineEnd);
-            }
+            //lineStart = NSMaxRange(lineEnd); Seems wrong to me. We want to keep the whitespace when we folder?!
+            lineStart = lineEnd.location;
+        }
         else
-            {
+        {
             [result appendString:[self substringWithRange:NSMakeRange(lineStart, [self length] - lineStart)]];
 
             break; // nothing to do in loop
-            }
         }
+    }
 
     return [result copy];
 }
