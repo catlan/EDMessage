@@ -416,7 +416,19 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
             }
 		// note that this doesn't work properly if length(prefix) > length!, so...
 		//NSAssert(prefixLength <= length, @"line prefix too long.");
-	
+            
+        // Lets assume that when the prefix is longer than the wrapping length
+        // that it is no prefix but just a lot of whitespace.
+        // For example: NSString *test =
+        // @"                                                                        Crewmembers"
+        // @" on leave were seen to be blocked and this was because they were being"
+        if (prefixLength >= length)
+            {
+            prefix = @"";
+            prefixLength = 0;
+            lineStart = 0;
+            }
+            
 		if([originalLine length] - lineStart  > length - prefixLength)
 			{
 			do
