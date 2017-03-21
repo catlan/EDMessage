@@ -49,6 +49,9 @@
 - (NSDictionary *)contentDispositionParameters;
 - (NSString *)attachmentFilename;
 
+- (void)setContentID:(NSString *)contentID;
+- (NSString *)contentID;
+
 - (void)setContentTransferEncoding:(NSString *)anEncoding;
 - (NSString *)contentTransferEncoding;
 

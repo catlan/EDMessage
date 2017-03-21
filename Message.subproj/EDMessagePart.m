@@ -294,6 +294,22 @@
 
 
 //---------------------------------------------------------------------------------------
+//	CONTENT IDENTIFIER
+//---------------------------------------------------------------------------------------
+
+- (void)setContentID:(NSString *)contentID
+{
+    [self setBody:contentID forHeaderField:@"Content-ID"];
+}
+
+
+- (NSString *)contentID
+{
+    return [[[[EDTextFieldCoder decoderWithFieldBody:[self bodyForHeaderField:@"content-id"]] text] stringByRemovingSurroundingWhitespace] lowercaseString];
+}
+
+
+//---------------------------------------------------------------------------------------
 //	CONTENT DATA ACCESSOR METHODS
 //---------------------------------------------------------------------------------------
 
