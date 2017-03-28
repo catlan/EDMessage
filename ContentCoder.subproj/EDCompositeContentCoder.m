@@ -159,6 +159,7 @@ static short boundaryId = 0;
     subparts = [[NSMutableArray allocWithZone:nil] init];
 
     pmin = p = [[mpart contentData] bytes];
+#pragma unused(pmin)
     pmax = p + [[mpart contentData] length];
     startPtr = possibleEndPtr = NULL;
     while(done == NO)
