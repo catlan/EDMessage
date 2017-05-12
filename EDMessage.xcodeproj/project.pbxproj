@@ -406,8 +406,16 @@
 		DE158C1B0E1993EC00447697 /* HeaderFieldCoder */ = {
 			isa = PBXGroup;
 			children = (
-				DE158C1E0E19941300447697 /* Headers */,
-				DE158C1D0E19940900447697 /* Classes */,
+				DE221ECD0DD3E0DD00DBD46E /* EDHeaderFieldCoder.h */,
+				DE221ECE0DD3E0DD00DBD46E /* EDHeaderFieldCoder.m */,
+				DE221EC90DD3E0DD00DBD46E /* EDEntityFieldCoder.h */,
+				DE221ECA0DD3E0DD00DBD46E /* EDEntityFieldCoder.m */,
+				DE221ED10DD3E0DD00DBD46E /* EDTextFieldCoder.h */,
+				DE221ED20DD3E0DD00DBD46E /* EDTextFieldCoder.m */,
+				DE221EC70DD3E0DD00DBD46E /* EDDateFieldCoder.h */,
+				DE221EC80DD3E0DD00DBD46E /* EDDateFieldCoder.m */,
+				DE221ECF0DD3E0DD00DBD46E /* EDIdListFieldCoder.h */,
+				DE221ED00DD3E0DD00DBD46E /* EDIdListFieldCoder.m */,
 				DE158C1C0E19940000447697 /* Other Sources */,
 			);
 			name = HeaderFieldCoder;
@@ -419,30 +427,6 @@
 				DE0C15950E61BA1F00C1BC3F /* parsedate.y */,
 			);
 			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		DE158C1D0E19940900447697 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				DE221EC80DD3E0DD00DBD46E /* EDDateFieldCoder.m */,
-				DE221ECA0DD3E0DD00DBD46E /* EDEntityFieldCoder.m */,
-				DE221ECE0DD3E0DD00DBD46E /* EDHeaderFieldCoder.m */,
-				DE221ED00DD3E0DD00DBD46E /* EDIdListFieldCoder.m */,
-				DE221ED20DD3E0DD00DBD46E /* EDTextFieldCoder.m */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
-		DE158C1E0E19941300447697 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				DE221EC70DD3E0DD00DBD46E /* EDDateFieldCoder.h */,
-				DE221EC90DD3E0DD00DBD46E /* EDEntityFieldCoder.h */,
-				DE221ECD0DD3E0DD00DBD46E /* EDHeaderFieldCoder.h */,
-				DE221ECF0DD3E0DD00DBD46E /* EDIdListFieldCoder.h */,
-				DE221ED10DD3E0DD00DBD46E /* EDTextFieldCoder.h */,
-			);
-			name = Headers;
 			sourceTree = "<group>";
 		};
 		DE158C2F0E19957600447697 /* Classes */ = {
