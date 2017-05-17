@@ -141,7 +141,8 @@
 - (void)_takeDateFromString:(NSString *)string
 {
     static NSDateFormatter* dateFormatter = nil;
-    if (!dateFormatter) {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         dateFormatter = [[NSDateFormatter alloc] init];
         NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] ;
         NSAssert(enUSPOSIXLocale != nil, @"POSIX may not be nil.");
@@ -149,7 +150,7 @@
         [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
         
         dateFormatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss +0000";
-    }
+    });
     
     
     string = [string stringByRemovingSurroundingWhitespace];
@@ -206,12 +207,11 @@ extern time_t parsedate(const char *datespec);
 - (NSTimeZone *)_canonicalTimeZone
 {
     static NSTimeZone *canonicalTimeZone = nil;
-
-    if(canonicalTimeZone == nil)
-        {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         canonicalTimeZone = [[NSTimeZone alloc] initWithName:@"GMT"];
         NSAssert(canonicalTimeZone != nil, @"System does not know time zone GMT.");
-        }
+    });
     return canonicalTimeZone;
 }
 

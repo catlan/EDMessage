@@ -94,15 +94,14 @@
 - (void)_takeListFromString:(NSString *)body
 {
     static NSCharacterSet *bracketSet = nil, *nonWhitespaceSet;
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
+        bracketSet = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
+        nonWhitespaceSet = [[NSCharacterSet whitespaceCharacterSet] invertedSet];
+    });
 
     NSRange		msgIdRange, searchRange, bracketPos;
     NSInteger	start;
-
-    if(bracketSet == nil)
-        {
-        bracketSet = [NSCharacterSet characterSetWithCharactersInString:@"<>"];
-        nonWhitespaceSet = [[NSCharacterSet whitespaceCharacterSet] invertedSet];
-        }
 
     list = [[NSMutableArray allocWithZone:nil] init];
 

@@ -31,10 +31,10 @@
 + (NSCharacterSet *)standardASCIICharacterSet
 {
     static NSCharacterSet *set = nil;
-
-    if(set == nil)
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         set = [NSCharacterSet characterSetWithRange:NSMakeRange(0, 127)];
-
+    });
     return set;
 }
 
@@ -42,10 +42,10 @@
 + (NSCharacterSet *)linebreakCharacterSet
 {
     static NSCharacterSet *set = nil;
-
-    if(set == nil)
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         set = [NSCharacterSet characterSetWithCharactersInString:@"\r\n"];
-
+    });
     return set;
 }
 
@@ -57,19 +57,18 @@
 + (NSCharacterSet *)MASpecialCharacterSet
 {
     static NSCharacterSet *set = nil;
-
-    if(set == nil)
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         set = [NSCharacterSet characterSetWithCharactersInString:@"()<>@.,;:\\\"[]"];
-
+    });
     return set;
 }
 
 + (NSCharacterSet *)MAEncodedAtomCharacterSet
 {
     static NSCharacterSet *set = nil;
-
-    if(set == nil)
-        {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         NSMutableCharacterSet	*cs;
 
         cs = [[NSMutableCharacterSet controlCharacterSet] mutableCopy];
@@ -77,17 +76,15 @@
         [cs formUnionWithCharacterSet:[self whitespaceCharacterSet]];
         [cs invert];
         set = [cs copy];
-        }
-    
+    });
     return set;
 }
 
 + (NSCharacterSet *)MAAtomCharacterSet
 {
     static NSCharacterSet *set = nil;
-
-    if(set == nil)
-        {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         NSMutableCharacterSet	*cs;
 
         cs = [[NSMutableCharacterSet controlCharacterSet] mutableCopy];
@@ -96,24 +93,21 @@
         [cs invert];
         [cs formIntersectionWithCharacterSet:[self standardASCIICharacterSet]];
         set = [cs copy];
-        }
-    
+    });
     return set;
 }
 
 + (NSCharacterSet *)MADomainCharacterSet
 {
     static NSCharacterSet *set = nil;
-
-    if(set == nil)
-        {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         NSMutableCharacterSet *cs;
 
         cs = [[self standardASCIICharacterSet] mutableCopy];
         [cs removeCharactersInString:@"[]\n\\"];
         set = [cs copy];
-        }
-
+    });
     return set;
 }
 
@@ -125,10 +119,10 @@
 + (NSCharacterSet *)MIMETSpecialsCharacterSet
 {
     static NSCharacterSet *set = nil;
-
-    if(set == nil)
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         set = [NSCharacterSet characterSetWithCharactersInString:@"()<>@,;:\\\"/[]?="];
-    
+    });
     return set;
 }
 
@@ -136,17 +130,15 @@
 + (NSCharacterSet *)MIMETokenCharacterSet
 {
     static	NSCharacterSet *set = nil;
-
-    if(set == nil)
-        {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         NSMutableCharacterSet *workingSet;
 
         workingSet = [[self MIMETSpecialsCharacterSet] mutableCopy];
         [workingSet invert];
         [workingSet formIntersectionWithCharacterSet:[NSCharacterSet characterSetWithRange:NSMakeRange(32, 95)]];
         set = [workingSet copy];
-        }
-
+    });
     return set;
 }
 
@@ -154,10 +146,10 @@
 + (NSCharacterSet *)MIMENonTokenCharacterSet
 {
     static	NSCharacterSet *set = nil;
-
-    if(set == nil)
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         set = [[self MIMETokenCharacterSet] invertedSet];
-
+    });
     return set;
 }
 
@@ -165,16 +157,14 @@
 + (NSCharacterSet *)MIMEHeaderDefaultLiteralCharacterSet
 {
     static	NSCharacterSet *set = nil;
-
-    if(set == nil)
-        {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         NSMutableCharacterSet *workingSet;
 
         workingSet = [[NSCharacterSet characterSetWithRange:NSMakeRange(32, 95)] mutableCopy];
         [workingSet removeCharactersInString:@"=?_ "];
         set = [workingSet copy];
-        }
-
+    });
     return set;
 }
 

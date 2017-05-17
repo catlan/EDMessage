@@ -369,9 +369,8 @@
 + (NSDictionary *)_defaultFallbackHeaders
 {
     static NSDictionary	*defaultFallbackHeaders = nil;
-
-    if(defaultFallbackHeaders == nil)
-        {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         NSMutableDictionary  *temp;
         NSArray				 *values;
         NSDictionary		 *parameters;
@@ -387,7 +386,7 @@
         fBody = [[[EDEntityFieldCoder alloc] initWithValues:values andParameters:nil] fieldBody];
         [temp setObject:fBody forKey:@"content-disposition"];
         defaultFallbackHeaders = [[NSDictionary alloc] initWithDictionary:temp];
-        }
+    });
 
     return defaultFallbackHeaders;
 }

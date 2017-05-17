@@ -288,11 +288,14 @@ static NSMutableDictionary *coderClassCache = nil;
 
 + (void)_setupCoderClassCache
 {
-    coderClassCache = [[NSMutableDictionary alloc] init];
-    [coderClassCache setObject:[EDDateFieldCoder class] forKey:@"date"];
-    [coderClassCache setObject:[EDDateFieldCoder class] forKey:@"expires"];
-    [coderClassCache setObject:[EDIdListFieldCoder class] forKey:@"message-id"];
-    [coderClassCache setObject:[EDIdListFieldCoder class] forKey:@"references"];
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
+        coderClassCache = [[NSMutableDictionary alloc] init];
+        [coderClassCache setObject:[EDDateFieldCoder class] forKey:@"date"];
+        [coderClassCache setObject:[EDDateFieldCoder class] forKey:@"expires"];
+        [coderClassCache setObject:[EDIdListFieldCoder class] forKey:@"message-id"];
+        [coderClassCache setObject:[EDIdListFieldCoder class] forKey:@"references"];
+    });
 }
 
 

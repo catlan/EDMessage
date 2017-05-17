@@ -83,11 +83,13 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 
 - (NSString *)realnameFromEMailString
 {
-	static NSCharacterSet *skipChars = nil;	
+    static NSCharacterSet *skipChars = nil;
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
+        skipChars = [NSCharacterSet characterSetWithCharactersInString:@"\"' "];
+    });
+    
 	NSRange charPos, char2Pos, nameRange;
-	
-	if(skipChars == nil)
-		skipChars = [NSCharacterSet characterSetWithCharactersInString:@"\"' "];
 
 	if((charPos = [self rangeOfString:@"@"]).length == 0)
 		{
@@ -126,25 +128,25 @@ RFC822/RFC2047 parser for structured fields such as mail address lists, etc.
 - (NSString *)addressFromEMailString
 {
     static NSCharacterSet 	*nonAddressChars = nil;
-    NSString 				*addr;
-    NSRange 				d1Pos, d2Pos, atPos, searchRange, addrRange;
-
-    if(nonAddressChars == nil)
-        {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         NSMutableCharacterSet *workingSet;
-
+        
         workingSet = [[NSCharacterSet characterSetWithCharactersInString:@"()<>@,;:\\\"[]"] mutableCopy];
         [workingSet formUnionWithCharacterSet:[NSCharacterSet controlCharacterSet]];
         [workingSet formUnionWithCharacterSet:[NSCharacterSet linebreakCharacterSet]];
         [workingSet formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
-#ifdef EDMESSAGE_OSXBUILD        
-#warning ** workaround for broken implementation of -invertedSet in 5G64 
+#ifdef EDMESSAGE_OSXBUILD
+#warning ** workaround for broken implementation of -invertedSet in 5G64
         [workingSet formUnionWithCharacterSet:[NSCharacterSet characterSetWithRange:NSMakeRange(128, UINT16_MAX-128)]];
 #else
-       [workingSet formUnionWithCharacterSet:[[NSCharacterSet standardASCIICharacterSet] invertedSet]];
-#endif        
+        [workingSet formUnionWithCharacterSet:[[NSCharacterSet standardASCIICharacterSet] invertedSet]];
+#endif
         nonAddressChars = [workingSet copy];
-        }
+    });
+    
+    NSString 				*addr;
+    NSRange 				d1Pos, d2Pos, atPos, searchRange, addrRange;
 
     if((d1Pos = [self rangeOfString:@"<"]).length > 0)
         {

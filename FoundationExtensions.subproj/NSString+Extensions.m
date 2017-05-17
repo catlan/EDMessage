@@ -257,8 +257,8 @@ static NSMutableDictionary *teTable = nil;
 
 + (NSDictionary *)_contentTypeExtensionMapping
 {
-    if(teTable == nil)
-        {
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
         teTable = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                        // Application types
                        @"application/postscript", @"ps",
@@ -313,7 +313,7 @@ static NSMutableDictionary *teTable = nil;
                        @"application/java-archive", @"jar", 
                        @"application/applet", @"class", 
                        nil];
-        }
+    });
     return teTable;
 }
 
