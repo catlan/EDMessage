@@ -29,9 +29,11 @@
 @interface EDCompositeContentCoder : EDContentCoder
 {
     NSMutableArray	*subparts;
+    NSString *courtesyMessage;
 }
 
 - (id)initWithSubparts:(NSArray *)someParts;
+- (id)initWithSubparts:(NSArray *)someParts courtesyMessage:(BOOL)flag;
 - (NSArray *)subparts;
 
 - (EDMessagePart *)messagePartWithSubtype:(NSString *)subtype;

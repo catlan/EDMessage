@@ -84,8 +84,14 @@ static short boundaryId = 0;
 
 - (id)initWithSubparts:(NSArray *)someParts
 {
+    return [self initWithSubparts:someParts courtesyMessage:NO];
+}
+
+- (id)initWithSubparts:(NSArray *)someParts courtesyMessage:(BOOL)flag
+{
     if (!(self = [super init])) return nil;
     subparts = [someParts mutableCopy];
+    courtesyMessage = flag ? @"This is a multipart message in MIME format.\r\n" : nil;
     return self;
 }
 
@@ -242,7 +248,10 @@ static short boundaryId = 0;
     contentData = [NSMutableData data];
     if ([subparts count] > 0)
     {
-        [contentData appendData:[@"This is a MIME encoded message.\r\n" dataUsingEncoding:NSASCIIStringEncoding]];
+        if (courtesyMessage)
+        {
+            [contentData appendData:[courtesyMessage dataUsingEncoding:NSASCIIStringEncoding]];
+        }
         subpartEnum = [subparts objectEnumerator];
         while((subpart = [subpartEnum nextObject]) != nil)
         {
