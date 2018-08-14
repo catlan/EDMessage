@@ -279,6 +279,15 @@
     return [compositeContentCoder subparts];
 }
 
+- (NSArray<EDMessagePart *> *)subparts
+{
+    EDCompositeContentCoder *compositeContentCoder = [[EDCompositeContentCoder alloc] initWithMessagePart:(EDMessagePart *)self];
+    if (!compositeContentCoder)
+        return nil;
+    
+    return [compositeContentCoder subparts];
+}
+
 //---------------------------------------------------------------------------------------
 //	CODER CLASS CACHE
 //---------------------------------------------------------------------------------------

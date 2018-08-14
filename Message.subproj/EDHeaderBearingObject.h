@@ -23,6 +23,7 @@
 #import "EDCommon.h"
 
 @class EDHeaderFieldCoder;
+@class EDMessagePart;
 
 @interface EDHeaderBearingObject : NSObject
 {
@@ -66,5 +67,6 @@
 - (NSArray *)cc;
 - (NSArray *)bcc;
 - (NSArray *)attachments;
+- (NSArray<EDMessagePart *> *)subparts;
 
 @end
