@@ -217,6 +217,7 @@ static short boundaryId = 0;
     subparts = [[NSMutableArray allocWithZone:nil] initWithObjects:msg, nil];
 }
 
+static NSUInteger debugBoundaryId = 0;
 
 - (id)_encodeSubpartsWithClass:(Class)targetClass subtype:(NSString *)subtype
 {
@@ -231,8 +232,14 @@ static short boundaryId = 0;
 
     // Is it okay to use a time stamp? (Conveys information which might not be known otherwise...)
 	// 978307200 is the difference between unix and foundation reference dates
-    boundary = [NSString stringWithFormat:@"EDMessagePart-%ld%d", lrint([NSDate timeIntervalSinceReferenceDate]) + 978307200l, boundaryId]; 
-    boundaryId = (boundaryId + 1) % 10000;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"EDMessageDebugBoundary"])
+    {
+        boundary = [NSString stringWithFormat:@"EDMessagePart-%ld%d", debugBoundaryId++, boundaryId];
+        boundaryId = (boundaryId + 1) % 10000;
+    } else {
+        boundary = [NSString stringWithFormat:@"EDMessagePart-%ld%d", lrint([NSDate timeIntervalSinceReferenceDate]) + 978307200l, boundaryId];
+        boundaryId = (boundaryId + 1) % 10000;
+    }
     ctpDictionary = [NSMutableDictionary dictionary];
     [ctpDictionary setObject:boundary forKey:@"boundary"];
     if([[subtype lowercaseString] isEqualToString:@"related"])
