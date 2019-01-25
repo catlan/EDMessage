@@ -256,7 +256,7 @@ Attempts to parse a date according to the rules in RFC 2822. However, some maile
         }
 
     year = atoi(yearString);
-    if (strlen(yearString) == 2) // handle 2 digit years gracefully
+    if (yearString != NULL && strlen(yearString) == 2) // handle 2 digit years gracefully
         {
         if (year > 69)
             year += 1900;
