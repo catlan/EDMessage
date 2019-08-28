@@ -85,7 +85,7 @@
 //	ATTRIBUTES
 //---------------------------------------------------------------------------------------
 
-- (NSAttributedString *)text
+- (NSString *)text
 {
     return text;
 }
@@ -113,7 +113,7 @@
     NSString *string;
     
     if((string = [self _stringFromMessagePart:mpart]) != nil)
-        text = [[NSMutableAttributedString allocWithZone:nil] initWithString:string];
+        text = [[NSString allocWithZone:nil] initWithString:string];
 }
 
 
@@ -121,18 +121,12 @@
 {
     NSString			*charset;
     NSStringEncoding	textEncoding;
-    NSData				*data;
 
     if((charset = [[mpart contentTypeParameters] objectForKey:@"charset"]) == nil)
         charset = MIMEAsciiStringEncoding;
     if((textEncoding = [NSString stringEncodingForMIMEEncoding:charset]) == 0)
         [NSException raise:EDMessageFormatException format:@"Invalid charset in message part; found '%@'", charset];
-    data = [[NSString stringWithData:[mpart contentData] encoding:textEncoding] dataUsingEncoding:NSUnicodeStringEncoding];
-#if defined(TARGET_OS_IPHONE) || TARGET_OS_IPHONE
-    text = [[NSMutableAttributedString allocWithZone:nil] initWithString:[NSString stringWithData:[mpart contentData] encoding:textEncoding]];
-#else
-    text = [[NSMutableAttributedString allocWithZone:nil] initWithHTML:data documentAttributes:NULL];
-#endif
+    text = [[NSString allocWithZone:nil] initWithData:[mpart contentData] encoding:textEncoding];
 }
 
 

@@ -31,10 +31,10 @@
 
 @interface EDTextContentCoder : EDContentCoder
 {
-    NSMutableAttributedString	*text;
+    NSString	*text;
 }
 
-- (NSAttributedString *)text;
+- (NSString *)text;
 
 @end
 
