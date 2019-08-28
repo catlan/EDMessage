@@ -399,8 +399,7 @@
     NSString 		 *name, *fbodyContents;
     EDObjectPair	 *field;
     NSStringEncoding encoding;
-    
-#warning * default encoding for headers?!    
+      
     encoding = NSISOLatin1StringEncoding;
     name = nil;
     fnamePtr = p = [data bytes];
