@@ -234,7 +234,7 @@ static NSUInteger debugBoundaryId = 0;
 	// 978307200 is the difference between unix and foundation reference dates
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"EDMessageDebugBoundary"])
     {
-        boundary = [NSString stringWithFormat:@"EDMessagePart-%ld%d", debugBoundaryId++, boundaryId];
+        boundary = [NSString stringWithFormat:@"EDMessagePart-%lu%d", (unsigned long)debugBoundaryId++, boundaryId];
         boundaryId = (boundaryId + 1) % 10000;
     } else {
         boundary = [NSString stringWithFormat:@"EDMessagePart-%ld%d", lrint([NSDate timeIntervalSinceReferenceDate]) + 978307200l, boundaryId];
