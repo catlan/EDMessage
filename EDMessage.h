@@ -20,29 +20,29 @@
 
 #import <Foundation/Foundation.h>
 
-#import "EDMessageDefines.h"
+#import <EDMessage/EDMessageDefines.h>
 
-#import "NSDate+NetExt.h"
-#import "NSCharacterSet+MIME.h"
-#import "NSData+MIME.h"
-#import "NSString+MessageUtils.h"
-#import "NSString+PlainTextFlowedExtensions.h"
+#import <EDMessage/NSDate+NetExt.h>
+#import <EDMessage/NSCharacterSet+MIME.h>
+#import <EDMessage/NSData+MIME.h>
+#import <EDMessage/NSString+MessageUtils.h>
+#import <EDMessage/NSString+PlainTextFlowedExtensions.h>
 
-#import "EDMConstants.h"
-#import "EDHeaderBearingObject.h"
-#import "EDMessagePart.h"
-#import "EDInternetMessage.h"
+#import <EDMessage/EDMConstants.h>
+#import <EDMessage/EDHeaderBearingObject.h>
+#import <EDMessage/EDMessagePart.h>
+#import <EDMessage/EDInternetMessage.h>
 
-#import "EDHeaderFieldCoder.h"
-#import "EDTextFieldCoder.h"
-#import "EDDateFieldCoder.h"
-#import "EDIdListFieldCoder.h"
-#import "EDEntityFieldCoder.h"
+#import <EDMessage/EDHeaderFieldCoder.h>
+#import <EDMessage/EDTextFieldCoder.h>
+#import <EDMessage/EDDateFieldCoder.h>
+#import <EDMessage/EDIdListFieldCoder.h>
+#import <EDMessage/EDEntityFieldCoder.h>
 
-#import "EDContentCoder.h"
-#import "EDCompositeContentCoder.h"
-#import "EDPlainTextContentCoder.h"
-#import "EDHTMLTextContentCoder.h"
-#import "EDMultimediaContentCoder.h"
-#import "EDTextContentCoder.h"
+#import <EDMessage/EDContentCoder.h>
+#import <EDMessage/EDCompositeContentCoder.h>
+#import <EDMessage/EDPlainTextContentCoder.h>
+#import <EDMessage/EDHTMLTextContentCoder.h>
+#import <EDMessage/EDMultimediaContentCoder.h>
+#import <EDMessage/EDTextContentCoder.h>
 

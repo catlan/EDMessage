@@ -19,7 +19,7 @@
 //---------------------------------------------------------------------------------------
 
 #import <Foundation/Foundation.h>
-#import "EDMessageDefines.h"
+#import <EDMessage/EDMessageDefines.h>
 
 EDMESSAGE_EXTERN NSString *EDMessageVersion;
 

@@ -18,7 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import "EDObjectPair.h"
+#import <EDMessage/EDObjectPair.h>
 
 @interface EDMutableObjectPair : EDObjectPair
 

@@ -18,7 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import "EDHeaderBearingObject.h"
+#import <EDMessage/EDHeaderBearingObject.h>
 
 @interface EDMessagePart : EDHeaderBearingObject
 {

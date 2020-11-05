@@ -18,7 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import "EDMessagePart.h"
+#import <EDMessage/EDMessagePart.h>
 
 @interface EDInternetMessage : EDMessagePart
 {

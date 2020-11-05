@@ -20,7 +20,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "EDCommonDefines.h"
+#import <EDMessage/EDCommonDefines.h>
 
 @class NSFileHandle, NSFont, EDObjectPair;
 

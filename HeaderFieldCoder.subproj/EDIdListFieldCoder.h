@@ -18,7 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import "EDHeaderFieldCoder.h"
+#import <EDMessage/EDHeaderFieldCoder.h>
 
 @interface EDIdListFieldCoder : EDHeaderFieldCoder
 {

@@ -26,7 +26,7 @@
 #ifndef EDMESSAGE_WOBUILD
 
 
-#import "EDContentCoder.h"
+#import <EDMessage/EDContentCoder.h>
 
 
 @interface EDTextContentCoder : EDContentCoder

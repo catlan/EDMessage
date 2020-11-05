@@ -26,8 +26,8 @@
 #import <objc/objc-api.h>
 
 /*" Portable runtime functions. Should be used instead of the corresponding NeXT or GNUStep runtime functions. "*/
-#define EDObjcMsgSend(obj, sel) objc_msgSend((obj), (sel))
-#define EDObjcMsgSend1(obj, sel, obj1) objc_msgSend((obj), (sel), (obj1))
+#define EDObjcMsgSend(obj, sel) ((id (*)(id, SEL))objc_msgSend)((obj), (sel))
+#define EDObjcMsgSend1(obj, sel, obj1) ((id (*)(id, SEL, id))objc_msgSend)((obj), (sel), (obj1))
 #define EDObjcMsgSend2(obj, sel, obj1, obj2) objc_msgSend((obj), (sel), (obj1), (obj2))
 #define EDObjcMsgSend3(obj, sel, obj1, obj2, obj3) objc_msgSend((obj), (sel), (obj1), (obj2), (obj3))
 /*" Defines for runtime types and functions. Should be used instead of the corresponding NeXT and GNUStep runtime functions. (First set is for NeXT, second set for GNU runtimes.)"*/

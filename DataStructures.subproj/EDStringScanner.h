@@ -18,7 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import "EDCommonDefines.h"
+#import <EDMessage/EDCommonDefines.h>
 
 @interface EDStringScanner : NSObject
 {

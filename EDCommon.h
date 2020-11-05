@@ -20,16 +20,16 @@
 
 #import <Foundation/Foundation.h>
 
-#import "EDCommonDefines.h"
-#import "EDObjcRuntime.h"
+#import <EDMessage/EDCommonDefines.h>
+#import <EDMessage/EDObjcRuntime.h>
 
-#import "NSArray+Extensions.h"
-#import "NSData+Extensions.h"
-#import "NSObject+Extensions.h"
-#import "NSScanner+Extensions.h"
-#import "NSString+Extensions.h"
+#import <EDMessage/NSArray+Extensions.h>
+#import <EDMessage/NSData+Extensions.h>
+#import <EDMessage/NSObject+Extensions.h>
+#import <EDMessage/NSScanner+Extensions.h>
+#import <EDMessage/NSString+Extensions.h>
 
-#import "EDLightWeightLock.h"
-#import "EDMutableObjectPair.h"
-#import "EDObjectPair.h"
-#import "EDStringScanner.h"
+#import <EDMessage/EDLightWeightLock.h>
+#import <EDMessage/EDMutableObjectPair.h>
+#import <EDMessage/EDObjectPair.h>
+#import <EDMessage/EDStringScanner.h>

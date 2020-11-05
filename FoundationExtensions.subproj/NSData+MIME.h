@@ -18,7 +18,7 @@
 //  OR OF ANY DERIVATIVE WORK.
 //---------------------------------------------------------------------------------------
 
-#import "EDMessageDefines.h"
+#import <EDMessage/EDMessageDefines.h>
 
 @interface NSData(EDMIMEExtensions)
 
