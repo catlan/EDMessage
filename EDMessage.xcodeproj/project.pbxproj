@@ -72,73 +72,6 @@
 		D1793CBA1B6BFB3E00F09A21 /* EDMultimediaContentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E950DD3E08400DBD46E /* EDMultimediaContentCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1793CBB1B6BFB3E00F09A21 /* EDPlainTextContentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E970DD3E08400DBD46E /* EDPlainTextContentCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1793CBC1B6BFB3E00F09A21 /* EDTextContentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E990DD3E08400DBD46E /* EDTextContentCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CBD1B6BFC5100F09A21 /* useful.m in Sources */ = {isa = PBXBuildFile; fileRef = D1AA50561524E0EA00300F15 /* useful.m */; };
-		D1793CBE1B6BFC5100F09A21 /* functions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3301524D2CE00791DAD /* functions.m */; };
-		D1793CBF1B6BFC5100F09A21 /* NSArray+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3311524D2CE00791DAD /* NSArray+Extensions.m */; };
-		D1793CC01B6BFC5100F09A21 /* NSData+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3331524D2CF00791DAD /* NSData+Extensions.m */; };
-		D1793CC11B6BFC5100F09A21 /* NSObject+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3341524D2D000791DAD /* NSObject+Extensions.m */; };
-		D1793CC21B6BFC5100F09A21 /* NSScanner+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3351524D2D100791DAD /* NSScanner+Extensions.m */; };
-		D1793CC31B6BFC5100F09A21 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B3361524D2D200791DAD /* NSString+Extensions.m */; };
-		D1793CC41B6BFC5100F09A21 /* NSDate+NetExt.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EAA0DD3E0AE00DBD46E /* NSDate+NetExt.m */; };
-		D1793CC51B6BFC5100F09A21 /* NSCharacterSet+MIME.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EAE0DD3E0AE00DBD46E /* NSCharacterSet+MIME.m */; };
-		D1793CC61B6BFC5100F09A21 /* NSData+MIME.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EB00DD3E0AE00DBD46E /* NSData+MIME.m */; };
-		D1793CC71B6BFC5100F09A21 /* NSString+MessageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EB40DD3E0AE00DBD46E /* NSString+MessageUtils.m */; };
-		D1793CC81B6BFC5100F09A21 /* NSString+PlainTextFlowedExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EB60DD3E0AE00DBD46E /* NSString+PlainTextFlowedExtensions.m */; };
-		D1793CC91B6BFC5100F09A21 /* EDMutableObjectPair.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EA1524CFB500791DAD /* EDMutableObjectPair.m */; };
-		D1793CCA1B6BFC5100F09A21 /* EDObjectPair.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EC1524CFB500791DAD /* EDObjectPair.m */; };
-		D1793CCB1B6BFC5100F09A21 /* EDStringScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0B2EE1524CFB500791DAD /* EDStringScanner.m */; };
-		D1793CCC1B6BFC5100F09A21 /* EDHeaderBearingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EEE0DD3E13B00DBD46E /* EDHeaderBearingObject.m */; };
-		D1793CCD1B6BFC5100F09A21 /* EDMessagePart.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EF40DD3E13B00DBD46E /* EDMessagePart.m */; };
-		D1793CCE1B6BFC5100F09A21 /* EDInternetMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EF00DD3E13B00DBD46E /* EDInternetMessage.m */; };
-		D1793CCF1B6BFC5100F09A21 /* EDMConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EF20DD3E13B00DBD46E /* EDMConstants.m */; };
-		D1793CD01B6BFC5100F09A21 /* EDDateFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221EC80DD3E0DD00DBD46E /* EDDateFieldCoder.m */; };
-		D1793CD11B6BFC5100F09A21 /* EDEntityFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221ECA0DD3E0DD00DBD46E /* EDEntityFieldCoder.m */; };
-		D1793CD21B6BFC5100F09A21 /* EDHeaderFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221ECE0DD3E0DD00DBD46E /* EDHeaderFieldCoder.m */; };
-		D1793CD31B6BFC5100F09A21 /* EDIdListFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221ED00DD3E0DD00DBD46E /* EDIdListFieldCoder.m */; };
-		D1793CD41B6BFC5100F09A21 /* EDTextFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221ED20DD3E0DD00DBD46E /* EDTextFieldCoder.m */; };
-		D1793CD51B6BFC5100F09A21 /* EDCompositeContentCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221E900DD3E08400DBD46E /* EDCompositeContentCoder.m */; };
-		D1793CD61B6BFC5100F09A21 /* EDContentCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221E920DD3E08400DBD46E /* EDContentCoder.m */; };
-		D1793CD71B6BFC5100F09A21 /* EDHTMLTextContentCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221E940DD3E08400DBD46E /* EDHTMLTextContentCoder.m */; };
-		D1793CD81B6BFC5100F09A21 /* EDMultimediaContentCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221E960DD3E08400DBD46E /* EDMultimediaContentCoder.m */; };
-		D1793CD91B6BFC5100F09A21 /* EDPlainTextContentCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221E980DD3E08400DBD46E /* EDPlainTextContentCoder.m */; };
-		D1793CDA1B6BFC5100F09A21 /* EDTextContentCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221E9A0DD3E08400DBD46E /* EDTextContentCoder.m */; };
-		D1793CDB1B6BFC7900F09A21 /* EDCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2AE1524CEDE00791DAD /* EDCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CDC1B6BFC7900F09A21 /* EDCommonDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2AF1524CEDE00791DAD /* EDCommonDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CDD1B6BFC7900F09A21 /* EDObjcRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2B01524CEDE00791DAD /* EDObjcRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CDE1B6BFC7900F09A21 /* osdep.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2B11524CEDE00791DAD /* osdep.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D1793CDF1B6BFC7900F09A21 /* EDMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E850DD3E05B00DBD46E /* EDMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CE01B6BFC7900F09A21 /* EDMessageDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E860DD3E05B00DBD46E /* EDMessageDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CE11B6BFC7900F09A21 /* utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E880DD3E05B00DBD46E /* utilities.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D1793CE21B6BFC7900F09A21 /* functions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31B1524D2AD00791DAD /* functions.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D1793CE31B6BFC7900F09A21 /* NSArray+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31C1524D2AD00791DAD /* NSArray+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CE41B6BFC7900F09A21 /* NSData+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31E1524D2AD00791DAD /* NSData+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CE51B6BFC7900F09A21 /* NSObject+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B31F1524D2AD00791DAD /* NSObject+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CE61B6BFC7900F09A21 /* NSScanner+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3201524D2AD00791DAD /* NSScanner+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CE71B6BFC7900F09A21 /* NSString+Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B3211524D2AD00791DAD /* NSString+Extensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CE81B6BFC7900F09A21 /* NSDate+NetExt.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EA90DD3E0AE00DBD46E /* NSDate+NetExt.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CE91B6BFC7900F09A21 /* NSCharacterSet+MIME.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EAD0DD3E0AE00DBD46E /* NSCharacterSet+MIME.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CEA1B6BFC7900F09A21 /* NSData+MIME.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EAF0DD3E0AE00DBD46E /* NSData+MIME.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CEB1B6BFC7900F09A21 /* NSString+MessageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EB30DD3E0AE00DBD46E /* NSString+MessageUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CEC1B6BFC7900F09A21 /* NSString+PlainTextFlowedExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EB50DD3E0AE00DBD46E /* NSString+PlainTextFlowedExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CED1B6BFC7900F09A21 /* EDLightWeightLock.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2E71524CFB500791DAD /* EDLightWeightLock.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CEE1B6BFC7900F09A21 /* EDMutableObjectPair.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2E91524CFB500791DAD /* EDMutableObjectPair.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CEF1B6BFC7900F09A21 /* EDObjectPair.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2EB1524CFB500791DAD /* EDObjectPair.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CF01B6BFC7900F09A21 /* EDStringScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = D1B0B2ED1524CFB500791DAD /* EDStringScanner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CF11B6BFC7900F09A21 /* EDMConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EF10DD3E13B00DBD46E /* EDMConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CF21B6BFC7900F09A21 /* EDHeaderBearingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EED0DD3E13B00DBD46E /* EDHeaderBearingObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CF31B6BFC7900F09A21 /* EDMessagePart.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EF30DD3E13B00DBD46E /* EDMessagePart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CF41B6BFC7900F09A21 /* EDInternetMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EEF0DD3E13B00DBD46E /* EDInternetMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CF51B6BFC7900F09A21 /* EDDateFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EC70DD3E0DD00DBD46E /* EDDateFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CF61B6BFC7900F09A21 /* EDEntityFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221EC90DD3E0DD00DBD46E /* EDEntityFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CF71B6BFC7900F09A21 /* EDHeaderFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221ECD0DD3E0DD00DBD46E /* EDHeaderFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CF81B6BFC7900F09A21 /* EDIdListFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221ECF0DD3E0DD00DBD46E /* EDIdListFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CF91B6BFC7900F09A21 /* EDTextFieldCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221ED10DD3E0DD00DBD46E /* EDTextFieldCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CFA1B6BFC7900F09A21 /* EDCompositeContentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E8F0DD3E08400DBD46E /* EDCompositeContentCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CFB1B6BFC7900F09A21 /* EDContentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E910DD3E08400DBD46E /* EDContentCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CFC1B6BFC7900F09A21 /* EDHTMLTextContentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E930DD3E08400DBD46E /* EDHTMLTextContentCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CFD1B6BFC7900F09A21 /* EDMultimediaContentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E950DD3E08400DBD46E /* EDMultimediaContentCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CFE1B6BFC7900F09A21 /* EDPlainTextContentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E970DD3E08400DBD46E /* EDPlainTextContentCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D1793CFF1B6BFC7900F09A21 /* EDTextContentCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = DE221E990DD3E08400DBD46E /* EDTextContentCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1934F451B6F700300BB1392 /* EDIdListFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221ED00DD3E0DD00DBD46E /* EDIdListFieldCoder.m */; };
 		D1934F461B6F700300BB1392 /* EDTextFieldCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DE221ED20DD3E0DD00DBD46E /* EDTextFieldCoder.m */; };
 /* End PBXBuildFile section */
@@ -148,7 +81,6 @@
 		D1375DC51770F21500542175 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D15CC88D14E54DEC000047C3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D1793C451B6BFA6F00F09A21 /* EDMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EDMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1793C631B6BFA8200F09A21 /* EDMessage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EDMessage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AA50561524E0EA00300F15 /* useful.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = useful.m; sourceTree = "<group>"; };
 		D1B0B2AE1524CEDE00791DAD /* EDCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDCommon.h; sourceTree = "<group>"; };
 		D1B0B2AF1524CEDE00791DAD /* EDCommonDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDCommonDefines.h; sourceTree = "<group>"; };
@@ -229,13 +161,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D1793C5F1B6BFA8200F09A21 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -243,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				D1793C451B6BFA6F00F09A21 /* EDMessage.framework */,
-				D1793C631B6BFA8200F09A21 /* EDMessage.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -529,56 +453,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D1793C601B6BFA8200F09A21 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1793CDB1B6BFC7900F09A21 /* EDCommon.h in Headers */,
-				D1793CDC1B6BFC7900F09A21 /* EDCommonDefines.h in Headers */,
-				D1793CDD1B6BFC7900F09A21 /* EDObjcRuntime.h in Headers */,
-				D1793CDF1B6BFC7900F09A21 /* EDMessage.h in Headers */,
-				D1793CE01B6BFC7900F09A21 /* EDMessageDefines.h in Headers */,
-				D1793CE31B6BFC7900F09A21 /* NSArray+Extensions.h in Headers */,
-				D1793CE41B6BFC7900F09A21 /* NSData+Extensions.h in Headers */,
-				D1793CE51B6BFC7900F09A21 /* NSObject+Extensions.h in Headers */,
-				D1793CE61B6BFC7900F09A21 /* NSScanner+Extensions.h in Headers */,
-				D1793CE71B6BFC7900F09A21 /* NSString+Extensions.h in Headers */,
-				D1793CE81B6BFC7900F09A21 /* NSDate+NetExt.h in Headers */,
-				D1793CE91B6BFC7900F09A21 /* NSCharacterSet+MIME.h in Headers */,
-				D1793CEA1B6BFC7900F09A21 /* NSData+MIME.h in Headers */,
-				D1793CEB1B6BFC7900F09A21 /* NSString+MessageUtils.h in Headers */,
-				D1793CEC1B6BFC7900F09A21 /* NSString+PlainTextFlowedExtensions.h in Headers */,
-				D1793CED1B6BFC7900F09A21 /* EDLightWeightLock.h in Headers */,
-				D1793CEE1B6BFC7900F09A21 /* EDMutableObjectPair.h in Headers */,
-				D1793CEF1B6BFC7900F09A21 /* EDObjectPair.h in Headers */,
-				D1793CF01B6BFC7900F09A21 /* EDStringScanner.h in Headers */,
-				D1793CF11B6BFC7900F09A21 /* EDMConstants.h in Headers */,
-				D1793CF21B6BFC7900F09A21 /* EDHeaderBearingObject.h in Headers */,
-				D1793CF31B6BFC7900F09A21 /* EDMessagePart.h in Headers */,
-				D1793CF41B6BFC7900F09A21 /* EDInternetMessage.h in Headers */,
-				D1793CF51B6BFC7900F09A21 /* EDDateFieldCoder.h in Headers */,
-				D1793CF61B6BFC7900F09A21 /* EDEntityFieldCoder.h in Headers */,
-				D1793CF71B6BFC7900F09A21 /* EDHeaderFieldCoder.h in Headers */,
-				D1793CF81B6BFC7900F09A21 /* EDIdListFieldCoder.h in Headers */,
-				D1793CF91B6BFC7900F09A21 /* EDTextFieldCoder.h in Headers */,
-				D1793CFA1B6BFC7900F09A21 /* EDCompositeContentCoder.h in Headers */,
-				D1793CFB1B6BFC7900F09A21 /* EDContentCoder.h in Headers */,
-				D1793CFC1B6BFC7900F09A21 /* EDHTMLTextContentCoder.h in Headers */,
-				D1793CFD1B6BFC7900F09A21 /* EDMultimediaContentCoder.h in Headers */,
-				D1793CFE1B6BFC7900F09A21 /* EDPlainTextContentCoder.h in Headers */,
-				D1793CFF1B6BFC7900F09A21 /* EDTextContentCoder.h in Headers */,
-				D1793CDE1B6BFC7900F09A21 /* osdep.h in Headers */,
-				D1793CE11B6BFC7900F09A21 /* utilities.h in Headers */,
-				D1793CE21B6BFC7900F09A21 /* functions.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D1793C441B6BFA6F00F09A21 /* EDMessage Mac */ = {
+		D1793C441B6BFA6F00F09A21 /* EDMessage */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D1793C581B6BFA6F00F09A21 /* Build configuration list for PBXNativeTarget "EDMessage Mac" */;
+			buildConfigurationList = D1793C581B6BFA6F00F09A21 /* Build configuration list for PBXNativeTarget "EDMessage" */;
 			buildPhases = (
 				D1793C401B6BFA6F00F09A21 /* Sources */,
 				D1793C411B6BFA6F00F09A21 /* Frameworks */,
@@ -589,27 +469,9 @@
 			);
 			dependencies = (
 			);
-			name = "EDMessage Mac";
+			name = EDMessage;
 			productName = "EDMessage Mac";
 			productReference = D1793C451B6BFA6F00F09A21 /* EDMessage.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D1793C621B6BFA8200F09A21 /* EDMessage iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D1793C761B6BFA8200F09A21 /* Build configuration list for PBXNativeTarget "EDMessage iOS" */;
-			buildPhases = (
-				D1793C5E1B6BFA8200F09A21 /* Sources */,
-				D1793C5F1B6BFA8200F09A21 /* Frameworks */,
-				D1793C601B6BFA8200F09A21 /* Headers */,
-				D1793C611B6BFA8200F09A21 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "EDMessage iOS";
-			productName = "EDMessage iOS";
-			productReference = D1793C631B6BFA8200F09A21 /* EDMessage.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -621,9 +483,6 @@
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					D1793C441B6BFA6F00F09A21 = {
-						CreatedOnToolsVersion = 6.4;
-					};
-					D1793C621B6BFA8200F09A21 = {
 						CreatedOnToolsVersion = 6.4;
 					};
 				};
@@ -641,21 +500,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D1793C441B6BFA6F00F09A21 /* EDMessage Mac */,
-				D1793C621B6BFA8200F09A21 /* EDMessage iOS */,
+				D1793C441B6BFA6F00F09A21 /* EDMessage */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D1793C431B6BFA6F00F09A21 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D1793C611B6BFA8200F09A21 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -702,49 +553,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D1793C5E1B6BFA8200F09A21 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D1793CBD1B6BFC5100F09A21 /* useful.m in Sources */,
-				D1793CBE1B6BFC5100F09A21 /* functions.m in Sources */,
-				D1793CBF1B6BFC5100F09A21 /* NSArray+Extensions.m in Sources */,
-				D1793CC01B6BFC5100F09A21 /* NSData+Extensions.m in Sources */,
-				D1793CC11B6BFC5100F09A21 /* NSObject+Extensions.m in Sources */,
-				D1793CC21B6BFC5100F09A21 /* NSScanner+Extensions.m in Sources */,
-				D1793CC31B6BFC5100F09A21 /* NSString+Extensions.m in Sources */,
-				D1793CC41B6BFC5100F09A21 /* NSDate+NetExt.m in Sources */,
-				D1793CC51B6BFC5100F09A21 /* NSCharacterSet+MIME.m in Sources */,
-				D1793CC61B6BFC5100F09A21 /* NSData+MIME.m in Sources */,
-				D1793CC71B6BFC5100F09A21 /* NSString+MessageUtils.m in Sources */,
-				D1793CC81B6BFC5100F09A21 /* NSString+PlainTextFlowedExtensions.m in Sources */,
-				D1793CC91B6BFC5100F09A21 /* EDMutableObjectPair.m in Sources */,
-				D1793CCA1B6BFC5100F09A21 /* EDObjectPair.m in Sources */,
-				D1793CCB1B6BFC5100F09A21 /* EDStringScanner.m in Sources */,
-				D1793CCC1B6BFC5100F09A21 /* EDHeaderBearingObject.m in Sources */,
-				D1793CCD1B6BFC5100F09A21 /* EDMessagePart.m in Sources */,
-				D1793CCE1B6BFC5100F09A21 /* EDInternetMessage.m in Sources */,
-				D1793CCF1B6BFC5100F09A21 /* EDMConstants.m in Sources */,
-				D1793CD01B6BFC5100F09A21 /* EDDateFieldCoder.m in Sources */,
-				D1793CD11B6BFC5100F09A21 /* EDEntityFieldCoder.m in Sources */,
-				D1793CD21B6BFC5100F09A21 /* EDHeaderFieldCoder.m in Sources */,
-				D1793CD31B6BFC5100F09A21 /* EDIdListFieldCoder.m in Sources */,
-				D1793CD41B6BFC5100F09A21 /* EDTextFieldCoder.m in Sources */,
-				D1793CD51B6BFC5100F09A21 /* EDCompositeContentCoder.m in Sources */,
-				D1793CD61B6BFC5100F09A21 /* EDContentCoder.m in Sources */,
-				D1793CD71B6BFC5100F09A21 /* EDHTMLTextContentCoder.m in Sources */,
-				D1793CD81B6BFC5100F09A21 /* EDMultimediaContentCoder.m in Sources */,
-				D1793CD91B6BFC5100F09A21 /* EDPlainTextContentCoder.m in Sources */,
-				D1793CDA1B6BFC5100F09A21 /* EDTextContentCoder.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB91B208733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -778,12 +593,15 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Debug;
 		};
 		1DEB91B308733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -815,6 +633,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SUPPORTED_PLATFORMS = "watchsimulator watchos macosx iphonesimulator iphoneos driverkit appletvsimulator appletvos";
+				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Release;
 		};
@@ -923,113 +743,6 @@
 			};
 			name = Debug;
 		};
-		D1793C771B6BFA8200F09A21 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.EDMessage";
-				PRODUCT_NAME = "$(PROJECT_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D1793C781B6BFA8200F09A21 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mulle-kybernetik.EDMessage";
-				PRODUCT_NAME = "$(PROJECT_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1042,20 +755,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D1793C581B6BFA6F00F09A21 /* Build configuration list for PBXNativeTarget "EDMessage Mac" */ = {
+		D1793C581B6BFA6F00F09A21 /* Build configuration list for PBXNativeTarget "EDMessage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D1793C591B6BFA6F00F09A21 /* Release */,
 				D1793C5A1B6BFA6F00F09A21 /* Debug */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D1793C761B6BFA8200F09A21 /* Build configuration list for PBXNativeTarget "EDMessage iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D1793C771B6BFA8200F09A21 /* Release */,
-				D1793C781B6BFA8200F09A21 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
