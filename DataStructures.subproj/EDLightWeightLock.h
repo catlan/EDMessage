@@ -26,7 +26,7 @@ typedef pthread_mutex_t EDLightWeightLock;
 
 /*" Under certain circumstances even the low overhead of NSLocks is too much and direct access to the platform's locks is required. These four functions allocate, initialise and return a lock, dispose of it and allow to lock and unlock it. "*/
 
-static __inline__ EDLightWeightLock *EDLWLCreate()
+static __inline__ EDLightWeightLock *EDLWLCreate(void)
 {
     EDLightWeightLock *mutex = malloc(sizeof(EDLightWeightLock));
     pthread_mutex_init(mutex, NULL);
