@@ -39,6 +39,17 @@
     @implementation EDMessagePart
 //---------------------------------------------------------------------------------------
 
+static NSString *linebreak = nil;
+
++ (void)setLinebreak:(NSString *)theLinebreak
+{
+    linebreak = theLinebreak;
+}
+
++ (NSString *)linebreak
+{
+    return (linebreak != nil) ? linebreak : @"\r\n";
+}
 
 //---------------------------------------------------------------------------------------
 //	INIT & DEALLOC
@@ -108,6 +119,7 @@
     NSMutableString	*stringBuffer, *headerLine;
     NSEnumerator	*fieldEnum;
     EDObjectPair	*field;
+    NSString        *linebreak = [[self class] linebreak];
 
     if(originalTransferData != nil)
         return originalTransferData;
@@ -125,11 +137,11 @@
         headerLine = [[NSMutableString alloc] initWithString:[field firstObject]];
         [headerLine appendString:@": "];
         [headerLine appendString:[field secondObject]];
-        [headerLine appendString:@"\r\n"];
+        [headerLine appendString:linebreak];
         [stringBuffer appendString:[headerLine stringByFoldingToLimit:998]];
         }
 
-    [stringBuffer appendString:@"\r\n"];
+    [stringBuffer appendString:linebreak];
     if((headerData = [stringBuffer dataUsingEncoding:NSASCIIStringEncoding]) == nil)
     {
         //[NSException raise:NSInternalInconsistencyException format:@"-[%@ %@]: Transfer representation of header fields contains non ASCII characters.", NSStringFromClass(isa), NSStringFromSelector(_cmd)];

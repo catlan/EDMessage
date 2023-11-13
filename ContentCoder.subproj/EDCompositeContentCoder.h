@@ -32,6 +32,9 @@
     NSString *courtesyMessage;
 }
 
++ (void)setLinebreak:(NSString *)theLinebreak;
++ (NSString *)linebreak;
+
 - (id)initWithSubparts:(NSArray *)someParts;
 - (id)initWithSubparts:(NSArray *)someParts courtesyMessage:(BOOL)flag;
 - (NSArray *)subparts;

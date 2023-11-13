@@ -40,6 +40,17 @@
 
 static short boundaryId = 0;
 
+static NSString *linebreak = nil;
+
++ (void)setLinebreak:(NSString *)theLinebreak
+{
+    linebreak = theLinebreak;
+}
+
++ (NSString *)linebreak
+{
+    return (linebreak != nil) ? linebreak : @"\r\n";
+}
 
 //---------------------------------------------------------------------------------------
 //	CAPABILITIES
@@ -91,7 +102,7 @@ static short boundaryId = 0;
 {
     if (!(self = [super init])) return nil;
     subparts = [someParts mutableCopy];
-    courtesyMessage = flag ? @"This is a multipart message in MIME format.\r\n" : nil;
+    courtesyMessage = flag ? [NSString stringWithFormat:@"This is a multipart message in MIME format.%@", [[self class] linebreak]] : nil;
     return self;
 }
 
@@ -249,7 +260,7 @@ static NSUInteger debugBoundaryId = 0;
         }
     [result setContentType:[EDObjectPair pairWithObjects:@"multipart":subtype] withParameters:ctpDictionary];
     boundaryData = [[@"--" stringByAppendingString:boundary] dataUsingEncoding:NSASCIIStringEncoding];
-    linebreakData = [@"\r\n" dataUsingEncoding:NSASCIIStringEncoding];
+    linebreakData = [[[self class] linebreak] dataUsingEncoding:NSASCIIStringEncoding];
 
     cte = MIME7BitContentTransferEncoding;
     contentData = [NSMutableData data];
@@ -271,7 +282,8 @@ static NSUInteger debugBoundaryId = 0;
         }
         [contentData appendData:linebreakData];
         [contentData appendData:boundaryData];
-        [contentData appendData:[@"--\r\n" dataUsingEncoding:NSASCIIStringEncoding]];
+        [contentData appendData:boundaryData];
+        [contentData appendData:linebreakData];
     }
         
     [result setContentData:contentData];

@@ -32,6 +32,9 @@
     NSRange		 	bodyRange;
 }
 
++ (void)setLinebreak:(NSString *)theLinebreak;
++ (NSString *)linebreak;
+
 - (id)initWithTransferData:(NSData *)data;
 - (id)initWithTransferData:(NSData *)data fallbackStringEncoding:(NSStringEncoding)encoding;
 - (id)initWithTransferData:(NSData *)data fallbackHeaderFields:(NSDictionary *)fields;
